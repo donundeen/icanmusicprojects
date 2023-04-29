@@ -2,8 +2,8 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3763417601,
-	"viewrect" : [ 311.0, 107.0, 300.0, 500.0 ],
+	"modificationdate" : 3765654390,
+	"viewrect" : [ 69.0, 234.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -14,6 +14,11 @@
 				"kind" : "patcher",
 				"local" : 1,
 				"toplevel" : 1
+			}
+,
+			"buildchordovertype.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
 			}
 ,
 			"dynamic_rescale.maxpat" : 			{
@@ -31,14 +36,31 @@
 				"local" : 1
 			}
 ,
-			"buildchordovertype.maxpat" : 			{
+			"testSocketServer.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 
 		}
 ,
+		"media" : 		{
+			"chordselector.svg" : 			{
+				"kind" : "vectorimagefile",
+				"local" : 1
+			}
+
+		}
+,
 		"code" : 		{
+			"aiselector.js" : 			{
+				"kind" : "javascript",
+				"local" : 1
+			}
+,
+			"socketserver.js" : 			{
+				"kind" : "javascript",
+				"local" : 1
+			}
 
 		}
 ,
@@ -68,6 +90,29 @@
 		"externals" : 		{
 
 		}
+,
+		"other" : 		{
+			"aiselector.html" : 			{
+				"kind" : "webpage",
+				"local" : 1
+			}
+,
+			"README.md" : 			{
+				"kind" : "file",
+				"local" : 1
+			}
+,
+			"chordselector.ai" : 			{
+				"kind" : "file",
+				"local" : 1
+			}
+,
+			"socketclient.html" : 			{
+				"kind" : "webpage",
+				"local" : 1
+			}
+
+		}
 
 	}
 ,
@@ -85,6 +130,5 @@
 	"devpathtype" : 0,
 	"devpath" : ".",
 	"sortmode" : 0,
-	"viewmode" : 0,
-	"includepackages" : 0
+	"viewmode" : 0
 }
