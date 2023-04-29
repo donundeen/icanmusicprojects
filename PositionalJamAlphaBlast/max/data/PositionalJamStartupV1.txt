@@ -1,0 +1,85 @@
+
+i1 noteoutmsg port "loopMIDI Port"
+i2 noteoutmsg port "loopMIDI Port"
+i3 noteoutmsg port "loopMIDI Port"
+i4 noteoutmsg port "loopMIDI Port"
+i5 noteoutmsg port "loopMIDI Port"
+
+i1 midioutmsg port "from Max 2"
+i2 midioutmsg port "from Max 2"
+i3 midioutmsg port "from Max 2"
+i4 midioutmsg port "from Max 2"
+i5 midioutmsg port "from Max 2"
+
+i5 midichannel 5
+i4 midichannel 4
+i3 midichannel 3
+i2 midichannel 2
+i1 midichannel 1
+
+
+i4 skiptheory 1
+i4 instmsg notelengthshaper reset
+i4 instmsg notelengthctl 2
+i4 instmsg notevelocityshaper reset
+i4 instmsg notevelocityctl 2
+i4 instmsg algorhythmshaper reset
+i4 instmsg algorhythmctl 2
+i4 instmsg noteselectctl 0
+i4 instmsg noteselectshaper reset
+i4 instmsg polyphony 1
+i4 instmsg rhythmselectctl 1
+i4 setmidimax 52
+i4 setmidimin 36
+
+i3 instmsg notelengthshaper clear, i3 instmsg notelengthshaper 0. 0., i3 instmsg notelengthshaper 1. 0.2
+i3 instmsg notelengthctl 2
+i3 instmsg notevelocityshaper reset
+i3 instmsg notevelocityctl 2
+i3 instmsg algorhythmshaper reset
+i3 instmsg algorhythmctl 2
+i3 instmsg noteselectctl 0
+i3 instmsg noteselectshaper reset
+i3 instmsg polyphony 3
+i3 instmsg rhythmselectctl 1
+i3 setmidimax 72
+i3 setmidimin 20
+
+i2 instmsg notelengthshaper reset
+i2 instmsg notelengthctl 2
+i2 instmsg notevelocityshaper reset
+i2 instmsg notevelocityctl 2
+i2 instmsg algorhythmctl 2
+i2 instmsg noteselectctl 0
+i2 instmsg noteselectshaper reset
+i2 instmsg polyphony 2
+i2 instmsg rhythmselectctl 1
+i2 instmsg algorhythmshaper clear, i2 instmsg algorhythmshaper 0. 0., i2 instmsg algorhythmshaper 1. 0.2
+i2 setmidimax 72
+i2 setmidimin 36
+
+i1 instmsg notelengthshaper reset
+i1 instmsg notelengthctl 2
+i1 instmsg notevelocityshaper reset
+i1 instmsg notevelocityctl 2
+i1 instmsg algorhythmshaper reset
+i1 instmsg algorhythmctl 2
+i1 instmsg noteselectctl 0
+i1 instmsg noteselectshaper reset
+i1 instmsg polyphony 1
+i1 instmsg rhythmselectctl 1
+i1 setmidimax 52
+i1 setmidimin 20
+
+i5 instmsg notelengthshaper clear, i5 instmsg notelengthshaper 0. 0., i5 instmsg notelengthshaper 1. 0.2
+i5 instmsg notelengthctl 2
+i5 instmsg notevelocityshaper reset
+i5 instmsg notevelocityctl 2
+i5 instmsg algorhythmshaper reset
+i5 instmsg algorhythmctl 2
+i5 instmsg noteselectctl 0
+i5 instmsg noteselectshaper reset
+i5 instmsg polyphony 3
+i5 instmsg rhythmselectctl 1
+i5 setmidimax 72
+i5 setmidimin 40

@@ -1,0 +1,81 @@
+/* comments */
+inlets = 1;
+outlets = 3;
+///
+
+var chordObj = {};
+//var chordArray = ["-1"];
+var chordArray = [];
+
+
+function msg_float(fl){
+  getNoteFloat(fl);	
+}
+
+function msg_int(note, vel){
+  setNote(note, vel);	
+}
+
+function msg_string(str){
+  post("msg str");	
+}
+
+function emptyIt(){
+
+  chordObj = {};
+  chordArray = [];	
+//  addNote("-1");
+}
+
+function msg_list(note, vel){
+  setNote(note, vel);	
+}
+
+
+
+function setNote(note, vel){
+  if(vel == 0){
+	removeNote(note);
+  }else{
+	addNote(note);
+  }
+  outlet(0, chordArray);
+  outlet(1, chordArray.length);
+}
+
+
+function getNoteFloat(fl){
+  if(chordArray.length > 0){
+    var index = Math.floor(chordArray.length * fl)
+	if(index == chordArray.length){
+			index = chordArray.length - 1;
+	}
+  //  index = index % chordArray.length;
+    if(parseInt(chordArray[index]) > 0){
+    	outlet(2, parseInt(chordArray[index]));
+	}
+  }
+}
+
+
+function addNote(note){
+	chordObj[note]= true;
+	objToArray();
+}
+
+function removeNote(note){
+	delete chordObj[note];
+	objToArray();
+}
+
+
+
+function objToArray(){
+  var keys = Object.keys(chordObj);
+  keys = keys.sort();
+  chordArray = [];
+
+  for(var i = 0; i<keys.length; i++){
+    chordArray.push(keys[i]);
+  }
+}
