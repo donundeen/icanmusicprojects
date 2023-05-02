@@ -2,8 +2,8 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3765654390,
-	"viewrect" : [ 69.0, 234.0, 300.0, 500.0 ],
+	"modificationdate" : 3765831537,
+	"viewrect" : [ 124.0, 285.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -52,12 +52,12 @@
 		}
 ,
 		"code" : 		{
-			"aiselector.js" : 			{
+			"socketserver.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
 			}
 ,
-			"socketserver.js" : 			{
+			"aiselector.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
 			}
@@ -130,5 +130,6 @@
 	"devpathtype" : 0,
 	"devpath" : ".",
 	"sortmode" : 0,
-	"viewmode" : 0
+	"viewmode" : 0,
+	"includepackages" : 0
 }

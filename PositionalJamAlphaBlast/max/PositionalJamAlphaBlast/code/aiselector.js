@@ -5,6 +5,20 @@ Array.prototype.rotateRight = function( n ) {
   }
 
 
+  const ws = new WebSocket('ws://localhost:8080');
+  let wsready = false;  
+  // Browser WebSockets have slightly different syntax than `ws`.
+  // Instead of EventEmitter syntax `on('open')`, you assign a callback
+  // to the `onopen` property.
+  ws.onopen = function() {
+    wsready = true;
+  };
+
+  ws.onmessage = function(msg) {
+    console.log("got message "+ msg);
+    console.log(JSON.stringify(msg));
+  };  
+
 var svgDoc = false;
 let currentRoot = "C"
 const numFifths = ['1','5','2','6','3','7','b5','b2','b6','b3','b7','4'];
@@ -82,8 +96,17 @@ function setChord(root, value){
     console.log(index);
     console.log(currentMajWheel);
     let note = currentMajWheel[index];
-    let chord = note+value;
+    let chord = note+" "+value;
     console.log(chord);
+    sendChord(chord);
+}
+
+function sendChord(chord){
+    if(wsready){
+        ws.send("chord " + chord);
+    }else{
+        console.log("ws not ready");
+    }
 }
 
 function assignNotes(){

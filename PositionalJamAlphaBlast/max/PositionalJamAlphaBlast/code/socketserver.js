@@ -18,11 +18,11 @@ server.on('connection', function(socket) {
 
   // When you receive a message, send that message to every socket.
   socket.on('message', function(msg) {
-    sockets.forEach(s => s.send(msg));
-	console.log(msg);
-	Max.post("Got message " + msg);
+    sockets.forEach(s => s.send(msg)); // send back out - we don't need to do this
+  	console.log(msg);
+	  Max.post("Got message " + msg.toString());
 
-	Max.outlet("message" + msg);	
+  	Max.outlet(msg.toString());	
   });
 
   // When a socket closes, or disconnects, remove it from the array.
@@ -31,8 +31,8 @@ server.on('connection', function(socket) {
   });
 });
 
-//console.log(__dirname);
+Max.post(__dirname);
 
 connect()
-     .use(serveStatic(__dirname))
-     .listen(8000, () => console.log('Server running on 8080...'.__dirname));
+     .use(serveStatic(__dirname+"/.."))
+     .listen(8000, () => 	Max.post('Server running on 8000... http://localhost:8000/other/aiselector.html'+__dirname));
