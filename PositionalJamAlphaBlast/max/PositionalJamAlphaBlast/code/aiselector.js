@@ -96,7 +96,7 @@ function setChord(root, value){
     console.log(index);
     console.log(currentMajWheel);
     let note = currentMajWheel[index];
-    let chord = note+" "+value;
+    let chord = note+"6 "+value;
     console.log(chord);
     sendChord(chord);
 }

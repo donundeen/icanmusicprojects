@@ -103,6 +103,12 @@ var weightedScaleNoteSetMidi = false;
 var chordNoteSet = false;
 var chordNoteSetMidi = false;
 
+// some system might not want to think about the difference between "chords" and "scales" as teoria defines them. He're we'll just store whichever was the MOST RECENT note set created, either scale or chord.
+var curSingleSetChordOrScale = false;
+var curSingleSetName = false;
+var singleNoteSet = false;
+var singleNoteSetMidi = false;
+
 
 maxApi.post("in script");
 
@@ -140,7 +146,7 @@ maxApi.addHandler("get", function(labelid, command){
 
 // setter commands
 function runSetter(command, labelid){
-	if(command.match(/^[a-gA-G][b#]?$/)){
+	if(command.match(/^[a-gA-G][b#]?[0-9]?$/)){
 //		maxApi.post("command setNote " + command);
 		setNote(command, labelid);
 	}else if(teoria.Scale.KNOWN_SCALES.indexOf(command.toLowerCase()) >= 0){
