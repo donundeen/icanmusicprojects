@@ -4,8 +4,9 @@ Array.prototype.rotateRight = function( n ) {
     return this;
   }
 
-
+// chnage this depending on location of webserver. Figure out a way to make this more dynamic...
   const ws = new WebSocket('ws://localhost:8080');
+//  const ws = new WebSocket('ws://192.168.4.34:8080');
   let wsready = false;  
   // Browser WebSockets have slightly different syntax than `ws`.
   // Instead of EventEmitter syntax `on('open')`, you assign a callback
