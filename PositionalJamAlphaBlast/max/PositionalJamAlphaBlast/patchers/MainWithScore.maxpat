@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 3,
-			"revision" : 1,
+			"minor" : 5,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 105.0, 89.0, 838.0, 667.0 ],
+		"rect" : [ 83.0, 92.0, 838.0, 667.0 ],
 		"bglocked" : 1,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -3106,7 +3106,8 @@
 					"id" : "obj-52",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 0,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ -2841.236835956573486, 96.999985933303833, 53.0, 22.0 ],
 					"text" : "link.beat"
 				}
@@ -6580,6 +6581,13 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "BPM2ms.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/RTC-lib/patchers/Rhythm",
+				"patcherrelativepath" : "../../../../../../Max 8/Packages/RTC-lib/patchers/Rhythm",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "FractalInstrumentScoreFollower.maxpat",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
 				"patcherrelativepath" : ".",
@@ -6736,6 +6744,10 @@
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "link.beat.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "list_distribution.maxpat",
