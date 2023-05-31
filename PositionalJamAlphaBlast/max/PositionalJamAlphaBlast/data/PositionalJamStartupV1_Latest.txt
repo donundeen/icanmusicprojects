@@ -34,7 +34,7 @@ i4 instmsg polyphony 1
 i4 instmsg rhythmselectctl 1
 i4 setmidimax 52
 i4 setmidimin 36
-i4 scaleorchord 1
+i4 scaleorchord 0
 
 i3 instmsg notelengthshaper clear, i3 instmsg notelengthshaper 0. 0., i3 instmsg notelengthshaper 1. 0.2
 i3 instmsg notelengthctl 2
@@ -48,7 +48,7 @@ i3 instmsg polyphony 3
 i3 instmsg rhythmselectctl 1
 i3 setmidimax 72
 i3 setmidimin 20
-i3 scaleorchord 1
+i3 scaleorchord 0
 
 i2 instmsg notelengthshaper reset
 i2 instmsg notelengthctl 2
@@ -62,7 +62,7 @@ i2 instmsg rhythmselectctl 1
 i2 instmsg algorhythmshaper clear, i2 instmsg algorhythmshaper 0. 0., i2 instmsg algorhythmshaper 1. 0.2
 i2 setmidimax 72
 i2 setmidimin 36
-i2 scaleorchord 1
+i2 scaleorchord 0
 
 i1 instmsg notelengthshaper reset
 i1 instmsg notelengthctl 2
@@ -76,15 +76,15 @@ i1 instmsg polyphony 1
 i1 instmsg rhythmselectctl 1
 i1 setmidimax 52
 i1 setmidimin 20
-i1 scaleorchord 1
+i1 scaleorchord 0
 
 
 i5 setmidimax 72
 i5 setmidimin 40
-i5 scaleorchord 1
+i5 scaleorchord 0
 
 
 
 i6 setmidimax 72
 i6 setmidimin 40
-i6 scaleorchord 1
+i6 scaleorchord 0

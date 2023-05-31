@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 3040.0, 163.0, 794.0, 600.0 ],
+		"rect" : [ 442.0, 272.0, 1467.0, 978.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-30",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 247.366710394620895, 1061.600019872188568, 29.5, 22.0 ],
+					"text" : "c"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-46",
 					"maxclass" : "message",
@@ -152,7 +164,7 @@
 				"box" : 				{
 					"comment" : "keyout (packed) for display",
 					"id" : "obj-26",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -246,7 +258,7 @@
 				"box" : 				{
 					"comment" : "Flush all notes",
 					"id" : "obj-4",
-					"index" : 6,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -258,12 +270,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-31",
-					"linecount" : 18,
+					"linecount" : 15,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ -238.0, 169.0, 53.0, 257.0 ],
+					"patching_rect" : [ -238.0, 169.0, 55.0, 215.0 ],
 					"text" : "chordNoteMidiList 0 4 7 12 16 19 24 28 31 36 40 43 48 52 55 60 64 67 72 76 79 84 88 91 96 100 103 108 112 115 120 124 127"
 				}
 
@@ -319,7 +331,7 @@
 				"box" : 				{
 					"comment" : "TheoryNoteReceived",
 					"id" : "obj-22",
-					"index" : 5,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -332,7 +344,7 @@
 				"box" : 				{
 					"comment" : "getTheoryNote Request",
 					"id" : "obj-20",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -367,7 +379,7 @@
 				"box" : 				{
 					"comment" : "tempo",
 					"id" : "obj-13",
-					"index" : 4,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -402,7 +414,7 @@
 				"box" : 				{
 					"comment" : "transport start/stop",
 					"id" : "obj-9",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -426,11 +438,11 @@
 				"box" : 				{
 					"comment" : "loadbang/reset",
 					"id" : "obj-5",
-					"index" : 3,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ -418.583274006843567, 28.0, 30.0, 30.0 ]
 				}
 
@@ -455,7 +467,7 @@
 				"box" : 				{
 					"comment" : "instrument messages",
 					"id" : "obj-3",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -1058,7 +1070,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 189.600030124187469, 1226.332270622253418, 158.000001609325409, 22.0 ],
-					"text" : "linei3 s0.71(20-100)"
+					"text" : "#1 b0.00(0-0)"
 				}
 
 			}
@@ -1081,7 +1093,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 121.033409476280212, 1040.33335417509079, 92.0, 22.0 ],
+					"patching_rect" : [ 67.116756916046143, 1024.600031435489655, 92.0, 22.0 ],
 					"text" : "r #0loadbang"
 				}
 
@@ -1106,7 +1118,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 313.75006115436554, 1182.332268595695496, 134.00000125169754, 22.0 ],
-					"text" : "s 0.707392 20 100"
+					"text" : "b 0.0006 0 0"
 				}
 
 			}
@@ -1117,8 +1129,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 235.333410501480103, 1092.600021064281464, 19.0, 22.0 ],
-					"text" : "c"
+					"patching_rect" : [ 209.916786432266235, 1061.600019872188568, 29.5, 22.0 ],
+					"text" : "s"
 				}
 
 			}
@@ -1129,8 +1141,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 204.333410501480103, 1092.600021064281464, 20.699999868869781, 22.0 ],
-					"text" : "s"
+					"patching_rect" : [ 174.083364725112915, 1061.600019872188568, 29.5, 22.0 ],
+					"text" : "b"
 				}
 
 			}
@@ -1138,11 +1150,11 @@
 				"box" : 				{
 					"id" : "obj-319",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 204.333410501480103, 1004.333352267742157, 50.0, 22.0 ],
-					"text" : "select 0"
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 204.333410501480103, 1004.333352267742157, 66.0, 22.0 ],
+					"text" : "route 0 1 2"
 				}
 
 			}
@@ -1154,14 +1166,14 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 135.533409476280212, 996.333352148532867, 50.0, 22.0 ],
-					"text" : "1"
+					"text" : "0"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-316",
-					"items" : [ "scale", "note", ",", "chord", "note" ],
+					"items" : [ "best", "note", ",", "scale", "note", ",", "chord", "note" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -2236,6 +2248,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-328", 0 ],
+					"source" : [ "obj-30", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-328", 3 ],
 					"source" : [ "obj-309", 0 ]
 				}
@@ -2275,6 +2294,13 @@
 					"destination" : [ "obj-319", 0 ],
 					"order" : 0,
 					"source" : [ "obj-316", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-30", 0 ],
+					"source" : [ "obj-319", 2 ]
 				}
 
 			}
@@ -2667,7 +2693,30 @@
 				}
 
 			}
- ]
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "fractal_iter.maxpat",
+				"bootpath" : "E:/Don Undeen/github/icanmusicprojects-main/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "list_distribution.maxpat",
+				"bootpath" : "E:/Don Undeen/github/icanmusicprojects-main/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "singleNoteFractalStream.maxpat",
+				"bootpath" : "E:/Don Undeen/github/icanmusicprojects-main/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }

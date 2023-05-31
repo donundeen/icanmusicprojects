@@ -104,10 +104,24 @@ var chordNoteSet = false;
 var chordNoteSetMidi = false;
 
 // some system might not want to think about the difference between "chords" and "scales" as teoria defines them. He're we'll just store whichever was the MOST RECENT note set created, either scale or chord.
-var curSingleSetChordOrScale = false;
-var curSingleSetName = false;
-var singleNoteSet = false;
-var singleNoteSetMidi = false;
+var curBestSetChordOrScale = false;
+var curBestSetName = false;
+var bestNoteSet = false;
+var bestNoteSetMidi = false;
+
+function bestSetIsChord(){
+	bestNoteSet = chordNoteSet;
+	bestNoteSetMidi = chordNoteSetMidi;
+	curBestSetName = curChordName;
+	getBestNoteMidiList();
+
+}
+function bestSetIsScale(){
+	bestNoteSet = scaleNoteSet;
+	bestNoteSetMidi = scaleNoteSetMidi;
+	curBestSetName = curScaleName;
+	getBestNoteMidiList();
+}
 
 
 maxApi.post("in script");
@@ -152,6 +166,7 @@ function runSetter(command, labelid){
 	}else if(teoria.Scale.KNOWN_SCALES.indexOf(command.toLowerCase()) >= 0){
 //		maxApi.post("command setScale " + command);
 		setScale(command.toLowerCase(), labelid);
+		bestSetIsScale();
 	}else if (command.match(/^[+-]/)){
 		var interval  = command.replace(/^[+-]/,"");
 		if(command[0] == "-" && command[1] != "-"){
@@ -166,6 +181,7 @@ function runSetter(command, labelid){
 		var size = command[2];
 //		maxApi.post(position + " , " + size);
 		setChordDiatonic(parseInt(position), parseInt(size), labelid);
+		bestSetIsChord();
 	}else{
 		let result = tryChord(command);
 		if(!result){
@@ -178,6 +194,7 @@ function tryChord(command){
 	maxApi.post("trying " + command);
 	try{
 		setChord(command);
+		bestSetIsChord();
 	}catch(e){
 		maxApi.post("chord set error " + e);
 		return false;
@@ -195,7 +212,7 @@ function runGetter(command, labelid){
 	
 	command = command.toLowerCase();
 
-	var matches = command.match(/([scw])([0-9]*\.?[0-9]+)\(([0-9]+)-([0-9]+)\)/);
+	var matches = command.match(/([bscw])([0-9]*\.?[0-9]+)\(([0-9]+)-([0-9]+)\)/);
 //	maxApi.post(matches); //
 	if(!matches){
 //		maxApi.post("no command match for "+command);
@@ -231,6 +248,14 @@ function runGetter(command, labelid){
 			getChordNoteFromFloat(labelid, value, min, max);
 		}		
 	}
+	if(sc == "b"){
+		if(intfl == "int"){
+			getBestNoteFromInt(labelid, value, min, max);
+		}
+		if(intfl == "float"){
+			getBestNoteFromFloat(labelid, value, min, max);
+		}		
+	}	
 	if(sc == "w"){
 		if(intfl == "int"){
 			getWeightedScaleNoteFromInt(labelid, value, min, max);
@@ -488,6 +513,21 @@ function getChordNoteMidiList(labelid){
 	}	
 }
 
+function getBestNoteMidiList(labelid){
+	if(!labelid){
+		labelid = "bestNoteMidiList";
+	}
+	if(bestNoteSetMidi){
+		var output = labelid+" " + bestNoteSetMidi.join(" ");
+//		maxApi.post(output);
+		maxApi.outlet(output)
+	}else{
+		maxApi.post("no best set");
+	}	
+}
+
+
+
 function noteList(){
 	var output = "noteList " +   currentNotelist.join(" ");
 //	maxApi.post(output);
@@ -560,6 +600,29 @@ function getChordNoteFromInt(labelid, value, min, max){
 	maxApi.outlet(labelid+ " " + note);
 	
 }
+
+
+function getBestNoteFromFloat(labelid, value, min, max){
+	//		maxApi.post("getChordNoteFromFloat "+labelid + ", " + value);
+	//		maxApi.post(chordNoteSetMidi);
+	var note = selectFromFloat(value, bestNoteSetMidi, min, max);
+	//	maxApi.post("note " + note);
+	if(!note){
+		return false;
+	}
+	maxApi.outlet(labelid+ " " + note);
+	
+}
+	
+function getBestNoteFromInt(labelid, value, min, max){
+	var note = selectFromInt(value, bestNoteSetMidi, min, max);
+	if(!note){
+		return false;
+	}
+	maxApi.outlet(labelid+ " " + note);
+	
+}
+	
 
 
 function selectFromFloat(value, thelist, min, max){

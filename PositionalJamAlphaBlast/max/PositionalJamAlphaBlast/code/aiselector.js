@@ -5,9 +5,23 @@ Array.prototype.rotateRight = function( n ) {
   }
 
 // chnage this depending on location of webserver. Figure out a way to make this more dynamic...
-  const ws = new WebSocket('ws://localhost:8080');
-//  const ws = new WebSocket('ws://192.168.4.34:8080');
-  let wsready = false;  
+let host =  window.location.host;
+host = host.replace(/:[0-9]+/,"");
+// remove port
+console.log(host);
+
+
+
+
+//  const ws = new WebSocket('ws://localhost:8080');
+//const ws = new WebSocket('ws://192.168.4.34:8080');
+//const ws = new WebSocket('ws://10.102.134.110:8080');
+const ws = new WebSocket('ws://'+host+':8080');
+
+
+
+
+let wsready = false;  
   // Browser WebSockets have slightly different syntax than `ws`.
   // Instead of EventEmitter syntax `on('open')`, you assign a callback
   // to the `onopen` property.
@@ -147,22 +161,40 @@ var a = document.getElementById("Layer_1");
 console.log(a);
 // It's important to add an load event listener to the object,
 // as it will load the svg doc asynchronously
+let firstLoadDone = false;
 a.addEventListener("load",function(){
-    console.log("loaded");
+    if(!firstLoadDone){
+        firstLoadDone = true;
+        console.log("loaded");
 
-    // get the inner DOM of alpha.svg
-    console.log(a);
+        // get the inner DOM of alpha.svg
+        console.log(a);
 
-    svgDoc = a;//.contentDocument;
-    console.log(svgDoc);
+        svgDoc = a;//.contentDocument;
+        console.log(svgDoc);
     
-    assignNotes();
+        assignNotes();
+    }
 });
 
+if(document.querySelectorAll("#Layer_1").length){
+    console.log("is already loaded");
+    if(!firstLoadDone){
+        firstLoadDone = true;
+        console.log("loaded");
+        a = document.getElementById("Layer_1");
+        // get the inner DOM of alpha.svg
+        console.log(a);
 
+        svgDoc = a;//.contentDocument;
+        console.log(svgDoc);
+    
+        assignNotes();
+    }    
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOMCONTENTLOADED");
+    console.log("DOMCONTENTLOADED...");
 });
 //setMajRoot("infile");
 
