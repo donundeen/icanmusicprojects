@@ -9,6 +9,19 @@
 // Just test touch pin - Touch0 is T0 which is on GPIO 4.
 
 // using 15 - This is GPIO #15 and also an analog input A8 on ADC #2
+/*
+const char *WIFI_SSID = "Studio314";
+const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
+//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
+const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
+*/
+const char *WIFI_SSID = "JJandJsKewlPad";
+const char *WIFI_PASSWORD = "WeL0veLettuce";
+//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
+const char * UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
+const int UDPPort = 9002; // the UDP port that Max is listening on
+
+
 
 int touchPin = 15;
 
@@ -56,12 +69,7 @@ const boolean HARDCODE_SSID = true;
 
 // remember you can't connect to 5G networks with the arduino. 
 
-const char *WIFI_SSID = "Studio314";
-const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
-//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
-const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
 
-const int UDPPort = 9002; // the UDP port that Max is listening on
 
 bool wifi_connected =false;
 
