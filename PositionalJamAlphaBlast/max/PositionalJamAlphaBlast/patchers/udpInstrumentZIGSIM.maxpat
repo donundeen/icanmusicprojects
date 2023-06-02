@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1026.0, 164.0, 4877.0, 1067.0 ],
+		"rect" : [ 2786.0, 115.0, 2164.0, 1067.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -242,7 +242,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 67.083364725112915, 855.333322525024414, 298.0, 31.0 ],
+					"patching_rect" : [ 66.083364725112915, 908.0, 298.0, 31.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 865.083364725112915, 139.0, 298.0, 31.0 ],
 					"text" : "#3",
@@ -283,7 +283,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 2049.266666948795319, 1357.0, 274.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/quaternion"
+					"text" : "/ZIGSIM/instrument2/quaternion"
 				}
 
 			}
@@ -319,7 +319,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1350.266666948795319, 1378.933300614356995, 274.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/touch0"
+					"text" : "/ZIGSIM/instrument2/touch0"
 				}
 
 			}
@@ -355,7 +355,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 850.333333253860474, 1381.0, 197.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/compass"
+					"text" : "/ZIGSIM/instrument2/compass"
 				}
 
 			}
@@ -391,7 +391,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1132.0, 897.333322525024414, 274.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/gyro"
+					"text" : "/ZIGSIM/instrument2/gyro"
 				}
 
 			}
@@ -427,7 +427,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1002.833333253860474, 79.0, 237.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/accel"
+					"text" : "/ZIGSIM/instrument2/accel"
 				}
 
 			}
@@ -439,7 +439,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 948.0, 484.333322525024414, 274.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/gravity"
+					"text" : "/ZIGSIM/instrument2/gravity"
 				}
 
 			}
@@ -546,7 +546,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ -300.0, 1198.0, 287.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/gyro"
+					"text" : "/ZIGSIM/instrument2/gyro"
 				}
 
 			}
@@ -1327,7 +1327,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 468.0, -81.0, 150.0, 20.0 ],
+					"patching_rect" : [ 189.583427131175995, -55.0, 150.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 70.400092244148254, 188.0, 150.0, 20.0 ],
 					"text" : "reset sensor scaling"
@@ -1703,8 +1703,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5477.833402729438603, 186.483681681156213, 150.0, 48.0 ],
-					"text" : "turn a float into a sensible not lenth (whole, quarter, half, etc)"
+					"patching_rect" : [ 5477.833402729438603, 186.483681681156213, 151.0, 48.0 ],
+					"text" : "turn a float into a sensible note lenth (whole, quarter, half, etc)"
 				}
 
 			}
@@ -2537,7 +2537,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 5089.600030124187469, 553.266697645187378, 158.000001609325409, 22.0 ],
-					"text" : "linei5 b0.02(40-72)"
+					"text" : "#1 b0.95(20-100)"
 				}
 
 			}
@@ -2573,7 +2573,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 5213.75006115436554, 509.266695618629456, 134.00000125169754, 22.0 ],
-					"text" : "b 0.022426 40 72"
+					"text" : "b 0.953488 20 100"
 				}
 
 			}
@@ -4362,7 +4362,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 435.533329784870148, -85.133324980735779, 24.0, 24.0 ],
+					"patching_rect" : [ 157.116756916046143, -59.133324980735779, 24.0, 24.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 37.933422029018402, 183.866675019264221, 24.0, 24.0 ]
 				}
@@ -4374,7 +4374,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 435.533329784870148, -41.133324980735779, 130.0, 22.0 ],
+					"patching_rect" : [ 157.116756916046143, -15.133324980735779, 130.0, 22.0 ],
 					"text" : "send #0resetrescale"
 				}
 
