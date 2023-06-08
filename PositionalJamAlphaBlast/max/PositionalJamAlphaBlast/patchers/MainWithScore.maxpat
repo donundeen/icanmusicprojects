@@ -1059,7 +1059,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -369.0, -1321.718901634216309, 104.0, 33.0 ],
+					"patching_rect" : [ -369.0, -1327.218901634216309, 104.0, 33.0 ],
 					"text" : "2 because we want half-notes"
 				}
 
@@ -1153,7 +1153,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -123.0, -791.0, 104.0, 22.0 ],
+					"patching_rect" : [ -102.999999701976776, -879.55925327539444, 104.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"versionnumber" : 80100
 					}
@@ -5964,14 +5964,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-200", 0 ],
-					"order" : 1,
-					"source" : [ "obj-191", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-215", 0 ],
 					"order" : 0,
 					"source" : [ "obj-191", 0 ]
 				}
@@ -5980,7 +5972,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-226", 0 ],
-					"order" : 2,
+					"order" : 1,
 					"source" : [ "obj-191", 0 ]
 				}
 
@@ -6037,15 +6029,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-212", 0 ],
-					"order" : 1,
-					"source" : [ "obj-201", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-214", 0 ],
-					"order" : 0,
 					"source" : [ "obj-201", 0 ]
 				}
 
@@ -6129,16 +6112,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-242", 0 ],
-					"order" : 0,
-					"source" : [ "obj-212", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-296", 0 ],
-					"order" : 1,
 					"source" : [ "obj-212", 0 ]
 				}
 
@@ -6490,16 +6464,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-239", 0 ],
-					"order" : 0,
-					"source" : [ "obj-269", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-296", 1 ],
-					"order" : 1,
 					"source" : [ "obj-269", 0 ]
 				}
 
@@ -6524,16 +6489,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-207", 0 ],
-					"order" : 0,
-					"source" : [ "obj-270", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-269", 0 ],
-					"order" : 1,
 					"source" : [ "obj-270", 0 ]
 				}
 
