@@ -41,8 +41,8 @@ server.on('connection', function(socket) {
   // When you receive a message, send that message to every socket.
   socket.on('message', function(msg) {
     sockets.forEach(s => s.send(msg)); // send back out - we don't need to do this
-  	console.log(msg);
-	  Max.post("Got message " + msg.toString());
+//  	console.log(msg);
+//	  Max.post("Got message " + msg.toString());
 
   	Max.outlet(msg.toString());	
   });
