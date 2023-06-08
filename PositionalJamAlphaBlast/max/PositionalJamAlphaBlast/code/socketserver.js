@@ -22,7 +22,7 @@ for (const name of Object.keys(nets)) {
       }
   }
 }
-Max.post(results);
+//Max.post(results);
 let my_ip_address = results["en0"];
 
 
