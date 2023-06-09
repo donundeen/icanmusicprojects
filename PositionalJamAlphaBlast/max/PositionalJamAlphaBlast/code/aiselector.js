@@ -64,6 +64,12 @@ console.log(currentMinWheel);
 console.log(currentDimWheel);
 
 
+let selectedElem = false;
+let prevStroke = false;
+let prevFill = false;
+let selectedFill = "blue";
+let selectedStroke = "blue";
+
 function setMajRoot(root){
     root = "maj"+root;
     console.log("setMajRoot " + root);
@@ -117,8 +123,22 @@ function setRoot(root){
 
 }
 
-function setChord(root, value){
+function markSelectedObj(obj){
+    if(selectedElem){
+        selectedElem.style.stroke = prevStroke;
+        selectedElem.style.fill = prevFill;
+    }
+    selectedElem = obj;
+    prevFill = obj.style.fill;
+    prevStroke = obj.style.stroke;
+    obj.style.fill = selectedFill;
+    obj.style.stroke = selectedStroke;
+}
+
+function setChord(root, value, obj){
     console.log("setChord  " + root + "  , " + value);
+    markSelectedObj(obj);
+    
     let index = numFifths.indexOf(root);
     console.log(index);
     console.log(currentMajWheel);
