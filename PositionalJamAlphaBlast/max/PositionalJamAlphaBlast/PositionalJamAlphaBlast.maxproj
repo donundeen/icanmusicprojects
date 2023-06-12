@@ -2,7 +2,7 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3768931094,
+	"modificationdate" : 3769371439,
 	"viewrect" : [ 124.0, 285.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -31,6 +31,11 @@
 				"local" : 1
 			}
 ,
+			"udpInstrumentAccel.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"udpInstrumentZIGSIM.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -46,7 +51,17 @@
 				"local" : 1
 			}
 ,
-			"udpInstrumentAccel.maxpat" : 			{
+			"addNoteToScore.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"quantizer.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"instruments.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
