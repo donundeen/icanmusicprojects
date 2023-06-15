@@ -93,6 +93,8 @@ var curNote = false;
 var curScale = false;
 var curScaleName= false;
 
+var curRootMidi = 0;
+
 var curChord = false;
 var curChordName = false;
 
@@ -363,6 +365,8 @@ function createScaleSet(){
 	scaleNoteSet = [];
 	scaleNoteSetMidi = [];
 	var notes = curScale.notes();
+	curRootMidi = curScale.tonic.midi() % 12;
+
 	for(var i = 0; i < notes.length; i++){
 		var note = notes[i];
 		console.log(note.toString());
@@ -401,6 +405,7 @@ function createChordSet(){
 	chordNoteSet = [];
 	chordNoteSetMidi = []
 	var notes = curChord.notes();
+	curRootMidi = curChord.root.midi() % 12;
 	for(var i = 0; i < notes.length; i++){
 		var note = notes[i];
 //		console.log(note.toString());

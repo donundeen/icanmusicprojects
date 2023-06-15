@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 4,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 120.0, 162.0, 825.0, 683.0 ],
+		"rect" : [ 223.0, 237.0, 1170.0, 891.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,33 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-162",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 230.0, 649.800000309944153, 70.0, 22.0 ],
+					"text" : "r system_ip"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 16.0,
+					"id" : "obj-188",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ -30.0, 691.833322525024414, 253.0, 27.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 630.0, 4.633326888084412, 253.0, 27.0 ],
+					"text" : "10.102.135.53"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-365",
 					"maxclass" : "message",
@@ -592,7 +619,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1211.0, 1755.0, 154.0, 74.0 ],
+					"patching_rect" : [ 1211.0, 1755.0, 154.0, 75.0 ],
 					"text" : "note: you can use touchcount to get the number of fingers down. 0 is \"no fingers\" - so you can get press and lift."
 				}
 
@@ -627,7 +654,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 66.083364725112915, 908.0, 298.0, 31.0 ],
+					"patching_rect" : [ 71.083364725112915, 855.333322525024414, 298.0, 31.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 865.083364725112915, 139.0, 298.0, 31.0 ],
 					"text" : "#3",
@@ -643,8 +670,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1153.833333253860474, 1043.0, 50.0, 35.0 ],
-					"text" : "3.165725"
+					"patching_rect" : [ 1153.833333253860474, 1043.0, 50.0, 36.0 ],
+					"text" : "0.009205"
 				}
 
 			}
@@ -967,11 +994,11 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -66.0, 659.333322525024414, 289.0, 221.0 ],
+					"patching_rect" : [ -66.0, 659.333322525024414, 289.0, 227.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 7,
-					"presentation_rect" : [ 592.20001083612442, -27.366673111915588, 560.200004041194916, 194.0 ],
-					"text" : "port: 7002\nIP: 10.102.134.110\nMEssage Format: OSC\nProtocol: UDP\nData Destination: Other App\nMessage Rate: 30\nDevice UID:"
+					"presentation_rect" : [ 592.20001083612442, -27.366673111915588, 560.200004041194916, 200.0 ],
+					"text" : "port: 7002\nIP: 10.102.134.110\nMessage Format: OSC\nProtocol: UDP\nData Destination: Other App\nMessage Rate: 30\nDevice UID:"
 				}
 
 			}
@@ -1206,10 +1233,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2.0, 320.100079953670502, 153.0, 248.0 ],
+					"patching_rect" : [ 2.0, 320.100079953670502, 153.0, 255.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 16,
-					"presentation_rect" : [ 598.0, 239.0, 235.0, 221.0 ],
+					"presentation_rect" : [ 598.0, 239.0, 235.0, 227.0 ],
 					"text" : "Good combos:\n\nfor spinning around (head)\nLoudness: gyroXabs\nNote: quatZ\nDuration: quatY\n\nback pocket twerk:\nLoud: gyroXabs\nNote: quatyY\nDuration: QuatZ\n\nOther Motions:\n- put in a sock and swing it around\n\nmake a tail you can swing around?"
 				}
 
@@ -1474,8 +1501,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 678.0, 1115.0, 18.0, 116.0 ],
-					"text" : "0.055123"
+					"patching_rect" : [ 678.0, 1115.0, 18.0, 119.0 ],
+					"text" : "0.046987"
 				}
 
 			}
@@ -1487,8 +1514,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 681.0, 982.0, 50.0, 35.0 ],
-					"text" : "1.467977"
+					"patching_rect" : [ 681.0, 982.0, 50.0, 36.0 ],
+					"text" : "0.079165"
 				}
 
 			}
@@ -1788,7 +1815,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3780.0, 506.666667520999908, 50.0, 35.0 ],
+					"patching_rect" : [ 3780.0, 506.666667520999908, 50.0, 36.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 219.333264946937561, 163.0, 94.249972581863403, 22.0 ],
 					"text" : "0.12925"
@@ -2066,7 +2093,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5477.833402729438603, 186.483681681156213, 151.0, 47.0 ],
+					"patching_rect" : [ 5477.833402729438603, 186.483681681156213, 151.0, 48.0 ],
 					"text" : "turn a float into a sensible note lenth (whole, quarter, half, etc)"
 				}
 
@@ -2078,7 +2105,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5040.16675329208374, 172.68296593189234, 150.0, 60.0 ],
+					"patching_rect" : [ 5040.16675329208374, 172.68296593189234, 150.0, 62.0 ],
 					"text" : "getting note from float, by sending special string out to theory engine (which is external to this patch)"
 				}
 
@@ -2250,7 +2277,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3811.0, 467.666667520999908, 50.0, 35.0 ],
+					"patching_rect" : [ 3811.0, 467.666667520999908, 50.0, 36.0 ],
 					"text" : "gravityX"
 				}
 
@@ -2326,7 +2353,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4429.0, 546.100021243095398, 50.0, 35.0 ],
+					"patching_rect" : [ 4429.0, 546.100021243095398, 50.0, 36.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 95.333264946937561, 163.0, 106.00000011920929, 22.0 ],
 					"text" : "0.216136"
@@ -2431,7 +2458,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4097.0, 574.55148458719259, 50.0, 35.0 ],
+					"patching_rect" : [ 4097.0, 574.55148458719259, 50.0, 36.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ -4.000001668930054, 163.0, 88.0, 22.0 ],
 					"text" : "0.020102"
@@ -2446,7 +2473,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3797.0, 587.666667520999908, 50.0, 35.0 ],
+					"patching_rect" : [ 3797.0, 587.666667520999908, 50.0, 36.0 ],
 					"text" : "16.543998"
 				}
 
@@ -3273,7 +3300,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3926.000052452087402, 3.000000059604645, 434.000008463859558, 221.0 ],
+					"patching_rect" : [ 3926.000052452087402, 3.000000059604645, 434.000008463859558, 227.0 ],
 					"text" : "simplest:\n- position to note, trigggered by touch\n- can select as many inputs as you want, all are triggered by a touch\n- one touch triggers one set of notes.\n- touch value changes - more notes\n\nAlternate: fractals controlled by positions \n\nAlternate: RATE of change triggers sounds, over a cerain amount of changes (from gyro) triggere sound. \n\n\nbuild controllers to select:\n- which inputs create notes\n\n"
 				}
 
@@ -3285,7 +3312,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3926.000052452087402, -43.666666686534882, 150.0, 33.0 ],
+					"patching_rect" : [ 3926.000052452087402, -43.666666686534882, 150.0, 34.0 ],
 					"text" : "some stuff happens here.... choices!"
 				}
 
@@ -3297,7 +3324,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5928.266713201999664, 110.666666746139526, 150.0, 33.0 ],
+					"patching_rect" : [ 5928.266713201999664, 110.666666746139526, 150.0, 34.0 ],
 					"text" : "processing theory note recieved"
 				}
 
@@ -3727,7 +3754,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 5773.000016570091248, 747.451530399322564, 101.0, 35.0 ],
+					"patching_rect" : [ 5773.000016570091248, 747.451530399322564, 101.0, 36.0 ],
 					"text" : "port \"loopMIDI Port\""
 				}
 
@@ -5452,6 +5479,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-307", 0 ],
 					"source" : [ "obj-161", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-188", 1 ],
+					"source" : [ "obj-162", 0 ]
 				}
 
 			}

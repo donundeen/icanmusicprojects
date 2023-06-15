@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 4,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 81.0, 111.0, 951.0, 696.0 ],
+		"rect" : [ 2646.0, 163.0, 1527.0, 1237.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -144,7 +144,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "int" ],
 					"patching_rect" : [ 756.0, 35.0, 30.0, 30.0 ]
 				}
 
@@ -463,7 +463,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 293.766579210758209, 525.933333218097687, 126.0, 22.0 ],
+					"patching_rect" : [ 293.766579210758209, 525.933333218097687, 145.0, 22.0 ],
 					"text" : "loadmess #3"
 				}
 
@@ -558,7 +558,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2977.75, 106.0, 151.0, 47.0 ],
+					"patching_rect" : [ 2977.75, 106.0, 151.0, 48.0 ],
 					"text" : "turn a float into a sensible note lenth (whole, quarter, half, etc)"
 				}
 
@@ -943,7 +943,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2567.849997401237488, 101.0, 150.0, 60.0 ],
+					"patching_rect" : [ 2567.849997401237488, 101.0, 150.0, 62.0 ],
 					"text" : "getting note from float, by sending special string out to theory engine (which is external to this patch)"
 				}
 
@@ -1099,7 +1099,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3455.949957311153412, 38.983700814247186, 150.0, 33.0 ],
+					"patching_rect" : [ 3455.949957311153412, 38.983700814247186, 150.0, 34.0 ],
 					"text" : "processing theory note recieved"
 				}
 
@@ -1230,7 +1230,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3298.349927186965942, 612.768558626175036, 101.0, 35.0 ],
+					"patching_rect" : [ 3298.349927186965942, 612.768558626175036, 101.0, 36.0 ],
 					"text" : "port \"loopMIDI Port\""
 				}
 
@@ -1991,7 +1991,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1488.0, 29.0, 97.0, 22.0 ],
-					"text" : "udpreceive 9002"
+					"text" : "udpreceive 7002"
 				}
 
 			}
