@@ -121,8 +121,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ -1129.757619380950928, -181.00001859664917, 113.757619380950928, 33.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 916.633347690105438, 76.276534815063513, 306.0, 33.0 ],
 					"text" : "Looping"
 				}
 
@@ -1270,7 +1268,7 @@
 					"patching_rect" : [ -1456.757619380950928, -181.00001859664917, 230.0, 60.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 901.633347690105438, 61.276534815063513, 306.0, 60.0 ],
+					"presentation_rect" : [ 900.633347690105438, 21.276534815063513, 306.0, 60.0 ],
 					"text" : "Manage/Edit\nStartup Messages"
 				}
 
