@@ -84,10 +84,7 @@ var noteSets = {
 	"Min Triad":[0,3,7]	
 };
 
-
 var currentNotelist = [43, 47, 49];
-
-
 
 var curNote = false;
 var curScale = false;
@@ -118,6 +115,7 @@ function bestSetIsChord(){
 	getBestNoteMidiList();
 
 }
+
 function bestSetIsScale(){
 	bestNoteSet = scaleNoteSet;
 	bestNoteSetMidi = scaleNoteSetMidi;
@@ -141,7 +139,6 @@ maxApi.addHandler("buildMenus", function(){
 maxApi.addHandler("noteList", function(){
 //	maxApi.post("noteList");
 	noteList();
-	
 });
 
 
@@ -156,7 +153,9 @@ maxApi.addHandler("get", function(labelid, command){
 
 });
 
-
+maxApi.addHandler("moveMinMax", function(rootval, minmax){
+	moveMinMax(rootval, minmax);
+});
 
 
 
@@ -214,7 +213,7 @@ function runGetter(command, labelid){
 	
 	command = command.toLowerCase();
 
-	var matches = command.match(/([bscw])([0-9]*\.?[0-9]+)\(([0-9]+)-([0-9]+)\)/);
+	var matches = command.match(/([bscwrf])([0-9]*\.?[0-9]+)\(([0-9]+)-([0-9]+)\)/);
 //	maxApi.post(matches); //
 	if(!matches){
 //		maxApi.post("no command match for "+command);
@@ -266,6 +265,24 @@ function runGetter(command, labelid){
 			getWeightedScaleNoteFromFloat(labelid, value, min, max);
 		}		
 	}
+	if(sc == "r"){
+		if(intfl == "int"){
+			getRootedBestNoteFromInt(labelid, value, min, max);
+		}
+		if(intfl == "float"){
+			getRootedBestNoteFromFloat(labelid, value, min, max);
+		}		
+	}
+
+	if(sc == "f"){
+		if(intfl == "int"){
+			getFixedBestNoteFromInt(labelid, value, min, max);
+		}
+		if(intfl == "float"){
+			getFixedBestNoteFromFloat(labelid, value, min, max);
+		}		
+	}	
+
 }
 
 function transpose(theinterval){
@@ -627,13 +644,94 @@ function getBestNoteFromInt(labelid, value, min, max){
 	maxApi.outlet(labelid+ " " + note);
 	
 }
+
+function getRootedBestNoteFromFloat(labelid, value, min, max){
+	// for a "rooted" scale/chord, expand the min and max so that both min and max are the root
+			maxApi.post("getRootedBestNoteFromFloat "+labelid + ", " + value + " , "+ min +", " + max) ;
+	//		maxApi.post(chordNoteSetMidi);
+	min = moveMinMax(curRootMidi, min);
+	max = moveMinMax(curRootMidi, max);
+	maxApi.post("newminmax  "+ min +", " + max) ;
+
+	var note = selectFromFloat(value, bestNoteSetMidi, min, max);
+		maxApi.post("note " + note);
+	if(!note){
+		return false;
+	}
+	maxApi.outlet(labelid+ " " + note);
 	
+}
+
+	
+function getRootedBestNoteFromInt(labelid, value, min, max){
+	min = moveMinMax(curRootMidi, min);
+	max = moveMinMax(curRootMidi, max);	
+	var note = selectFromInt(value, bestNoteSetMidi, min, max);
+	if(!note){
+		return false;
+	}
+	maxApi.outlet(labelid+ " " + note);
+	
+}
+	
+	
+function getFixedBestNoteFromFloat(labelid, value, min, max){
+// in a "fixed" setup, the same float value should result in the same midi note (octave may vary), regardless of scale
+// - map the float across FULL range, from min to max
+// - move resulting value DOWN to the closest note in the scale
+			maxApi.post("getFixededBestNoteFromFloat "+labelid + ", " + value + " , "+ min +", " + max) ;
+	//		maxApi.post(chordNoteSetMidi);
+//	min = moveMinMax(curRootMidi, min);
+//	max = moveMinMax(curRootMidi, max);
+	maxApi.post("newminmax  "+ min +", " + max) ;
+
+	var note = selectFixedFromFloat(value, bestNoteSetMidi, min, max);
+		maxApi.post("note " + note);
+	if(!note){
+		return false;
+	}
+	maxApi.outlet(labelid+ " " + note);
+	
+}
+
+	
+function getRootedBestNoteFromInt(labelid, value, min, max){
+	
+	min = moveMinMax(curRootMidi, min);
+	max = moveMinMax(curRootMidi, max);	
+	var note = selectFromInt(value, bestNoteSetMidi, min, max);
+	if(!note){
+		return false;
+	}
+	maxApi.outlet(labelid+ " " + note);
+	
+}
+
+
+function selectFixedFromFloat(value, thelist, min, max){
+// in a "fixed" setup, the same float value should result in the same midi note (octave may vary), regardless of scale
+// - map the float across FULL range, from min to max
+// - move resulting value DOWN to the closest note in the scale
+
+	if(!thelist){
+		return false;
+	}
+
+	let range = max - min;
+	let initial = min + Math.floor(range * value);
+	while(thelist.indexOf(initial) < 0){
+		initial--;
+	}
+	return initial;
+}
+
 
 
 function selectFromFloat(value, thelist, min, max){
 	if(!thelist){
 		return false;
 	}
+
 	var workingList = thelist.filter(function(note){
 		if(note >= min && note <= max){
 			return true;
@@ -642,7 +740,7 @@ function selectFromFloat(value, thelist, min, max){
 	});
 //	maxApi.post(workingList);
 	var index = Math.floor(workingList.length * value);
-	var note  = workingList[index % workingList.length];
+	var note  = workingList[index];// % workingList.length];
 //	maxApi.post(note);	
 	return note;
 }
@@ -662,4 +760,32 @@ function selectFromInt(value, thelist, min, max){
 	var note  = workingList[value % workingList.length];
 //	maxApi.post(note);	
 	return note;
+}
+
+
+function moveMinMax(root, minmax){
+	// for a "rooted" scale/chord, expand the min and max so that both min and max are the root
+	//		maxApi.post("getChordNoteFromFloat "+labelid + ", " + value);
+	//		maxApi.post(chordNoteSetMidi);
+	let orig = minmax;
+	let mindiff = (minmax % 12) - (root % 12);
+	let minmove = Math.abs(6 - mindiff);
+
+	if(mindiff == 0){
+		// do nothing
+	}else if (mindiff < -6){
+		mindiff = -12 - mindiff;
+		minmax = minmax - mindiff
+		//big distance, go opposite way around
+	}else if (mindiff < 0){
+		// small different, go toward
+		minmax = minmax - mindiff
+	}else if(mindiff < 6){
+		minmax = minmax - mindiff
+	}else if (mindiff < 12){
+		mindiff = 12 - mindiff;
+		minmax = minmax + mindiff
+	}
+	return minmax;
+
 }

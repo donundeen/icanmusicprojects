@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 0,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 174.0, 257.0, 2346.0, 880.0 ],
+		"rect" : [ 285.0, 111.0, 731.0, 633.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,43 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"comment" : "loadbang",
+					"id" : "obj-101",
+					"index" : 0,
+					"maxclass" : "inlet",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 861.750027060508728, -7.5, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-98",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 725.0, 82.666666865348816, 116.0, 22.0 ],
+					"text" : "s #0toTheoryEngine"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"comment" : "Direct to TheoryEngine",
+					"id" : "obj-97",
+					"index" : 0,
+					"maxclass" : "inlet",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 725.0, 30.5, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-49",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -47,7 +84,7 @@
 					"patching_rect" : [ 3767.203330218791962, 265.254224956035614, 95.762714385986328, 20.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 342.550911009311676, 6.474627017974854, 53.389835000038147, 34.0 ],
+					"presentation_rect" : [ 342.550911009311676, 6.474627017974854, 53.389835000038147, 33.0 ],
 					"text" : "Note Set"
 				}
 
@@ -407,7 +444,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2497.0, 347.0, 50.0, 36.0 ],
+					"patching_rect" : [ 2497.0, 347.0, 50.0, 35.0 ],
 					"text" : "stdout started"
 				}
 
@@ -587,7 +624,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2454.666682124137878, 144.894738674163818, 50.0, 36.0 ],
+					"patching_rect" : [ 2454.666682124137878, 144.894738674163818, 50.0, 35.0 ],
 					"text" : "buildMenus"
 				}
 
@@ -600,7 +637,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1645.587704539299011, 697.66667103767395, 1071.333363771438599, 36.0 ],
+					"patching_rect" : [ 1645.587704539299011, 697.66667103767395, 1071.333363771438599, 35.0 ],
 					"text" : "\"scaleNoteMidiList 0 2 3 5 7 8 10 12 14 15 17 19 20 22 24 26 27 29 31 32 34 36 38 39 41 43 44 46 48 50 51 53 55 56 58 60 62 63 65 67 68 70 72 74 75 77 79 80 82 84 86 87 89 91 92 94 96 98 99 101 103 104 106 108 110 111 113 115 116 118 120 122 123 125 127 128\""
 				}
 
@@ -748,7 +785,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 725.0, 827.0, 526.0, 724.0 ],
+					"patching_rect" : [ 725.0, 827.0, 526.0, 704.0 ],
 					"text" : "setter commands:\n-  /^[a-gA-G][b#]?[0-9]?$/ : eg Ab, G, C#3 - Sets the root note. will adjust the scale and chord root if they are currently set\n\n- [Any of the list of KNOWN_SCALES]: sets the Scale used\n\n- [+-][INTERVAL_VALUES] : transpose by some interval. \n\n- [0-7].[34] : set the chord based on the diatonic position in the set scale. 3 or 4 for 3 or 4-note chords\n\n// get notes\nget [labelid] [command]\n\ngetter commands\n- s0.[0-9]+(Min-Max) : (float val btw 0.0 and 1.0) get the scale note at the position in the scale represented by the float, between the Min and Max MIDI values\n- c0.[0-9]+(Min-Max) : (float val btw 0.0 and 1.0) get the chord note at the position in the scale represented by the float, between the Min and Max MIDI values\n- s[0-9]+(min-Max) : get the note at that index in the list of scale notes, btw Min and Max. Loops around to bottom.\n- c[0-9]+(min-Max) : get the note at that index in the list of chord notes, btw Min and Max. Loops around to bottom.\n\nKNOWN_SCALES:\nmajor\nminor\nionian (Alias for major)\ndorian\nphrygian\nlydian\nmixolydian\naeolian (Alias for minor)\nlocrian\nmajorpentatonic\nminorpentatonic\nchromatic\nharmonicchromatic (Alias for chromatic)\nblues\ndoubleharmonic\nflamenco\nharmonicminor\nmelodicminor\nwholetone\n\nINTERVAL_VALUES\nexamples:\nm3 (minor third)\nP5 (perfect fifth)\nM3 (major third)\n[will need to experiment to find more]\n"
 				}
 
@@ -869,7 +906,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 545.66666316986084, 242.666666865348816, 50.0, 36.0 ],
+					"patching_rect" : [ 545.66666316986084, 242.666666865348816, 50.0, 35.0 ],
 					"text" : "0.428421"
 				}
 
@@ -970,7 +1007,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 261.666667819023132, 393.000000357627869, 50.0, 36.0 ],
+					"patching_rect" : [ 261.666667819023132, 393.000000357627869, 50.0, 35.0 ],
 					"text" : "s0.8400(1-56)"
 				}
 
@@ -1432,7 +1469,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 2134.294286012649536, 873.799999952316284, 400.0, 220.0 ],
+					"patching_rect" : [ 2134.294286012649536, 882.0, 400.0, 220.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1531,6 +1568,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -1683,6 +1722,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-104", 3 ],
 					"source" : [ "obj-100", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-101", 0 ]
 				}
 
 			}
@@ -2492,31 +2538,38 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-98", 0 ],
+					"source" : [ "obj-97", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "fit_jweb_to_bounds.js",
-				"bootpath" : "E:/Don Undeen/github/icanmusicprojects-main/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/code",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "n4m.monitor.maxpat",
-				"bootpath" : "E:/Don Undeen/github/icanmusicprojects-main/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "resize_n4m_monitor_patcher.js",
-				"bootpath" : "E:/Don Undeen/github/icanmusicprojects-main/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/code",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "theoryEngine.js",
-				"bootpath" : "E:/Don Undeen/github/icanmusicprojects-main/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/code",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
