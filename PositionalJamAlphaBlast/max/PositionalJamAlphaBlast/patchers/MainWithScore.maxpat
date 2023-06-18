@@ -266,7 +266,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -3961.0, -565.0, 237.0, 33.0 ],
+					"patching_rect" : [ -4175.0, -598.0, 237.0, 33.0 ],
 					"text" : "toolbox: Extras->Toolbox\nhttps://github.com/natcl/maxtoolbox"
 				}
 
@@ -288,7 +288,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -3584.200033783912659, -396.042431473731995, 53.199998557567596, 20.0 ],
+					"patching_rect" : [ -3466.200033783912659, -411.042431473731995, 53.199998557567596, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 23.799967408180237, 179.276537974109687, 27.199998557567596, 20.0 ],
 					"text" : "V",
@@ -355,7 +355,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ -3834.600034594535828, -365.333345055580139, 293.0, 21.0 ],
+					"patching_rect" : [ -3664.100034594535828, -374.333345055580139, 74.0, 27.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 50.499982297420502, 147.666654944419861, 293.0, 21.0 ]
 				}
