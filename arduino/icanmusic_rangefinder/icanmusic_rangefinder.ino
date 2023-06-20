@@ -1,15 +1,30 @@
+//#include <SoftwareSerial.h> // Arduino issue: a library can't include other libraries, the sketch has to do this. Avoid by not using Arduino!
+//#define PS_INCLUDE_SOFTWARESERIAL 0
+#include <PingSerial.h>
+#include <SoftwareSerial.h>
+
+
 /*
  * Libraries to install (include dependencies)
  * OSC
  * AutoConnect (see https://hieromon.github.io/AutoConnect/#installation)
  * 
+library :  https://github.com/stoduk/PingSerial
+eg code from here: https://github.com/stoduk/PingSerial/blob/master/examples/PingSerialExample/PingSerialDistance.ino 
  Rangefinder demo: https://learn.adafruit.com/ultrasonic-sonar-distance-sensors
  */
 
-// ESP32 Touch Test
-// Just test touch pin - Touch0 is T0 which is on GPIO 4.
 
-// using 15 - This is GPIO #15 and also an analog input A8 on ADC #2
+// Here US-100 is connected to Serial, so we have debugging on a SoftwareSerial port (eg. connected to Bluetooth module or TTL-USB adaptor).
+PingSerial us100(Serial, 650, 1200);  // Valid measurements are 650-1200mm
+SoftwareSerial SerialDbg(4, 5);       // SoftwareSerial for debugging from this script (*not* 
+
+bool ping_enabled = FALSE;
+unsigned int pingSpeed = 100; // How frequently are we going to send out a ping (in milliseconds). 50ms would be 20 times a second.
+unsigned long pingTimer = 0;     // Holds the next ping time.
+
+
+
 /*
 const char *WIFI_SSID = "Studio314";
 const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
@@ -235,7 +250,7 @@ void setup() {
     Serial.println("not portal.begin");
   }
   */
-
+  sensor_setup();
 }
 
 void loop() {
@@ -247,9 +262,49 @@ void loop() {
   }
   configUdp();
 
-  
-  sendOSCUDP(touchRead(touchPin));
 
+  sensor_loop();
+
+
+  
+ 
 
   delay(10);
+}
+
+
+void sensor_setup(){
+   us100.begin();
+  SerialDbg.begin(9600);
+
+}
+
+void sensor_loop(){
+  byte data_available;
+  unsigned int current_height = 0;
+
+  /*
+   * Note: none of this code is blocking (no calls to delay() for example)
+   * so your Arduino can do other things while measurements are being made.
+   * Quite useful for any real world examples!
+   */
+  data_available = us100.data_available();
+
+  if (data_available & DISTANCE) {
+      current_height = us100.get_distance();
+      SerialDbg.print("Distance: ");
+      SerialDbg.println(current_height);
+  }
+  if (data_available & TEMPERATURE) {
+      SerialDbg.print("Temperature: ");
+      SerialDbg.println(us100.get_temperature());
+  }
+  
+  if (ping_enabled && (millis() >= pingTimer)) {   // pingSpeed milliseconds since last ping, do another ping.
+      pingTimer = millis() + pingSpeed;      // Set the next ping time.
+      us100.request_distance();
+  }
+
+// sendOSCUDP(current_height );
+
 }
