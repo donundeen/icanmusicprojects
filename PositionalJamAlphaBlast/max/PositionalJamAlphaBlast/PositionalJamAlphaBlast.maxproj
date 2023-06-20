@@ -2,7 +2,7 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3768506297,
+	"modificationdate" : 3769879590,
 	"viewrect" : [ 124.0, 285.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -16,6 +16,11 @@
 				"toplevel" : 1
 			}
 ,
+			"addNoteToScore.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"buildchordovertype.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -26,7 +31,12 @@
 				"local" : 1
 			}
 ,
-			"testSocketServer.maxpat" : 			{
+			"instruments.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpInstrumentAccel.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -36,17 +46,27 @@
 				"local" : 1
 			}
 ,
-			"udpInstrument.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"udpinstrumentCapacitive.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"updinstrumentAccel.maxpat" : 			{
+			"quantizer.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"testSocketServer.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpInstrument.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"sandbox.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

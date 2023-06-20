@@ -18,8 +18,20 @@ console.log(host);
 //const ws = new WebSocket('ws://10.102.134.110:8080');
 const ws = new WebSocket('ws://'+host+':8080');
 
-
-
+// 1 2 3 4 6 8 16
+const notelengths = [4,2,1.33333,1,.66667,.5]; // multiples of a quarter note (1)
+const lengthnames = ["Whole Note",
+                    "Half Note",
+                    "Half Triplet",
+                    "Quarter",
+                    "Quarter Triplet",
+                    "Eighth Note"];
+// lengths as fractions of whole notes
+const notefracts = ["1","1/2","1/3","1/4","1/6","1/8"]; 
+let nlindex = 1;
+let curnotelength = notelengths[nlindex];
+let curnotefract = notefracts[nlindex];
+let curnotelengthname = lengthnames[nlindex];
 
 let wsready = false;  
   // Browser WebSockets have slightly different syntax than `ws`.
@@ -51,6 +63,12 @@ console.log(currentMajWheel);
 console.log(currentMinWheel);
 console.log(currentDimWheel);
 
+
+let selectedElem = false;
+let prevStroke = false;
+let prevFill = false;
+let selectedFill = "blue";
+let selectedStroke = "blue";
 
 function setMajRoot(root){
     root = "maj"+root;
@@ -105,8 +123,22 @@ function setRoot(root){
 
 }
 
-function setChord(root, value){
+function markSelectedObj(obj){
+    if(selectedElem){
+        selectedElem.style.stroke = prevStroke;
+        selectedElem.style.fill = prevFill;
+    }
+    selectedElem = obj;
+    prevFill = obj.style.fill;
+    prevStroke = obj.style.stroke;
+    obj.style.fill = selectedFill;
+    obj.style.stroke = selectedStroke;
+}
+
+function setChord(root, value, obj){
     console.log("setChord  " + root + "  , " + value);
+    markSelectedObj(obj);
+    
     let index = numFifths.indexOf(root);
     console.log(index);
     console.log(currentMajWheel);
@@ -123,6 +155,15 @@ function sendChord(chord){
         console.log("ws not ready");
     }
 }
+
+function sendNoteLength(notelength, notefract){
+    if(wsready){
+        ws.send("notelength " + notelength + " " + notefract);
+    }else{
+        console.log("ws not ready");
+    }
+}
+
 
 function assignNotes(){
     console.log("assigning Notes");
@@ -173,7 +214,7 @@ a.addEventListener("load",function(){
         svgDoc = a;//.contentDocument;
         console.log(svgDoc);
     
-        assignNotes();
+        doLoadStuff();
     }
 });
 
@@ -189,8 +230,32 @@ if(document.querySelectorAll("#Layer_1").length){
         svgDoc = a;//.contentDocument;
         console.log(svgDoc);
     
-        assignNotes();
+        doLoadStuff();
     }    
+}
+
+function doLoadStuff(){
+    assignNotes();
+    setupFormElements();
+}
+
+function setupFormElements(){
+    nlelem = document.getElementById("notelength");
+    console.log(nlelem);
+    nlelem.addEventListener("input", function(event){
+        let nlindex = event.target.value;
+        let curnotelength = notelengths[nlindex];
+        let curnotelengthname = lengthnames[nlindex];        
+        document.getElementById("curnotelength").textContent = curnotelengthname;
+    });
+    nlelem.addEventListener("change", function(event){
+        let nlindex = event.target.value;
+        let curnotelength = notelengths[nlindex];
+        let curnotefract = notefracts[nlindex];
+        let curnotelengthname = lengthnames[nlindex];        
+        document.getElementById("curnotelength").textContent = curnotelengthname;
+        sendNoteLength(curnotelength, curnotefract);
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {

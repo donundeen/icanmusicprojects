@@ -42,6 +42,21 @@ Adafruit_LIS3MDL lis3mdl;
 #include <AutoConnect.h>
 #include <WebServer.h>
 
+/*
+const char *WIFI_SSID = "Studio314";
+const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
+//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
+const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
+*/
+const char *WIFI_SSID = "JJandJsKewlPad";
+const char *WIFI_PASSWORD = "WeL0veLettuce";
+//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
+const char * UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
+
+const int UDPPort = 7002; // the UDP port that Max is listening on
+
+
+
 /* 
  *  WIFI_MODE_ON set to true to send osc data over WIFI.
  *  When this is true: 
@@ -61,12 +76,6 @@ const boolean HARDCODE_SSID = true;
 
 // remember you can't connect to 5G networks with the arduino. 
 
-const char *WIFI_SSID = "Studio314";
-const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
-//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
-const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
-
-const int UDPPort = 9002; // the UDP port that Max is listening on
 
 bool wifi_connected =false;
 
@@ -129,7 +138,7 @@ void deleteAllCredentials(void) {
 
 
 // sending data over OSC/UDP.
-void sendOSCUDP(float gx, float gy, float gz, int sensorVal){
+void sendOSCUDP(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, int sensorVal){
   /* egs
    *  '/perifit/1', valueInt1, valueInt2, device.name);
    *  28:ec:9a:14:2b:b3 l 180
@@ -141,7 +150,7 @@ void sendOSCUDP(float gx, float gy, float gz, int sensorVal){
   char ipbuffer[20];
   thisarduinoip.toCharArray(ipbuffer, 20);
   OSCMessage oscmsg("/accel1/val");  
-  oscmsg.add(gx).add(gy).add(gz).add(ipbuffer).add(sensorVal);
+  oscmsg.add(gx).add(gy).add(gz).add(ax).add(ay).add(az).add(mx).add(my).add(mz).add(ipbuffer).add(sensorVal);
 
   udp.beginPacket(UDPReceiverIP, UDPPort);
 //  udp.write(buffer, msg.length()+1);
@@ -471,7 +480,16 @@ sensors_event_t accel, gyro, mag, temp;
   Serial.print(gyro.gyro.z, 4);
   Serial.println(" \tradians/s ");
   
-  sendOSCUDP(gyro.gyro.x, gyro.gyro.y, gyro.gyro.z, sensorVal);
+ /* Display the results (magnetic field is measured in uTesla) */
+  Serial.print(" \t\tMag   X: ");
+  Serial.print(mag.magnetic.x, 4);
+  Serial.print(" \tY: ");
+  Serial.print(mag.magnetic.y, 4);
+  Serial.print(" \tZ: ");
+  Serial.print(mag.magnetic.z, 4);
+  Serial.println(" \tuTesla ");
+
+  sendOSCUDP(gyro.gyro.x, gyro.gyro.y, gyro.gyro.z, accel.acceleration.x, accel.acceleration.y, accel.acceleration.z, mag.magnetic.x,mag.magnetic.y,mag.magnetic.z, sensorVal);
 
 
   delay(10);
