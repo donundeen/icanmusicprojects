@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
  
-const int US100_TX = 4;
-const int US100_RX = 5;
+const int US100_TX = 4; /// brown
+const int US100_RX = 5; // white
  
 SoftwareSerial US100Serial(US100_RX, US100_TX);
  

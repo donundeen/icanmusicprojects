@@ -5,27 +5,8 @@
  * 
  */
 
-// ESP32 Touch Test
-// Just test touch pin - Touch0 is T0 which is on GPIO 4.
 
-// using 15 - This is GPIO #15 and also an analog input A8 on ADC #2
-/*
-const char *WIFI_SSID = "Studio314";
-const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
-//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
-const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
-*/
-const char *WIFI_SSID = "JJandJsKewlPad";
-const char *WIFI_PASSWORD = "WeL0veLettuce";
-//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
-const char * UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
-const int UDPPort = 9002; // the UDP port that Max is listening on
-
-
-
-int touchPin = 15;
-
-
+// NETWORK_LIBS
 /*
  * Required libraries to install in the arduino IDE (use the Library Manager to find and install):
  * https://github.com/Hieromon/PageBuilder : PageBuilder
@@ -34,7 +15,6 @@ int touchPin = 15;
  * AutoConnect: https://hieromon.github.io/AutoConnect/index.html : instructions on how to install are here: 
  * follow the instructions under "Install the AutoConnect" if you can't just find it in the Library Manager
  */
-
 // this is all the OSC libraries
 #include <SLIPEncodedSerial.h>
 #include <OSCData.h>
@@ -43,13 +23,42 @@ int touchPin = 15;
 #include <OSCTiming.h>
 #include <OSCMessage.h>
 #include <OSCMatch.h>
-
 // these the libraries for connecting to WiFi
 // based on docs here: https://hieromon.github.io/AutoConnect/gettingstarted.html 
 #include <WiFi.h>
 #include <AutoConnect.h>
 #include <WebServer.h>
 
+/// NETWORK CONFIGS
+const char *WIFI_SSID = "Studio314";
+const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
+//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
+//const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
+//const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
+//const char * UDPReceiverIP = "192.168.10.31"; // ip where UDP messages are going
+const char * UDPReceiverIP = "172.30.142.80"; // ip where UDP messages are going
+//const char * UDPReceiverIP = "172.28.192.1"; // ip where UDP messages are going
+
+/*
+const char *WIFI_SSID = "JJandJsKewlPad";
+const char *WIFI_PASSWORD = "WeL0veLettuce";
+//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
+const char * UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
+*/
+
+const int UDPPort = 7002; // the UDP port that Max is listening on
+
+// NETWORK+SENSOR CONFIGS
+const char *DEVICE_ID = "/capacitive1/val";
+
+// sensor config vars - pins
+// Just test touch pin - Touch0 is T0 which is on GPIO 4.
+// using 15 - This is GPIO #15 and also an analog input A8 on ADC #2
+int touchPin = 15;
+
+
+////////////////////////////////////////////
+// NETWORK SPECIFIC CODE - SHOULDN'T CHANGE
 /* 
  *  WIFI_MODE_ON set to true to send osc data over WIFI.
  *  When this is true: 
@@ -60,19 +69,13 @@ int touchPin = 15;
  *  and it will send data over serial USB
  */
 const boolean WIFI_MODE_ON = true;
-
 /* if we aren't using the auto-configuration process, 
     and we want to hard-code the router's SSID and password here.
     Also set HARDCODE_SSID = true
 */
 const boolean HARDCODE_SSID = true;
-
 // remember you can't connect to 5G networks with the arduino. 
-
-
-
 bool wifi_connected =false;
-
 /*
  * Sometimes we need to delete the SSIDs that are stored in the config of the arduino.
  * Set this value to TRUE and rerun the arduino, to remove all the stored SSIDs 
@@ -81,56 +84,34 @@ bool wifi_connected =false;
  * 
  */
 const boolean DELETE_SSIDS = false;
-
-String thisperifitid = "";
 String thisarduinomac = "";
 String thishumanname = "";
 String thisarduinoip = "";
-
-
 //create UDP instance
 WiFiUDP udp;
-
 // wifi autoconnect code
 WebServer Server;
 AutoConnect      Portal(Server);
 AutoConnectConfig  config;
-
 OSCErrorCode error;
-
-
 static boolean doConnect = false;
+// END NETWORK-SPECIFIC VARS
+//////////////////////////////////////////////////////////////////////////////
 
 
-void rootPage() {
-  char content[] = "Hello, world";
-  Server.send(200, "text/plain", content);
+
+////////////////////////////////
+// SENSOR code
+void device_setup(){
+
 }
 
-
-void deleteAllCredentials(void) {
-  Serial.println("deleting all stored SSID credentials");
-  AutoConnectCredential credential2;
-  boolean result;
-  
-  result = credential2.del((const char*)"GuestNet");
-  Serial.println(result);
-
-  station_config_t config2;
-  uint8_t ent = credential2.entries();
-  Serial.print("Num SSIDS: ");
-  Serial.println(ent);
-
-  while (ent--) {
-    credential2.load((int8_t)0, &config2);
-    Serial.println((const char*)&config2.ssid[0]);
-    result = credential2.del((const char*)&config2.ssid[0]);
-    Serial.println(result);
-  }
+void device_loop(){
+  sendOSCUDP(touchRead(touchPin));
+  delay(10);
 }
 
-
-
+// NETWORK+SENSOR CODE
 // sending data over OSC/UDP.
 void sendOSCUDP(int touchVal){
   /* egs
@@ -143,7 +124,7 @@ void sendOSCUDP(int touchVal){
   //send hello world to server
   char ipbuffer[20];
   thisarduinoip.toCharArray(ipbuffer, 20);
-  OSCMessage oscmsg("/capacitive1/val");  
+  OSCMessage oscmsg(DEVICE_ID);  
   oscmsg.add(touchVal).add(ipbuffer);
   Serial.print("sending data ");
   Serial.println(touchVal);
@@ -157,37 +138,35 @@ void sendOSCUDP(int touchVal){
   Serial.println("not sending udp, not connected");
  }
 
-
-}
-
-/*
- * connecting to UDP port on laptop runnin Max
- */
-void configUdp(){
-  if(WIFI_MODE_ON){
-    if(!wifi_connected && WiFi.status() == WL_CONNECTED){
-      Serial.println("HTTP server:" + WiFi.localIP().toString());
-      thisarduinoip = WiFi.localIP().toString();
-      Serial.println("SSID:" + WiFi.SSID());
-      wifi_connected = true;
-      udp.begin(UDPPort);
-    }
-    if(WiFi.status() != WL_CONNECTED){
-      Serial.println("wifi not connected");
-      wifi_connected = false;
-    }
-  }
 }
 
 
-void setup() {
-//  Serial.begin(115200);
-//  Serial.begin(9600);
-  Serial.begin(38400);  
+///////////////////////////////////////////////////
+// BELOW HERE  SHOULD BE THE SAME FOR ALL DEVICES
+
+void setup(){
+  Serial.begin(9600);
+
+  network_setup();
+  device_setup();
+}
+
+
+void loop(){
+  network_loop();
+  device_loop();
+}
+
+void network_setup() {
+
   delay(1000);
   Serial.println("setup");
 
+  // for incoming UDP
+//  SLIPSerial.begin(115200);
+  pinMode(21, INPUT_PULLUP);
 
+  pinMode(BUILTIN_LED, OUTPUT);
 
   Serial.print("ESP Board MAC Address:  ");
   Serial.println(WiFi.macAddress());
@@ -237,18 +216,62 @@ void setup() {
 
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  // this handles the wifi config business:
+
+
+void network_loop(){
 
   if(!HARDCODE_SSID){
     Portal.handleClient();
   }
   configUdp();
+}
 
+
+
+void rootPage() {
+  char content[] = "Hello, world";
+  Server.send(200, "text/plain", content);
+}
+
+
+void deleteAllCredentials(void) {
+  Serial.println("deleting all stored SSID credentials");
+  AutoConnectCredential credential2;
+  boolean result;
   
-  sendOSCUDP(touchRead(touchPin));
+  result = credential2.del((const char*)"GuestNet");
+  Serial.println(result);
+
+  station_config_t config2;
+  uint8_t ent = credential2.entries();
+  Serial.print("Num SSIDS: ");
+  Serial.println(ent);
+
+  while (ent--) {
+    credential2.load((int8_t)0, &config2);
+    Serial.println((const char*)&config2.ssid[0]);
+    result = credential2.del((const char*)&config2.ssid[0]);
+    Serial.println(result);
+  }
+}
 
 
-  delay(10);
+
+/*
+ * connecting to UDP port on laptop runnin Max
+ */
+void configUdp(){
+  if(WIFI_MODE_ON){
+    if(!wifi_connected && WiFi.status() == WL_CONNECTED){
+      Serial.println("HTTP server:" + WiFi.localIP().toString());
+      thisarduinoip = WiFi.localIP().toString();
+      Serial.println("SSID:" + WiFi.SSID());
+      wifi_connected = true;
+      udp.begin(UDPPort);
+    }
+    if(WiFi.status() != WL_CONNECTED){
+      Serial.println("wifi not connected");
+      wifi_connected = false;
+    }
+  }
 }
