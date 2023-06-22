@@ -165,6 +165,15 @@ function sendNoteLength(notelength, notefract){
 }
 
 
+function sendMoveCursor(direction){
+    console.log("move cursor " + direction);
+    if(wsready){
+        ws.send("movecursor " + direction );
+    }else{
+        console.log("ws not ready");
+    } 
+}
+
 function assignNotes(){
     console.log("assigning Notes");
     console.log(majWheel);
@@ -255,6 +264,16 @@ function setupFormElements(){
         let curnotelengthname = lengthnames[nlindex];        
         document.getElementById("curnotelength").textContent = curnotelengthname;
         sendNoteLength(curnotelength, curnotefract);
+    });
+
+    forwardelem = document.getElementById("movecursorforward");
+    forwardelem.addEventListener("click", function(){
+        sendMoveCursor(1);
+    });
+
+    backwardelem = document.getElementById("movecursorbackward");
+    backwardelem.addEventListener("click", function(){
+        sendMoveCursor(-1);
     });
 }
 
