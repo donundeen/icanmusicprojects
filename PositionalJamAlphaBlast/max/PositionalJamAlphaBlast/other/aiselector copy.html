@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chord Selector: Circle of Fifths</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>    
+<style>
+  @import url('/other/NotoMusic-Regular.ttf');
+  #notelengthselect {
+    font-family: 'Noto Music', sans-serif;
+    font-size: 2em;
+  }
+  .notelengthselector{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #999;
+    border-color: black;
+    border-width: 2px;
+  }
+  <!-- https://fonts.google.com/noto/specimen/Noto+Music?query=music -->
+</style>
+
+</head>
+<body>
+    <form id="form1">
+        <label for="notelength">Note Length:</label>
+        <input type="range" id="notelength" class="notelength" value="1" min="0" max="5" width="100%"/>
+        <span id="curnotelength">Half Note</span>
+
+    </form>
+    <div id="notelengthselect">
+      <span class="notelengthselector" id="eighth" data-index="0">𝅘𝅥𝅮</span>
+      <span class="notelengthselector" id="quartertriplet" data-index="1">𝅗𝅥°♭</span>
+      <span class="notelengthselector" id="quarter" data-index="2">𝅘𝅥</span>
+      <span class="notelengthselector" id="halftriplet" data-index="3">𝅗𝅥3</span>
+      <span class="notelengthselector" id="half" data-index="4">𝅗𝅥</span>
+      <span class="notelengthselector" id="whole" data-index="5">𝅗</span>
+    </div>
+    <span id="movecursorbackward">Cursor Back</span>
+
+    <span id="movecursorforward">Cursor Forward</span>
+
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 463.66 687.13">
+        <defs>
+          <style>
+            .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+              font-family: MyriadPro-Regular, 'Myriad Pro';
+            }
+      
+            .cls-1, .cls-3, .cls-5 {
+              font-size: 47.37px;
+            }
+      
+            .cls-2 {
+              font-size: 24px;
+            }
+      
+            .cls-3, .cls-6, .cls-7 {
+              stroke: #000;
+              stroke-miterlimit: 10;
+            }
+      
+            .cls-8 {
+              letter-spacing: -.17em;
+            }
+      
+            .cls-6, .cls-5 {
+              fill: #fff;
+            }
+      
+            .cls-4 {
+              font-size: 60px;
+            }
+      
+            .cls-9 {
+              letter-spacing: 0em;
+            }
+      
+            .cls-10 {
+              letter-spacing: 0em;
+            }
+      
+            .cls-7 {
+              fill: none;
+            }
+      
+            .cls-11 {
+              letter-spacing: 0em;
+            }
+          </style>
+        </defs>
+        <rect class="cls-6" x=".52" y="232.42" width="154.21" height="154.21"/>
+        <rect class="cls-6" x="308.95" y="78.2" width="154.21" height="154.21"/>
+        <rect class="cls-6" x="154.74" y="78.2" width="154.21" height="154.21"/>
+        <rect class="cls-6" x=".52" y="78.2" width="154.21" height="154.21"/>
+        <rect class="cls-6" x="308.95" y="232.42" width="154.21" height="154.21"/>
+        <rect class="cls-6" x="154.74" y="232.42" width="154.21" height="154.21"/>
+        <rect class="cls-6" x=".52" y="386.63" width="51.4" height="100" onclick="setMajRoot('b7')"/>
+        <rect class="cls-6" x="51.93" y="386.63" width="51.4" height="100" onclick="setMajRoot('b3')"/>
+        <rect class="cls-6" x="103.33" y="386.63" width="51.4" height="100" onclick="setMajRoot('b6')"/>
+        <rect class="cls-6" x="154.74" y="386.63" width="51.4" height="100" onclick="setMajRoot('b2')"/>
+        <rect class="cls-6" x="206.14" y="386.63" width="51.4" height="100" onclick="setMajRoot('b5')"/>
+        <rect class="cls-6" x="257.54" y="386.63" width="51.4" height="100" onclick="setMajRoot('7')"/>
+        <rect class="cls-6" x="308.95" y="386.63" width="51.4" height="100" onclick="setMajRoot('3')"/>
+        <rect class="cls-6" x="360.35" y="386.63" width="51.4" height="100" onclick="setMajRoot('6')"/>
+        <rect class="cls-6" x="411.75" y="386.63" width="51.4" height="100" onclick="setMajRoot('2')"/>
+        <rect class="cls-6" x=".5" y="486.63" width="51.4" height="100" onclick="setMinRoot('5')"/>
+        <rect class="cls-6" x="51.9" y="486.63" width="51.4" height="100" onclick="setMinRoot('1')"/>
+        <rect class="cls-6" x="103.31" y="486.63" width="51.4" height="100" onclick="setMinRoot('4')"/>
+        <rect class="cls-6" x="154.71" y="486.63" width="51.4" height="100" onclick="setMinRoot('b7')"/>
+        <rect class="cls-6" x="206.12" y="486.63" width="51.4" height="100" onclick="setMinRoot('b3')"/>
+        <rect class="cls-6" x="257.52" y="486.63" width="51.4" height="100" onclick="setMinRoot('b6')"/>
+        <rect class="cls-6" x="308.92" y="486.63" width="51.4" height="100" onclick="setMinRoot('b2')"/>
+        <rect class="cls-6" x="360.33" y="486.63" width="51.4" height="100" onclick="setMinRoot('b5')"/>
+        <rect class="cls-6" x="411.73" y="486.63" width="51.4" height="100" onclick="setMinRoot('7')"/>
+        <text id="maj1" class="cls-4" transform="translate(227.72 332.32)"><tspan x="0" y="0">I</tspan></text>
+        <text id="maj5" class="cls-4" onclick="setMajRoot('5')" transform="translate(347.35 332.32)"><tspan x="0" y="0">V</tspan><tspan class="cls-8" x="33.48" y="0">	</tspan></text>
+        <text id="maj4" class="cls-4" onclick="setMajRoot('4')" transform="translate(51.93 332.32)"><tspan x="0" y="0">IV</tspan></text>
+        <text id="min2" class="cls-4" onclick="setMinRoot('2')" transform="translate(51.93 173.74)"><tspan x="0" y="0">ii</tspan></text>
+        <text id="min6" class="cls-4" onclick="setMinRoot('6')" transform="translate(215.72 173.74)"><tspan x="0" y="0">vi</tspan></text>
+        <text id="min3" class="cls-4" onclick="setMinRoot('3')" transform="translate(360.35 173.74)"><tspan x="0" y="0">iii</tspan></text>
+        <text id="majb7" class="cls-2" onclick="setMajRoot('b7')" transform="translate(9.52 449.27)"><tspan x="0" y="0">bVII</tspan></text>
+        <text id="majb3" class="cls-2" onclick="setMajRoot('b3')" transform="translate(66.64 449.27)"><tspan x="0" y="0">bIII</tspan></text>
+        <text id="majb6" class="cls-2" onclick="setMajRoot('b6')" transform="translate(107.46 449.27)"><tspan x="0" y="0">bVI</tspan></text>
+        <text id="majb2" class="cls-2" onclick="setMajRoot('b2')" transform="translate(168.29 449.27)"><tspan x="0" y="0">bII</tspan></text>
+        <text id="majb5" class="cls-2" onclick="setMajRoot('b5')" transform="translate(215.72 449.27)"><tspan x="0" y="0">bV</tspan></text>
+        <text id="maj7" class="cls-2" onclick="setMajRoot('7')" transform="translate(265.6 449.27)"><tspan x="0" y="0">VII</tspan></text>
+        <text id="maj3" class="cls-2" onclick="setMajRoot('3')" transform="translate(322.45 449.27)"><tspan x="0" y="0">III</tspan></text>
+        <text id="maj6" class="cls-2" onclick="setMajRoot('6')" transform="translate(374.97 449.27)"><tspan x="0" y="0">VI</tspan></text>
+        <text id="maj2" class="cls-2" onclick="setMajRoot('2')" transform="translate(421.46 449.27)"><tspan x="0" y="0">II</tspan></text>
+        <text id="min5" class="cls-2" onclick="setMinRoot('5')" transform="translate(16.52 549.17)"><tspan x="0" y="0">v</tspan></text>
+        <text id="min1" class="cls-2" onclick="setMinRoot('i')" transform="translate(74.64 549.17)"><tspan x="0" y="0">i</tspan></text>
+        <text id="min4" class="cls-2" onclick="setMinRoot('4')" transform="translate(117.47 549.17)"><tspan x="0" y="0">iv</tspan></text>
+        <text id="minb3" class="cls-2" onclick="setMinRoot('b3')" transform="translate(215.72 549.17) scale(.89 1)"><tspan x="0" y="0">biii</tspan></text>
+        <text id="minb6" class="cls-2" onclick="setMinRoot('b6')" transform="translate(265.6 549.17)"><tspan class="cls-10" x="0" y="0">b</tspan><tspan class="cls-11" x="13.49" y="0">vi</tspan></text>
+        <text id="minb2" class="cls-2" onclick="setMinRoot('b2')" transform="translate(322.45 549.17)"><tspan x="0" y="0">bii</tspan></text>
+        <text id="minb5" class="cls-2" onclick="setMinRoot('b5')" transform="translate(374.97 549.17)"><tspan class="cls-10" x="0" y="0">b</tspan><tspan class="cls-11" x="13.49" y="0">v</tspan></text>
+        <text id="min7" class="cls-2" onclick="setMinRoot('b7')" transform="translate(429.93 549.17)"><tspan x="0" y="0">vii</tspan></text>
+        <rect class="cls-7" x="308.92" y="1.1" width="154.21" height="77.11"/>
+        <rect class="cls-7" x="154.71" y="1.1" width="154.21" height="77.11"/>
+        <rect class="cls-7" x=".5" y="1.1" width="154.21" height="77.11"/>
+        <text id="dim7" class="cls-4" onclick="setDimRoot('7')" transform="translate(168.72 58.77)"><tspan x="0" y="0">vii*</tspan></text>
+        <text id="dimb5" class="cls-4" onclick="setDimRoot('b5')" transform="translate(318.33 51.77)"><tspan class="cls-9" x="0" y="0">b</tspan><tspan x="33.72" y="0">v*</tspan></text>
+        <text id="dim3" class="cls-4" onclick="setDimRoot('3')" transform="translate(21.56 51.77)"><tspan x="0" y="0">iii*</tspan></text>
+        <polygon class="cls-6" onclick="setChord('1','majorpentatonic', this)" points="180.41 356.07 168.97 364.39 173.34 377.85 187.49 377.85 191.86 364.39 180.41 356.07"/>
+        <polygon class="cls-6" onclick="setChord('4','majorpentatonic', this)" points="16.52 354.92 5.08 363.24 9.45 376.7 23.6 376.7 27.97 363.24 16.52 354.92"/>
+        <polygon class="cls-6" onclick="setChord('5','majorpentatonic', this)" points="334.63 353.77 323.18 362.09 327.55 375.55 341.7 375.55 346.07 362.09 334.63 353.77"/>
+        <polygon class="cls-6" onclick="setChord('2','minorpentatonic', this)" points="16.52 198.94 5.08 207.26 9.45 220.72 23.6 220.72 27.97 207.26 16.52 198.94"/>
+        <polygon class="cls-6" onclick="setChord('6','minorpentatonic', this)" points="180.44 198.94 168.99 207.26 173.36 220.72 187.51 220.72 191.88 207.26 180.44 198.94"/>
+        <polygon class="cls-6" onclick="setChord('3','minorpentatonic', this)" points="334.63 197.79 323.18 206.11 327.55 219.57 341.7 219.57 346.07 206.11 334.63 197.79"/>
+        <polygon class="cls-6" onclick="setChord('4','Major', this)" points="121.92 345.54 103.33 377.74 140.5 377.74 121.92 345.54"/>
+        <polygon class="cls-6" onclick="setChord('1','Major', this)" points="283.24 345.5 264.66 377.69 301.83 377.69 283.24 345.5"/>
+        <polygon class="cls-6" onclick="setChord('5','Major', this)" points="437.46 345.5 418.87 377.69 456.04 377.69 437.46 345.5"/>
+        <polygon class="cls-6" onclick="setChord('3','minor', this)" points="437.46 188.37 418.87 220.56 456.04 220.56 437.46 188.37"/>
+        <polygon class="cls-6" onclick="setChord('2','minor', this)" points="121.92 188.37 103.33 220.56 140.5 220.56 121.92 188.37"/>
+        <text class="cls-1" onclick="setChord('2','m7', this)" transform="translate(12.76 128.23)"><tspan x="0" y="0">7</tspan></text>
+        <text class="cls-1" onclick="setChord('6','m7', this)" transform="translate(168.62 128.23)"><tspan x="0" y="0">7</tspan></text>
+        <text class="cls-1" onclick="setChord('3','m7', this)" transform="translate(316.75 128.23)"><tspan x="0" y="0">7</tspan></text>
+        <text class="cls-1" onclick="setChord('5','7', this)" transform="translate(325.22 280.7)"><tspan x="0" y="0">7</tspan></text>
+        <text class="cls-1" onclick="setChord('1','7', this)" transform="translate(178.52 272.23)"><tspan x="0" y="0">7</tspan></text>
+        <text class="cls-1" onclick="setChord('4','M7', this)" transform="translate(12.76 272.23)"><tspan x="0" y="0">7</tspan></text>
+        <text class="cls-1" onclick="setChord('1','sus4', this)" transform="translate(178.52 323.81)"><tspan x="0" y="0">4</tspan></text>
+        <text class="cls-1" onclick="setChord('2','blues', this)" transform="translate(59.28 220.72)"><tspan x="0" y="0">b</tspan></text>
+        <text class="cls-1" onclick="setChord('4','M6', this)" transform="translate(5.08 323.81)"><tspan x="0" y="0">6</tspan></text>
+        <text class="cls-1" onclick="setChord('3','dim7', this)" transform="translate(103.33 39.65)"><tspan x="0" y="0">7</tspan></text>
+        <polygon class="cls-6" onclick="setChord('3','dim', this)" points="129.03 41.04 110.45 73.23 147.62 73.23 129.03 41.04"/>
+        <polygon class="cls-6" onclick="setChord('7','dim', this)" points="283.22 41.04 264.63 73.23 301.81 73.23 283.22 41.04"/>
+        <polygon class="cls-6" onclick="setChord('b5','dim', this)" points="437.46 41.04 418.87 73.23 456.04 73.23 437.46 41.04"/>
+        <text class="cls-1" onclick="setChord('7','dim7', this)" transform="translate(250.39 41.04)"><tspan x="0" y="0">7</tspan></text>
+        <text class="cls-1" onclick="setChord('b5','dim7', this)" transform="translate(411.75 41.04)"><tspan x="0" y="0">7</tspan></text>
+        <text class="cls-3" onclick="setChord('5','7#9', this)" transform="translate(368.56 275.23)"><tspan x="0" y="0">#9</tspan></text>
+        <text class="cls-1" onclick="setChord('5','7b9', this)" transform="translate(404.56 323.81)"><tspan x="0" y="0">b9</tspan></text>
+        <text class="cls-1" onclick="setChord('6','m6', this)" transform="translate(168.99 173.74)"><tspan x="0" y="0">6</tspan></text>
+        <text class="cls-1" onclick="setChord('3','m6', this)" transform="translate(316.75 173.74)"><tspan x="0" y="0">6</tspan></text>
+        <text class="cls-1" onclick="setChord('2','m6', this)" transform="translate(12.76 173.74)"><tspan x="0" y="0">6</tspan></text>
+        <text class="cls-1" onclick="setChord('6','blues', this)" transform="translate(215.72 220.71)"><tspan x="0" y="0">b</tspan></text>
+        <text class="cls-1" onclick="setChord('3','blues', this)" transform="translate(360.35 220.71)"><tspan x="0" y="0">b</tspan></text>
+        <text class="cls-1" onclick="setChord('1','M9', this)" transform="translate(273.32 280.7)"><tspan x="0" y="0">9</tspan></text>
+        <text class="cls-5" transform="translate(429.93 272.23)"><tspan x="0" y="0">9</tspan></text>
+        <text id="minb7" class="cls-2" onclick="setMinRoot('b7')" transform="translate(163.36 549.17)"><tspan class="cls-10" x="0" y="0">b</tspan><tspan class="cls-11" x="13.49" y="0">vii</tspan></text>
+        <polygon class="cls-6" onclick="setChord('6','minor', this)" points="276.13 187.37 257.54 219.57 294.72 219.57 276.13 187.37"/>
+        <rect class="cls-6" x=".52" y="586.63" width="51.4" height="100" onclick="setMinRoot('5')"/>
+        <rect class="cls-6" x="51.93" y="586.63" width="51.4" height="100" onclick="setMinRoot('1')"/>
+        <rect class="cls-6" x="103.33" y="586.63" width="51.4" height="100" onclick="setMinRoot('4')"/>
+        <rect class="cls-6" x="154.74" y="586.63" width="51.4" height="100" onclick="setMinRoot('b7')"/>
+        <rect class="cls-6" x="206.14" y="586.63" width="51.4" height="100" onclick="setMinRoot('b3')"/>
+        <rect class="cls-6" x="257.54" y="586.63" width="51.4" height="100" onclick="setMinRoot('b6')"/>
+        <rect class="cls-6" x="308.95" y="586.63" width="51.4" height="100" onclick="setMinRoot('b2')"/>
+        <rect class="cls-6" x="360.35" y="586.63" width="51.4" height="100" onclick="setMinRoot('b5')"/>
+        <rect class="cls-6" x="411.75" y="586.63" width="51.4" height="100" onclick="setMinRoot('7')"/>
+        <text id="dim6" class="cls-2" onclick="setDimRoot('6')" transform="translate(16.55 649.17)"><tspan x="0" y="0">vi*</tspan></text>
+        <text id="dim2" class="cls-2" onclick="setDimRoot('2')" transform="translate(67.67 649.17)"><tspan x="0" y="0">ii*</tspan></text>
+        <text id="dim5" class="cls-2" onclick="setDimRoot('5')" transform="translate(117.49 649.17)"><tspan x="0" y="0">v*</tspan></text>
+        <text id="dim4" class="cls-2" onclick="setDimRoot('4')" transform="translate(215.75 649.17) scale(.89 1)"><tspan x="0" y="0">iv*</tspan></text>
+        <text id="dimb7" class="cls-2" onclick="setDimRoot('b7')" transform="translate(259.62 649.17)"><tspan class="cls-10" x="0" y="0">b</tspan><tspan class="cls-11" x="13.49" y="0">vii*</tspan></text>
+        <text id="dimb3" class="cls-2" onclick="setDimRoot('b3')" transform="translate(316.48 649.17)"><tspan x="0" y="0">biii*</tspan></text>
+        <text id="dimb6" class="cls-2" onclick="setDimRoot('b6')" transform="translate(368.99 649.17)"><tspan class="cls-10" x="0" y="0">b</tspan><tspan class="cls-11" x="13.49" y="0">vi*</tspan></text>
+        <text id="dimb2" class="cls-2" onclick="setDimRoot('b2')" transform="translate(423.95 649.17)"><tspan x="0" y="0">bii*</tspan></text>
+        <text id="dim1" class="cls-2" onclick="setDimRoot('1')" transform="translate(163.38 649.17)"><tspan x="0" y="0">i*</tspan></text>
+      </svg>
+
+      <script src="/code/aiselector.js" type="text/javascript" defer></script> 
+
+</body>
+
+</html>

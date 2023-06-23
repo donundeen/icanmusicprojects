@@ -161,7 +161,7 @@ maxApi.addHandler("moveMinMax", function(rootval, minmax){
 
 // setter commands
 function runSetter(command, labelid){
-	if(command.match(/^[a-gA-G][b#]?[0-9]?$/)){
+	if(command.match(/^[a-gA-G][b#♭]?[0-9]?$/)){
 //		maxApi.post("command setNote " + command);
 		setNote(command, labelid);
 	}else if(teoria.Scale.KNOWN_SCALES.indexOf(command.toLowerCase()) >= 0){

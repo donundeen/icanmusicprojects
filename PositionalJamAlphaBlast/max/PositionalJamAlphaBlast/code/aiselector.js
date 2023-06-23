@@ -11,7 +11,8 @@ host = host.replace(/:[0-9]+/,"");
 console.log(host);
 
 
-
+// some note characters: 
+// ♭ 𝅘𝅥𝅮𝅗𝅥°♭𝅘𝅥𝅗𝅥𝅗 𝄼 𝄽 
 
 //  const ws = new WebSocket('ws://localhost:8080');
 //const ws = new WebSocket('ws://192.168.4.34:8080');
@@ -33,6 +34,10 @@ let curnotelength = notelengths[nlindex];
 let curnotefract = notefracts[nlindex];
 let curnotelengthname = lengthnames[nlindex];
 
+let selectednotelengthobj = false;
+let prevnlStroke = false;
+let prevnlFill = false;
+
 let wsready = false;  
   // Browser WebSockets have slightly different syntax than `ws`.
   // Instead of EventEmitter syntax `on('open')`, you assign a callback
@@ -49,8 +54,8 @@ let wsready = false;
 var svgDoc = false;
 let currentRoot = "C"
 const numFifths = ['1','5','2','6','3','7','b5','b2','b6','b3','b7','4'];
-const circleOfFourths = ['C', 'F', 'Bb', 'Eb', 'Ab', 'Db', 'Gb', 'B', 'E', 'A', 'D', 'G'];
-const circleOfFifths =  ['C', 'G', 'D', 'A', 'E', 'B', 'Gb', 'Db', 'Ab', 'Eb', 'Bb', 'F'];
+const circleOfFourths = ['C', 'F', 'B♭', 'E♭', 'A♭', 'D♭', 'G♭', 'B', 'E', 'A', 'D', 'G'];
+const circleOfFifths =  ['C', 'G', 'D', 'A', 'E', 'B', 'G♭', 'D♭', 'A♭', 'E♭', 'B♭', 'F'];
 let currentMajWheel = [...circleOfFifths];
 let currentMinWheel = [...currentMajWheel].rotateRight(3);
 let currentDimWheel = [...currentMajWheel].rotateRight(5);
@@ -67,8 +72,12 @@ console.log(currentDimWheel);
 let selectedElem = false;
 let prevStroke = false;
 let prevFill = false;
-let selectedFill = "blue";
-let selectedStroke = "blue";
+let selectedFill = "red";
+let selectedStroke = "red";
+
+let lastChordRoot = false;
+let lastChordValue = false;
+let lastChordObj= false;
 
 function setMajRoot(root){
     root = "maj"+root;
@@ -83,6 +92,7 @@ function setMajRoot(root){
     console.log(currentMajWheel);
 
     assignNotes();
+    setTransposedChord();    
 }
 
 function setMinRoot(root){
@@ -99,6 +109,7 @@ function setMinRoot(root){
     console.log(currentMinWheel);
 
     assignNotes();
+    setTransposedChord();
 
 }
 
@@ -116,11 +127,11 @@ function setDimRoot(root){
     console.log(currentDimWheel);
 
     assignNotes();
+    setTransposedChord();
 }
 
 function setRoot(root){
     console.log("setRoot " + root);
-
 }
 
 function markSelectedObj(obj){
@@ -137,6 +148,9 @@ function markSelectedObj(obj){
 
 function setChord(root, value, obj){
     console.log("setChord  " + root + "  , " + value);
+    lastChordRoot = root;
+    lastChordValue = value;
+    lastChordObj = obj;
     markSelectedObj(obj);
     
     let index = numFifths.indexOf(root);
@@ -148,7 +162,16 @@ function setChord(root, value, obj){
     sendChord(chord);
 }
 
+function setTransposedChord(){
+    if(lastChordRoot){
+        setChord(lastChordRoot, lastChordValue, lastChordObj);
+    }
+}
+
+
 function sendChord(chord){
+    chord = chord.replace("♭","b");
+    console.log("sending " + chord);
     if(wsready){
         ws.send("chord " + chord);
     }else{
@@ -165,14 +188,7 @@ function sendNoteLength(notelength, notefract){
 }
 
 
-function sendMoveCursor(direction){
-    console.log("move cursor " + direction);
-    if(wsready){
-        ws.send("movecursor " + direction );
-    }else{
-        console.log("ws not ready");
-    } 
-}
+
 
 function assignNotes(){
     console.log("assigning Notes");
@@ -182,9 +198,9 @@ function assignNotes(){
         let majId = majWheel[i];
         let minId = minWheel[i];
         let dimId = dimWheel[i];
-        console.log(majId);
-        console.log(minId);
-        console.log(dimId);
+//        console.log(majId);
+//        console.log(minId);
+//        console.log(dimId);
         let majNote = currentMajWheel[i];
         let minNote = currentMinWheel[i];
         let dimNote = currentDimWheel[i];
@@ -202,7 +218,7 @@ function assignNotes(){
         while (svgDoc.getElementById(dimId).childNodes.length > 1) {
             svgDoc.getElementById(dimId).removeChild(svgDoc.getElementById(dimId).lastChild);
         }
-        svgDoc.getElementById(dimId).children[0].textContent = dimNote.toLowerCase()+"*";
+        svgDoc.getElementById(dimId).children[0].textContent = dimNote.toLowerCase()+"°";
     }
 }
 //Layer_1
@@ -248,33 +264,65 @@ function doLoadStuff(){
     setupFormElements();
 }
 
+
+
+
+function noteLengthSelected(nlindex, obj){
+    console.log("note lenght selected " + nlindex);
+    let curnotelength = notelengths[nlindex];
+    let curnotefract = notefracts[nlindex];
+    let curnotelengthname = lengthnames[nlindex];        
+    markselectednotelength(obj);
+    sendNoteLength(curnotelength, curnotefract);
+}
+
+function markselectednotelength(obj){
+    if(selectednotelengthobj){
+        selectednotelengthobj.style.stroke = prevnlStroke;
+        selectednotelengthobj.style.fill = prevnlFill;
+    }
+    selectednotelengthobj = obj;
+    prevnlFill = obj.style.fill;
+    prevnlStroke = obj.style.stroke;
+    obj.style.fill = selectedFill;
+    obj.style.stroke = selectedStroke;
+}
+
+function sendMoveCursor(direction, obj){
+    console.log("move cursor " + direction);
+    if(wsready){
+        ws.send("movecursor " + direction );
+    }else{
+        console.log("ws not ready");
+    } 
+    (function(theobj){
+        console.log(theobj);
+
+        let prevFill = theobj.style.fill;
+        let prevStroke = theobj.style.stroke;
+        theobj.style.fill = selectedFill;
+        theobj.style.stroke = selectedStroke;
+        setTimeout(function(){
+            theobj.style.fill = prevFill;
+            theobj.style.stroke = prevStroke;
+        }, 500);        
+            
+    })(obj);
+}
+
+
+
 function setupFormElements(){
-    nlelem = document.getElementById("notelength");
+    console.log("setup form");
+    nlelem = document.getElementById("half");
     console.log(nlelem);
-    nlelem.addEventListener("input", function(event){
-        let nlindex = event.target.value;
-        let curnotelength = notelengths[nlindex];
-        let curnotelengthname = lengthnames[nlindex];        
-        document.getElementById("curnotelength").textContent = curnotelengthname;
-    });
-    nlelem.addEventListener("change", function(event){
-        let nlindex = event.target.value;
-        let curnotelength = notelengths[nlindex];
-        let curnotefract = notefracts[nlindex];
-        let curnotelengthname = lengthnames[nlindex];        
-        document.getElementById("curnotelength").textContent = curnotelengthname;
-        sendNoteLength(curnotelength, curnotefract);
-    });
 
-    forwardelem = document.getElementById("movecursorforward");
-    forwardelem.addEventListener("click", function(){
-        sendMoveCursor(1);
-    });
 
-    backwardelem = document.getElementById("movecursorbackward");
-    backwardelem.addEventListener("click", function(){
-        sendMoveCursor(-1);
-    });
+    selectednotelengthobj = false;
+    prevnlStroke = false;
+    prevnlFill = false;    
+    noteLengthSelected(4, nlelem)
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {

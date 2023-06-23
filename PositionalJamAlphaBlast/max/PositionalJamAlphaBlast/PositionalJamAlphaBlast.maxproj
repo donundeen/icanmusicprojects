@@ -2,7 +2,7 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3769879590,
+	"modificationdate" : 3770394788,
 	"viewrect" : [ 124.0, 285.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -139,6 +139,11 @@
 ,
 			"socketclient.html" : 			{
 				"kind" : "webpage",
+				"local" : 1
+			}
+,
+			"NotoMusic-Regular.ttf" : 			{
+				"kind" : "file",
 				"local" : 1
 			}
 
