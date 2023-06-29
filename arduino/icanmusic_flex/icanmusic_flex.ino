@@ -36,7 +36,8 @@ const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
 //const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "192.168.10.31"; // ip where UDP messages are going
-const char * UDPReceiverIP = "172.30.142.80"; // ip where UDP messages are going
+//const char * UDPReceiverIP = "172.30.142.80"; // ip where UDP messages are going
+const char * UDPReceiverIP = "172.30.142.119"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "172.28.192.1"; // ip where UDP messages are going
 
 /*
@@ -52,14 +53,14 @@ const int UDPPort = 7002; // the UDP port that Max is listening on
 const char *DEVICE_ID = "/flex1/val";
 
 // NO NETWORK MODE? for testing sensor without network
-const bool no_network = true;
+const bool no_network = false;
 
 
 // sensor config vars - pins
 // one wire of flex: Ground
 // one wire of flex: A0
 // 22k Resistor btw power and A0
-#define sensorPin  A0 // Flex Sensor is connected to this pin
+#define sensorPin  A2 // Flex Sensor is connected to this pin
 
 ////////////////////////////////////////////
 // NETWORK SPECIFIC CODE - SHOULDN'T CHANGE
