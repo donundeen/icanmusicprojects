@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 301.0, 126.0, 1115.0, 709.0 ],
+		"rect" : [ 291.0, 126.0, 845.0, 709.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -1910,8 +1910,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1488.0, 90.0, 121.0, 22.0 ],
-					"text" : "route /capacitive1/val"
+					"patching_rect" : [ 1488.0, 90.0, 87.0, 22.0 ],
+					"text" : "route /flex1/val"
 				}
 
 			}
@@ -1945,7 +1945,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1650.0, 241.0, 132.0, 22.0 ],
-					"text" : "10.0.0.187"
+					"text" : "172.30.142.71"
 				}
 
 			}
@@ -1957,7 +1957,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1523.0, 234.0, 41.0, 22.0 ],
-					"text" : "80"
+					"text" : "0"
 				}
 
 			}
@@ -2023,6 +2023,15 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
+					"order" : 1,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"order" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
 
