@@ -429,7 +429,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ -759.5, 200.415157732963507, 122.0, 22.0 ],
+					"patching_rect" : [ -697.5, 234.415157732963507, 122.0, 22.0 ],
 					"text" : "r #0getTheoryNote"
 				}
 
@@ -442,7 +442,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -759.5, 247.0, 30.0, 30.0 ]
+					"patching_rect" : [ -697.5, 281.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -1461,8 +1461,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 2310.733357012271881, 313.348488864898627, 253.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 17.400004506111145, 320.866677939891815, 237.0, 35.0 ],
+					"presentation_rect" : [ 17.400004506111145, 320.866677939891815, 253.0, 22.0 ],
 					"text" : "udpInstrumentZIGSIM i5 /ZIGSIM/instrument1",
 					"varname" : "FractalInstrumentScoreFollower[4]"
 				}
