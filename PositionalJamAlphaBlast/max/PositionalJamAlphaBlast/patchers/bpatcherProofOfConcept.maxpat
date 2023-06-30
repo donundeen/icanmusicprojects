@@ -40,13 +40,49 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 522.0, 155.915151236057227, 150.0, 34.0 ],
+					"text" : "change bpatcher thusly:\n"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"linecount" : 2,
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 699.0, 307.915151236057227, 208.0, 35.0 ],
+					"presentation_linecount" : 2,
+					"text" : "script sendbox binstrument1 args i12 /things/wat"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 699.0, 270.700009822845402, 150.0, 20.0 ],
+					"text" : "change arguments"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-6",
 					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 590.0, 154.848468539714759, 205.0, 35.0 ],
+					"patching_rect" : [ 567.0, 215.066655933856964, 205.0, 35.0 ],
 					"presentation_linecount" : 2,
 					"text" : "script sendbox binstrument1 replace udpinstrumentLoom"
 				}
@@ -59,7 +95,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 537.0, 96.848468539714759, 310.0, 22.0 ],
+					"patching_rect" : [ 522.0, 181.848468539714759, 310.0, 22.0 ],
 					"text" : "script sendbox binstrument1 replace udpinstrumentAccel"
 				}
 
@@ -71,7 +107,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 558.0, 225.0, 67.0, 22.0 ],
+					"patching_rect" : [ 607.0, 384.0, 67.0, 22.0 ],
 					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 					"text" : "thispatcher"
 				}
@@ -242,7 +278,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "i9", "/flex1/val" ],
+					"args" : [ "i12", "/things/wat" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -252,7 +288,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "udpinstrumentLoom.maxpat",
+					"name" : "udpInstrumentAccel.maxpat",
 					"numinlets" : 8,
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
@@ -291,6 +327,13 @@
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-68", 6 ],
 					"source" : [ "obj-3", 0 ]
@@ -412,20 +455,70 @@
 
 			}
  ],
-		"parameters" : 		{
-			"parameterbanks" : 			{
-				"0" : 				{
-					"index" : 0,
-					"name" : "",
-					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
-				}
-
-			}
-,
-			"inherited_shortname" : 1
-		}
-,
 		"dependency_cache" : [ 			{
+				"name" : "dot.extrema.local.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "dot.extrema.sliding.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "dot.float.inf.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "dot.float.sanitize.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "dot.gesture.jab.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "dot.median.sliding.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "dot.sign.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "dot.split.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "dot.window.sliding.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "dynamic_rescale.maxpat",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
 				"patcherrelativepath" : ".",
@@ -433,7 +526,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "udpinstrumentLoom.maxpat",
+				"name" : "udpInstrumentAccel.maxpat",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
