@@ -434,8 +434,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -638.766579210758209, 84.0, 53.0, 22.0 ],
-					"text" : "route #2"
+					"patching_rect" : [ -638.766579210758209, 84.0, 49.0, 22.0 ],
+					"text" : "route #1"
 				}
 
 			}
@@ -446,8 +446,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -216.0, 72.0, 67.0, 22.0 ],
-					"text" : "route #1"
+					"patching_rect" : [ -216.0, 72.0, 110.0, 22.0 ],
+					"text" : "route #1theory"
 				}
 
 			}
@@ -1216,8 +1216,8 @@
 					"numinlets" : 4,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 140.16675329208374, 1182.332268595695496, 155.0, 22.0 ],
-					"text" : "sprintf #1 %s%s(%s-%s)"
+					"patching_rect" : [ 140.16675329208374, 1182.332268595695496, 169.0, 22.0 ],
+					"text" : "sprintf #1theory %s%s(%s-%s)"
 				}
 
 			}

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 139.0, 98.0, 886.0, 656.0 ],
+		"rect" : [ 202.0, 197.0, 886.0, 656.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-240",
+					"linecount" : 7,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ -960.0, -99.0, 428.0, 114.0 ],
+					"text" : " args to instrumnet\nudpInstrumentZIGSIM #1 #2 #3\n\n\n#1 - unique message ID in the startup message system, and identifies object for theory engine\n#2 - udp ID\n"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-238",
 					"maxclass" : "message",
@@ -713,222 +725,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-208",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 2049.266666948795319, 1357.0, 274.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/quaternion"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-232",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 2020.0, 1292.066699385643005, 121.0, 22.0 ],
-					"text" : "r #0devicename"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-233",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 2020.0, 1324.0, 169.0, 22.0 ],
-					"text" : "sprintf /ZIGSIM/%s/quaternion"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-193",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1350.266666948795319, 1378.933300614356995, 274.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/touch0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-196",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1321.0, 1314.0, 121.0, 22.0 ],
-					"text" : "r #0devicename"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-198",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1321.0, 1345.933300614356995, 149.0, 22.0 ],
-					"text" : "sprintf /ZIGSIM/%s/touch0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-184",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 850.333333253860474, 1381.0, 197.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/compass"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-186",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 860.0, 1300.0, 121.0, 22.0 ],
-					"text" : "r #0devicename"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-192",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 860.0, 1331.933300614356995, 161.0, 22.0 ],
-					"text" : "sprintf /ZIGSIM/%s/compass"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-180",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1132.0, 897.333322525024414, 274.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/gyro"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-181",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1102.733333051204681, 832.400021910667419, 121.0, 22.0 ],
-					"text" : "r #0devicename"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-183",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1102.733333051204681, 864.333322525024414, 136.0, 22.0 ],
-					"text" : "sprintf /ZIGSIM/%s/gyro"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-179",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1002.833333253860474, 79.0, 237.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/accel"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-178",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 948.0, 484.333322525024414, 274.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/gravity"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-175",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 918.733333051204681, 419.400021910667419, 121.0, 22.0 ],
-					"text" : "r #0devicename"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-176",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 918.733333051204681, 451.333322525024414, 148.0, 22.0 ],
-					"text" : "sprintf /ZIGSIM/%s/gravity"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-168",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 907.733333051204681, 7.066699385643005, 121.0, 22.0 ],
-					"text" : "r #0devicename"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-172",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 907.733333051204681, 39.0, 141.0, 22.0 ],
-					"text" : "sprintf /ZIGSIM/%s/accel"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-167",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -946,8 +742,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ -327.0, 597.799999892711639, 126.0, 22.0 ],
-					"text" : "loadmess #3"
+					"patching_rect" : [ -327.0, 597.799999892711639, 174.0, 22.0 ],
+					"text" : "loadmess #2"
 				}
 
 			}
@@ -982,7 +778,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ -300.0, 1198.0, 287.0, 22.0 ],
-					"text" : "/ZIGSIM/instrument1/gyro"
+					"text" : "/ZIGSIM/0/gyro"
 				}
 
 			}
@@ -2057,7 +1853,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 741.733333051204681, -35.466678261756897, 111.0, 22.0 ],
+					"patching_rect" : [ 745.733333051204681, 28.533321738243103, 111.0, 22.0 ],
 					"text" : "receive #0udp"
 				}
 
@@ -2094,7 +1890,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 745.733333051204681, 71.333322525024414, 181.0, 22.0 ],
-					"text" : "route /ZIGSIM/instrument1/accel"
+					"text" : "route #2/accel"
 				}
 
 			}
@@ -2818,7 +2614,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 309.25005829334259, 100.533343434333801, 105.0, 22.0 ],
+					"patching_rect" : [ 296.25005829334259, 86.866694211959839, 105.0, 22.0 ],
 					"text" : "r #0loadbang"
 				}
 
@@ -2964,8 +2760,8 @@
 					"numinlets" : 4,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 5040.16675329208374, 509.266695618629456, 155.0, 22.0 ],
-					"text" : "sprintf #1 %s%s(%s-%s)"
+					"patching_rect" : [ 5040.16675329208374, 509.266695618629456, 169.0, 22.0 ],
+					"text" : "sprintf #1theory %s%s(%s-%s)"
 				}
 
 			}
@@ -4093,8 +3889,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -964.766579210758209, 107.0, 53.0, 22.0 ],
-					"text" : "route #2"
+					"patching_rect" : [ -964.766579210758209, 107.0, 62.0, 22.0 ],
+					"text" : "route #1"
 				}
 
 			}
@@ -4105,8 +3901,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -542.0, 95.0, 67.0, 22.0 ],
-					"text" : "route #1"
+					"patching_rect" : [ -542.0, 95.0, 112.0, 22.0 ],
+					"text" : "route #1theory"
 				}
 
 			}
@@ -4321,7 +4117,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1600.333333253860474, 1402.0, 121.0, 22.0 ],
+					"patching_rect" : [ 1586.333333253860474, 1401.0, 121.0, 22.0 ],
 					"text" : "r #0resetrescale"
 				}
 
@@ -4465,8 +4261,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1715.333333253860474, 1357.0, 241.0, 22.0 ],
-					"text" : "route /ZIGSIM/instrument1/quaternion"
+					"patching_rect" : [ 1715.333333253860474, 1357.0, 210.0, 22.0 ],
+					"text" : "route #2/quaternion"
 				}
 
 			}
@@ -4477,7 +4273,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1016.333333253860474, 1426.0, 121.0, 22.0 ],
+					"patching_rect" : [ 1000.333333253860474, 1402.0, 121.0, 22.0 ],
 					"text" : "r #0resetrescale"
 				}
 
@@ -4815,7 +4611,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 1130.333333253860474, 1390.0, 189.0, 22.0 ],
-					"text" : "route /ZIGSIM/instrument1/touch0"
+					"text" : "route #2/touch0"
 				}
 
 			}
@@ -4839,7 +4635,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 743.0, 1406.0, 201.0, 22.0 ],
-					"text" : "route /ZIGSIM/instrument1/compass"
+					"text" : "route #2/compass"
 				}
 
 			}
@@ -4923,7 +4719,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 746.833333253860474, 484.333322525024414, 189.0, 22.0 ],
-					"text" : "route /ZIGSIM/instrument1/gravity"
+					"text" : "route #2/gravity"
 				}
 
 			}
@@ -5006,7 +4802,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 932.333333253860474, 908.0, 177.0, 22.0 ],
-					"text" : "route /ZIGSIM/instrument1/gyro"
+					"text" : "route #2/gyro"
 				}
 
 			}
@@ -5561,13 +5357,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-172", 0 ],
-					"source" : [ "obj-168", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-128", 0 ],
 					"order" : 1,
 					"source" : [ "obj-169", 0 ]
@@ -5623,47 +5412,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-179", 1 ],
-					"order" : 0,
-					"source" : [ "obj-172", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-273", 1 ],
-					"order" : 1,
-					"source" : [ "obj-172", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-47", 0 ],
 					"source" : [ "obj-174", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-176", 0 ],
-					"source" : [ "obj-175", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-178", 1 ],
-					"order" : 0,
-					"source" : [ "obj-176", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-94", 1 ],
-					"order" : 1,
-					"source" : [ "obj-176", 0 ]
 				}
 
 			}
@@ -5683,13 +5433,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-183", 0 ],
-					"source" : [ "obj-181", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-173", 2 ],
 					"source" : [ "obj-182", 0 ]
 				}
@@ -5697,31 +5440,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-180", 1 ],
-					"order" : 0,
-					"source" : [ "obj-183", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-49", 1 ],
-					"order" : 1,
-					"source" : [ "obj-183", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-177", 0 ],
 					"source" : [ "obj-185", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-192", 0 ],
-					"source" : [ "obj-186", 0 ]
 				}
 
 			}
@@ -5796,22 +5516,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-184", 1 ],
-					"order" : 0,
-					"source" : [ "obj-192", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 1 ],
-					"order" : 1,
-					"source" : [ "obj-192", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-214", 0 ],
 					"source" : [ "obj-194", 0 ]
 				}
@@ -5821,13 +5525,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-197", 0 ],
 					"source" : [ "obj-195", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-198", 0 ],
-					"source" : [ "obj-196", 0 ]
 				}
 
 			}
@@ -5844,22 +5541,6 @@
 					"destination" : [ "obj-85", 0 ],
 					"order" : 1,
 					"source" : [ "obj-197", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-193", 1 ],
-					"order" : 0,
-					"source" : [ "obj-198", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-42", 1 ],
-					"order" : 1,
-					"source" : [ "obj-198", 0 ]
 				}
 
 			}
@@ -6065,29 +5746,6 @@
 					"destination" : [ "obj-229", 0 ],
 					"order" : 1,
 					"source" : [ "obj-231", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-233", 0 ],
-					"source" : [ "obj-232", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-102", 1 ],
-					"order" : 1,
-					"source" : [ "obj-233", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-208", 1 ],
-					"order" : 0,
-					"source" : [ "obj-233", 0 ]
 				}
 
 			}
@@ -7519,7 +7177,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-74", 1 ],
-					"midpoints" : [ 1025.833333253860474, 1469.5, 1477.833333253860474, 1469.5 ],
+					"midpoints" : [ 1009.833333253860474, 1469.5, 1477.833333253860474, 1469.5 ],
 					"order" : 0,
 					"source" : [ "obj-71", 0 ]
 				}
@@ -7528,7 +7186,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-75", 1 ],
-					"midpoints" : [ 1025.833333253860474, 1469.5, 1245.833333253860474, 1469.5 ],
+					"midpoints" : [ 1009.833333253860474, 1469.5, 1245.833333253860474, 1469.5 ],
 					"order" : 1,
 					"source" : [ "obj-71", 0 ]
 				}
@@ -7681,7 +7339,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-93", 1 ],
-					"midpoints" : [ 1609.833333253860474, 1444.5, 2283.833333253860474, 1444.5 ],
+					"midpoints" : [ 1595.833333253860474, 1444.5, 2283.833333253860474, 1444.5 ],
 					"order" : 1,
 					"source" : [ "obj-92", 0 ]
 				}
@@ -7690,7 +7348,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-96", 1 ],
-					"midpoints" : [ 1609.833333253860474, 1444.5, 2060.833333253860474, 1444.5 ],
+					"midpoints" : [ 1595.833333253860474, 1444.5, 2060.833333253860474, 1444.5 ],
 					"order" : 2,
 					"source" : [ "obj-92", 0 ]
 				}
@@ -7699,7 +7357,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-97", 1 ],
-					"midpoints" : [ 1609.833333253860474, 1444.5, 1828.833333253860474, 1444.5 ],
+					"midpoints" : [ 1595.833333253860474, 1444.5, 1828.833333253860474, 1444.5 ],
 					"order" : 3,
 					"source" : [ "obj-92", 0 ]
 				}

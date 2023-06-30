@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 168.0, 164.0, 1001.0, 556.0 ],
+		"rect" : [ 363.0, 294.0, 1001.0, 556.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-71",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2571.116575419902802, 215.048500416278785, 111.0, 22.0 ],
+					"text" : "r #0resetsensors"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-3",
 					"maxclass" : "newobj",
@@ -222,10 +234,10 @@
 					"numinlets" : 8,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 4608.733357012271881, 304.348488864898627, 209.0, 22.0 ],
+					"patching_rect" : [ 4608.733357012271881, 304.348488864898627, 178.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 691.200008153915405, 49.866677939891815, 294.0, 22.0 ],
-					"text" : "udpinstrumentLoom linei9 i9 /flex1/val",
+					"text" : "udpinstrumentLoom i9 /flex1/val",
 					"varname" : "FractalInstrumentScoreFollower[8]"
 				}
 
@@ -333,7 +345,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2534.116575419902802, 237.848493037223761, 76.0, 22.0 ],
+					"patching_rect" : [ 2654.116575419902802, 241.848493037223761, 76.0, 22.0 ],
 					"text" : "r #0muted"
 				}
 
@@ -689,7 +701,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2522.45009309053421, 274.181850848197882, 45.999996900558472, 20.0 ],
+					"patching_rect" : [ 2642.45009309053421, 278.181850848197882, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 253.083321154117584, 289.366677939891815, 45.999996900558472, 20.0 ],
 					"text" : "muted"
@@ -704,7 +716,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 2487.783425390720367, 274.181850848197882, 24.0, 24.0 ],
+					"patching_rect" : [ 2607.783425390720367, 278.181850848197882, 24.0, 24.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 218.416653454303741, 289.366677939891815, 24.0, 24.0 ]
 				}
@@ -951,10 +963,10 @@
 					"numinlets" : 8,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 4021.733357012271881, 304.348488864898627, 291.0, 22.0 ],
+					"patching_rect" : [ 4021.733357012271881, 304.348488864898627, 187.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 336.200008153915405, 447.866677939891815, 294.0, 22.0 ],
-					"text" : "udpinstrumentAccel linei8 i8 /accel1/val",
+					"text" : "udpinstrumentAccel i8 /accel1/val",
 					"varname" : "FractalInstrumentScoreFollower[7]"
 				}
 
@@ -1116,10 +1128,10 @@
 					"numinlets" : 8,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 3476.733357012271881, 304.348488864898627, 338.083118945360638, 22.0 ],
+					"patching_rect" : [ 3476.733357012271881, 304.348488864898627, 239.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 13.86666476726532, 451.866681396961212, 271.0, 22.0 ],
-					"text" : "udpInstrumentCapacitive linei7 i7 /capacitive1/val",
+					"text" : "udpInstrumentCapacitive i7 /capacitive1/val",
 					"varname" : "FractalInstrumentScoreFollower[6]"
 				}
 
@@ -1277,15 +1289,15 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-110",
-					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 2944.733357012271881, 304.348488864898627, 177.0, 35.0 ],
+					"patching_rect" : [ 2944.733357012271881, 304.348488864898627, 253.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 336.200008153915405, 320.866677939891815, 237.0, 22.0 ],
-					"text" : "udpInstrumentZIGSIM linei6 i6 instrument2",
+					"presentation_linecount" : 2,
+					"presentation_rect" : [ 336.200008153915405, 320.866677939891815, 237.0, 35.0 ],
+					"text" : "udpInstrumentZIGSIM i6 /ZIGSIM/instrument2",
 					"varname" : "FractalInstrumentScoreFollower[5]"
 				}
 
@@ -1350,7 +1362,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2456.866688430309296, 237.848493037223761, 80.0, 22.0 ],
+					"patching_rect" : [ 2465.583357244729996, 234.848493037223761, 80.0, 22.0 ],
 					"text" : "r #0flushall"
 				}
 
@@ -1443,15 +1455,15 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-46",
-					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 2310.733357012271881, 313.348488864898627, 174.0, 35.0 ],
+					"patching_rect" : [ 2310.733357012271881, 313.348488864898627, 253.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 17.400004506111145, 320.866677939891815, 237.0, 22.0 ],
-					"text" : "udpInstrumentZIGSIM linei5 i5 instrument1",
+					"presentation_linecount" : 2,
+					"presentation_rect" : [ 17.400004506111145, 320.866677939891815, 237.0, 35.0 ],
+					"text" : "udpInstrumentZIGSIM i5 /ZIGSIM/instrument1",
 					"varname" : "FractalInstrumentScoreFollower[4]"
 				}
 
@@ -1759,10 +1771,10 @@
 					"numinlets" : 7,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1752.733357012271881, 313.348488864898627, 219.0, 22.0 ],
+					"patching_rect" : [ 1752.733357012271881, 313.348488864898627, 187.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 336.200008153915405, 180.266676068305969, 219.0, 22.0 ],
-					"text" : "fractalInstrumentScoreFollower linei4 i4",
+					"text" : "fractalInstrumentScoreFollower i4",
 					"varname" : "FractalInstrumentScoreFollower[3]"
 				}
 
@@ -1883,10 +1895,10 @@
 					"numinlets" : 7,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1250.400013267993927, 309.015155789852088, 219.0, 22.0 ],
+					"patching_rect" : [ 1250.400013267993927, 309.015155789852088, 187.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 17.400004506111145, 180.266676068305969, 219.0, 22.0 ],
-					"text" : "fractalInstrumentScoreFollower linei3 i3",
+					"text" : "fractalInstrumentScoreFollower i3",
 					"varname" : "FractalInstrumentScoreFollower[2]"
 				}
 
@@ -2007,10 +2019,10 @@
 					"numinlets" : 7,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 620.400001227855682, 305.015155968666022, 219.0, 22.0 ],
+					"patching_rect" : [ 620.400001227855682, 305.015155968666022, 187.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 344.200008153915405, 56.466665685176849, 219.0, 22.0 ],
-					"text" : "fractalInstrumentScoreFollower linei2 i2",
+					"text" : "fractalInstrumentScoreFollower i2",
 					"varname" : "FractalInstrumentScoreFollower[1]"
 				}
 
@@ -2117,10 +2129,10 @@
 					"numinlets" : 7,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 134.400001227855682, 305.015155968666022, 219.0, 22.0 ],
+					"patching_rect" : [ 134.400001227855682, 305.015155968666022, 187.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 17.400004506111145, 56.466665685176849, 219.0, 22.0 ],
-					"text" : "fractalInstrumentScoreFollower linei1 i1",
+					"text" : "fractalInstrumentScoreFollower i1",
 					"varname" : "FractalInstrumentScoreFollower"
 				}
 
@@ -2880,6 +2892,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-690", 4 ],
 					"source" : [ "obj-707", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-46", 6 ],
+					"source" : [ "obj-71", 0 ]
 				}
 
 			}
