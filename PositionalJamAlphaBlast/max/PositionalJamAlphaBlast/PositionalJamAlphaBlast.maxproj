@@ -2,7 +2,7 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3771007817,
+	"modificationdate" : 3771364149,
 	"viewrect" : [ 565.0, 318.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -77,6 +77,16 @@
 			}
 ,
 			"bpatcherProofOfConcept.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpinstrumentMPR121_cap12.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpinstrumentFlex.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

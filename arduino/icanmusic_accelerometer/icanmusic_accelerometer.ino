@@ -51,6 +51,8 @@ const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
 //const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
 const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
+//const char * UDPReceiverIP = "172.30.142.76"; // ip where UDP messages are going
+
 //const char * UDPReceiverIP = "192.168.10.31"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "172.30.142.80"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "172.28.192.1"; // ip where UDP messages are going
@@ -115,9 +117,6 @@ static boolean doConnect = false;
 ////////////////////////////////
 // SENSOR code
 void device_setup() {
-//  Serial.begin(115200);
-//  Serial.begin(9600);
-  Serial.begin(38400);  
   delay(1000);
   Serial.println("setup");
 

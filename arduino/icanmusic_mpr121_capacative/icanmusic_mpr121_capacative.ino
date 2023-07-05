@@ -36,7 +36,9 @@ const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
 //const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "192.168.10.31"; // ip where UDP messages are going
-const char * UDPReceiverIP = "172.30.142.80"; // ip where UDP messages are going
+//172.30.142.76
+//const char * UDPReceiverIP = "172.30.142.80"; // ip where UDP messages are going
+const char * UDPReceiverIP = "172.30.142.113"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "172.28.192.1"; // ip where UDP messages are going
 
 /*
@@ -49,7 +51,7 @@ const char * UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
 const int UDPPort = 7002; // the UDP port that Max is listening on
 
 // NETWORK+SENSOR CONFIGS
-const char *DEVICE_ID = "/capthreads/val";
+const char *DEVICE_ID = "/mpr121cap12/val";
 
 
 ////////////////////////////////////////////

@@ -558,7 +558,7 @@
 					"fontsize" : 24.0,
 					"id" : "obj-352",
 					"maxclass" : "newobj",
-					"numinlets" : 8,
+					"numinlets" : 9,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3884.000079989433289, 35.833302974700928, 1066.0, 35.0 ],
@@ -934,7 +934,7 @@
 					"patching_rect" : [ -3254.70000034570694, -130.133337736129761, 321.766715347766876, 40.399999856948853 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1234.29999965429306, 109.943217475643223, 321.766715347766876, 40.399999856948853 ],
-					"text" : "http://10.0.0.174:8000/other/aiselector.html"
+					"text" : "http://172.30.87.26:8000/other/aiselector.html"
 				}
 
 			}
@@ -5529,7 +5529,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "udpinstrumentLoom.maxpat",
+				"name" : "udpinstrumentFlex.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "udpinstrumentMPR121_cap12.maxpat",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
