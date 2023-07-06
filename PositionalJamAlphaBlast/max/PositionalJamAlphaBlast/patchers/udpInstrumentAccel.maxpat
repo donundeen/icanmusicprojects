@@ -305,7 +305,7 @@
 					"patching_rect" : [ -30.0, 692.833322525024414, 253.0, 26.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 652.0, 3.633326888084412, 253.0, 26.0 ],
-					"text" : "10.0.0.174"
+					"text" : "172.30.108.183"
 				}
 
 			}
@@ -4493,17 +4493,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 298.333333253860474, -198.133324980735779, 65.0, 22.0 ],
-					"text" : "print udpin"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -4517,16 +4506,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
-					"order" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-51", 0 ],
-					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
 

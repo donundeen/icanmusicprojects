@@ -50,7 +50,8 @@ const char *WIFI_SSID = "Studio314";
 const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
 //const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
-const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
+//const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
+const char * UDPReceiverIP = "172.30.142.113"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "172.30.142.76"; // ip where UDP messages are going
 
 //const char * UDPReceiverIP = "192.168.10.31"; // ip where UDP messages are going
@@ -340,6 +341,7 @@ void device_loop() {
   lis3mdl.getEvent(&mag);
 
   /* Display the results (acceleration is measured in m/s^2) */
+  /*
   Serial.print("\t\tAccel X: ");
   Serial.print(accel.acceleration.x, 4);
   Serial.print(" \tY: ");
@@ -347,8 +349,10 @@ void device_loop() {
   Serial.print(" \tZ: ");
   Serial.print(accel.acceleration.z, 4);
   Serial.println(" \tm/s^2 ");
+  */
 
   /* Display the results (rotation is measured in rad/s) */
+  /*
   Serial.print("\t\tGyro  X: ");
   Serial.print(gyro.gyro.x, 4);
   Serial.print(" \tY: ");
@@ -356,8 +360,9 @@ void device_loop() {
   Serial.print(" \tZ: ");
   Serial.print(gyro.gyro.z, 4);
   Serial.println(" \tradians/s ");
-  
+  */
  /* Display the results (magnetic field is measured in uTesla) */
+ /*
   Serial.print(" \t\tMag   X: ");
   Serial.print(mag.magnetic.x, 4);
   Serial.print(" \tY: ");
@@ -365,6 +370,7 @@ void device_loop() {
   Serial.print(" \tZ: ");
   Serial.print(mag.magnetic.z, 4);
   Serial.println(" \tuTesla ");
+  */
 
   sendOSCUDP(gyro.gyro.x, gyro.gyro.y, gyro.gyro.z, accel.acceleration.x, accel.acceleration.y, accel.acceleration.z, mag.magnetic.x,mag.magnetic.y,mag.magnetic.z, sensorVal);
 
