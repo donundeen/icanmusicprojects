@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 332.0, 87.0, 739.0, 683.0 ],
+		"rect" : [ 77.0, 87.0, 739.0, 683.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -131,7 +131,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 4623.033387929201126, 188.850394072532708, 203.0, 22.0 ],
-					"restore" : [ 1 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -150,7 +150,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 4231.0, 842.0, 178.0, 22.0 ],
-					"restore" : [ 1 ],
+					"restore" : [ 4 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -169,7 +169,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 4231.0, 871.0, 194.0, 22.0 ],
-					"restore" : [ 0 ],
+					"restore" : [ 1 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -314,13 +314,14 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 757.0, 246.0, 138.0, 22.0 ],
-					"text" : "pattrstorage instruments"
+					"patching_rect" : [ 757.0, 246.0, 107.0, 22.0 ],
+					"text" : "pattrstorage range"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"autorestore" : "range.json",
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-140",
@@ -328,7 +329,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 822.0, 218.0, 149.0, 23.0 ],
+					"patching_rect" : [ 822.0, 218.0, 202.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"client_rect" : [ 1057, 45, 1440, 407 ],
 						"parameter_enable" : 0,
@@ -336,8 +337,8 @@
 						"storage_rect" : [ 583, 69, 1034, 197 ]
 					}
 ,
-					"text" : "pattrstorage instruments",
-					"varname" : "instruments"
+					"text" : "pattrstorage range @savemode 3",
+					"varname" : "range"
 				}
 
 			}
@@ -349,7 +350,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "preset", "int", "preset", "int", "" ],
 					"patching_rect" : [ 757.0, 290.0, 100.0, 40.0 ],
-					"pattrstorage" : "instruments"
+					"pattrstorage" : "range"
 				}
 
 			}
@@ -1964,7 +1965,6 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-289",
-					"int" : 1,
 					"maxclass" : "gswitch",
 					"numinlets" : 3,
 					"numoutlets" : 1,
@@ -2027,7 +2027,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 4637.700038582086563, 1000.43522871017467, 56.666666865348816, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 54.983236789703369, 73.699985027313232, 50.0, 22.0 ],
+					"presentation_rect" : [ 54.983236789703369, 72.699985027313232, 50.0, 22.0 ],
 					"varname" : "channel"
 				}
 

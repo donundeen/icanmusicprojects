@@ -1,0 +1,41 @@
+{
+	"pattrstorage" : 	{
+		"name" : "range",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pthreshold" : [ 1.0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 4 ],
+					"pskiptheory" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"pscalelow" : [ 0.0 ],
+					"pscalehigh" : [ 0.0 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"pmidimin" : [ 24 ],
+					"pmidimax" : [ 100 ],
+					"pthreshold" : [ 1.0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 4 ],
+					"pskiptheory" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"pscalelow" : [ 0.0 ],
+					"pscalehigh" : [ 0.0 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

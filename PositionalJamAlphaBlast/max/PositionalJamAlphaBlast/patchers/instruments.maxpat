@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 486.0, 231.0, 650.0, 556.0 ],
+		"rect" : [ 151.0, 241.0, 650.0, 556.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -95,7 +95,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1023.0, 136.666666030883789, 161.0, 22.0 ],
-					"restore" : [ 1 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -126,13 +126,13 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ -40.0, 26.0, 138.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "pattrstorage instruments"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"autorestore" : "instruments.json",
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-72",
@@ -140,15 +140,15 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 25.0, -2.0, 149.0, 23.0 ],
+					"patching_rect" : [ 25.0, -2.0, 236.0, 23.0 ],
 					"saved_object_attributes" : 					{
-						"client_rect" : [ 1057, 45, 1440, 407 ],
+						"client_rect" : [ 4, 87, 358, 215 ],
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0,
 						"storage_rect" : [ 583, 69, 1034, 197 ]
 					}
 ,
-					"text" : "pattrstorage instruments",
+					"text" : "pattrstorage instruments @savemode 3",
 					"varname" : "instruments"
 				}
 
@@ -161,7 +161,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 347.783240020275116, 117.733338534832001, 161.0, 22.0 ],
-					"restore" : [ 1 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -211,7 +211,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 482.0, 335.0, 50.0, 22.0 ],
-					"text" : "store 1"
+					"text" : "1"
 				}
 
 			}

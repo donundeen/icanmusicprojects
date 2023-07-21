@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 84.0, 131.0, 1005.0, 521.0 ],
+		"rect" : [ 387.0, 141.0, 1005.0, 521.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -84,7 +84,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 2718.0, 469.0, 195.0, 22.0 ],
-					"restore" : [ 0.0 ],
+					"restore" : [ 1.0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -181,7 +181,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 4653.0, 406.733306527137756, 194.0, 22.0 ],
-					"restore" : [ 0 ],
+					"restore" : [ 1 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -258,7 +258,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1222.0, 28.0, 183.0, 22.0 ],
-					"restore" : [ 444 ],
+					"restore" : [ 100 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -277,7 +277,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1017.0, 28.0, 177.0, 22.0 ],
-					"restore" : [ 44 ],
+					"restore" : [ 20 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -344,7 +344,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1271.416728854179382, 154.999984979629517, 67.333330869674683, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 133.016848057508469, 15.0, 57.0, 20.0 ],
+					"presentation_rect" : [ 116.016848057508469, 3.133324980735779, 57.0, 20.0 ],
 					"text" : "midi max"
 				}
 
@@ -357,7 +357,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1128.583309412002563, 154.999984979629517, 60.5833740234375, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 15.0, 60.5833740234375, 20.0 ],
+					"presentation_rect" : [ -2.0, 3.133324980735779, 60.5833740234375, 20.0 ],
 					"text" : "midi min"
 				}
 
@@ -408,7 +408,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1205.083423376083374, 202.666659355163574, 50.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 194.583432674407959, 14.533324897289276, 50.0, 22.0 ],
+					"presentation_rect" : [ 177.583432674407959, 2.666649878025055, 50.0, 22.0 ],
 					"varname" : "midimax"
 				}
 
@@ -445,7 +445,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1097.083364725112915, 202.666659355163574, 50.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 77.5833740234375, 15.0, 50.0, 22.0 ],
+					"presentation_rect" : [ 60.5833740234375, 3.133324980735779, 50.0, 22.0 ],
 					"varname" : "midimin"
 				}
 
@@ -469,13 +469,14 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 757.0, 246.0, 138.0, 22.0 ],
-					"text" : "pattrstorage instruments"
+					"patching_rect" : [ 757.0, 246.0, 109.0, 22.0 ],
+					"text" : "pattrstorage cap12"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"autorestore" : "cap12.json",
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-174",
@@ -483,7 +484,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 822.0, 218.0, 149.0, 23.0 ],
+					"patching_rect" : [ 822.0, 218.0, 205.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"client_rect" : [ 1057, 45, 1440, 407 ],
 						"parameter_enable" : 0,
@@ -491,8 +492,8 @@
 						"storage_rect" : [ 583, 69, 1034, 197 ]
 					}
 ,
-					"text" : "pattrstorage instruments",
-					"varname" : "instruments"
+					"text" : "pattrstorage cap12 @savemode 3",
+					"varname" : "cap12"
 				}
 
 			}
@@ -504,7 +505,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "preset", "int", "preset", "int", "" ],
 					"patching_rect" : [ 757.0, 290.0, 100.0, 40.0 ],
-					"pattrstorage" : "instruments"
+					"pattrstorage" : "cap12"
 				}
 
 			}
@@ -1692,7 +1693,6 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-92",
-					"int" : 1,
 					"maxclass" : "gswitch",
 					"numinlets" : 3,
 					"numoutlets" : 1,

@@ -1,0 +1,31 @@
+{
+	"pattrstorage" : 	{
+		"name" : "basic",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"u520006637" : [ 60 ],
+					"u520006637[1]" : [ 75 ],
+					"ploop" : [ 1 ],
+					"instruments::instruments" : [ 1 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"u520006637" : [ 60 ],
+					"u520006637[1]" : [ 75 ],
+					"ploop" : [ 1 ],
+					"instruments::instruments" : [ 1 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

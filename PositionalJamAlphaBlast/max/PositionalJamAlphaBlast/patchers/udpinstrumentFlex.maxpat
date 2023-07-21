@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 106.0, 985.0, 595.0 ],
+		"rect" : [ 59.0, 106.0, 758.0, 595.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -143,7 +143,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 4178.0, 871.0, 194.0, 22.0 ],
-					"restore" : [ 0 ],
+					"restore" : [ 1 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -220,7 +220,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 4633.0, 180.650369825363214, 203.0, 22.0 ],
-					"restore" : [ 1 ],
+					"restore" : [ 0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -326,13 +326,14 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 818.000023245811462, 240.0, 138.0, 22.0 ],
-					"text" : "pattrstorage instruments"
+					"patching_rect" : [ 818.000023245811462, 240.0, 95.0, 22.0 ],
+					"text" : "pattrstorage flex"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"autorestore" : "flex.json",
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-148",
@@ -340,16 +341,16 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 883.000023245811462, 212.0, 149.0, 23.0 ],
+					"patching_rect" : [ 883.000023245811462, 212.0, 189.0, 23.0 ],
 					"saved_object_attributes" : 					{
-						"client_rect" : [ 1057, 45, 1440, 407 ],
+						"client_rect" : [ 4, 44, 358, 172 ],
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0,
 						"storage_rect" : [ 583, 69, 1034, 197 ]
 					}
 ,
-					"text" : "pattrstorage instruments",
-					"varname" : "instruments"
+					"text" : "pattrstorage flex @savemode 3",
+					"varname" : "flex"
 				}
 
 			}
@@ -361,7 +362,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "preset", "int", "preset", "int", "" ],
 					"patching_rect" : [ 818.000023245811462, 284.0, 100.0, 40.0 ],
-					"pattrstorage" : "instruments"
+					"pattrstorage" : "flex"
 				}
 
 			}
@@ -1992,7 +1993,6 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-289",
-					"int" : 1,
 					"maxclass" : "gswitch",
 					"numinlets" : 3,
 					"numoutlets" : 1,
