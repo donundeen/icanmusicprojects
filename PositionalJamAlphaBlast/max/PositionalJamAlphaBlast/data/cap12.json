@@ -5,14 +5,15 @@
 			"1" : 			{
 				"id" : 1,
 				"data" : 				{
-					"pmidimin" : [ 20 ],
+					"pmidimin" : [ 30 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
-					"pchannel" : [ 4 ],
+					"pchannel" : [ 2 ],
 					"pscalelow" : [ 0.0 ],
 					"pscalehigh" : [ 1.0 ],
 					"pnotesel" : [ 1 ],
-					"pskiptheory" : [ 0 ]
+					"pskiptheory" : [ 0 ],
+					"pnotethreshold" : [ 0.039473684210526 ]
 				}
 
 			}
@@ -20,14 +21,47 @@
 			"2" : 			{
 				"id" : 2,
 				"data" : 				{
-					"pmidimin" : [ 22 ],
+					"pmidimin" : [ 30 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
-					"pchannel" : [ 4 ],
+					"pchannel" : [ 2 ],
 					"pscalelow" : [ 0.0 ],
 					"pscalehigh" : [ 1.0 ],
 					"pnotesel" : [ 1 ],
-					"pskiptheory" : [ 0 ]
+					"pskiptheory" : [ 0 ],
+					"pnotethreshold" : [ 0.039473684210526 ]
+				}
+
+			}
+,
+			"4" : 			{
+				"id" : 4,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 1 ],
+					"pscalelow" : [ 0.0 ],
+					"pscalehigh" : [ 1.0 ],
+					"pnotesel" : [ 1 ],
+					"pskiptheory" : [ 0 ],
+					"pnotethreshold" : [ 1.0 ]
+				}
+
+			}
+,
+			"5" : 			{
+				"id" : 5,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 1 ],
+					"pscalelow" : [ 0.0 ],
+					"pscalehigh" : [ 1.0 ],
+					"pnotesel" : [ 1 ],
+					"pskiptheory" : [ 0 ],
+					"pnotethreshold" : [ 1.0 ]
 				}
 
 			}

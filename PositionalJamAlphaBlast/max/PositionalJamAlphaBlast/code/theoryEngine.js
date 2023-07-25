@@ -143,7 +143,7 @@ maxApi.addHandler("noteList", function(){
 
 
 maxApi.addHandler("set", function(labelid, command){
-	maxApi.post("set " + " : " + labelid + " : " + command);
+	//maxApi.post("set " + " : " + labelid + " : " + command);
 	runSetter(command.toString(), labelid);
 });
 
@@ -651,10 +651,10 @@ function getRootedBestNoteFromFloat(labelid, value, min, max){
 	//		maxApi.post(chordNoteSetMidi);
 	min = moveMinMax(curRootMidi, min);
 	max = moveMinMax(curRootMidi, max);
-	maxApi.post("newminmax  "+ min +", " + max) ;
+	//maxApi.post("newminmax  "+ min +", " + max) ;
 
 	var note = selectFromFloat(value, bestNoteSetMidi, min, max);
-		maxApi.post("note " + note);
+	//	maxApi.post("note " + note);
 	if(!note){
 		return false;
 	}
@@ -679,14 +679,14 @@ function getFixedBestNoteFromFloat(labelid, value, min, max){
 // in a "fixed" setup, the same float value should result in the same midi note (octave may vary), regardless of scale
 // - map the float across FULL range, from min to max
 // - move resulting value DOWN to the closest note in the scale
-			maxApi.post("getFixededBestNoteFromFloat "+labelid + ", " + value + " , "+ min +", " + max) ;
+	//		maxApi.post("getFixededBestNoteFromFloat "+labelid + ", " + value + " , "+ min +", " + max) ;
 	//		maxApi.post(chordNoteSetMidi);
 //	min = moveMinMax(curRootMidi, min);
 //	max = moveMinMax(curRootMidi, max);
-	maxApi.post("newminmax  "+ min +", " + max) ;
+//	maxApi.post("newminmax  "+ min +", " + max) ;
 
 	var note = selectFixedFromFloat(value, bestNoteSetMidi, min, max);
-		maxApi.post("note " + note);
+	//	maxApi.post("note " + note);
 	if(!note){
 		return false;
 	}

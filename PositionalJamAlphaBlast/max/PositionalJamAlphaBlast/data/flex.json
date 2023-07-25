@@ -5,6 +5,38 @@
 			"1" : 			{
 				"id" : 1,
 				"data" : 				{
+					"pmidimin" : [ 30 ],
+					"pmidimax" : [ 90 ],
+					"pthreshold" : [ 0.010526315162056 ],
+					"pnotesel" : [ 1 ],
+					"pskiptheory" : [ 0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 1 ],
+					"pscalelow" : [ 0.0 ],
+					"pscalehigh" : [ 1.0 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"pmidimin" : [ 30 ],
+					"pmidimax" : [ 90 ],
+					"pthreshold" : [ 0.010526315162056 ],
+					"pnotesel" : [ 1 ],
+					"pskiptheory" : [ 0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 1 ],
+					"pscalelow" : [ 0.0 ],
+					"pscalehigh" : [ 1.0 ]
+				}
+
+			}
+,
+			"4" : 			{
+				"id" : 4,
+				"data" : 				{
 					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pthreshold" : [ 1.0 ],
@@ -18,10 +50,10 @@
 
 			}
 ,
-			"2" : 			{
-				"id" : 2,
+			"5" : 			{
+				"id" : 5,
 				"data" : 				{
-					"pmidimin" : [ 21 ],
+					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pthreshold" : [ 1.0 ],
 					"pnotesel" : [ 1 ],

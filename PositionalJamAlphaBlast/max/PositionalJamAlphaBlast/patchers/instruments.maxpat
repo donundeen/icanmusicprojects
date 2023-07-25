@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 4,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 151.0, 241.0, 650.0, 556.0 ],
+		"rect" : [ 151.0, 241.0, 1423.0, 776.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -142,7 +142,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 25.0, -2.0, 236.0, 23.0 ],
 					"saved_object_attributes" : 					{
-						"client_rect" : [ 4, 87, 358, 215 ],
+						"client_rect" : [ 1057, 45, 1440, 407 ],
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0,
 						"storage_rect" : [ 583, 69, 1034, 197 ]
@@ -181,25 +181,6 @@
 					"outlettype" : [ "preset", "int", "preset", "int", "" ],
 					"patching_rect" : [ -40.0, 70.0, 100.0, 40.0 ],
 					"pattrstorage" : "instruments"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-180",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 537.0, 259.0, 139.0, 22.0 ],
-					"restore" : [ 0 ],
-					"saved_object_attributes" : 					{
-						"parameter_enable" : 0,
-						"parameter_mappable" : 0
-					}
-,
-					"text" : "pattr ploop @bindto loop",
-					"varname" : "ploop"
 				}
 
 			}
@@ -471,9 +452,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1819.983357667922974, 29.0, 306.0, 33.0 ],
+					"patching_rect" : [ 1819.983357667922974, 29.0, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 382.200008153915405, 183.866677939891815, 196.0, 33.0 ],
+					"presentation_rect" : [ 382.200008153915405, 183.866677939891815, 196.0, 34.0 ],
 					"text" : "4 Rangefinder"
 				}
 
@@ -498,7 +479,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1971.383356630802155, 376.748490629196112, 132.400001227855682, 35.0 ],
+					"patching_rect" : [ 1971.383356630802155, 376.748490629196112, 132.400001227855682, 36.0 ],
 					"text" : "irangetheory b0.95(20-100)"
 				}
 
@@ -689,9 +670,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1270.983357667922974, 29.0, 306.0, 33.0 ],
+					"patching_rect" : [ 1270.983357667922974, 29.0, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 41.200008153915405, 27.866677939891815, 196.0, 33.0 ],
+					"presentation_rect" : [ 41.200008153915405, 27.866677939891815, 196.0, 34.0 ],
 					"text" : "1 Flex"
 				}
 
@@ -716,7 +697,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1422.383356630802155, 376.748490629196112, 132.400001227855682, 35.0 ],
+					"patching_rect" : [ 1422.383356630802155, 376.748490629196112, 132.400001227855682, 36.0 ],
 					"text" : "iflextheory b0.03(20-100)"
 				}
 
@@ -920,9 +901,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 709.983357667922974, 36.0, 306.0, 33.0 ],
+					"patching_rect" : [ 709.983357667922974, 36.0, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 361.611771583557129, 27.866677939891815, 216.588236570358276, 33.0 ],
+					"presentation_rect" : [ 361.611771583557129, 27.866677939891815, 216.588236570358276, 34.0 ],
 					"text" : "2 touchee"
 				}
 
@@ -947,7 +928,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 861.383356630802155, 383.748490629196112, 132.400001227855682, 35.0 ],
+					"patching_rect" : [ 861.383356630802155, 383.748490629196112, 132.400001227855682, 36.0 ],
 					"text" : "impr121theory1 b0.09(20-100)"
 				}
 
@@ -1009,7 +990,7 @@
 					"patching_rect" : [ 732.733357012271881, 340.348488864898627, 316.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 382.200008153915405, 63.866677939891815, 294.0, 35.0 ],
+					"presentation_rect" : [ 382.200008153915405, 63.866677939891815, 294.0, 36.0 ],
 					"text" : "udpinstrumentMPR121_cap12 impr121 /mpr121cap12/val",
 					"varname" : "FractalInstrumentScoreFollower[8]"
 				}
@@ -1355,9 +1336,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 122.983357667922974, 36.0, 306.0, 33.0 ],
+					"patching_rect" : [ 122.983357667922974, 36.0, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 41.200008153915405, 183.866677939891815, 219.0, 33.0 ],
+					"presentation_rect" : [ 41.200008153915405, 183.866677939891815, 219.0, 34.0 ],
 					"text" : "3 Accelerometer"
 				}
 
@@ -1382,7 +1363,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 274.383356630802155, 383.748490629196112, 132.400001227855682, 35.0 ],
+					"patching_rect" : [ 274.383356630802155, 383.748490629196112, 132.400001227855682, 36.0 ],
 					"text" : "iacceltheory b0.00(20-100)"
 				}
 

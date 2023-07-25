@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 4,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 120.0, 90.0, 993.0, 680.0 ],
+		"rect" : [ 120.0, 90.0, 2133.0, 983.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -246,7 +246,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-61",
-					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "Microsoft GS Wavetable Synth", ",", "2- HDSPe FX MADI1 MIDI", ",", "2- HDSPe FX MIDI", ",", "2- HDSPe FX MADI2 MIDI", ",", "2- HDSPe FX MADI3 MIDI", ",", "loopMIDI Port", ",", "loopMIDI Port 1", ",", "loopMIDI Port 2", ",", "loopMIDI Port 3", ",", "loopMIDI Port 4", ",", "RME ARC" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -796,10 +796,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ -30.0, 692.833322525024414, 253.0, 26.0 ],
+					"patching_rect" : [ -30.0, 692.833322525024414, 253.0, 27.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 652.0, 3.633326888084412, 253.0, 26.0 ],
-					"text" : "172.30.21.20"
+					"presentation_rect" : [ 652.0, 3.633326888084412, 253.0, 27.0 ],
+					"text" : "10.102.135.53"
 				}
 
 			}
@@ -2149,10 +2149,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -66.0, 659.333322525024414, 289.0, 87.0 ],
+					"patching_rect" : [ -66.0, 659.333322525024414, 289.0, 89.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 3,
-					"presentation_rect" : [ 612.20001083612442, -27.366673111915588, 560.200004041194916, 87.0 ],
+					"presentation_rect" : [ 612.20001083612442, -27.366673111915588, 560.200004041194916, 89.0 ],
 					"text" : "port: 7002\nIP: 10.102.134.110\nDevice UID:"
 				}
 
@@ -2316,7 +2316,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3941.0, 1229.666667520999908, 38.0, 35.0 ],
+					"patching_rect" : [ 3941.0, 1229.666667520999908, 38.0, 36.0 ],
 					"text" : "gyroX"
 				}
 
@@ -2389,10 +2389,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2.0, 320.100079953670502, 153.0, 261.0 ],
+					"patching_rect" : [ 2.0, 320.100079953670502, 153.0, 269.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 16,
-					"presentation_rect" : [ 618.0, 196.933412492275238, 235.0, 221.0 ],
+					"presentation_rect" : [ 618.0, 196.933412492275238, 235.0, 227.0 ],
 					"text" : "Good combos:\n\nfor spinning around (head)\nLoudness: gyroXabs\nNote: MagY\nDuration: MAgZ\n\nback pocket twerk:\nLoud: gyroXabs - or bounce\nNote: MagY\nDuration: Magz\n\nOther Motions:\n- put in a sock and swing it around\n\nmake a tail you can swing around?"
 				}
 
@@ -3163,7 +3163,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5477.833402729438603, 186.483681681156213, 151.0, 47.0 ],
+					"patching_rect" : [ 5477.833402729438603, 186.483681681156213, 151.0, 48.0 ],
 					"text" : "turn a float into a sensible note lenth (whole, quarter, half, etc)"
 				}
 
@@ -3175,7 +3175,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4998.44996902346611, 201.68296593189234, 150.0, 60.0 ],
+					"patching_rect" : [ 4998.44996902346611, 201.68296593189234, 150.0, 62.0 ],
 					"text" : "getting note from float, by sending special string out to theory engine (which is external to this patch)"
 				}
 
@@ -3347,7 +3347,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3811.0, 467.666667520999908, 38.0, 35.0 ],
+					"patching_rect" : [ 3811.0, 467.666667520999908, 38.0, 36.0 ],
 					"text" : "gyroXabs"
 				}
 
@@ -3424,7 +3424,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4429.0, 546.100021243095398, 50.0, 35.0 ],
+					"patching_rect" : [ 4429.0, 546.100021243095398, 50.0, 36.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 149.999933242797852, 163.0, 106.00000011920929, 22.0 ],
 					"text" : "0.043725"
@@ -3531,7 +3531,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4097.0, 574.55148458719259, 50.0, 35.0 ],
+					"patching_rect" : [ 4097.0, 574.55148458719259, 50.0, 36.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ -4.000001668930054, 163.0, 88.0, 22.0 ],
 					"text" : "0.042865"
@@ -3861,7 +3861,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3926.000052452087402, 3.000000059604645, 434.000008463859558, 221.0 ],
+					"patching_rect" : [ 3926.000052452087402, 3.000000059604645, 434.000008463859558, 227.0 ],
 					"text" : "simplest:\n- position to note, trigggered by touch\n- can select as many inputs as you want, all are triggered by a touch\n- one touch triggers one set of notes.\n- touch value changes - more notes\n\nAlternate: fractals controlled by positions \n\nAlternate: RATE of change triggers sounds, over a cerain amount of changes (from gyro) triggere sound. \n\n\nbuild controllers to select:\n- which inputs create notes\n\n"
 				}
 
@@ -3873,7 +3873,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3926.000052452087402, -43.666666686534882, 150.0, 33.0 ],
+					"patching_rect" : [ 3926.000052452087402, -43.666666686534882, 150.0, 34.0 ],
 					"text" : "some stuff happens here.... choices!"
 				}
 
@@ -3885,7 +3885,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5928.266713201999664, 110.666666746139526, 150.0, 33.0 ],
+					"patching_rect" : [ 5928.266713201999664, 110.666666746139526, 150.0, 34.0 ],
 					"text" : "processing theory note recieved"
 				}
 
@@ -4185,7 +4185,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 5773.000016570091248, 747.451530399322564, 101.0, 35.0 ],
+					"patching_rect" : [ 5773.000016570091248, 747.451530399322564, 101.0, 36.0 ],
 					"text" : "port \"loopMIDI Port\""
 				}
 
@@ -7147,7 +7147,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-173", 1 ],
+					"destination" : [ "obj-173", 0 ],
 					"source" : [ "obj-61", 1 ]
 				}
 

@@ -5,11 +5,10 @@
 			"1" : 			{
 				"id" : 1,
 				"data" : 				{
-					"ploop" : [ 0 ],
-					"pmute1" : [ 0 ],
+					"pmute1" : [ 1 ],
 					"pmute2" : [ 0 ],
-					"pmute3" : [ 0 ],
-					"pmute4" : [ 0 ],
+					"pmute3" : [ 1 ],
+					"pmute4" : [ 1 ],
 					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
@@ -21,11 +20,10 @@
 			"2" : 			{
 				"id" : 2,
 				"data" : 				{
-					"ploop" : [ 0 ],
-					"pmute1" : [ 0 ],
+					"pmute1" : [ 1 ],
 					"pmute2" : [ 0 ],
-					"pmute3" : [ 0 ],
-					"pmute4" : [ 0 ],
+					"pmute3" : [ 1 ],
+					"pmute4" : [ 1 ],
 					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
@@ -37,7 +35,6 @@
 			"3" : 			{
 				"id" : 3,
 				"data" : 				{
-					"ploop" : [  ],
 					"pmute1" : [  ],
 					"pmute2" : [  ],
 					"pmute3" : [  ],
@@ -53,15 +50,14 @@
 			"4" : 			{
 				"id" : 4,
 				"data" : 				{
-					"ploop" : [  ],
-					"pmute1" : [  ],
-					"pmute2" : [  ],
-					"pmute3" : [  ],
-					"pmute4" : [  ],
-					"FractalInstrumentScoreFollower[7]::accel" : [  ],
-					"FractalInstrumentScoreFollower[8]::cap12" : [  ],
-					"FractalInstrumentScoreFollower[9]::flex" : [  ],
-					"FractalInstrumentScoreFollower[1]::range" : [  ]
+					"pmute1" : [ 0 ],
+					"pmute2" : [ 0 ],
+					"pmute3" : [ 0 ],
+					"pmute4" : [ 0 ],
+					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
+					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
+					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
+					"FractalInstrumentScoreFollower[1]::range" : [ 1 ]
 				}
 
 			}
@@ -69,15 +65,14 @@
 			"5" : 			{
 				"id" : 5,
 				"data" : 				{
-					"ploop" : [  ],
-					"pmute1" : [  ],
-					"pmute2" : [  ],
-					"pmute3" : [  ],
-					"pmute4" : [  ],
-					"FractalInstrumentScoreFollower[7]::accel" : [  ],
-					"FractalInstrumentScoreFollower[8]::cap12" : [  ],
-					"FractalInstrumentScoreFollower[9]::flex" : [  ],
-					"FractalInstrumentScoreFollower[1]::range" : [  ]
+					"pmute1" : [ 0 ],
+					"pmute2" : [ 0 ],
+					"pmute3" : [ 0 ],
+					"pmute4" : [ 0 ],
+					"FractalInstrumentScoreFollower[7]::accel" : [ 5 ],
+					"FractalInstrumentScoreFollower[8]::cap12" : [ 5 ],
+					"FractalInstrumentScoreFollower[9]::flex" : [ 5 ],
+					"FractalInstrumentScoreFollower[1]::range" : [ 5 ]
 				}
 
 			}

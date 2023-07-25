@@ -6,8 +6,10 @@
 				"id" : 1,
 				"data" : 				{
 					"u520006637" : [ 60 ],
-					"u520006637[1]" : [ 75 ],
+					"u520006637[1]" : [ 115 ],
 					"ploop" : [ 1 ],
+					"psetchordimmediate" : [ 1 ],
+					"pupdateatcursor" : [ 1 ],
 					"instruments::instruments" : [ 1 ]
 				}
 
@@ -17,9 +19,37 @@
 				"id" : 2,
 				"data" : 				{
 					"u520006637" : [ 60 ],
+					"u520006637[1]" : [ 115 ],
+					"ploop" : [ 1 ],
+					"psetchordimmediate" : [ 1 ],
+					"pupdateatcursor" : [ 1 ],
+					"instruments::instruments" : [ 1 ]
+				}
+
+			}
+,
+			"4" : 			{
+				"id" : 4,
+				"data" : 				{
+					"u520006637" : [ 60 ],
 					"u520006637[1]" : [ 75 ],
 					"ploop" : [ 1 ],
+					"psetchordimmediate" : [ 1 ],
+					"pupdateatcursor" : [ 1 ],
 					"instruments::instruments" : [ 1 ]
+				}
+
+			}
+,
+			"5" : 			{
+				"id" : 5,
+				"data" : 				{
+					"u520006637" : [ 60 ],
+					"u520006637[1]" : [ 75 ],
+					"ploop" : [ 1 ],
+					"psetchordimmediate" : [ 1 ],
+					"pupdateatcursor" : [ 1 ],
+					"instruments::instruments" : [ 5 ]
 				}
 
 			}
