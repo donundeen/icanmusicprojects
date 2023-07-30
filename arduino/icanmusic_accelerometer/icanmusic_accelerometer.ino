@@ -45,15 +45,16 @@ Adafruit_LIS3MDL lis3mdl;
 #include <AutoConnect.h>
 #include <WebServer.h>
 
+/*
 const char *WIFI_SSID = "Studio314";
 const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
 const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
+*/
 
-/*
 const char *WIFI_SSID = "icanmusic";
 const char *WIFI_PASSWORD = "icanmusic";
 const char *UDPReceiverIP = "192.168.0.200"; // ip where UDP messages are going
-*/
+
 //const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going

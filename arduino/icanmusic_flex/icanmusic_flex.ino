@@ -30,15 +30,16 @@
 #include <WebServer.h>
 
 /// NETWORK CONFIGS  
+/*
 const char *WIFI_SSID = "Studio314";
 const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
 const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
+*/
 
-/*
 const char *WIFI_SSID = "icanmusic";
 const char *WIFI_PASSWORD = "icanmusic";
 const char *UDPReceiverIP = "192.168.0.200"; // ip where UDP messages are going
-*/
+
 /*
 const char *WIFI_SSID = "Studio314";
 const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
