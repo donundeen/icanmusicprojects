@@ -11,10 +11,10 @@
 					"pchannel" : [ 3 ],
 					"pskiptheory" : [ 0 ],
 					"pnotesel" : [ 1 ],
-					"ploudness" : [ 4 ],
-					"pduration" : [ 15 ],
-					"pnote" : [ 14 ],
-					"pbounce" : [ 1 ]
+					"ploudness" : [ 2 ],
+					"pduration" : [ 3 ],
+					"pnote" : [ 1 ],
+					"pbounce" : [ 0 ]
 				}
 
 			}

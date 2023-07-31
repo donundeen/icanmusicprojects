@@ -12,7 +12,9 @@
 					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
-					"FractalInstrumentScoreFollower[1]::range" : [ 1 ]
+					"FractalInstrumentScoreFollower[1]::range" : [ 1 ],
+					"FractalInstrumentScoreFollower[2]::accel" : [ -1 ],
+					"pmute4[1]" : [ 1 ]
 				}
 
 			}
@@ -27,7 +29,9 @@
 					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
-					"FractalInstrumentScoreFollower[1]::range" : [ 1 ]
+					"FractalInstrumentScoreFollower[1]::range" : [ 1 ],
+					"FractalInstrumentScoreFollower[2]::accel" : [  ],
+					"pmute4[1]" : [  ]
 				}
 
 			}
@@ -42,7 +46,9 @@
 					"FractalInstrumentScoreFollower[7]::accel" : [  ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [  ],
 					"FractalInstrumentScoreFollower[9]::flex" : [  ],
-					"FractalInstrumentScoreFollower[1]::range" : [  ]
+					"FractalInstrumentScoreFollower[1]::range" : [  ],
+					"FractalInstrumentScoreFollower[2]::accel" : [  ],
+					"pmute4[1]" : [  ]
 				}
 
 			}
@@ -57,7 +63,9 @@
 					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
-					"FractalInstrumentScoreFollower[1]::range" : [ 1 ]
+					"FractalInstrumentScoreFollower[1]::range" : [ 1 ],
+					"FractalInstrumentScoreFollower[2]::accel" : [  ],
+					"pmute4[1]" : [  ]
 				}
 
 			}
@@ -72,7 +80,9 @@
 					"FractalInstrumentScoreFollower[7]::accel" : [ 5 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 5 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 5 ],
-					"FractalInstrumentScoreFollower[1]::range" : [ 5 ]
+					"FractalInstrumentScoreFollower[1]::range" : [ 5 ],
+					"FractalInstrumentScoreFollower[2]::accel" : [  ],
+					"pmute4[1]" : [  ]
 				}
 
 			}

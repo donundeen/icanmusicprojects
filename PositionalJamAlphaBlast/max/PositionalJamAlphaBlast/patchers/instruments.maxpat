@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 216.0, 128.0, 1423.0, 776.0 ],
+		"rect" : [ 146.0, 87.0, 653.0, 776.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 2679.0, 96.066671431064606, 161.0, 22.0 ],
-					"restore" : [ 0 ],
+					"restore" : [ 1 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -77,7 +77,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 2709.783243119716644, 139.200005114078522, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 641.000076413154602, 184.0, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 285.000076413154602, 309.0, 45.999996900558472, 20.0 ],
 					"text" : "reset"
 				}
 
@@ -92,7 +92,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2680.0, 139.200005114078522, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 606.333408713340759, 182.0, 24.0, 24.0 ]
+					"presentation_rect" : [ 250.333408713340759, 307.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -128,7 +128,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 2704.783243119716644, 290.515183863639777, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 641.000076413154602, 207.866677939891815, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 285.000076413154602, 332.866677939891815, 45.999996900558472, 20.0 ],
 					"text" : "muted"
 				}
 
@@ -143,7 +143,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2670.116575419902802, 290.515183863639777, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 606.333408713340759, 207.866677939891815, 24.0, 24.0 ],
+					"presentation_rect" : [ 250.333408713340759, 332.866677939891815, 24.0, 24.0 ],
 					"varname" : "mute4[1]"
 				}
 
@@ -172,7 +172,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2356.116575419902802, 502.515174088478034, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 397.200008153915405, 271.766668736934662, 294.0, 34.0 ],
+					"presentation_rect" : [ 41.200008153915405, 394.766668736934662, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -199,7 +199,7 @@
 					"patching_rect" : [ 2364.983357667922974, 29.0, 306.0, 33.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 397.200008153915405, 198.866677939891815, 196.0, 60.0 ],
+					"presentation_rect" : [ 41.200008153915405, 307.0, 196.0, 60.0 ],
 					"text" : "5 plant electrodes"
 				}
 
@@ -226,7 +226,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 2516.383356630802155, 376.748490629196112, 132.400001227855682, 35.0 ],
 					"presentation_linecount" : 2,
-					"text" : "iplanttheory f0.11(20-100)"
+					"text" : "iplanttheory f0.10(20-100)"
 				}
 
 			}
@@ -286,7 +286,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 2387.733357012271881, 333.348488864898627, 234.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 397.200008153915405, 234.866677939891815, 294.0, 22.0 ],
+					"presentation_rect" : [ 41.200008153915405, 369.0, 294.0, 22.0 ],
 					"text" : "udpInstrumentPlantElectrodes iplant /plant",
 					"varname" : "FractalInstrumentScoreFollower[2]"
 				}
@@ -324,7 +324,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 2134.0, 96.066671431064606, 161.0, 22.0 ],
-					"restore" : [ 0 ],
+					"restore" : [ 1 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -343,7 +343,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1588.333335399627686, 110.733338534832001, 161.0, 22.0 ],
-					"restore" : [ 0 ],
+					"restore" : [ 1 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -439,7 +439,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 347.783240020275116, 117.733338534832001, 161.0, 22.0 ],
-					"restore" : [ 0 ],
+					"restore" : [ 1 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -470,7 +470,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 482.0, 335.0, 50.0, 22.0 ],
-					"text" : "1"
+					"text" : "store 1"
 				}
 
 			}
