@@ -2,8 +2,8 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3771439868,
-	"viewrect" : [ 565.0, 318.0, 300.0, 500.0 ],
+	"modificationdate" : 3773625577,
+	"viewrect" : [ 336.0, 152.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -41,16 +41,6 @@
 				"local" : 1
 			}
 ,
-			"udpInstrumentZIGSIM.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpinstrumentCapacitive.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"udpinstrumentFlex.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -61,12 +51,27 @@
 				"local" : 1
 			}
 ,
+			"udpinstrumentRangefinder.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"quantizer.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
 			"testSocketServer.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpInstrumentZIGSIM.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpinstrumentCapacitive.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -96,7 +101,7 @@
 				"local" : 1
 			}
 ,
-			"udpinstrumentRangefinder.maxpat" : 			{
+			"udpInstrumentPlantElectrodes.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
