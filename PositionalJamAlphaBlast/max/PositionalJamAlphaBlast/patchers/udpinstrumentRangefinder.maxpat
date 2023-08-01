@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 0,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,20 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontsize" : 39.75888863500068,
+					"id" : "obj-57",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 394.0, 38.0, 497.0, 51.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 368.0, 27.100007176399231, 209.583237528800964, 51.0 ],
+					"text" : "rangefinder"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-166",
 					"maxclass" : "newobj",
@@ -212,7 +226,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-153",
-					"items" : [ "Microsoft GS Wavetable Synth", ",", "2- HDSPe FX MADI1 MIDI", ",", "2- HDSPe FX MIDI", ",", "2- HDSPe FX MADI2 MIDI", ",", "2- HDSPe FX MADI3 MIDI", ",", "loopMIDI Port", ",", "loopMIDI Port 1", ",", "loopMIDI Port 2", ",", "loopMIDI Port 3", ",", "loopMIDI Port 4", ",", "RME ARC" ],
+					"items" : [ "AU DLS Synth 1", ",", "828x MIDI Port", ",", "from Max 1", ",", "from Max 2" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -284,7 +298,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 1002.0, 13.0, 177.0, 22.0 ],
-					"restore" : [ 40 ],
+					"restore" : [ 20 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -386,7 +400,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 322.0, 26.0, 150.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 478.583237528800964, 7.300004780292511, 150.0, 20.0 ],
+					"presentation_rect" : [ 603.583237528800964, 64.300004780292511, 150.0, 20.0 ],
 					"text" : "from device"
 				}
 
@@ -409,7 +423,7 @@
 					"patching_rect" : [ 2046.00001049041748, 68.333332896232605, 196.0, 92.0 ],
 					"peakcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 478.583237528800964, 29.300004780292511, 196.0, 92.0 ],
+					"presentation_rect" : [ 603.583237528800964, 86.300004780292511, 196.0, 92.0 ],
 					"setminmax" : [ 0.0, 1000.0 ],
 					"setstyle" : 2
 				}
@@ -1030,7 +1044,6 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-92",
-					"int" : 1,
 					"maxclass" : "gswitch",
 					"numinlets" : 3,
 					"numoutlets" : 1,
@@ -1381,7 +1394,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4028.416697978973389, 184.666669011116028, 151.0, 48.0 ],
+					"patching_rect" : [ 4028.416697978973389, 184.666669011116028, 151.0, 47.0 ],
 					"text" : "turn a float into a sensible note lenth (whole, quarter, half, etc)"
 				}
 
@@ -1608,7 +1621,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2333.50001049041748, 619.333332896232605, 50.0, 36.0 ],
+					"patching_rect" : [ 2333.50001049041748, 619.333332896232605, 50.0, 35.0 ],
 					"text" : "0.041228"
 				}
 
@@ -1679,7 +1692,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3618.516695380210876, 179.666669011116028, 150.0, 62.0 ],
+					"patching_rect" : [ 3618.516695380210876, 179.666669011116028, 150.0, 60.0 ],
 					"text" : "getting note from float, by sending special string out to theory engine (which is external to this patch)"
 				}
 
@@ -1691,7 +1704,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4506.616655290126801, 117.650369825363214, 150.0, 34.0 ],
+					"patching_rect" : [ 4506.616655290126801, 117.650369825363214, 150.0, 33.0 ],
 					"text" : "processing theory note recieved"
 				}
 
@@ -1822,7 +1835,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4349.016625165939331, 691.435227637291064, 101.0, 36.0 ],
+					"patching_rect" : [ 4349.016625165939331, 691.435227637291064, 101.0, 35.0 ],
 					"text" : "port \"loopMIDI Port\""
 				}
 

@@ -40,6 +40,20 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 32.223842954155174,
+					"id" : "obj-9",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 438.0, 26.0, 416.0, 42.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 437.333264946937561, -1.066666666666666, 316.0, 42.0 ],
+					"text" : "plant electrodes"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-165",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -566,7 +580,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-61",
-					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "AU DLS Synth 1", ",", "828x MIDI Port", ",", "from Max 1", ",", "from Max 2" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -818,6 +832,7 @@
 			}
 , 			{
 				"box" : 				{
+					"autorestore" : "iplant.json",
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-140",
@@ -846,7 +861,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "preset", "int", "preset", "int", "" ],
 					"patching_rect" : [ -200.0, -10.0, 100.0, 40.0 ],
-					"pattrstorage" : "accel"
+					"pattrstorage" : "iplant"
 				}
 
 			}
@@ -1117,8 +1132,8 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 0.0, 722.833322525024414, 253.0, 26.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 682.0, 33.633326888084412, 253.0, 26.0 ],
-					"text" : "192.168.1.178"
+					"presentation_rect" : [ 687.0, 107.066677033901215, 253.0, 26.0 ],
+					"text" : "192.168.0.200"
 				}
 
 			}
@@ -1721,7 +1736,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 21.083364725112915, 780.333322525024414, 298.0, 31.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 791.801308751106262, 60.633326888084412, 298.0, 31.0 ],
+					"presentation_rect" : [ 796.801308751106262, 134.066677033901215, 298.0, 31.0 ],
 					"text" : "#3",
 					"textcolor" : [ 0.054901960784314, 0.054901960784314, 0.054901960784314, 1.0 ]
 				}
@@ -1787,7 +1802,7 @@
 					"patching_rect" : [ -36.0, 689.333322525024414, 289.0, 87.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 3,
-					"presentation_rect" : [ 642.20001083612442, 2.633326888084412, 560.200004041194916, 87.0 ],
+					"presentation_rect" : [ 647.20001083612442, 76.066677033901215, 560.200004041194916, 87.0 ],
 					"text" : "port: 7002\nIP: 10.102.134.110\nDevice UID:"
 				}
 

@@ -40,6 +40,20 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 23.121723049802306,
+					"id" : "obj-70",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 423.0, 31.0, 332.0, 32.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 413.20001083612442, 13.866666666666667, 242.0, 32.0 ],
+					"text" : "accelerometer Type 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-208",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -675,7 +689,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-61",
-					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "AU DLS Synth 1", ",", "828x MIDI Port", ",", "from Max 1", ",", "from Max 2" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -943,7 +957,7 @@
 					}
 ,
 					"text" : "pattrstorage #1ropeaccel @savemode 3",
-					"varname" : "iropeaccel2ropeaccel"
+					"varname" : "iropeaccel1ropeaccel"
 				}
 
 			}
@@ -955,7 +969,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "preset", "int", "preset", "int", "" ],
 					"patching_rect" : [ -185.0, 5.0, 100.0, 40.0 ],
-					"pattrstorage" : "iropeaccel2ropeaccel"
+					"pattrstorage" : "iropeaccel1ropeaccel"
 				}
 
 			}
@@ -1227,7 +1241,7 @@
 					"patching_rect" : [ 15.0, 737.833322525024414, 253.0, 26.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 697.0, 48.633326888084412, 253.0, 26.0 ],
-					"text" : "192.168.1.178"
+					"text" : "192.168.0.200"
 				}
 
 			}
