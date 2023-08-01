@@ -5,8 +5,8 @@
 			"1" : 			{
 				"id" : 1,
 				"data" : 				{
-					"pmidimin" : [ 30 ],
-					"pmidimax" : [ 90 ],
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
 					"pthreshold" : [ 0.010526315162056 ],
 					"pnotesel" : [ 1 ],
 					"pskiptheory" : [ 0 ],

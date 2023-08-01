@@ -5,16 +5,20 @@
 			"1" : 			{
 				"id" : 1,
 				"data" : 				{
-					"pmute1" : [ 1 ],
-					"pmute2" : [ 0 ],
-					"pmute3" : [ 1 ],
+					"pmute1" : [ 0 ],
+					"pmute2" : [ 1 ],
+					"pmute3" : [ 0 ],
 					"pmute4" : [ 1 ],
+					"pmute5" : [ 0 ],
+					"pmute6" : [ 0 ],
 					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
 					"FractalInstrumentScoreFollower[1]::range" : [ 1 ],
-					"FractalInstrumentScoreFollower[2]::accel" : [ -1 ],
-					"pmute4[1]" : [ 1 ]
+					"FractalInstrumentScoreFollower[2]::iplant" : [ 1 ],
+					"FractalInstrumentScoreFollower[3]::ropeaccel" : [ 1 ],
+					"FractalInstrumentScoreFollower[4]::stretch" : [ 1 ],
+					"pmute7" : [ 0 ]
 				}
 
 			}
@@ -26,12 +30,16 @@
 					"pmute2" : [ 0 ],
 					"pmute3" : [ 1 ],
 					"pmute4" : [ 1 ],
+					"pmute5" : [  ],
+					"pmute6" : [  ],
 					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
 					"FractalInstrumentScoreFollower[1]::range" : [ 1 ],
-					"FractalInstrumentScoreFollower[2]::accel" : [  ],
-					"pmute4[1]" : [  ]
+					"FractalInstrumentScoreFollower[2]::iplant" : [  ],
+					"FractalInstrumentScoreFollower[3]::ropeaccel" : [  ],
+					"FractalInstrumentScoreFollower[4]::stretch" : [  ],
+					"pmute7" : [  ]
 				}
 
 			}
@@ -43,12 +51,16 @@
 					"pmute2" : [  ],
 					"pmute3" : [  ],
 					"pmute4" : [  ],
+					"pmute5" : [  ],
+					"pmute6" : [  ],
 					"FractalInstrumentScoreFollower[7]::accel" : [  ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [  ],
 					"FractalInstrumentScoreFollower[9]::flex" : [  ],
 					"FractalInstrumentScoreFollower[1]::range" : [  ],
-					"FractalInstrumentScoreFollower[2]::accel" : [  ],
-					"pmute4[1]" : [  ]
+					"FractalInstrumentScoreFollower[2]::iplant" : [  ],
+					"FractalInstrumentScoreFollower[3]::ropeaccel" : [  ],
+					"FractalInstrumentScoreFollower[4]::stretch" : [  ],
+					"pmute7" : [  ]
 				}
 
 			}
@@ -60,12 +72,16 @@
 					"pmute2" : [ 0 ],
 					"pmute3" : [ 0 ],
 					"pmute4" : [ 0 ],
+					"pmute5" : [  ],
+					"pmute6" : [  ],
 					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
 					"FractalInstrumentScoreFollower[1]::range" : [ 1 ],
-					"FractalInstrumentScoreFollower[2]::accel" : [  ],
-					"pmute4[1]" : [  ]
+					"FractalInstrumentScoreFollower[2]::iplant" : [  ],
+					"FractalInstrumentScoreFollower[3]::ropeaccel" : [  ],
+					"FractalInstrumentScoreFollower[4]::stretch" : [  ],
+					"pmute7" : [  ]
 				}
 
 			}
@@ -77,12 +93,16 @@
 					"pmute2" : [ 0 ],
 					"pmute3" : [ 0 ],
 					"pmute4" : [ 0 ],
+					"pmute5" : [  ],
+					"pmute6" : [  ],
 					"FractalInstrumentScoreFollower[7]::accel" : [ 5 ],
 					"FractalInstrumentScoreFollower[8]::cap12" : [ 5 ],
 					"FractalInstrumentScoreFollower[9]::flex" : [ 5 ],
 					"FractalInstrumentScoreFollower[1]::range" : [ 5 ],
-					"FractalInstrumentScoreFollower[2]::accel" : [  ],
-					"pmute4[1]" : [  ]
+					"FractalInstrumentScoreFollower[2]::iplant" : [  ],
+					"FractalInstrumentScoreFollower[3]::ropeaccel" : [  ],
+					"FractalInstrumentScoreFollower[4]::stretch" : [  ],
+					"pmute7" : [  ]
 				}
 
 			}

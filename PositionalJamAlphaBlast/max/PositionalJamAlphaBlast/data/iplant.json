@@ -1,0 +1,26 @@
+{
+	"pattrstorage" : 	{
+		"name" : "iplant",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 5 ],
+					"pskiptheory" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"ploudness" : [ 2 ],
+					"pduration" : [ 3 ],
+					"pnote" : [ 1 ],
+					"pbounce" : [ 2 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

@@ -5,7 +5,7 @@
 			"1" : 			{
 				"id" : 1,
 				"data" : 				{
-					"pmidimin" : [ 30 ],
+					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
 					"pchannel" : [ 2 ],
