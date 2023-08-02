@@ -7,13 +7,13 @@
 				"data" : 				{
 					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
-					"pthreshold" : [ 0.010526315162056 ],
+					"pthreshold" : [ 0.0 ],
 					"pnotesel" : [ 1 ],
 					"pskiptheory" : [ 0 ],
 					"pnoteoutm" : [ 1 ],
 					"pchannel" : [ 1 ],
 					"pscalelow" : [ 0.0 ],
-					"pscalehigh" : [ 1.0 ]
+					"pscalehigh" : [ 0.0 ]
 				}
 
 			}
@@ -30,6 +30,22 @@
 					"pchannel" : [ 1 ],
 					"pscalelow" : [ 0.0 ],
 					"pscalehigh" : [ 1.0 ]
+				}
+
+			}
+,
+			"3" : 			{
+				"id" : 3,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pthreshold" : [ 0.0 ],
+					"pnotesel" : [ 1 ],
+					"pskiptheory" : [ 0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 1 ],
+					"pscalelow" : [ 0.0 ],
+					"pscalehigh" : [ 0.0 ]
 				}
 
 			}

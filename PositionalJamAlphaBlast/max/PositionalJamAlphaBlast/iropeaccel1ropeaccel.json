@@ -1,6 +1,6 @@
 {
 	"pattrstorage" : 	{
-		"name" : "iplant",
+		"name" : "iropeaccel1ropeaccel",
 		"slots" : 		{
 			"1" : 			{
 				"id" : 1,
@@ -8,13 +8,13 @@
 					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
-					"pchannel" : [ 3 ],
+					"pchannel" : [ 8 ],
 					"pskiptheory" : [ 0 ],
 					"pnotesel" : [ 1 ],
-					"ploudness" : [ 2 ],
-					"pduration" : [ 3 ],
-					"pnote" : [ 1 ],
-					"pbounce" : [ 2 ]
+					"ploudness" : [ 9 ],
+					"pduration" : [ 2 ],
+					"pnote" : [ 3 ],
+					"pbounce" : [ 0 ]
 				}
 
 			}
@@ -25,13 +25,13 @@
 					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
-					"pchannel" : [ 3 ],
+					"pchannel" : [ 8 ],
 					"pskiptheory" : [ 0 ],
 					"pnotesel" : [ 1 ],
-					"ploudness" : [ 2 ],
-					"pduration" : [ 3 ],
-					"pnote" : [ 1 ],
-					"pbounce" : [ 2 ]
+					"ploudness" : [ 9 ],
+					"pduration" : [ 2 ],
+					"pnote" : [ 3 ],
+					"pbounce" : [ 0 ]
 				}
 
 			}
@@ -42,13 +42,13 @@
 					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
-					"pchannel" : [ 3 ],
+					"pchannel" : [ 8 ],
 					"pskiptheory" : [ 0 ],
 					"pnotesel" : [ 1 ],
-					"ploudness" : [ 2 ],
-					"pduration" : [ 3 ],
-					"pnote" : [ 1 ],
-					"pbounce" : [ 2 ]
+					"ploudness" : [ 9 ],
+					"pduration" : [ 2 ],
+					"pnote" : [ 3 ],
+					"pbounce" : [ 0 ]
 				}
 
 			}

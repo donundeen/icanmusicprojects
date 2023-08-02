@@ -23,7 +23,20 @@
 					"ploop" : [ 1 ],
 					"psetchordimmediate" : [ 1 ],
 					"pupdateatcursor" : [ 1 ],
-					"instruments::instruments" : [ 1 ]
+					"instruments::instruments" : [ 2 ]
+				}
+
+			}
+,
+			"3" : 			{
+				"id" : 3,
+				"data" : 				{
+					"u520006637" : [ 60 ],
+					"u520006637[1]" : [ 115 ],
+					"ploop" : [ 1 ],
+					"psetchordimmediate" : [ 1 ],
+					"pupdateatcursor" : [ 1 ],
+					"instruments::instruments" : [ 3 ]
 				}
 
 			}

@@ -34,6 +34,22 @@
 
 			}
 ,
+			"3" : 			{
+				"id" : 3,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pthreshold" : [ 0.038461538461538 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 4 ],
+					"pskiptheory" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"pscalelow" : [ 0.0 ],
+					"pscalehigh" : [ 1.0 ]
+				}
+
+			}
+,
 			"4" : 			{
 				"id" : 4,
 				"data" : 				{
