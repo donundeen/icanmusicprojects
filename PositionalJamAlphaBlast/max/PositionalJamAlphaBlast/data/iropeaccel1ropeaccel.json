@@ -1,6 +1,6 @@
 {
 	"pattrstorage" : 	{
-		"name" : "iropeaccel1ropeaccel",
+		"name" : "iropeaccel2ropeaccel",
 		"slots" : 		{
 			"1" : 			{
 				"id" : 1,
@@ -14,7 +14,10 @@
 					"ploudness" : [ 9 ],
 					"pduration" : [ 2 ],
 					"pnote" : [ 3 ],
-					"pbounce" : [ 0 ]
+					"pbounce" : [ 0 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 0 ]
 				}
 
 			}
@@ -31,7 +34,10 @@
 					"ploudness" : [ 9 ],
 					"pduration" : [ 2 ],
 					"pnote" : [ 3 ],
-					"pbounce" : [ 0 ]
+					"pbounce" : [ 0 ],
+					"ploudshape" : [  ],
+					"pdurationshape" : [  ],
+					"pnoteshape" : [  ]
 				}
 
 			}
@@ -48,7 +54,10 @@
 					"ploudness" : [ 9 ],
 					"pduration" : [ 2 ],
 					"pnote" : [ 3 ],
-					"pbounce" : [ 0 ]
+					"pbounce" : [ 0 ],
+					"ploudshape" : [  ],
+					"pdurationshape" : [  ],
+					"pnoteshape" : [  ]
 				}
 
 			}

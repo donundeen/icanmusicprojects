@@ -13,13 +13,13 @@
 					"pmute7[1]" : [ 0 ],
 					"pmute6" : [ 0 ],
 					"pmute8" : [ 0 ],
-					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
-					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
-					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
-					"FractalInstrumentScoreFollower[1]::range" : [ 1 ],
+					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [ -1 ],
+					"FractalInstrumentScoreFollower[8]::impr121cap12" : [ -1 ],
+					"FractalInstrumentScoreFollower[9]::iflexflex" : [ -1 ],
+					"FractalInstrumentScoreFollower[1]::irangerange" : [ -1 ],
 					"FractalInstrumentScoreFollower[2]::iplant" : [ 1 ],
 					"FractalInstrumentScoreFollower[3]::iropeaccel1ropeaccel" : [ 1 ],
-					"FractalInstrumentScoreFollower[4]::stretch" : [ 1 ],
+					"FractalInstrumentScoreFollower[4]::iropestretch" : [ -1 ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [ 1 ]
 				}
 
@@ -36,13 +36,13 @@
 					"pmute7[1]" : [ 0 ],
 					"pmute6" : [ 0 ],
 					"pmute8" : [ 0 ],
-					"FractalInstrumentScoreFollower[7]::accel" : [ 2 ],
-					"FractalInstrumentScoreFollower[8]::cap12" : [ 2 ],
-					"FractalInstrumentScoreFollower[9]::flex" : [ 2 ],
-					"FractalInstrumentScoreFollower[1]::range" : [ 2 ],
+					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [  ],
+					"FractalInstrumentScoreFollower[8]::impr121cap12" : [  ],
+					"FractalInstrumentScoreFollower[9]::iflexflex" : [  ],
+					"FractalInstrumentScoreFollower[1]::irangerange" : [  ],
 					"FractalInstrumentScoreFollower[2]::iplant" : [ 1 ],
 					"FractalInstrumentScoreFollower[3]::iropeaccel1ropeaccel" : [ 1 ],
-					"FractalInstrumentScoreFollower[4]::stretch" : [ 1 ],
+					"FractalInstrumentScoreFollower[4]::iropestretch" : [  ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [ 1 ]
 				}
 
@@ -59,13 +59,13 @@
 					"pmute7[1]" : [ 0 ],
 					"pmute6" : [ 0 ],
 					"pmute8" : [ 0 ],
-					"FractalInstrumentScoreFollower[7]::accel" : [ 3 ],
-					"FractalInstrumentScoreFollower[8]::cap12" : [ 3 ],
-					"FractalInstrumentScoreFollower[9]::flex" : [ 3 ],
-					"FractalInstrumentScoreFollower[1]::range" : [ 3 ],
+					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [  ],
+					"FractalInstrumentScoreFollower[8]::impr121cap12" : [  ],
+					"FractalInstrumentScoreFollower[9]::iflexflex" : [  ],
+					"FractalInstrumentScoreFollower[1]::irangerange" : [  ],
 					"FractalInstrumentScoreFollower[2]::iplant" : [ 3 ],
 					"FractalInstrumentScoreFollower[3]::iropeaccel1ropeaccel" : [ 3 ],
-					"FractalInstrumentScoreFollower[4]::stretch" : [ 3 ],
+					"FractalInstrumentScoreFollower[4]::iropestretch" : [  ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [ 3 ]
 				}
 
@@ -82,13 +82,13 @@
 					"pmute7[1]" : [  ],
 					"pmute6" : [  ],
 					"pmute8" : [  ],
-					"FractalInstrumentScoreFollower[7]::accel" : [ 1 ],
-					"FractalInstrumentScoreFollower[8]::cap12" : [ 1 ],
-					"FractalInstrumentScoreFollower[9]::flex" : [ 1 ],
-					"FractalInstrumentScoreFollower[1]::range" : [ 1 ],
+					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [  ],
+					"FractalInstrumentScoreFollower[8]::impr121cap12" : [  ],
+					"FractalInstrumentScoreFollower[9]::iflexflex" : [  ],
+					"FractalInstrumentScoreFollower[1]::irangerange" : [  ],
 					"FractalInstrumentScoreFollower[2]::iplant" : [  ],
 					"FractalInstrumentScoreFollower[3]::iropeaccel1ropeaccel" : [  ],
-					"FractalInstrumentScoreFollower[4]::stretch" : [  ],
+					"FractalInstrumentScoreFollower[4]::iropestretch" : [  ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [  ]
 				}
 
@@ -105,13 +105,13 @@
 					"pmute7[1]" : [  ],
 					"pmute6" : [  ],
 					"pmute8" : [  ],
-					"FractalInstrumentScoreFollower[7]::accel" : [ 5 ],
-					"FractalInstrumentScoreFollower[8]::cap12" : [ 5 ],
-					"FractalInstrumentScoreFollower[9]::flex" : [ 5 ],
-					"FractalInstrumentScoreFollower[1]::range" : [ 5 ],
+					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [  ],
+					"FractalInstrumentScoreFollower[8]::impr121cap12" : [  ],
+					"FractalInstrumentScoreFollower[9]::iflexflex" : [  ],
+					"FractalInstrumentScoreFollower[1]::irangerange" : [  ],
 					"FractalInstrumentScoreFollower[2]::iplant" : [  ],
 					"FractalInstrumentScoreFollower[3]::iropeaccel1ropeaccel" : [  ],
-					"FractalInstrumentScoreFollower[4]::stretch" : [  ],
+					"FractalInstrumentScoreFollower[4]::iropestretch" : [  ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [  ]
 				}
 

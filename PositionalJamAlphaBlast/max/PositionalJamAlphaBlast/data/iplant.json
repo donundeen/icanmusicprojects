@@ -14,7 +14,10 @@
 					"ploudness" : [ 2 ],
 					"pduration" : [ 3 ],
 					"pnote" : [ 1 ],
-					"pbounce" : [ 2 ]
+					"pbounce" : [ 2 ],
+					"pnoteshape" : [  ],
+					"pdurationshape" : [  ],
+					"ploudshape" : [  ]
 				}
 
 			}
@@ -31,7 +34,10 @@
 					"ploudness" : [ 2 ],
 					"pduration" : [ 3 ],
 					"pnote" : [ 1 ],
-					"pbounce" : [ 2 ]
+					"pbounce" : [ 2 ],
+					"pnoteshape" : [  ],
+					"pdurationshape" : [  ],
+					"ploudshape" : [  ]
 				}
 
 			}
@@ -48,7 +54,10 @@
 					"ploudness" : [ 2 ],
 					"pduration" : [ 3 ],
 					"pnote" : [ 1 ],
-					"pbounce" : [ 2 ]
+					"pbounce" : [ 2 ],
+					"pnoteshape" : [  ],
+					"pdurationshape" : [  ],
+					"ploudshape" : [  ]
 				}
 
 			}
