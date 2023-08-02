@@ -1345,7 +1345,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 434.29999965429306, 122.143217404117649, 167.766715347766876, 40.399999856948853 ],
-					"text" : "http://192.168.1.79:8000/other/aiselector.html"
+					"text" : "http://192.168.0.200:8000/other/aiselector.html"
 				}
 
 			}
@@ -5628,20 +5628,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "UdpInstrumentStretch.maxpat",
-				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "accel.json",
-				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/data",
-				"patcherrelativepath" : "../data",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "addNoteToScore.maxpat",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
 				"patcherrelativepath" : ".",
@@ -5783,13 +5769,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "cap12.json",
-				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/data",
-				"patcherrelativepath" : "../data",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "chordGen.maxpat",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
 				"patcherrelativepath" : ".",
@@ -5881,13 +5860,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "flex.json",
-				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/data",
-				"patcherrelativepath" : "../data",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "instruments.json",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/data",
 				"patcherrelativepath" : "../data",
@@ -5941,13 +5913,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "range.json",
-				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/data",
-				"patcherrelativepath" : "../data",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "resize_n4m_monitor_patcher.js",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/code",
 				"patcherrelativepath" : "../code",
@@ -5966,13 +5931,6 @@
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "stretch.json",
-				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/data",
-				"patcherrelativepath" : "../data",
-				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
@@ -5997,7 +5955,28 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "udpInstrumentFlex.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "udpInstrumentMPR121_cap12.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "udpInstrumentPlantElectrodes.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "udpInstrumentRangefinder.maxpat",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -6011,21 +5990,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "udpinstrumentFlex.maxpat",
-				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "udpinstrumentMPR121_cap12.maxpat",
-				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "udpinstrumentRangefinder.maxpat",
+				"name" : "udpInstrumentStretch.maxpat",
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
