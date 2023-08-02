@@ -2,8 +2,8 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3773698001,
-	"viewrect" : [ 336.0, 152.0, 300.0, 500.0 ],
+	"modificationdate" : 3773785743,
+	"viewrect" : [ 193.0, 139.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -16,17 +16,17 @@
 				"toplevel" : 1
 			}
 ,
+			"dynamic_rescale.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"addNoteToScore.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
 			"buildchordovertype.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"dynamic_rescale.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -46,21 +46,6 @@
 				"local" : 1
 			}
 ,
-			"udpinstrumentFlex.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpinstrumentMPR121_cap12.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpinstrumentRangefinder.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"quantizer.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -72,16 +57,6 @@
 			}
 ,
 			"udpInstrumentZIGSIM.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpinstrumentCapacitive.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpinstrumentLoom.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -106,12 +81,7 @@
 				"local" : 1
 			}
 ,
-			"UdpInstrumentStretch.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"updInstrumentRopeAccel.maxpat" : 			{
+			"udpInstrumentRopeAccel.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

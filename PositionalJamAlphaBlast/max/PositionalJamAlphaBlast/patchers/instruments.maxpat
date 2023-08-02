@@ -225,7 +225,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 4379.383238792419434, 408.748490629196112, 132.400001227855682, 35.0 ],
-					"presentation_linecount" : 2,
 					"text" : "iropeaccel2theory f0.77(20-100)"
 				}
 
@@ -561,10 +560,10 @@
 					"numinlets" : 9,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 3077.033357858657837, 374.348488864898627, 186.0, 22.0 ],
+					"patching_rect" : [ 3077.033357858657837, 374.348488864898627, 219.266642987728119, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 374.200008153915405, 369.0, 294.0, 22.0 ],
-					"text" : "UdpInstrumentStretch irope /rope",
+					"text" : "udpInstrumentStretch irope /rope",
 					"varname" : "FractalInstrumentScoreFollower[4]"
 				}
 
@@ -841,7 +840,7 @@
 					"patching_rect" : [ 3574.733357012271881, 373.348488864898627, 269.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 41.200008153915405, 519.0, 284.0, 22.0 ],
-					"text" : "updInstrumentRopeAccel iropeaccel1 /rope 7002",
+					"text" : "udpInstrumentRopeAccel iropeaccel1 /rope 7002",
 					"varname" : "FractalInstrumentScoreFollower[3]"
 				}
 
@@ -1301,7 +1300,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 482.0, 335.0, 50.0, 22.0 ],
-					"text" : "1"
+					"text" : "3"
 				}
 
 			}
@@ -1647,10 +1646,10 @@
 					"numinlets" : 9,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1842.733357012271881, 333.348488864898627, 342.0, 22.0 ],
+					"patching_rect" : [ 1842.733357012271881, 333.348488864898627, 395.266642987728119, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 382.200008153915405, 219.866677939891815, 294.0, 22.0 ],
-					"text" : "udpinstrumentRangefinder irange /range1/val",
+					"text" : "udpInstrumentRangefinder irange /range1/val",
 					"varname" : "FractalInstrumentScoreFollower[1]"
 				}
 
@@ -1865,10 +1864,10 @@
 					"numinlets" : 9,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1293.733357012271881, 333.348488864898627, 322.00000262260437, 22.0 ],
+					"patching_rect" : [ 1293.733357012271881, 333.348488864898627, 352.333335081736323, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 41.200008153915405, 63.866677939891815, 294.0, 22.0 ],
-					"text" : "udpinstrumentFlex iflex /flex1/val",
+					"text" : "udpInstrumentFlex iflex /flex1/val",
 					"varname" : "FractalInstrumentScoreFollower[9]"
 				}
 
@@ -2096,11 +2095,11 @@
 					"numinlets" : 9,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 732.733357012271881, 340.348488864898627, 316.0, 22.0 ],
+					"patching_rect" : [ 732.733357012271881, 340.348488864898627, 317.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 382.200008153915405, 63.866677939891815, 294.0, 35.0 ],
-					"text" : "udpinstrumentMPR121_cap12 impr121 /mpr121cap12/val",
+					"text" : "udpInstrumentMPR121_cap12 impr121 /mpr121cap12/val",
 					"varname" : "FractalInstrumentScoreFollower[8]"
 				}
 
