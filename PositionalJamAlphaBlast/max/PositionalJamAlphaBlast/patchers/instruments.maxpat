@@ -286,7 +286,7 @@
 					"patching_rect" : [ 4148.733357012271881, 359.348488864898627, 275.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 371.000073313713074, 519.0, 282.0, 22.0 ],
-					"text" : "updInstrumentRopeAccel iropeaccel2 /sarah 2233",
+					"text" : "udpInstrumentRopeAccel iropeaccel2 /sarah 2233",
 					"varname" : "FractalInstrumentScoreFollower[5]"
 				}
 
@@ -2471,7 +2471,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 274.383356630802155, 383.748490629196112, 132.400001227855682, 35.0 ],
+					"patching_rect" : [ 339.783357858657837, 383.748490629196112, 132.400001227855682, 35.0 ],
 					"text" : "iacceltheory b0.57(20-100)"
 				}
 
@@ -2530,10 +2530,10 @@
 					"numinlets" : 9,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 145.733357012271881, 340.348488864898627, 208.0, 22.0 ],
+					"patching_rect" : [ 145.733357012271881, 340.348488864898627, 209.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 41.200008153915405, 219.866677939891815, 294.0, 22.0 ],
-					"text" : "udpinstrumentAccel iaccel /accel1/val",
+					"text" : "udpInstrumentAccel iaccel /accel1/val",
 					"varname" : "FractalInstrumentScoreFollower[7]"
 				}
 
