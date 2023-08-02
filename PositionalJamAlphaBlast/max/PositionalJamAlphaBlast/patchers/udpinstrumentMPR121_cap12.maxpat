@@ -650,14 +650,13 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 757.0, 246.0, 109.0, 22.0 ],
-					"text" : "pattrstorage cap12"
+					"patching_rect" : [ 757.0, 246.0, 152.0, 22.0 ],
+					"text" : "pattrstorage #1cap12"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"autorestore" : "cap12.json",
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-174",
@@ -665,7 +664,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 822.0, 218.0, 205.0, 23.0 ],
+					"patching_rect" : [ 822.0, 218.0, 252.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"client_rect" : [ 1057, 45, 1440, 407 ],
 						"parameter_enable" : 0,
@@ -673,8 +672,8 @@
 						"storage_rect" : [ 583, 69, 1034, 197 ]
 					}
 ,
-					"text" : "pattrstorage cap12 @savemode 3",
-					"varname" : "cap12"
+					"text" : "pattrstorage #1cap12 @savemode 3",
+					"varname" : "impr121cap12"
 				}
 
 			}

@@ -200,7 +200,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-160",
-					"items" : [ "AU DLS Synth 1", ",", "828x MIDI Port", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -340,14 +340,13 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 818.000023245811462, 240.0, 95.0, 22.0 ],
-					"text" : "pattrstorage flex"
+					"patching_rect" : [ 818.000023245811462, 240.0, 116.0, 22.0 ],
+					"text" : "pattrstorage #1flex"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"autorestore" : "flex.json",
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-148",
@@ -355,7 +354,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 883.000023245811462, 212.0, 189.0, 23.0 ],
+					"patching_rect" : [ 883.000023245811462, 212.0, 212.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"client_rect" : [ 1057, 45, 1440, 407 ],
 						"parameter_enable" : 0,
@@ -363,8 +362,8 @@
 						"storage_rect" : [ 583, 69, 1034, 197 ]
 					}
 ,
-					"text" : "pattrstorage flex @savemode 3",
-					"varname" : "flex"
+					"text" : "pattrstorage #1flex @savemode 3",
+					"varname" : "iflexflex"
 				}
 
 			}

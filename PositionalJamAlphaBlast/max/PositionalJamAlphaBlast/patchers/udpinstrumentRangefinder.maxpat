@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 2721.0, 125.0, 2059.0, 889.0 ],
+		"rect" : [ 34.0, 108.0, 2059.0, 629.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -47,7 +47,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 394.0, 38.0, 497.0, 51.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 368.0, 27.100007176399231, 209.583237528800964, 51.0 ],
+					"presentation_rect" : [ 368.0, 27.100007176399231, 210.0, 51.0 ],
 					"text" : "rangefinder"
 				}
 
@@ -226,7 +226,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-153",
-					"items" : [ "AU DLS Synth 1", ",", "828x MIDI Port", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -328,14 +328,13 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 757.0, 246.0, 107.0, 22.0 ],
-					"text" : "pattrstorage range"
+					"patching_rect" : [ 757.0, 246.0, 140.0, 22.0 ],
+					"text" : "pattrstorage #1range"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"autorestore" : "range.json",
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-140",
@@ -343,7 +342,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 822.0, 218.0, 202.0, 23.0 ],
+					"patching_rect" : [ 822.0, 218.0, 239.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"client_rect" : [ 1057, 45, 1440, 407 ],
 						"parameter_enable" : 0,
@@ -351,8 +350,8 @@
 						"storage_rect" : [ 583, 69, 1034, 197 ]
 					}
 ,
-					"text" : "pattrstorage range @savemode 3",
-					"varname" : "range"
+					"text" : "pattrstorage #1range @savemode 3",
+					"varname" : "irangerange"
 				}
 
 			}
