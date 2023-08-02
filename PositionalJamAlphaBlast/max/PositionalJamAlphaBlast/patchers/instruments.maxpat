@@ -40,6 +40,107 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-158",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1067.516600131988525, 178.515183863639777, 45.999996900558472, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 280.000076413154602, 610.0, 45.999996900558472, 20.0 ],
+					"text" : "reset"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-180",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1039.733357012271881, 178.515183863639777, 24.0, 24.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 245.333408713340759, 608.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-181",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1064.783243119716644, 312.515183863639777, 45.999996900558472, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 280.000076413154602, 635.866677939891815, 45.999996900558472, 20.0 ],
+					"text" : "muted"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-182",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1030.116575419902802, 312.515183863639777, 24.0, 24.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 245.333408713340759, 635.866677939891815, 24.0, 24.0 ],
+					"varname" : "mute2[1]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-183",
+					"maxclass" : "kslider",
+					"mode" : 1,
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"offset" : 12,
+					"outlettype" : [ "int", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 716.116575419902802, 524.515174088478034, 504.0, 53.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 36.200008153915405, 699.766668736934662, 294.0, 34.0 ],
+					"range" : 72
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 24.0,
+					"id" : "obj-184",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 724.983357667922974, 51.0, 306.0, 33.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 36.200008153915405, 626.866677939891815, 169.588236570358276, 33.0 ],
+					"text" : "2 touchee 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-185",
+					"maxclass" : "newobj",
+					"numinlets" : 9,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 747.733357012271881, 355.348488864898627, 317.0, 22.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 36.200008153915405, 662.866677939891815, 285.0, 22.0 ],
+					"text" : "udpInstrumentMPR121_cap12 ianalogr /analog1/val",
+					"varname" : "FractalInstrumentScoreFollower[6]"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-137",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -3079,6 +3180,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-25", 4 ],
 					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-185", 6 ],
+					"source" : [ "obj-180", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-185", 7 ],
+					"source" : [ "obj-182", 0 ]
 				}
 
 			}
