@@ -1,6 +1,6 @@
 {
 	"pattrstorage" : 	{
-		"name" : "impr121cap12",
+		"name" : "analogcap12",
 		"slots" : 		{
 			"1" : 			{
 				"id" : 1,
@@ -13,6 +13,21 @@
 					"pskiptheory" : [ 0 ],
 					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 0.053191489361702, 0.0, 0, 0.053191489361702, 0.813333333333333, 0, 1.0, 1.0, 0, "linear" ],
 					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ]
+				}
+
+			}
+,
+			"3" : 			{
+				"id" : 3,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 2 ],
+					"pnotesel" : [ 1 ],
+					"pskiptheory" : [ 0 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 0.095744680851064, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 1.0, 0, 1.0, 0.0, 0, "linear" ]
 				}
 
 			}
