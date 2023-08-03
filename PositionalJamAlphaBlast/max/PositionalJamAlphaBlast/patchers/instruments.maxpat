@@ -77,7 +77,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 6211.666667699813843, 159.566655933856964, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 628.800141572952271, 187.833327174186707, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 268.800141572952271, 676.833327174186707, 45.999996900558472, 20.0 ],
 					"text" : "reset"
 				}
 
@@ -92,7 +92,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 6181.883424580097198, 159.566655933856964, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 594.133473873138428, 185.833327174186707, 24.0, 24.0 ]
+					"presentation_rect" : [ 234.133473873138428, 674.833327174186707, 24.0, 24.0 ]
 				}
 
 			}
@@ -128,7 +128,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 6206.666667699813843, 310.881834683418219, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 628.800141572952271, 211.700005114078522, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 268.800141572952271, 700.700005114078522, 45.999996900558472, 20.0 ],
 					"text" : "muted"
 				}
 
@@ -143,7 +143,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 6172.0, 310.881834683418219, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 594.133473873138428, 211.700005114078522, 24.0, 24.0 ],
+					"presentation_rect" : [ 234.133473873138428, 700.700005114078522, 24.0, 24.0 ],
 					"varname" : "mute6[3]"
 				}
 
@@ -172,7 +172,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 5858.0, 522.881824908256476, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 385.000073313713074, 277.766668736934662, 294.0, 34.0 ],
+					"presentation_rect" : [ 25.000073313713074, 766.766668736934662, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -198,7 +198,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 5961.5, 47.0, 306.0, 33.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 385.000073313713074, 197.200005114078522, 196.0, 33.0 ],
+					"presentation_rect" : [ 25.000073313713074, 674.833327174186707, 196.0, 33.0 ],
 					"text" : "ch9 Accel 3"
 				}
 
@@ -225,7 +225,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 6120.266663372516632, 403.115141448974555, 132.400001227855682, 35.0 ],
 					"presentation_linecount" : 2,
-					"text" : "iropeaccel2theory f0.71(20-100)"
+					"text" : "l3g4200theory f0.51(20-100)"
 				}
 
 			}
@@ -283,11 +283,11 @@
 					"numinlets" : 9,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 5889.61678159236908, 353.715139684677069, 306.0, 22.0 ],
+					"patching_rect" : [ 5889.61678159236908, 353.715139684677069, 287.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 385.000073313713074, 240.866677939891815, 282.0, 35.0 ],
-					"text" : "udpInstrumentRopeAccel iropeaccel2 /l3g4200/val 7005",
+					"presentation_rect" : [ 25.000073313713074, 729.866677939891815, 282.0, 35.0 ],
+					"text" : "udpInstrumentRopeAccel l3g4200 /l3g4200/val 7005",
 					"varname" : "FractalInstrumentScoreFollower[11]"
 				}
 
@@ -823,7 +823,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 4470.783243119716644, 165.200005114078522, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 613.800141572952271, 172.833327174186707, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 613.800141572952271, 171.866677939891815, 45.999996900558472, 20.0 ],
 					"text" : "reset"
 				}
 
@@ -838,7 +838,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 4441.0, 165.200005114078522, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 579.133473873138428, 170.833327174186707, 24.0, 24.0 ]
+					"presentation_rect" : [ 579.133473873138428, 169.866677939891815, 24.0, 24.0 ]
 				}
 
 			}
@@ -970,7 +970,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 4379.383238792419434, 408.748490629196112, 132.400001227855682, 35.0 ],
-					"text" : "iropeaccel2theory f0.71(20-100)"
+					"text" : "iropeaccel2theory f0.76(20-100)"
 				}
 
 			}
@@ -1247,7 +1247,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3298.68335747718811, 442.748490629196112, 132.400001227855682, 35.0 ],
-					"text" : "iropetheory f0.50(20-51)"
+					"text" : "iropetheory f0.70(20-51)"
 				}
 
 			}
@@ -1524,7 +1524,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3805.383238792419434, 422.748490629196112, 132.400001227855682, 35.0 ],
-					"text" : "iropeaccel1theory f0.72(20-100)"
+					"text" : "iropeaccel1theory f0.75(20-100)"
 				}
 
 			}
@@ -2754,7 +2754,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 861.383356630802155, 383.748490629196112, 132.400001227855682, 35.0 ],
-					"text" : "impr121theory1 f0.09(35-100)"
+					"text" : "impr121theory1 f0.14(35-100)"
 				}
 
 			}
@@ -3189,7 +3189,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 339.783357858657837, 383.748490629196112, 132.400001227855682, 35.0 ],
-					"text" : "iacceltheory f0.91(20-100)"
+					"text" : "iacceltheory f0.10(20-100)"
 				}
 
 			}
