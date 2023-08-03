@@ -35,9 +35,9 @@
 					"pduration" : [ 2 ],
 					"pnote" : [ 3 ],
 					"pbounce" : [ 0 ],
-					"ploudshape" : [  ],
-					"pdurationshape" : [  ],
-					"pnoteshape" : [  ]
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 0 ]
 				}
 
 			}
@@ -55,9 +55,9 @@
 					"pduration" : [ 2 ],
 					"pnote" : [ 3 ],
 					"pbounce" : [ 0 ],
-					"ploudshape" : [  ],
-					"pdurationshape" : [  ],
-					"pnoteshape" : [  ]
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 0 ]
 				}
 
 			}

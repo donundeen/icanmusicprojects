@@ -2,7 +2,7 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3773785743,
+	"modificationdate" : 3773882336,
 	"viewrect" : [ 193.0, 139.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -16,17 +16,17 @@
 				"toplevel" : 1
 			}
 ,
-			"dynamic_rescale.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"addNoteToScore.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
 			"buildchordovertype.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"dynamic_rescale.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -42,6 +42,11 @@
 			}
 ,
 			"udpInstrumentPlantElectrodes.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpInstrumentRopeAccel.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -81,7 +86,12 @@
 				"local" : 1
 			}
 ,
-			"udpInstrumentRopeAccel.maxpat" : 			{
+			"MainWithFractalScore.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"instruments_fractals.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

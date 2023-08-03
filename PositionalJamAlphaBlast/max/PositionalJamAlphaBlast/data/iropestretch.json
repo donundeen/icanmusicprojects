@@ -1,0 +1,57 @@
+{
+	"pattrstorage" : 	{
+		"name" : "iropestretch",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pthreshold" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"pskiptheory" : [ 0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 6 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pthreshold" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"pskiptheory" : [ 0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 6 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ]
+				}
+
+			}
+,
+			"3" : 			{
+				"id" : 3,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 51 ],
+					"pthreshold" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"pskiptheory" : [ 0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 6 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 0.032382624057391, 0.0, 0, 0.080956560143477, 0.719083969473624, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 0.038174643851977, 0.215734542418464, 0, 1.0, 1.0, 0, "linear" ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

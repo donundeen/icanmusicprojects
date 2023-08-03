@@ -63,7 +63,7 @@ const char *DEVICE_ID = "/analog1/val";
 
 
 // sensor config vars - pins
-const int analogInPin = A3;  // Analog input pin that the potentiometer is attached to
+const int analogInPin = A0;  // Analog input pin that the potentiometer is attached to
 
  
 

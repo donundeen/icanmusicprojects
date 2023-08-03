@@ -1,6 +1,6 @@
 {
 	"pattrstorage" : 	{
-		"name" : "iplant",
+		"name" : "irangerange",
 		"slots" : 		{
 			"1" : 			{
 				"id" : 1,
@@ -8,16 +8,12 @@
 					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
-					"pchannel" : [ 5 ],
+					"pchannel" : [ 4 ],
 					"pskiptheory" : [ 0 ],
 					"pnotesel" : [ 1 ],
-					"ploudness" : [ 2 ],
-					"pduration" : [ 3 ],
-					"pnote" : [ 1 ],
-					"pbounce" : [ 2 ],
+					"pthreshold" : [ 0 ],
 					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
-					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
-					"pnoteshape" : [ 0 ]
+					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ]
 				}
 
 			}
@@ -28,16 +24,12 @@
 					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
-					"pchannel" : [ 3 ],
+					"pchannel" : [ 4 ],
 					"pskiptheory" : [ 0 ],
 					"pnotesel" : [ 1 ],
-					"ploudness" : [ 2 ],
-					"pduration" : [ 3 ],
-					"pnote" : [ 1 ],
-					"pbounce" : [ 2 ],
+					"pthreshold" : [ 0 ],
 					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
-					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
-					"pnoteshape" : [ 0 ]
+					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ]
 				}
 
 			}
@@ -48,16 +40,12 @@
 					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
-					"pchannel" : [ 5 ],
+					"pchannel" : [ 4 ],
 					"pskiptheory" : [ 0 ],
 					"pnotesel" : [ 1 ],
-					"ploudness" : [ 2 ],
-					"pduration" : [ 3 ],
-					"pnote" : [ 1 ],
-					"pbounce" : [ 2 ],
+					"pthreshold" : [ 0 ],
 					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
-					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
-					"pnoteshape" : [ 0 ]
+					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ]
 				}
 
 			}

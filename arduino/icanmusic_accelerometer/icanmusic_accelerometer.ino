@@ -73,7 +73,7 @@ const char *WIFI_PASSWORD = "WeL0veLettuce";
 const char * UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
 */
 
-const int UDPPort = 7002; // the UDP port that Max is listening on
+const int UDPPort = 7004; // the UDP port that Max is listening on
 
 // NETWORK+SENSOR CONFIGS
 const char *DEVICE_ID = "/accel1/val";

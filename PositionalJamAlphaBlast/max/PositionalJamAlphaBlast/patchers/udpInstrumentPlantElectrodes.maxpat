@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-240",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 5852.0, 1075.5, 88.0, 22.0 ],
+					"text" : "r globalnoteout"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-296",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -1102,7 +1114,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 5635.0, 946.0, 178.0, 22.0 ],
-					"restore" : [ 3 ],
+					"restore" : [ 5 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -1164,7 +1176,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-61",
-					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "AU DLS Synth 1", ",", "828x MIDI Port", ",", "from Max 1", ",", "from Max 2" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -1717,7 +1729,7 @@
 					"patching_rect" : [ 0.0, 722.833322525024414, 253.0, 26.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 687.0, 107.066677033901215, 253.0, 26.0 ],
-					"text" : "192.168.1.79"
+					"text" : "192.168.2.89"
 				}
 
 			}
@@ -5283,6 +5295,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-248", 0 ],
 					"source" : [ "obj-239", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-173", 0 ],
+					"source" : [ "obj-240", 0 ]
 				}
 
 			}
