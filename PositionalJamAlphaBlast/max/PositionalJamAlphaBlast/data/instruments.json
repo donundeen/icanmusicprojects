@@ -13,6 +13,7 @@
 					"pmute7[1]" : [ 0 ],
 					"pmute6" : [ 0 ],
 					"pmute8" : [ 0 ],
+					"pmute9" : [ 0 ],
 					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::impr121cap12" : [ 1 ],
 					"FractalInstrumentScoreFollower[9]::iflexflex" : [ 1 ],
@@ -22,7 +23,8 @@
 					"FractalInstrumentScoreFollower[4]::iropestretch" : [ 1 ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [ 1 ],
 					"FractalInstrumentScoreFollower[6]::analogcap12" : [ -1 ],
-					"pmute9" : [ 0 ]
+					"FractalInstrumentScoreFollower[11]::l3g4200ropeaccel" : [  ],
+					"pmute8[1]" : [  ]
 				}
 
 			}
@@ -38,6 +40,7 @@
 					"pmute7[1]" : [ 0 ],
 					"pmute6" : [ 0 ],
 					"pmute8" : [ 0 ],
+					"pmute9" : [ 0 ],
 					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [ 1 ],
 					"FractalInstrumentScoreFollower[8]::impr121cap12" : [ -1 ],
 					"FractalInstrumentScoreFollower[9]::iflexflex" : [ 1 ],
@@ -47,7 +50,8 @@
 					"FractalInstrumentScoreFollower[4]::iropestretch" : [ 1 ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [ 1 ],
 					"FractalInstrumentScoreFollower[6]::analogcap12" : [ -1 ],
-					"pmute9" : [ 0 ]
+					"FractalInstrumentScoreFollower[11]::l3g4200ropeaccel" : [  ],
+					"pmute8[1]" : [  ]
 				}
 
 			}
@@ -63,6 +67,7 @@
 					"pmute7[1]" : [ 0 ],
 					"pmute6" : [ 0 ],
 					"pmute8" : [ 0 ],
+					"pmute9" : [ 0 ],
 					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [ 3 ],
 					"FractalInstrumentScoreFollower[8]::impr121cap12" : [ 3 ],
 					"FractalInstrumentScoreFollower[9]::iflexflex" : [ 3 ],
@@ -72,7 +77,8 @@
 					"FractalInstrumentScoreFollower[4]::iropestretch" : [ 3 ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [ 3 ],
 					"FractalInstrumentScoreFollower[6]::analogcap12" : [ 3 ],
-					"pmute9" : [ 0 ]
+					"FractalInstrumentScoreFollower[11]::l3g4200ropeaccel" : [  ],
+					"pmute8[1]" : [  ]
 				}
 
 			}
@@ -88,6 +94,7 @@
 					"pmute7[1]" : [  ],
 					"pmute6" : [  ],
 					"pmute8" : [  ],
+					"pmute9" : [  ],
 					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [  ],
 					"FractalInstrumentScoreFollower[8]::impr121cap12" : [  ],
 					"FractalInstrumentScoreFollower[9]::iflexflex" : [  ],
@@ -97,7 +104,8 @@
 					"FractalInstrumentScoreFollower[4]::iropestretch" : [  ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [  ],
 					"FractalInstrumentScoreFollower[6]::analogcap12" : [  ],
-					"pmute9" : [  ]
+					"FractalInstrumentScoreFollower[11]::l3g4200ropeaccel" : [  ],
+					"pmute8[1]" : [  ]
 				}
 
 			}
@@ -113,6 +121,7 @@
 					"pmute7[1]" : [  ],
 					"pmute6" : [  ],
 					"pmute8" : [  ],
+					"pmute9" : [  ],
 					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [  ],
 					"FractalInstrumentScoreFollower[8]::impr121cap12" : [  ],
 					"FractalInstrumentScoreFollower[9]::iflexflex" : [  ],
@@ -122,7 +131,8 @@
 					"FractalInstrumentScoreFollower[4]::iropestretch" : [  ],
 					"FractalInstrumentScoreFollower[5]::iropeaccel2ropeaccel" : [  ],
 					"FractalInstrumentScoreFollower[6]::analogcap12" : [  ],
-					"pmute9" : [  ]
+					"FractalInstrumentScoreFollower[11]::l3g4200ropeaccel" : [  ],
+					"pmute8[1]" : [  ]
 				}
 
 			}
