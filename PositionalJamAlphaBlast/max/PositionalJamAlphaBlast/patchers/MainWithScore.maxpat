@@ -1428,7 +1428,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 434.29999965429306, 122.143217404117649, 167.766715347766876, 40.399999856948853 ],
-					"text" : "http://192.168.0.200:8000/other/aiselector.html"
+					"text" : "http://192.168.2.89:8000/other/aiselector.html"
 				}
 
 			}
@@ -2378,7 +2378,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3033.137516915798187, 1.294884264469147, 37.0, 22.0 ],
-					"text" : "A m"
+					"text" : "F M"
 				}
 
 			}
@@ -3431,7 +3431,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 2858.866681933403015, 91.265263378620148, 50.0, 35.0 ],
-					"text" : "theory A m"
+					"text" : "theory F M"
 				}
 
 			}
