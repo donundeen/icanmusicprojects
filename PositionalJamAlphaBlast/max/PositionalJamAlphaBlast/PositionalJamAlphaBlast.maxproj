@@ -2,7 +2,7 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3773882336,
+	"modificationdate" : 3774561253,
 	"viewrect" : [ 193.0, 139.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -51,17 +51,17 @@
 				"local" : 1
 			}
 ,
+			"udpInstrumentZIGSIM.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"quantizer.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
 			"testSocketServer.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpInstrumentZIGSIM.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -170,6 +170,16 @@
 			"NotoMusic-Regular.ttf" : 			{
 				"kind" : "file",
 				"local" : 1
+			}
+,
+			"chordselectorLandscape.ai" : 			{
+				"kind" : "file",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/_DeletedItems/other",
+					"projectrelativepath" : "./_DeletedItems/other"
+				}
+
 			}
 
 		}
