@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 84.0, 87.0, 1103.0, 682.0 ],
+		"rect" : [ 41.0, 99.0, 1103.0, 682.0 ],
 		"bglocked" : 1,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -1428,7 +1428,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 434.29999965429306, 122.143217404117649, 167.766715347766876, 40.399999856948853 ],
-					"text" : "http://192.168.2.89:8000/other/aiselector.html"
+					"text" : "http://10.0.0.174:8000/other/aiselector.html"
 				}
 
 			}
@@ -2378,7 +2378,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3033.137516915798187, 1.294884264469147, 37.0, 22.0 ],
-					"text" : "F M"
+					"text" : "C M"
 				}
 
 			}
@@ -3431,7 +3431,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 2858.866681933403015, 91.265263378620148, 50.0, 35.0 ],
-					"text" : "theory F M"
+					"text" : "theory C M"
 				}
 
 			}
@@ -6090,6 +6090,13 @@
 				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "udpInstrument1Input.maxpat",
+				"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
