@@ -44,7 +44,7 @@ void setup() {
   Serial.println("\n\n---BEFORE REMOVING---");
   listAllFiles();
  
- // SPIFFS.remove("/test.txt");
+  SPIFFS.remove("/config.json");
  
   Serial.println("\n\n---AFTER REMOVING---");
   listAllFiles();
