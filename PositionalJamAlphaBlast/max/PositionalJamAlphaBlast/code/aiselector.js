@@ -10,7 +10,6 @@ host = host.replace(/:[0-9]+/,"");
 // remove port
 console.log(host);
 
-
 // some note characters: 
 // ♭ 𝅘𝅥𝅮𝅗𝅥°♭𝅘𝅥𝅗𝅥𝅗 𝄼 𝄽 
 

@@ -1,0 +1,69 @@
+{
+	"pattrstorage" : 	{
+		"name" : "iaccelaccel",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 3 ],
+					"pskiptheory" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"ploudness" : [ 4 ],
+					"pduration" : [ 15 ],
+					"pnote" : [ 14 ],
+					"pbounce" : [ 1 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 0 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 3 ],
+					"pskiptheory" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"ploudness" : [ 4 ],
+					"pduration" : [ 15 ],
+					"pnote" : [ 14 ],
+					"pbounce" : [ 1 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 0 ]
+				}
+
+			}
+,
+			"3" : 			{
+				"id" : 3,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 3 ],
+					"pskiptheory" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"ploudness" : [ 19 ],
+					"pduration" : [ 15 ],
+					"pnote" : [ 13 ],
+					"pbounce" : [ 2 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.000394915785022, 0.128857765500194, 0, 1.0, 1.0, 0, "linear" ],
+					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.253132576284813, 0, 0.0, 0.278170744224656, 0, 0.991795015835561, 0.753895935081667, 0, "linear" ],
+					"pnoteshape" : [ 0 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

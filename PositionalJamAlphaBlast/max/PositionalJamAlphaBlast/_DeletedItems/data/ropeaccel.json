@@ -1,0 +1,26 @@
+{
+	"pattrstorage" : 	{
+		"name" : "ropeaccel",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 7 ],
+					"pskiptheory" : [ 0 ],
+					"pnotesel" : [ 1 ],
+					"ploudness" : [ 6 ],
+					"pduration" : [ 1 ],
+					"pnote" : [ 8 ],
+					"pbounce" : [ 0 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

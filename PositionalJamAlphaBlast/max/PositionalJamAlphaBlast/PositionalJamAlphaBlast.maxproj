@@ -2,8 +2,8 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3771439868,
-	"viewrect" : [ 565.0, 318.0, 300.0, 500.0 ],
+	"modificationdate" : 3774621055,
+	"viewrect" : [ 193.0, 139.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -41,22 +41,17 @@
 				"local" : 1
 			}
 ,
+			"udpInstrumentPlantElectrodes.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpInstrumentRopeAccel.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"udpInstrumentZIGSIM.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpinstrumentCapacitive.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpinstrumentFlex.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpinstrumentMPR121_cap12.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -67,11 +62,6 @@
 			}
 ,
 			"testSocketServer.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"udpinstrumentLoom.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -96,7 +86,17 @@
 				"local" : 1
 			}
 ,
-			"udpinstrumentRangefinder.maxpat" : 			{
+			"MainWithFractalScore.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"instruments_fractals.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpInstrument1Input.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -175,6 +175,16 @@
 			"NotoMusic-Regular.ttf" : 			{
 				"kind" : "file",
 				"local" : 1
+			}
+,
+			"chordselectorLandscape.ai" : 			{
+				"kind" : "file",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/_DeletedItems/other",
+					"projectrelativepath" : "./_DeletedItems/other"
+				}
+
 			}
 
 		}

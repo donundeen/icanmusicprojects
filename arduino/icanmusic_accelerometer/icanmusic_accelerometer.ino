@@ -45,13 +45,20 @@ Adafruit_LIS3MDL lis3mdl;
 #include <AutoConnect.h>
 #include <WebServer.h>
 
-
+/*
 const char *WIFI_SSID = "Studio314";
 const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
+const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
+*/
+
+const char *WIFI_SSID = "icanmusic";
+const char *WIFI_PASSWORD = "icanmusic";
+const char *UDPReceiverIP = "192.168.0.200"; // ip where UDP messages are going
+
 //const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
-const char * UDPReceiverIP = "172.30.142.113"; // ip where UDP messages are going
+//const char * UDPReceiverIP = "172.30.142.113"; // ip where UDP messages are going
 //const char * UDPReceiverIP = "172.30.142.76"; // ip where UDP messages are going
 
 //const char * UDPReceiverIP = "192.168.10.31"; // ip where UDP messages are going
@@ -66,7 +73,7 @@ const char *WIFI_PASSWORD = "WeL0veLettuce";
 const char * UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
 */
 
-const int UDPPort = 7002; // the UDP port that Max is listening on
+const int UDPPort = 7004; // the UDP port that Max is listening on
 
 // NETWORK+SENSOR CONFIGS
 const char *DEVICE_ID = "/accel1/val";
