@@ -9,11 +9,8 @@
 // NETWORK_LIBS
 /*
  * Required libraries to install in the arduino IDE (use the Library Manager to find and install):
- * https://github.com/Hieromon/PageBuilder : PageBuilder
  * https://github.com/bblanchon/ArduinoJson : ArduinoJson
  * https://github.com/CNMAT/OSC : OSC
- * AutoConnect: https://hieromon.github.io/AutoConnect/index.html : instructions on how to install are here: 
- * follow the instructions under "Install the AutoConnect" if you can't just find it in the Library Manager
  */
 // this is all the OSC libraries
 #include <SLIPEncodedSerial.h>
