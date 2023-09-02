@@ -149,8 +149,8 @@ void sendOSCUDP(int touchVal){
   thisarduinoip.toCharArray(ipbuffer, 20);
   OSCMessage oscmsg(DEVICE_ID);  
   oscmsg.add(touchVal).add(ipbuffer);
-  Serial.print("sending data ");
-  Serial.println(touchVal);
+//  Serial.print("sending data ");
+//  Serial.println(touchVal);
 
   udp.beginPacket(UDPReceiverIP, UDPPort);
 //  udp.write(buffer, msg.length()+1);
