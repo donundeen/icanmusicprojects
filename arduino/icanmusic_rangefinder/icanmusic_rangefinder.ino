@@ -467,6 +467,8 @@ void config_webpage_setup() {
 */
   //if you get here you have connected to the WiFi
   Serial.println("connected...yeey :)");
+  digiflash(BUILTIN_LED, 10, 100, LOW);
+
 
   //read updated parameters
   strcpy(icanmusic_server_ip, custom_icanmusic_server_ip.getValue());
@@ -515,11 +517,22 @@ void config_webpage_setup() {
 #endif
     configFile.close();
     //end save
+    digiflash(BUILTIN_LED, 4, 250, LOW);
+
   }
 
   Serial.println("local ip");
   Serial.println(WiFi.localIP());
 }
 
+void digiflash(int pin, int numflash, int delaytime, int endval){
+  for(int i = 0; i< numflash; i++){
+    digitalWrite(pin, HIGH);
+    delay(delaytime);
+    digitalWrite(pin, LOW);
+    delay(delaytime);
+  }
+  digitalWrite(pin, endval);
+}
 
 
