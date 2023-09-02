@@ -1,5 +1,16 @@
 #include "SPIFFS.h"
  
+/*
+If you change the structure of the config file in the arduino (eg adding variables), 
+you'll need to delete the old one. 
+
+To use this:
+- run once and look at the name of the existing files
+- uncomment the   SPIFFS.remove("/something.json"); line and change to the name of the file to remove
+- run it again
+
+*/
+
 void listAllFiles(){
  
   File root = SPIFFS.open("/");
@@ -44,7 +55,7 @@ void setup() {
   Serial.println("\n\n---BEFORE REMOVING---");
   listAllFiles();
  
-  SPIFFS.remove("/config.json");
+ // SPIFFS.remove("/config.json");
  
   Serial.println("\n\n---AFTER REMOVING---");
   listAllFiles();

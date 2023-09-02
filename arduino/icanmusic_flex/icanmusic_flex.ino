@@ -118,7 +118,7 @@ String thishumanname = "";
 String thisarduinoip = "";
 //create UDP instance
 WiFiUDP udp;
-
+OSCErrorCode error;
 
 // wifi autoconnect code
 // CONFIG WEBPAGE PINS AND VARS
@@ -130,14 +130,13 @@ char this_device_name[34] = "RENAME_ME";
 //flag for saving data
 bool shouldSaveConfig = false;
 
-OSCErrorCode error;
-static boolean doConnect = false;
+
 // END NETWORK-SPECIFIC VARS
 //////////////////////////////////////////////////////////////////////////////
 
 
 
-////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 // SENSOR code
 void device_setup(){
   pinMode(sensorPin, INPUT); // Sensor pin as input
@@ -310,7 +309,10 @@ void config_webpage_setup() {
   bool configMode = false;
   if(digitalRead(resetButtonPin) == LOW){
     Serial.println("config Mode ON");
+    digitalWrite(BUILTIN_LED, HIGH);
     configMode = true;
+  }else{
+    digitalWrite(BUILTIN_LED, LOW);
   }
 
   //clean FS, for testing
