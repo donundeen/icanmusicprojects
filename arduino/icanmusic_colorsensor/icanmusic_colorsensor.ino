@@ -1,33 +1,19 @@
-//gyro code:
-// * LSM6DSOX + LIS3MDL FeatherWing : https://www.adafruit.com/product/4565
-// * ISM330DHCX + LIS3MDL FeatherWing https://www.adafruit.com/product/4569
-// * LSM6DSOX + LIS3MDL Breakout : https://www.adafruit.com/product/4517
-// * LSM6DS33 + LIS3MDL Breakout Lhttps://www.adafruit.com/product/4485
-// see here: https://learn.adafruit.com/st-9-dof-combo/ard/Users/donundeen/Downloads/TCS3200D/color/color.pdeuino 
 /*
  * Libraries to install (include dependencies)
  * OSC
- * Adafruit LSM6DS 
- * Adafruit LIS3MDL
  * AutoConnect (see https://hieromon.github.io/AutoConnect/#installation)
  * 
  */
-// SENSOR LIBS/Users/donundeen/Downloads/TCS3200D/TCS3200D/TCS3200D.pde
-#include <Adafruit_LSM6DSOX.h>
-#include <Adafruit_LIS3MDL.h>
-
-////////////////////////////////
-// SENSOR code
-Adafruit_LSM6DSOX lsm6ds;
-Adafruit_LIS3MDL lis3mdl;
 
 
 // NETWORK_LIBS
 /*
  * Required libraries to install in the arduino IDE (use the Library Manager to find and install):
+ * https://github.com/Hieromon/PageBuilder : PageBuilder
  * https://github.com/bblanchon/ArduinoJson : ArduinoJson
  * https://github.com/CNMAT/OSC : OSC
- * https://github.com/tzapu/WiFiManager : WifiManager
+ * AutoConnect: https://hieromon.github.io/AutoConnect/index.html : instructions on how to install are here: 
+ * follow the instructions under "Install the AutoConnect" if you can't just find it in the Library Manager
  */
 // this is all the OSC libraries
 #include <SLIPEncodedSerial.h>
@@ -37,8 +23,8 @@ Adafruit_LIS3MDL lis3mdl;
 #include <OSCTiming.h>
 #include <OSCMessage.h>
 #include <OSCMatch.h>
+// these the libraries for connecting to WiFi
 #include <WiFi.h>
-
 
 // CONFIG WEBPAGE INCLUDES
 #include <FS.h>                   //this needs to be first, or it all crashes and burns...
@@ -48,42 +34,29 @@ Adafruit_LIS3MDL lis3mdl;
 #endif
 #include <ArduinoJson.h>          //https://github.com/bblanchon/ArduinoJson
 
+/// NETWORK CONFIGS  
 
 const char *WIFI_SSID = "icanmusic";
 const char *WIFI_PASSWORD = "icanmusic";
-const char *UDPReceiverIP = "192.168.0.200"; // ip where UDP messages are going
+char *UDPReceiverIP = "192.168.0.200"; // ip where UDP messages are going
 int UDPPort = 7002; // the UDP port that Max is listening on
 
-
-/*
-const char *WIFI_SSID = "Studio314";
-const char *WIFI_PASSWORD = "!TIE2lacesWiFi";
-const char * UDPReceiverIP = "172.30.142.113"; // ip where UDP messages are going
-*/
-//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
-//const char * UDPReceiverIP = "10.102.134.110"; // ip where UDP messages are going
-//const char * UDPReceiverIP = "10.102.135.53"; // ip where UDP messages are going
-//const char * UDPReceiverIP = "192.168.10.31"; // ip where UDP messages are going
-//172.30.142.76 172.30.142.113
-//const char * UDPReceiverIP = "172.30.142.80"; // ip where UDP messages are going
-//const char * UDPReceiverIP = "172.28.192.1"; // ip where UDP messages are going
-
-/*
-const char *WIFI_SSID = "JJandJsKewlPad";
-const char *WIFI_PASSWORD = "WeL0veLettuce";
-//const char * UDPReceiverIP = "10.0.0.164"; // ip where UDP messages are going
-const char * UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
-*/
-
-
 // NETWORK+SENSOR CONFIGS
-const char *DEVICE_NAME = "acceleromter1";
+const char *DEVICE_NAME = "color1";
 const char *DEVICE_ID_SUFFIX = "/val";
 char DEVICE_ID[40] = "/";
+
 
 // NO NETWORK MODE? for testing sensor without network
 const bool no_network = false;
 
+// SENSOR CONFIG VARS - PINS
+// TCS230 or TCS3200 pins wiring to Arduino
+#define S0 27
+#define S1 33
+#define S2 15
+#define S3 32
+#define sensorOut A2
 
 ////////////////////////////////////////////
 // NETWORK SPECIFIC CODE - SHOULDN'T CHANGE
@@ -117,6 +90,8 @@ String thishumanname = "";
 String thisarduinoip = "";
 //create UDP instance
 WiFiUDP udp;
+OSCErrorCode error;
+
 // wifi autoconnect code
 // CONFIG WEBPAGE PINS AND VARS
 int resetButtonPin = A0;
@@ -127,280 +102,176 @@ char this_device_name[34] = "RENAME_ME";
 //flag for saving data
 bool shouldSaveConfig = false;
 
+
 // END NETWORK-SPECIFIC VARS
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
 
 
-////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 // SENSOR code
-void device_setup() {
-  delay(1000);
-  Serial.println("setup");
 
-  // for incoming UDP
-//  SLIPSerial.begin(115200);
-  pinMode(21, INPUT_PULLUP);
 
-  pinMode(BUILTIN_LED, OUTPUT);
+// Stores frequency read by the photodiodes
+int redFrequency = 0;
+int greenFrequency = 0;
+int blueFrequency = 0;
 
-  // gyro/accel stuff
-  bool lsm6ds_success, lis3mdl_success;
 
-  // hardware I2C mode, can pass in address & alt Wire
+// calibration values 
+int redlow = 29;
+int redhigh = 80;
+int greenlow = 53;
+int greenhigh = 118;
+int bluelow = 17;
+int bluehigh = 125;
 
-  lsm6ds_success = lsm6ds.begin_I2C();
-  lis3mdl_success = lis3mdl.begin_I2C();
+// Stores the red. green and blue colors
+int redColor = 0;
+int greenColor = 0;
+int blueColor = 0;
 
-  if (!lsm6ds_success){
-    Serial.println("Failed to find LSM6DS chip");
-  }
-  if (!lis3mdl_success){
-    Serial.println("Failed to find LIS3MDL chip");
-  }
-  if (!(lsm6ds_success && lis3mdl_success)) {
-    while (1) {
-      delay(10);
-    }
-  }
+void device_setup(){
+  // Setting the outputs
+  pinMode(S0, OUTPUT);
+  pinMode(S1, OUTPUT);
+  pinMode(S2, OUTPUT);
+  pinMode(S3, OUTPUT);
+  
+  // Setting the sensorOut as an input
+  pinMode(sensorOut, INPUT);
+  
+  // Setting frequency scaling to 20%
+  digitalWrite(S0,HIGH);
+  digitalWrite(S1,LOW);
 
-  Serial.println("LSM6DS and LIS3MDL Found!");
-
-  // lsm6ds.setAccelRange(LSM6DS_ACCEL_RANGE_2_G);
-  Serial.print("Accelerometer range set to: ");
-  switch (lsm6ds.getAccelRange()) {
-  case LSM6DS_ACCEL_RANGE_2_G:
-    Serial.println("+-2G");
-    break;
-  case LSM6DS_ACCEL_RANGE_4_G:
-    Serial.println("+-4G");
-    break;
-  case LSM6DS_ACCEL_RANGE_8_G:
-    Serial.println("+-8G");
-    break;
-  case LSM6DS_ACCEL_RANGE_16_G:
-    Serial.println("+-16G");
-    break;
-  }
-
-  // lsm6ds.setAccelDataRate(LSM6DS_RATE_12_5_HZ);
-  Serial.print("Accelerometer data rate set to: ");
-  switch (lsm6ds.getAccelDataRate()) {
-  case LSM6DS_RATE_SHUTDOWN:
-    Serial.println("0 Hz");
-    break;
-  case LSM6DS_RATE_12_5_HZ:
-    Serial.println("12.5 Hz");
-    break;
-  case LSM6DS_RATE_26_HZ:
-    Serial.println("26 Hz");
-    break;
-  case LSM6DS_RATE_52_HZ:
-    Serial.println("52 Hz");
-    break;
-  case LSM6DS_RATE_104_HZ:
-    Serial.println("104 Hz");
-    break;
-  case LSM6DS_RATE_208_HZ:
-    Serial.println("208 Hz");
-    break;
-  case LSM6DS_RATE_416_HZ:
-    Serial.println("416 Hz");
-    break;
-  case LSM6DS_RATE_833_HZ:
-    Serial.println("833 Hz");
-    break;
-  case LSM6DS_RATE_1_66K_HZ:
-    Serial.println("1.66 KHz");
-    break;
-  case LSM6DS_RATE_3_33K_HZ:
-    Serial.println("3.33 KHz");
-    break;
-  case LSM6DS_RATE_6_66K_HZ:
-    Serial.println("6.66 KHz");
-    break;
-  }
-
-  // lsm6ds.setGyroRange(LSM6DS_GYRO_RANGE_250_DPS );
-  Serial.print("Gyro range set to: ");
-  switch (lsm6ds.getGyroRange()) {
-  case LSM6DS_GYRO_RANGE_125_DPS:
-    Serial.println("125 degrees/s");
-    break;
-  case LSM6DS_GYRO_RANGE_250_DPS:
-    Serial.println("250 degrees/s");
-    break;
-  case LSM6DS_GYRO_RANGE_500_DPS:
-    Serial.println("500 degrees/s");
-    break;
-  case LSM6DS_GYRO_RANGE_1000_DPS:
-    Serial.println("1000 degrees/s");
-    break;
-  case LSM6DS_GYRO_RANGE_2000_DPS:
-    Serial.println("2000 degrees/s");
-    break;
-  case ISM330DHCX_GYRO_RANGE_4000_DPS:
-    Serial.println("4000 degrees/s");
-    break;
-  }
-  // lsm6ds.setGyroDataRate(LSM6DS_RATE_12_5_HZ);
-  Serial.print("Gyro data rate set to: ");
-  switch (lsm6ds.getGyroDataRate()) {
-  case LSM6DS_RATE_SHUTDOWN:
-    Serial.println("0 Hz");
-    break;
-  case LSM6DS_RATE_12_5_HZ:
-    Serial.println("12.5 Hz");
-    break;
-  case LSM6DS_RATE_26_HZ:
-    Serial.println("26 Hz");
-    break;
-  case LSM6DS_RATE_52_HZ:
-    Serial.println("52 Hz");
-    break;
-  case LSM6DS_RATE_104_HZ:
-    Serial.println("104 Hz");
-    break;
-  case LSM6DS_RATE_208_HZ:
-    Serial.println("208 Hz");
-    break;
-  case LSM6DS_RATE_416_HZ:
-    Serial.println("416 Hz");
-    break;
-  case LSM6DS_RATE_833_HZ:
-    Serial.println("833 Hz");
-    break;
-  case LSM6DS_RATE_1_66K_HZ:
-    Serial.println("1.66 KHz");
-    break;
-  case LSM6DS_RATE_3_33K_HZ:
-    Serial.println("3.33 KHz");
-    break;
-  case LSM6DS_RATE_6_66K_HZ:
-    Serial.println("6.66 KHz");
-    break;
-  }
-
-  lis3mdl.setDataRate(LIS3MDL_DATARATE_155_HZ);
-  // You can check the datarate by looking at the frequency of the DRDY pin
-  Serial.print("Magnetometer data rate set to: ");
-  switch (lis3mdl.getDataRate()) {
-    case LIS3MDL_DATARATE_0_625_HZ: Serial.println("0.625 Hz"); break;
-    case LIS3MDL_DATARATE_1_25_HZ: Serial.println("1.25 Hz"); break;
-    case LIS3MDL_DATARATE_2_5_HZ: Serial.println("2.5 Hz"); break;
-    case LIS3MDL_DATARATE_5_HZ: Serial.println("5 Hz"); break;
-    case LIS3MDL_DATARATE_10_HZ: Serial.println("10 Hz"); break;
-    case LIS3MDL_DATARATE_20_HZ: Serial.println("20 Hz"); break;
-    case LIS3MDL_DATARATE_40_HZ: Serial.println("40 Hz"); break;
-    case LIS3MDL_DATARATE_80_HZ: Serial.println("80 Hz"); break;
-    case LIS3MDL_DATARATE_155_HZ: Serial.println("155 Hz"); break;
-    case LIS3MDL_DATARATE_300_HZ: Serial.println("300 Hz"); break;
-    case LIS3MDL_DATARATE_560_HZ: Serial.println("560 Hz"); break;
-    case LIS3MDL_DATARATE_1000_HZ: Serial.println("1000 Hz"); break;
-  }
-
-  lis3mdl.setRange(LIS3MDL_RANGE_4_GAUSS);
-  Serial.print("Range set to: ");
-  switch (lis3mdl.getRange()) {
-    case LIS3MDL_RANGE_4_GAUSS: Serial.println("+-4 gauss"); break;
-    case LIS3MDL_RANGE_8_GAUSS: Serial.println("+-8 gauss"); break;
-    case LIS3MDL_RANGE_12_GAUSS: Serial.println("+-12 gauss"); break;
-    case LIS3MDL_RANGE_16_GAUSS: Serial.println("+-16 gauss"); break;
-  }
-
-  lis3mdl.setPerformanceMode(LIS3MDL_MEDIUMMODE);
-  Serial.print("Magnetometer performance mode set to: ");
-  switch (lis3mdl.getPerformanceMode()) {
-    case LIS3MDL_LOWPOWERMODE: Serial.println("Low"); break;
-    case LIS3MDL_MEDIUMMODE: Serial.println("Medium"); break;
-    case LIS3MDL_HIGHMODE: Serial.println("High"); break;
-    case LIS3MDL_ULTRAHIGHMODE: Serial.println("Ultra-High"); break;
-  }
-
-  lis3mdl.setOperationMode(LIS3MDL_CONTINUOUSMODE);
-  Serial.print("Magnetometer operation mode set to: ");
-  // Single shot mode will complete conversion and go into power down
-  switch (lis3mdl.getOperationMode()) {
-    case LIS3MDL_CONTINUOUSMODE: Serial.println("Continuous"); break;
-    case LIS3MDL_SINGLEMODE: Serial.println("Single mode"); break;
-    case LIS3MDL_POWERDOWNMODE: Serial.println("Power-down"); break;
-  }
-
-  lis3mdl.setIntThreshold(500);
-  lis3mdl.configInterrupt(false, false, true, // enable z axis
-                          true, // polarity
-                          false, // don't latch
-                          true); // enabled!
 }
 
-void device_loop() {
-  // put your main code here, to run repeatedly:
-  // this handles the wifi config business:
+void device_loop(){
+  // Setting RED (R) filtered photodiodes to be read
+  digitalWrite(S2,LOW);
+  digitalWrite(S3,LOW);
+  
+  // Reading the output frequency
+  redFrequency = pulseIn(sensorOut, LOW);
+  // Remaping the value of the RED (R) frequency from 0 to 255
+  // You must replace with your own values. Here's an example: 
+  // redColor = map(redFrequency, 70, 120, 255,0);
+  redColor = map(redFrequency, redlow, redhigh, 255,0);
 
-  // get button value:
-    int sensorVal = digitalRead(21);
-  //print out the value of the pushbutton
-  Serial.println(sensorVal);
+  // Printing the RED (R) value
+  /*
+  Serial.print("R = ");
+  Serial.print(redFrequency);
+  Serial.print("|");
+  Serial.print(redColor);
+  */
 
-  // Keep in mind the pull-up  means the pushbutton's logic is inverted. It goes
-  // HIGH when it's open, and LOW when it's pressed. Turn on pin 13 when the
-  // button's pressed, and off when it's not:
-  if (sensorVal == HIGH) {
-    digitalWrite(13, LOW);
-  } else {
-    digitalWrite(13, HIGH);
+  // Setting GREEN (G) filtered photodiodes to be read
+  digitalWrite(S2,HIGH);
+  digitalWrite(S3,HIGH);
+  
+  // Reading the output frequency
+  greenFrequency = pulseIn(sensorOut, LOW);
+  greenColor = map(greenFrequency, greenlow, greenhigh, 255, 0);
+
+  // Printing the GREEN (G) value  
+  /*
+  Serial.print(" G = ");
+  Serial.print(greenFrequency);
+  Serial.print("|");
+  Serial.print(greenColor);
+  */
+ 
+  // Setting BLUE (B) filtered photodiodes to be read
+  digitalWrite(S2,LOW);
+  digitalWrite(S3,HIGH);
+  
+  // Reading the output frequency
+  blueFrequency = pulseIn(sensorOut, LOW);
+  blueColor = map(blueFrequency, bluelow, bluehigh, 255, 0);
+
+  
+  // Printing the BLUE (B) value 
+  /*
+  Serial.print(" B = ");
+  Serial.print(blueFrequency);
+  Serial.print("|");
+  Serial.println(blueColor);
+  */
+  double redf = float(redColor) / 255.0;
+  double greenf = float(greenColor) / 255.0;
+  double bluef = float(blueColor) / 255.0;
+  double hsl[3];
+  rgbToHsl(redf, greenf, bluef, hsl);
+  /*
+  Serial.print("H:" );
+  Serial.print(hsl[0]);
+  Serial.print(" S:" );
+  Serial.print(hsl[1]);
+  Serial.print(" L:" );
+  Serial.println(hsl[2]);
+  */
+  if(!no_network){
+    sendOSCUDP(redFrequency, greenFrequency, blueFrequency);
   }
-
-  sensors_event_t accel, gyro, mag, temp;
-
-  //  /* Get new normalized sensor events */
-  lsm6ds.getEvent(&accel, &gyro, &temp);
-  lis3mdl.getEvent(&mag);
-
-  /* Display the results (acceleration is measured in m/s^2) */
-  /*
-  Serial.print("\t\tAccel X: ");
-  Serial.print(accel.acceleration.x, 4);
-  Serial.print(" \tY: ");
-  Serial.print(accel.acceleration.y, 4);
-  Serial.print(" \tZ: ");
-  Serial.print(accel.acceleration.z, 4);
-  Serial.println(" \tm/s^2 ");
-  */
-
-  /* Display the results (rotation is measured in rad/s) */
-  /*
-  Serial.print("\t\tGyro  X: ");
-  Serial.print(gyro.gyro.x, 4);
-  Serial.print(" \tY: ");
-  Serial.print(gyro.gyro.y, 4);
-  Serial.print(" \tZ: ");
-  Serial.print(gyro.gyro.z, 4);
-  Serial.println(" \tradians/s ");
-  */
- /* Display the results (magnetic field is measured in uTesla) */
- /*
-  Serial.print(" \t\tMag   X: ");
-  Serial.print(mag.magnetic.x, 4);
-  Serial.print(" \tY: ");
-  Serial.print(mag.magnetic.y, 4);
-  Serial.print(" \tZ: ");
-  Serial.print(mag.magnetic.z, 4);
-  Serial.println(" \tuTesla ");
-  */
-
-  sendOSCUDP(gyro.gyro.x, gyro.gyro.y, gyro.gyro.z, accel.acceleration.x, accel.acceleration.y, accel.acceleration.z, mag.magnetic.x,mag.magnetic.y,mag.magnetic.z, sensorVal);
-
+  // should be 10
   delay(10);
 }
 
 
-/////////////////////////
+
+/**
+ * Converts an RGB color value to HSL. Conversion formula
+ * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+ * Assumes r, g, and b are contained in the set [0, 255] and
+ * returns h, s, and l in the set [0, 1].
+ *
+ * @param   Number  r       The red color value
+ * @param   Number  g       The green color value
+ * @param   Number  b       The blue color value
+ * @return  Array           The HSL representation
+ */
+void rgbToHsl(double rd, double gd, double bd, double hsl[]) { 
+
+    double max = threeway_max(rd, gd, bd);
+    double min = threeway_min(rd, gd, bd);
+    double h, s, l = (max + min) / 2;
+
+    if (max == min) {
+        h = s = 0; // achromatic
+    } else {
+        double d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        if (max == rd) {
+            h = (gd - bd) / d + (gd < bd ? 6 : 0);
+        } else if (max == gd) {
+            h = (bd - rd) / d + 2;
+        } else if (max == bd) {
+            h = (rd - gd) / d + 4;
+        }
+        h /= 6;
+    }
+    hsl[0] = h;
+    hsl[1] = s;
+    hsl[2] = l;
+}
+
+
+double threeway_max(double a, double b, double c) {
+    return max(a, max(b, c));
+}
+
+double threeway_min(double a, double b, double c) {
+    return min(a, min(b, c));
+}
+
+
 // NETWORK+SENSOR CODE
 // sending data over OSC/UDP.
-void sendOSCUDP(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, int sensorVal){
+void sendOSCUDP(int redFrequency, int greenFrequency, int blueFrequency){
   /* egs
-   *  '/perifit/1', valueInt1, valueInt2, device.name);
+   *  '/color1/vale', valueInt1, valueInt2, device.name);
    *  28:ec:9a:14:2b:b3 l 180
       28:ec:9a:14:2b:b3 u 1391
    *  
@@ -410,8 +281,7 @@ void sendOSCUDP(float gx, float gy, float gz, float ax, float ay, float az, floa
   char ipbuffer[20];
   thisarduinoip.toCharArray(ipbuffer, 20);
   OSCMessage oscmsg(DEVICE_ID);  
-  oscmsg.add(gx).add(gy).add(gz).add(ax).add(ay).add(az).add(mx).add(my).add(mz).add(ipbuffer).add(sensorVal);
-
+  oscmsg.add(redFrequency).add(greenFrequency).add(blueFrequency).add(ipbuffer);
   udp.beginPacket(UDPReceiverIP, UDPPort);
 //  udp.write(buffer, msg.length()+1);
   oscmsg.send(udp);
@@ -420,6 +290,7 @@ void sendOSCUDP(float gx, float gy, float gz, float ax, float ay, float az, floa
  }else{
   Serial.println("not sending udp, not connected");
  }
+
 }
 
 
@@ -429,7 +300,7 @@ void sendOSCUDP(float gx, float gy, float gz, float ax, float ay, float az, floa
 
 void setup(){
   Serial.begin(9600);
-  Serial.println("starting");
+
   if(!no_network){  
     network_setup();
   }
@@ -443,11 +314,6 @@ void loop(){
   }
   device_loop();
 }
-
-
-
-
-
 
 void network_setup() {
 
@@ -511,6 +377,7 @@ void deleteAllCredentials(void) {
   }  
   SPIFFS.remove("/config.json");
 }
+
 
 
 /*
@@ -641,7 +508,7 @@ void config_webpage_setup() {
   //sets timeout until configuration portal gets turned off
   //useful to make it all retry or go to sleep
   //in seconds
-  wifiManager.setTimeout(120);
+  //wifiManager.setTimeout(120);
   char* apname = this_device_name;
   //fetches ssid and pass and tries to connect
   //if it does not connect it starts an access point with the specified name
@@ -728,9 +595,8 @@ void config_webpage_setup() {
     json.printTo(configFile);
 #endif
     configFile.close();
-    //end save
     digiflash(BUILTIN_LED, 4, 250, LOW);
-
+    //end save
   }
 
   Serial.println("local ip");

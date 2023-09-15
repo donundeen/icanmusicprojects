@@ -29,15 +29,17 @@ void listAllFiles(){
  
 void setup() {
  
-  Serial.begin(115200);
+  Serial.begin(9600);
  
   if (!SPIFFS.begin(true)) {
     Serial.println("An Error has occurred while mounting SPIFFS");
     return;
   }
  
-//  File file = SPIFFS.open("/test.txt", FILE_WRITE);
- /*
+
+  /*
+  File file = SPIFFS.open("/test.txt", FILE_WRITE);
+ 
   if (!file) {
     Serial.println("There was an error opening the file for writing");
     return;
@@ -52,10 +54,13 @@ void setup() {
  
   file.close();
  */
+
+
   Serial.println("\n\n---BEFORE REMOVING---");
   listAllFiles();
  
  // SPIFFS.remove("/config.json");
+  SPIFFS.remove("/test.txt");
  
   Serial.println("\n\n---AFTER REMOVING---");
   listAllFiles();
