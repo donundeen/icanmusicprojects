@@ -70,7 +70,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 7364.666667699813843, 303.515183863639777, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 995.000076413154602, 82.866677939891815, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 622.000076413154602, 494.866677939891815, 45.999996900558472, 20.0 ],
 					"text" : "muted"
 				}
 
@@ -85,7 +85,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 7330.0, 303.515183863639777, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 960.333408713340759, 82.866677939891815, 24.0, 24.0 ]
+					"presentation_rect" : [ 591.333408713340759, 494.866677939891815, 24.0, 24.0 ]
 				}
 
 			}
@@ -113,7 +113,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 7016.0, 515.515174088478034, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 751.200008153915405, 146.766668736934662, 294.0, 34.0 ],
+					"presentation_rect" : [ 382.200008153915405, 558.766668736934662, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -139,7 +139,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 7024.866782248020172, 42.0, 306.0, 33.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 751.200008153915405, 73.866677939891815, 196.0, 33.0 ],
+					"presentation_rect" : [ 382.200008153915405, 485.866677939891815, 196.0, 33.0 ],
 					"text" : "Color Sensor"
 				}
 
@@ -165,7 +165,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 7176.266781210899353, 389.748490629196112, 132.400001227855682, 35.0 ],
-					"presentation_linecount" : 2,
 					"text" : "icolortheory f0.110(20-100)"
 				}
 
@@ -226,7 +225,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 7047.61678159236908, 346.348488864898627, 272.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 751.200008153915405, 109.866677939891815, 294.0, 22.0 ],
+					"presentation_rect" : [ 382.200008153915405, 521.866677939891815, 294.0, 22.0 ],
 					"text" : "udpInstrumentColorSensor icolor /color1/val 7002",
 					"varname" : "FractalInstrumentScoreFollower[13]"
 				}
@@ -288,7 +287,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 6780.666667699813843, 303.515183863639777, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 980.000076413154602, 67.866677939891815, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 289.000076413154602, 645.866677939891815, 45.999996900558472, 20.0 ],
 					"text" : "muted"
 				}
 
@@ -303,7 +302,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 6746.0, 303.515183863639777, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 945.333408713340759, 67.866677939891815, 24.0, 24.0 ]
+					"presentation_rect" : [ 254.333408713340759, 645.866677939891815, 24.0, 24.0 ]
 				}
 
 			}
@@ -331,7 +330,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 6432.0, 515.515174088478034, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 736.200008153915405, 131.766668736934662, 294.0, 34.0 ],
+					"presentation_rect" : [ 45.200008153915405, 709.766668736934662, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -357,8 +356,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 6440.866782248020172, 42.0, 306.0, 33.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 736.200008153915405, 58.866677939891815, 196.0, 60.0 ],
+					"presentation_rect" : [ 45.200008153915405, 599.766668736934662, 282.0, 33.0 ],
 					"text" : "UDP Instrument 1 input"
 				}
 
@@ -445,7 +443,7 @@
 					"patching_rect" : [ 6463.61678159236908, 346.348488864898627, 426.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 736.200008153915405, 94.866677939891815, 294.0, 35.0 ],
+					"presentation_rect" : [ 45.200008153915405, 672.866677939891815, 294.0, 35.0 ],
 					"text" : "udpInstrument1Input \"cool instrument\" izig /ZIGSIM/instrument1/gravity 7009 1",
 					"varname" : "FractalInstrumentScoreFollower[12]"
 				}
@@ -514,7 +512,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 6211.666667699813843, 159.566655933856964, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 268.800141572952271, 676.833327174186707, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 289.000076413154602, 473.833327174186707, 45.999996900558472, 20.0 ],
 					"text" : "reset"
 				}
 
@@ -529,7 +527,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 6181.883424580097198, 159.566655933856964, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 234.133473873138428, 674.833327174186707, 24.0, 24.0 ]
+					"presentation_rect" : [ 254.333408713340759, 471.833327174186707, 24.0, 24.0 ]
 				}
 
 			}
@@ -565,7 +563,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 6206.666667699813843, 310.881834683418219, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 268.800141572952271, 700.700005114078522, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 289.000076413154602, 497.700005114078522, 45.999996900558472, 20.0 ],
 					"text" : "muted"
 				}
 
@@ -580,7 +578,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 6172.0, 310.881834683418219, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 234.133473873138428, 700.700005114078522, 24.0, 24.0 ],
+					"presentation_rect" : [ 254.333408713340759, 497.700005114078522, 24.0, 24.0 ],
 					"varname" : "mute6[3]"
 				}
 
@@ -609,7 +607,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 5858.0, 522.881824908256476, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 25.000073313713074, 766.766668736934662, 294.0, 34.0 ],
+					"presentation_rect" : [ 45.200008153915405, 563.766668736934662, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -635,7 +633,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 5961.5, 47.0, 306.0, 33.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 25.000073313713074, 674.833327174186707, 196.0, 33.0 ],
+					"presentation_rect" : [ 45.200008153915405, 471.833327174186707, 196.0, 33.0 ],
 					"text" : "ch9 Accel 3"
 				}
 
@@ -722,7 +720,7 @@
 					"patching_rect" : [ 5889.61678159236908, 353.715139684677069, 287.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 25.000073313713074, 729.866677939891815, 282.0, 35.0 ],
+					"presentation_rect" : [ 45.200008153915405, 526.866677939891815, 282.0, 35.0 ],
 					"text" : "udpInstrumentRopeAccel l3g4200 /l3g4200/val 7005",
 					"varname" : "FractalInstrumentScoreFollower[11]"
 				}
@@ -1812,7 +1810,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 3896.783243119716644, 179.200005114078522, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 285.000076413154602, 466.0, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 289.000076413154602, 339.0, 45.999996900558472, 20.0 ],
 					"text" : "reset"
 				}
 
@@ -1827,7 +1825,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 3867.0, 179.200005114078522, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 250.333408713340759, 464.0, 24.0, 24.0 ]
+					"presentation_rect" : [ 254.333408713340759, 337.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -1863,7 +1861,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 3891.783243119716644, 330.515183863639777, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 285.000076413154602, 489.866677939891815, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 289.000076413154602, 362.866677939891815, 45.999996900558472, 20.0 ],
 					"text" : "muted"
 				}
 
@@ -1878,7 +1876,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 3857.116575419902802, 330.515183863639777, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 250.333408713340759, 489.866677939891815, 24.0, 24.0 ],
+					"presentation_rect" : [ 254.333408713340759, 362.866677939891815, 24.0, 24.0 ],
 					"varname" : "mute6"
 				}
 
@@ -1907,7 +1905,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 3543.116575419902802, 542.515174088478034, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 41.200008153915405, 544.766668736934662, 294.0, 34.0 ],
+					"presentation_rect" : [ 45.200008153915405, 417.766668736934662, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -1934,7 +1932,7 @@
 					"patching_rect" : [ 3646.616575419902802, 66.633349180221558, 306.0, 33.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 41.200008153915405, 457.0, 196.0, 60.0 ],
+					"presentation_rect" : [ 45.200008153915405, 330.0, 196.0, 60.0 ],
 					"text" : "7 stretch rope: Accel"
 				}
 
@@ -2020,7 +2018,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 3574.733357012271881, 373.348488864898627, 269.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 41.200008153915405, 519.0, 284.0, 22.0 ],
+					"presentation_rect" : [ 45.200008153915405, 392.0, 284.0, 22.0 ],
 					"text" : "udpInstrumentRopeAccel iropeaccel1 /rope 7002",
 					"varname" : "FractalInstrumentScoreFollower[3]"
 				}
@@ -2089,7 +2087,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 2709.783243119716644, 139.200005114078522, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 613.800141572952271, 465.0, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 617.800141572952271, 338.0, 45.999996900558472, 20.0 ],
 					"text" : "reset"
 				}
 
@@ -2104,7 +2102,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2680.0, 139.200005114078522, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 579.133473873138428, 463.0, 24.0, 24.0 ]
+					"presentation_rect" : [ 583.133473873138428, 336.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -2140,7 +2138,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 2704.783243119716644, 290.515183863639777, 45.999996900558472, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 613.800141572952271, 488.866677939891815, 45.999996900558472, 20.0 ],
+					"presentation_rect" : [ 617.800141572952271, 361.866677939891815, 45.999996900558472, 20.0 ],
 					"text" : "muted"
 				}
 
@@ -2155,7 +2153,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2670.116575419902802, 290.515183863639777, 24.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 579.133473873138428, 488.866677939891815, 24.0, 24.0 ],
+					"presentation_rect" : [ 583.133473873138428, 361.866677939891815, 24.0, 24.0 ],
 					"varname" : "mute5"
 				}
 
@@ -2184,7 +2182,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2356.116575419902802, 502.515174088478034, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 370.000073313713074, 544.766668736934662, 294.0, 34.0 ],
+					"presentation_rect" : [ 374.000073313713074, 417.766668736934662, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -2211,7 +2209,7 @@
 					"patching_rect" : [ 2364.983357667922974, 29.0, 306.0, 33.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 370.000073313713074, 457.0, 196.0, 60.0 ],
+					"presentation_rect" : [ 374.000073313713074, 330.0, 196.0, 60.0 ],
 					"text" : "5 plant electrodes"
 				}
 
@@ -2297,7 +2295,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 2387.733357012271881, 333.348488864898627, 234.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 370.000073313713074, 519.0, 294.0, 22.0 ],
+					"presentation_rect" : [ 374.000073313713074, 392.0, 294.0, 22.0 ],
 					"text" : "udpInstrumentPlantElectrodes iplant /plant",
 					"varname" : "FractalInstrumentScoreFollower[2]"
 				}
