@@ -1428,7 +1428,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 434.29999965429306, 122.143217404117649, 167.766715347766876, 40.399999856948853 ],
-					"text" : "http://10.0.0.174:8000/other/aiselector.html"
+					"text" : "http://192.168.0.200:8000/other/aiselector.html"
 				}
 
 			}

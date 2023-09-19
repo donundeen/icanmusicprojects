@@ -31,6 +31,7 @@ void setup() {
  
   Serial.begin(9600);
  
+ 
   if (!SPIFFS.begin(true)) {
     Serial.println("An Error has occurred while mounting SPIFFS");
     return;
@@ -60,7 +61,7 @@ void setup() {
   listAllFiles();
  
  // SPIFFS.remove("/config.json");
-  SPIFFS.remove("/test.txt");
+ // SPIFFS.remove("/test.txt");
  
   Serial.println("\n\n---AFTER REMOVING---");
   listAllFiles();
