@@ -1,5 +1,5 @@
 // SENSOR LIBS
-#include <SoftwareSerial.h>
+#include <SoftwareSerial.h> //ESPSoftwareSerial
 
 
 // NETWORK_LIBS
@@ -115,7 +115,7 @@ bool shouldSaveConfig = false;
 // SENSOR code
  
 // sensor config vars - pins
-const int analogInPin = A0;  // Analog input pin that the potentiometer is attached to
+const int analogInPin = A2;  // Analog input pin that the potentiometer is attached to
 
 void device_setup(){
 //    US100Serial.begin(9600);
@@ -127,28 +127,11 @@ void device_loop() {
     delay(10);
  
     int sensorValue = analogRead(analogInPin);
+    Serial.println(sensorValue);
 
 
     sendOSCUDP(sensorValue);
- /*
-    US100Serial.flush(); 
-    US100Serial.write(0x50); 
  
-    delay(500);
-    if(US100Serial.available() >= 1) 
-    {
-        temp = US100Serial.read();
-        if((temp > 1) && (temp < 130)) // temprature is in range
-        {
-            temp -= 45; // correct 45º offset
-            Serial.print("Temp: ");
-            Serial.print(temp, DEC);
-            Serial.println(" ºC.");
-        }
-    }
- 
-    delay(500);
-    */
 }
 
 

@@ -2,7 +2,7 @@
 	"name" : "PositionalJamAlphaBlast",
 	"version" : 1,
 	"creationdate" : 3757367746,
-	"modificationdate" : 3777658590,
+	"modificationdate" : 3778014022,
 	"viewrect" : [ 193.0, 139.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -42,6 +42,11 @@
 			}
 ,
 			"udpInstrumentAccel.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"udpInstrumentColorSensor.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -101,7 +106,12 @@
 				"local" : 1
 			}
 ,
-			"udpInstrumentColorSensor.maxpat" : 			{
+			"musicTheory.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"instruments_pre_2023workshop.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -186,7 +196,7 @@
 				"kind" : "file",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "~/Documents/htdocs/icanmusicprojects/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/_DeletedItems/other",
+					"bootpath" : "E:/Don Undeen/github/icanmusicprojects-main/PositionalJamAlphaBlast/max/PositionalJamAlphaBlast/_DeletedItems/other",
 					"projectrelativepath" : "./_DeletedItems/other"
 				}
 
