@@ -38,7 +38,7 @@ void setup() {
   }
  
 
-  /*
+  
   File file = SPIFFS.open("/test.txt", FILE_WRITE);
  
   if (!file) {
@@ -55,12 +55,12 @@ void setup() {
  
   file.close();
  
-*/
+
 
   Serial.println("\n\n---BEFORE REMOVING---");
   listAllFiles();
  
- // SPIFFS.remove("/config.json");
+  SPIFFS.remove("/config.json");
   SPIFFS.remove("/test.txt");
  
   Serial.println("\n\n---AFTER REMOVING---");

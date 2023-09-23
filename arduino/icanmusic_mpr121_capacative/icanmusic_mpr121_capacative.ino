@@ -1,6 +1,6 @@
 // SENSOR LIBS
 #include <Wire.h>
-#include "Adafruit_MPR121.h"
+#include "Adafruit_MPR121.h" //Adafruit MPR121 by Adafruit
 
 #ifndef _BV
 #define _BV(bit) (1 << (bit)) 
