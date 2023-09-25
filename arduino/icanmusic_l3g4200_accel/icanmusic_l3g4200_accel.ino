@@ -126,6 +126,7 @@ void device_loop() {
 void sendOSCUDP(int gyrox, int gyroy, int gyroz ){ 
   
  if(WiFi.status() == WL_CONNECTED){   
+//  Serial.println("sending");
   //send hello world to server
   char ipbuffer[20];
   thisarduinoip.toCharArray(ipbuffer, 20);

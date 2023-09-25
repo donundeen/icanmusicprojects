@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 4,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 106.0, 1225.0, 737.0 ],
+		"rect" : [ 3457.0, 141.0, 498.0, 642.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -238,7 +238,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 5086.100030124187469, 616.417085709571893, 179.0, 22.0 ],
-					"text" : "icolortheory f0.137(20-100)"
+					"text" : "l3g4200theory b0.581(20-100)"
 				}
 
 			}
@@ -321,7 +321,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5002.44996902346611, 240.682956156730597, 150.0, 60.0 ],
+					"patching_rect" : [ 5002.44996902346611, 240.682956156730597, 150.0, 62.0 ],
 					"text" : "getting note from float, by sending special string out to theory engine (which is external to this patch)"
 				}
 
@@ -362,7 +362,7 @@
 					"patching_rect" : [ 3754.008130013942719, 882.674797356128693, 59.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 360.819002240896225, 445.006583094596863, 67.097717672586441, 22.0 ],
-					"text" : "0."
+					"text" : "0.009783"
 				}
 
 			}
@@ -376,7 +376,7 @@
 					"patching_rect" : [ 4496.260160088539124, 938.463414549827576, 73.577235758304596, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 154.005927830934525, 445.006583094596863, 70.227642416954041, 22.0 ],
-					"text" : "0.745861"
+					"text" : "0.581487"
 				}
 
 			}
@@ -390,7 +390,7 @@
 					"patching_rect" : [ 4082.674796760082245, 885.276423633098602, 92.276422739028931, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 579.689790189266205, 445.933412492275238, 59.0, 22.0 ],
-					"text" : "0.368092"
+					"text" : "0.318198"
 				}
 
 			}
@@ -794,7 +794,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4450.0, 809.410792646408026, 150.0, 33.0 ],
+					"patching_rect" : [ 4450.0, 809.410792646408026, 150.0, 34.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 25.103645503520966, 246.06977617025359, 193.284552276134491, 20.0 ],
 					"text" : "shape pitch (within min/max)"
@@ -855,7 +855,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3714.5, 724.418699979782104, 150.0, 33.0 ],
+					"patching_rect" : [ 3714.5, 724.418699979782104, 150.0, 34.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 231.916719913482666, 248.414858100414222, 193.284552276134491, 20.0 ],
 					"text" : "shape loudness (0 for no trigger"
@@ -899,7 +899,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3830.5, 1057.191057622432709, 59.0, 22.0 ],
-					"text" : "0."
+					"text" : "1.252259"
 				}
 
 			}
@@ -943,10 +943,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 423.0, 31.0, 332.0, 32.0 ],
+					"patching_rect" : [ 423.0, 31.0, 332.0, 33.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 413.20001083612442, 13.866666666666667, 242.0, 32.0 ],
-					"text" : "accelerometer Type 2"
+					"presentation_rect" : [ 413.20001083612442, 13.866666666666667, 242.0, 33.0 ],
+					"text" : "accelerometer Wiry"
 				}
 
 			}
@@ -1197,7 +1197,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1754.0, 732.333332896232605, 118.0, 22.0 ],
-					"text" : "0."
+					"text" : "0.009783"
 				}
 
 			}
@@ -1280,7 +1280,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1379.733333051204681, 772.333332896232605, 118.0, 22.0 ],
-					"text" : "0.005309"
+					"text" : "0.032132"
 				}
 
 			}
@@ -1363,7 +1363,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 586.0, 652.333332896232605, 118.0, 22.0 ],
-					"text" : "0.011388"
+					"text" : "0.020672"
 				}
 
 			}
@@ -1482,7 +1482,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 5650.0, 961.0, 178.0, 22.0 ],
-					"restore" : [ 8 ],
+					"restore" : [ 3 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -1544,7 +1544,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-61",
-					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "Microsoft GS Wavetable Synth", ",", "2- HDSPe FX MADI1 MIDI", ",", "2- HDSPe FX MIDI", ",", "2- HDSPe FX MADI2 MIDI", ",", "2- HDSPe FX MADI3 MIDI", ",", "RME ARC", ",", "USB Axiom 49", ",", "loopMIDI Port", ",", "loopMIDI Port 1", ",", "loopMIDI Port 2", ",", "loopMIDI Port 3", ",", "loopMIDI Port 4" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -1806,7 +1806,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ -118.0, -67.0, 292.0, 23.0 ],
 					"saved_object_attributes" : 					{
-						"client_rect" : [ 1057, 45, 1440, 407 ],
+						"client_rect" : [ 4, 44, 358, 172 ],
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0,
 						"storage_rect" : [ 583, 69, 1034, 197 ]
@@ -1873,9 +1873,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 737.833322525024414, 253.0, 26.0 ],
+					"patching_rect" : [ 15.0, 737.833322525024414, 253.0, 27.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 697.0, 48.633326888084412, 253.0, 26.0 ],
+					"presentation_rect" : [ 697.0, 48.633326888084412, 253.0, 27.0 ],
 					"text" : "10.0.0.174"
 				}
 
@@ -1900,7 +1900,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 6074.000016570091248, 649.000018000602722, 50.0, 22.0 ],
-					"text" : "79"
+					"text" : "65"
 				}
 
 			}
@@ -1991,7 +1991,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 615.333333253860474, -184.133324980735779, 104.0, 22.0 ],
+					"patching_rect" : [ 615.333333253860474, -184.133324980735779, 112.0, 22.0 ],
 					"text" : "route #2"
 				}
 
@@ -2126,7 +2126,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ -365.5, -178.5, 30.0, 30.0 ]
 				}
 
@@ -2139,7 +2139,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ -550.883243083953857, -178.5, 30.0, 30.0 ]
 				}
 
@@ -2562,7 +2562,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 6151.0, 377.0, 50.0, 22.0 ],
-					"text" : "79"
+					"text" : "65"
 				}
 
 			}
@@ -2574,10 +2574,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -21.0, 704.333322525024414, 289.0, 87.0 ],
+					"patching_rect" : [ -21.0, 704.333322525024414, 289.0, 89.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 3,
-					"presentation_rect" : [ 657.20001083612442, 17.633326888084412, 560.200004041194916, 87.0 ],
+					"presentation_rect" : [ 657.20001083612442, 17.633326888084412, 560.200004041194916, 89.0 ],
 					"text" : "port: 7002\nIP: 10.102.134.110\nDevice UID:"
 				}
 
@@ -2741,7 +2741,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3034.0, 388.266688764095306, 46.0, 35.0 ],
+					"patching_rect" : [ 3034.0, 388.266688764095306, 46.0, 36.0 ],
 					"text" : "select sensor"
 				}
 
@@ -2814,10 +2814,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 47.0, 365.100079953670502, 153.0, 261.0 ],
+					"patching_rect" : [ 47.0, 365.100079953670502, 153.0, 269.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 16,
-					"presentation_rect" : [ 663.0, 241.933412492275238, 235.0, 221.0 ],
+					"presentation_rect" : [ 663.0, 241.933412492275238, 235.0, 227.0 ],
 					"text" : "Good combos:\n\nfor spinning around (head)\nLoudness: gyroXabs\nNote: MagY\nDuration: MAgZ\n\nback pocket twerk:\nLoud: gyroXabs - or bounce\nNote: MagY\nDuration: Magz\n\nOther Motions:\n- put in a sock and swing it around\n\nmake a tail you can swing around?"
 				}
 
@@ -3097,7 +3097,7 @@
 					"patching_rect" : [ 3665.0, 557.666667520999908, 59.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 318.999933242797852, 208.0, 94.249972581863403, 22.0 ],
-					"text" : "0."
+					"text" : "0.009783"
 				}
 
 			}
@@ -3336,7 +3336,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5522.833402729438603, 231.483681681156213, 151.0, 47.0 ],
+					"patching_rect" : [ 5522.833402729438603, 231.483681681156213, 151.0, 48.0 ],
 					"text" : "turn a float into a sensible note lenth (whole, quarter, half, etc)"
 				}
 
@@ -3508,7 +3508,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3856.0, 512.666667520999908, 38.0, 35.0 ],
+					"patching_rect" : [ 3856.0, 512.666667520999908, 38.0, 36.0 ],
 					"text" : "accelZrate"
 				}
 
@@ -3866,7 +3866,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3971.000052452087402, 48.000000059604645, 434.000008463859558, 221.0 ],
+					"patching_rect" : [ 3971.000052452087402, 48.000000059604645, 434.000008463859558, 227.0 ],
 					"text" : "simplest:\n- position to note, trigggered by touch\n- can select as many inputs as you want, all are triggered by a touch\n- one touch triggers one set of notes.\n- touch value changes - more notes\n\nAlternate: fractals controlled by positions \n\nAlternate: RATE of change triggers sounds, over a cerain amount of changes (from gyro) triggere sound. \n\n\nbuild controllers to select:\n- which inputs create notes\n\n"
 				}
 
@@ -3878,7 +3878,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3971.000052452087402, 1.333333313465118, 150.0, 33.0 ],
+					"patching_rect" : [ 3971.000052452087402, 1.333333313465118, 150.0, 34.0 ],
 					"text" : "some stuff happens here.... choices!"
 				}
 
@@ -3890,7 +3890,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5973.266713201999664, 155.666666746139526, 150.0, 33.0 ],
+					"patching_rect" : [ 5973.266713201999664, 155.666666746139526, 150.0, 34.0 ],
 					"text" : "processing theory note recieved"
 				}
 
@@ -4151,7 +4151,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 5818.000016570091248, 792.451530399322564, 101.0, 35.0 ],
+					"patching_rect" : [ 5818.000016570091248, 792.451530399322564, 101.0, 36.0 ],
 					"text" : "port \"loopMIDI Port\""
 				}
 
@@ -4314,7 +4314,7 @@
 					"patching_rect" : [ 5877.666676878929138, 1310.95153147220617, 50.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 201.833375573158264, 104.433322846889496, 50.0, 22.0 ],
-					"text" : "79"
+					"text" : "86"
 				}
 
 			}
@@ -4445,7 +4445,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ -820.0, -53.633324980735779, 53.0, 22.0 ],
-					"text" : "79"
+					"text" : "65"
 				}
 
 			}

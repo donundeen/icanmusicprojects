@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 4,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 138.0, 98.0, 1013.0, 719.0 ],
+		"rect" : [ 40.0, 1033.0, 1358.0, 331.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -50,7 +50,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 4859.883424580097198, 302.448506114482825, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 466.899876952171326, 145.300014317035675, 100.0, 20.0 ],
+					"presentation_rect" : [ 465.899876952171326, 87.300014317035675, 100.0, 20.0 ],
 					"text" : "Not Muted",
 					"textcolor" : [ 0.058823529411765, 1.0, 0.0, 1.0 ],
 					"texton" : "Muted",
@@ -70,7 +70,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 4899.666664600372314, 174.666660785675049, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 360.683119714260101, 145.300014317035675, 100.0, 20.0 ],
+					"presentation_rect" : [ 359.683119714260101, 87.300014317035675, 100.0, 20.0 ],
 					"text" : "Reset",
 					"texton" : "Reset"
 				}
@@ -155,7 +155,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 4555.0, 514.448496339321082, 576.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 359.766552448272705, 170.200005114078522, 336.0, 34.0 ],
+					"presentation_rect" : [ 358.766552448272705, 112.200005114078522, 336.0, 34.0 ],
 					"range" : 82
 				}
 
@@ -179,10 +179,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4563.866782248020172, 40.933322250843048, 306.0, 33.0 ],
+					"patching_rect" : [ 4563.866782248020172, 40.933322250843048, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 359.766552448272705, 81.93333637714386, 189.588236570358276, 33.0 ],
-					"text" : "TouchWand"
+					"presentation_rect" : [ 358.766552448272705, 23.93333637714386, 189.588236570358276, 34.0 ],
+					"text" : "2 TouchWire"
 				}
 
 			}
@@ -206,9 +206,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4715.266781210899353, 388.681812880039161, 132.400001227855682, 35.0 ],
-					"presentation_linecount" : 2,
-					"text" : "impr121theory1 b1.00(20-100)"
+					"patching_rect" : [ 4715.266781210899353, 388.681812880039161, 132.400001227855682, 36.0 ],
+					"text" : "impr121theory1 b0.73(20-100)"
 				}
 
 			}
@@ -268,7 +267,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 4586.61678159236908, 345.281811115741675, 347.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 359.766552448272705, 121.300014317035675, 347.0, 22.0 ],
+					"presentation_rect" : [ 358.766552448272705, 63.300014317035675, 347.0, 22.0 ],
 					"text" : "udpInstrumentMPR121_cap12 impr121 /mpr121cap12/val 7002",
 					"varname" : "FractalInstrumentScoreFollower[3]"
 				}
@@ -341,7 +340,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 4379.0, 285.448506114482825, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 119.916567265987396, 463.515183863639777, 100.0, 20.0 ],
+					"presentation_rect" : [ 120.0, 242.515183863639777, 100.0, 20.0 ],
 					"text" : "Not Muted",
 					"textcolor" : [ 0.058823529411765, 1.0, 0.0, 1.0 ],
 					"texton" : "Muted",
@@ -361,7 +360,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 4367.61678159236908, 144.933322250843048, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 16.033142685890198, 463.515183863639777, 100.0, 20.0 ],
+					"presentation_rect" : [ 16.116575419902802, 242.515183863639777, 100.0, 20.0 ],
 					"text" : "Reset",
 					"texton" : "Reset"
 				}
@@ -415,7 +414,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 4010.0, 514.448496339321082, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 17.116575419902802, 486.515183863639777, 294.0, 34.0 ],
+					"presentation_rect" : [ 17.200008153915405, 265.515183863639777, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -439,10 +438,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4018.866782248020172, 40.933322250843048, 306.0, 33.0 ],
+					"patching_rect" : [ 4018.866782248020172, 40.933322250843048, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 17.116575419902802, 387.515183863639777, 282.0, 33.0 ],
-					"text" : "Conductive Thread"
+					"presentation_rect" : [ 17.200008153915405, 166.515183863639777, 282.0, 34.0 ],
+					"text" : "5 Conductive Thread"
 				}
 
 			}
@@ -466,8 +465,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4170.266781210899353, 388.681812880039161, 132.400001227855682, 35.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 4170.266781210899353, 388.681812880039161, 132.400001227855682, 36.0 ],
 					"text" : "ithreadtheory f0.00(20-100)"
 				}
 
@@ -529,8 +527,8 @@
 					"patching_rect" : [ 4041.61678159236908, 345.281811115741675, 371.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 17.116575419902802, 426.61519306659693, 294.0, 35.0 ],
-					"text" : "udpInstrument1Input \"conductive thread\" ithread /thread1/val 7002 1",
+					"presentation_rect" : [ 17.200008153915405, 205.61519306659693, 295.083432734012604, 36.0 ],
+					"text" : "udpInstrument1Input \"conductive thread\" ithread /thread1/val 7005 1",
 					"varname" : "FractalInstrumentScoreFollower[2]"
 				}
 
@@ -602,7 +600,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 3835.0, 277.448506114482825, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 462.5665442943573, 463.515183863639777, 100.0, 20.0 ],
+					"presentation_rect" : [ 461.5665442943573, 242.515183863639777, 100.0, 20.0 ],
 					"text" : "Not Muted",
 					"textcolor" : [ 0.058823529411765, 1.0, 0.0, 1.0 ],
 					"texton" : "Muted",
@@ -622,7 +620,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 3823.61678159236908, 136.933322250843048, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 358.683119714260101, 463.515183863639777, 100.0, 20.0 ],
+					"presentation_rect" : [ 357.683119714260101, 242.515183863639777, 100.0, 20.0 ],
 					"text" : "Reset",
 					"texton" : "Reset"
 				}
@@ -676,7 +674,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 3466.0, 506.448496339321082, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 359.766552448272705, 486.515183863639777, 294.0, 34.0 ],
+					"presentation_rect" : [ 358.766552448272705, 265.515183863639777, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -700,10 +698,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3474.866782248020172, 32.933322250843048, 306.0, 33.0 ],
+					"patching_rect" : [ 3474.866782248020172, 32.933322250843048, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 359.766552448272705, 387.515183863639777, 282.0, 33.0 ],
-					"text" : "Hug Sensor"
+					"presentation_rect" : [ 358.766552448272705, 166.515183863639777, 282.0, 34.0 ],
+					"text" : "6 Hug Sensor"
 				}
 
 			}
@@ -727,8 +725,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3626.266781210899353, 380.681812880039161, 132.400001227855682, 35.0 ],
-					"text" : "ihugtheory f0.93(20-100)"
+					"patching_rect" : [ 3626.266781210899353, 380.681812880039161, 132.400001227855682, 36.0 ],
+					"text" : "ihugtheory f1.00(20-100)"
 				}
 
 			}
@@ -788,9 +786,8 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 3497.61678159236908, 337.281811115741675, 317.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 359.766552448272705, 426.61519306659693, 294.0, 35.0 ],
-					"text" : "udpInstrument1Input \"mutual touch\" ihug /hug1/val 7002 1",
+					"presentation_rect" : [ 358.766552448272705, 205.61519306659693, 317.0, 22.0 ],
+					"text" : "udpInstrument1Input \"mutual touch\" ihug /hug1/val 7006 1",
 					"varname" : "FractalInstrumentScoreFollower[12]"
 				}
 
@@ -862,7 +859,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2710.166664600372314, 273.515183863639777, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 456.766552448272705, 297.866677939891815, 100.0, 20.0 ],
+					"presentation_rect" : [ 1146.766552448272705, 93.866677939891815, 100.0, 20.0 ],
 					"text" : "Not Muted",
 					"textcolor" : [ 0.058823529411765, 1.0, 0.0, 1.0 ],
 					"texton" : "Muted",
@@ -882,7 +879,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2674.61678159236908, 133.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 353.04986172914505, 298.018154981136377, 100.0, 20.0 ],
+					"presentation_rect" : [ 1043.04986172914505, 94.018154981136377, 100.0, 20.0 ],
 					"text" : "Reset",
 					"texton" : "Reset"
 				}
@@ -900,7 +897,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 3297.0, 268.515183863639777, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 121.0, 299.833327174186707, 100.0, 20.0 ],
+					"presentation_rect" : [ 828.0, 95.833327174186707, 100.0, 20.0 ],
 					"text" : "Not Muted",
 					"textcolor" : [ 0.058823529411765, 1.0, 0.0, 1.0 ],
 					"texton" : "Muted",
@@ -920,7 +917,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 3238.599880933761597, 154.066671431064606, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 17.116575419902802, 299.833327174186707, 100.0, 20.0 ],
+					"presentation_rect" : [ 724.116575419902802, 95.833327174186707, 100.0, 20.0 ],
 					"text" : "Reset",
 					"texton" : "Reset"
 				}
@@ -972,7 +969,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1594.0, 277.515183863639777, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 18.733150839805603, 623.515183863639777, 100.0, 20.0 ],
+					"presentation_rect" : [ 725.200008153915405, 239.51519363880152, 100.0, 20.0 ],
 					"text" : "Not Muted",
 					"textcolor" : [ 0.058823529411765, 1.0, 0.0, 1.0 ],
 					"texton" : "Muted",
@@ -992,7 +989,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1620.599880933761597, 122.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 123.599674761295319, 623.515183863639777, 100.0, 20.0 ],
+					"presentation_rect" : [ 830.066532075405121, 239.51519363880152, 100.0, 20.0 ],
 					"text" : "Reset",
 					"texton" : "Reset"
 				}
@@ -1010,7 +1007,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 397.183359086513519, 293.515183863639777, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 121.200087904930115, 142.515183863639777, 100.0, 20.0 ],
+					"presentation_rect" : [ 120.200087904930115, 84.515183863639777, 100.0, 20.0 ],
 					"text" : "Not Muted",
 					"textcolor" : [ 0.058823529411765, 1.0, 0.0, 1.0 ],
 					"texton" : "Muted",
@@ -1030,7 +1027,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 423.783240020275116, 138.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 19.200087904930115, 142.515183863639777, 100.0, 20.0 ],
+					"presentation_rect" : [ 18.200087904930115, 84.515183863639777, 100.0, 20.0 ],
 					"text" : "Reset",
 					"texton" : "Reset"
 				}
@@ -1084,7 +1081,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2361.0, 502.515174088478034, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 352.200008153915405, 319.766668736934662, 294.0, 34.0 ],
+					"presentation_rect" : [ 1042.200008153915405, 115.766668736934662, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -1108,10 +1105,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2369.866782248020172, 29.0, 306.0, 33.0 ],
+					"patching_rect" : [ 2369.866782248020172, 29.0, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 352.200008153915405, 237.866677939891815, 196.0, 33.0 ],
-					"text" : "Color Sensor"
+					"presentation_rect" : [ 1042.200008153915405, 33.866677939891815, 196.0, 34.0 ],
+					"text" : "4 Color Sensor"
 				}
 
 			}
@@ -1135,8 +1132,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2521.266781210899353, 376.748490629196112, 132.400001227855682, 35.0 ],
-					"text" : "icolortheory f0.110(20-100)"
+					"patching_rect" : [ 2521.266781210899353, 376.748490629196112, 132.400001227855682, 36.0 ],
+					"text" : "icolortheory b0.820(20-100)"
 				}
 
 			}
@@ -1196,8 +1193,8 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 2392.61678159236908, 333.348488864898627, 417.549883008003235, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 352.200008153915405, 273.866677939891815, 294.0, 22.0 ],
-					"text" : "udpInstrumentColorSensor icolor /color1/val 7002",
+					"presentation_rect" : [ 1043.200008153915405, 69.866677939891815, 272.0, 22.0 ],
+					"text" : "udpInstrumentColorSensor icolor /color1/val 7004",
 					"varname" : "FractalInstrumentScoreFollower[13]"
 				}
 
@@ -1305,7 +1302,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 2906.0, 502.515174088478034, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 18.200008153915405, 319.766668736934662, 294.0, 34.0 ],
+					"presentation_rect" : [ 725.200008153915405, 115.766668736934662, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -1329,10 +1326,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3009.5, 26.633349180221558, 306.0, 33.0 ],
+					"patching_rect" : [ 3009.5, 26.633349180221558, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 18.200008153915405, 227.833327174186707, 196.0, 33.0 ],
-					"text" : "ch9 Accel 3"
+					"presentation_rect" : [ 725.200008153915405, 23.833327174186707, 299.0, 34.0 ],
+					"text" : "3 Accelerometer 2 - Wiry"
 				}
 
 			}
@@ -1356,8 +1353,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3168.266663372516632, 382.748490629196112, 132.400001227855682, 35.0 ],
-					"text" : "l3g4200theory f0.51(20-100)"
+					"patching_rect" : [ 3168.266663372516632, 382.748490629196112, 132.400001227855682, 36.0 ],
+					"text" : "l3g4200theory b0.581(20-100)"
 				}
 
 			}
@@ -1417,9 +1414,8 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 2937.61678159236908, 333.348488864898627, 449.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 18.200008153915405, 262.833327174186707, 282.0, 35.0 ],
-					"text" : "udpInstrumentRopeAccel l3g4200 /l3g4200/val 7005",
+					"presentation_rect" : [ 725.200008153915405, 58.833327174186707, 295.0, 22.0 ],
+					"text" : "udpInstrumentRopeAccel l3g4200 /l3gaccel1/val 7003",
 					"varname" : "FractalInstrumentScoreFollower[11]"
 				}
 
@@ -1533,7 +1529,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ -177.5, 145.200005114078522, 236.0, 23.0 ],
 					"saved_object_attributes" : 					{
-						"client_rect" : [ 1057, 45, 1440, 407 ],
+						"client_rect" : [ 4, 44, 358, 172 ],
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0,
 						"storage_rect" : [ 583, 69, 1034, 197 ]
@@ -1583,7 +1579,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 482.0, 335.0, 50.0, 22.0 ],
-					"text" : "2"
+					"text" : "store 2"
 				}
 
 			}
@@ -1693,7 +1689,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1819.983357667922974, 29.0, 306.0, 33.0 ],
+					"patching_rect" : [ 1819.983357667922974, 29.0, 306.0, 34.0 ],
 					"text" : "4 Rangefinder"
 				}
 
@@ -1718,7 +1714,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1971.383356630802155, 376.748490629196112, 132.400001227855682, 35.0 ],
+					"patching_rect" : [ 1971.383356630802155, 376.748490629196112, 132.400001227855682, 36.0 ],
 					"text" : "irangetheory b0.95(20-100)"
 				}
 
@@ -1855,7 +1851,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1262.116575419902802, 502.515174088478034, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 18.733150839805603, 649.515174088478034, 294.0, 34.0 ],
+					"presentation_rect" : [ 725.200008153915405, 265.515183863639777, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -1879,10 +1875,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1270.983357667922974, 29.0, 306.0, 33.0 ],
+					"patching_rect" : [ 1270.983357667922974, 29.0, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 17.116575419902802, 550.0, 306.0, 33.0 ],
-					"text" : "1 Flex"
+					"presentation_rect" : [ 723.583432734012604, 166.000009775161743, 306.0, 34.0 ],
+					"text" : "7 Flex"
 				}
 
 			}
@@ -1906,8 +1902,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1422.383356630802155, 376.748490629196112, 132.400001227855682, 35.0 ],
-					"text" : "iflextheory b1.00(20-100)"
+					"patching_rect" : [ 1422.383356630802155, 376.748490629196112, 132.400001227855682, 36.0 ],
+					"text" : "iflextheory f1.00(20-100)"
 				}
 
 			}
@@ -1962,13 +1958,13 @@
 				"box" : 				{
 					"id" : "obj-95",
 					"maxclass" : "newobj",
-					"numinlets" : 9,
+					"numinlets" : 14,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 1293.733357012271881, 333.348488864898627, 352.333335081736323, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 18.733150839805603, 594.348488864898627, 352.333335081736323, 22.0 ],
-					"text" : "udpInstrumentFlex iflex /flex1/val",
+					"presentation_rect" : [ 725.200008153915405, 210.34849864006037, 260.0, 22.0 ],
+					"text" : "udpInstrument1Input Flex iflex /flex1/val 7007 1",
 					"varname" : "FractalInstrumentScoreFollower[9]"
 				}
 
@@ -2274,7 +2270,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 114.116575419902802, 509.515174088478034, 504.0, 53.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 18.200008153915405, 168.515183863639777, 294.0, 34.0 ],
+					"presentation_rect" : [ 17.200008153915405, 110.515183863639777, 294.0, 34.0 ],
 					"range" : 72
 				}
 
@@ -2298,10 +2294,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 122.983357667922974, 36.0, 306.0, 33.0 ],
+					"patching_rect" : [ 122.983357667922974, 36.0, 306.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 18.200008153915405, 78.866677939891815, 219.0, 33.0 ],
-					"text" : "ch3 Hat 1"
+					"presentation_rect" : [ 17.200008153915405, 20.866677939891815, 280.916567265987396, 34.0 ],
+					"text" : "1 Accelerometer 1 - Boxy"
 				}
 
 			}
@@ -2325,8 +2321,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 339.783357858657837, 383.748490629196112, 132.400001227855682, 35.0 ],
-					"text" : "iacceltheory f0.70(20-100)"
+					"patching_rect" : [ 339.783357858657837, 383.748490629196112, 132.400001227855682, 36.0 ],
+					"text" : "iacceltheory b0.19(20-100)"
 				}
 
 			}
@@ -2385,10 +2381,10 @@
 					"numinlets" : 9,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 145.733357012271881, 340.348488864898627, 212.0, 35.0 ],
+					"patching_rect" : [ 145.733357012271881, 340.348488864898627, 212.0, 36.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 18.200008153915405, 114.866677939891815, 239.0, 22.0 ],
-					"text" : "udpInstrumentAccel iaccel /accel1/val 7004",
+					"presentation_rect" : [ 17.200008153915405, 56.866677939891815, 239.0, 22.0 ],
+					"text" : "udpInstrumentAccel iaccel /accel1/val 7001",
 					"varname" : "FractalInstrumentScoreFollower[7]"
 				}
 

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 2626.0, 225.0, 2431.0, 1180.0 ],
+		"rect" : [ 2684.0, 212.0, 2431.0, 1180.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,23 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Times New Roman",
+					"fontsize" : 36.344394683837891,
+					"id" : "obj-9",
+					"linecount" : 12,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1406.0, 416.0, 450.0, 550.0 ],
+					"presentation" : 1,
+					"presentation_linecount" : 11,
+					"presentation_rect" : [ 1386.0, 425.259999999999991, 671.0, 508.0 ],
+					"text" : "Theory Stuff:\n\n- Notes and Letters\n- Intervals: H, W, m3, M3, M4, M5, 8va, etc\n- Major Scale\n- Minor Scale\n- Major Chord\n- Minor Chord\n- \"In the key of C Major\"\n- IV chord, vi chord, etc\n- Chord Progression\n"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontsize" : 36.0,
 					"id" : "obj-108",
@@ -912,11 +929,14 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 26.142938864364233,
 					"id" : "obj-12",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 308.0, 212.0, 47.0, 22.0 ],
+					"patching_rect" : [ 308.0, 212.0, 93.0, 39.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 686.0, 357.732997185741112, 99.0, 39.0 ],
 					"text" : "midiout"
 				}
 
@@ -929,7 +949,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 35.0, 264.0, 50.0, 22.0 ],
-					"text" : "72"
+					"text" : "48"
 				}
 
 			}
@@ -975,12 +995,15 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 25.593586874743778,
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 165.0, 179.0, 40.0, 22.0 ],
+					"patching_rect" : [ 165.0, 179.0, 75.0, 38.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 598.0, 357.732997185741112, 84.0, 38.0 ],
 					"text" : "midiin"
 				}
 

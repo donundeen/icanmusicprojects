@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 4,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 448.0, 136.0, 758.0, 621.0 ],
+		"rect" : [ 1123.0, 231.0, 758.0, 621.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -400,7 +400,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3085.5, 407.482125046253259, 150.0, 33.0 ],
+					"patching_rect" : [ 3085.5, 407.482125046253259, 150.0, 34.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 217.0, 279.560975611209869, 193.284552276134491, 20.0 ],
 					"text" : "shape loudness (0 for no trigger"
@@ -485,7 +485,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2772.666666626930237, 69.451017262935693, 296.0, 33.0 ],
+					"patching_rect" : [ 2772.666666626930237, 69.451017262935693, 296.0, 34.0 ],
 					"text" : "shaping velocity trigger"
 				}
 
@@ -497,7 +497,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2108.0, 26.666667103767395, 289.0, 33.0 ],
+					"patching_rect" : [ 2108.0, 26.666667103767395, 289.0, 34.0 ],
 					"text" : "shaping input value"
 				}
 
@@ -702,7 +702,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2157.66667914390564, 972.917084755897577, 50.0, 35.0 ],
+					"patching_rect" : [ 2157.66667914390564, 972.917084755897577, 50.0, 36.0 ],
 					"text" : "0.997481"
 				}
 
@@ -761,9 +761,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 362.533329784870148, -18.0, 465.0, 53.0 ],
+					"patching_rect" : [ 362.533329784870148, -18.0, 465.0, 55.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 388.934585452079773, 19.600007176399224, 97.0, 53.0 ],
+					"presentation_rect" : [ 388.934585452079773, 19.600007176399224, 97.0, 55.0 ],
 					"text" : "flex"
 				}
 
@@ -838,7 +838,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-160",
-					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "Microsoft GS Wavetable Synth", ",", "2- HDSPe FX MADI1 MIDI", ",", "2- HDSPe FX MIDI", ",", "2- HDSPe FX MADI2 MIDI", ",", "2- HDSPe FX MADI3 MIDI", ",", "RME ARC", ",", "USB Axiom 49", ",", "loopMIDI Port", ",", "loopMIDI Port 1", ",", "loopMIDI Port 2", ",", "loopMIDI Port 3", ",", "loopMIDI Port 4" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -966,6 +966,7 @@
 			}
 , 			{
 				"box" : 				{
+					"autorestore" : "iflexflex.json",
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-148",
@@ -994,7 +995,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "preset", "int", "preset", "int", "" ],
 					"patching_rect" : [ 818.000023245811462, 284.0, 100.0, 40.0 ],
-					"pattrstorage" : "flex"
+					"pattrstorage" : "iflexflex"
 				}
 
 			}
@@ -1396,7 +1397,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 570.0, 35.0, 30.0, 30.0 ]
 				}
 
@@ -1409,7 +1410,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 362.533329784870148, 35.0, 30.0, 30.0 ]
 				}
 
@@ -1565,7 +1566,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4028.416697978973389, 184.666669011116028, 151.0, 47.0 ],
+					"patching_rect" : [ 4028.416697978973389, 184.666669011116028, 151.0, 48.0 ],
 					"text" : "turn a float into a sensible note lenth (whole, quarter, half, etc)"
 				}
 
@@ -1803,7 +1804,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 3618.516695380210876, 179.666669011116028, 150.0, 60.0 ],
+					"patching_rect" : [ 3618.516695380210876, 179.666669011116028, 150.0, 62.0 ],
 					"text" : "getting note from float, by sending special string out to theory engine (which is external to this patch)"
 				}
 
@@ -1815,7 +1816,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 4506.616655290126801, 117.650369825363214, 150.0, 33.0 ],
+					"patching_rect" : [ 4506.616655290126801, 117.650369825363214, 150.0, 34.0 ],
 					"text" : "processing theory note recieved"
 				}
 
@@ -1946,7 +1947,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 4349.016625165939331, 691.435227637291064, 101.0, 35.0 ],
+					"patching_rect" : [ 4349.016625165939331, 691.435227637291064, 101.0, 36.0 ],
 					"text" : "port \"loopMIDI Port\""
 				}
 
@@ -2700,7 +2701,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1488.0, 29.0, 97.0, 22.0 ],
-					"text" : "udpreceive 7002"
+					"text" : "udpreceive #3"
 				}
 
 			}
