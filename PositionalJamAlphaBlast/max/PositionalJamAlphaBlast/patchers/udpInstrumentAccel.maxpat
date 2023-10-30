@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 2852.0, 141.0, 2292.0, 1259.0 ],
+		"rect" : [ 2622.0, 115.0, 482.0, 896.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -98,7 +98,7 @@
 					"patching_rect" : [ 3688.008130013942719, 821.674797356128693, 59.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 347.829110532999039, 445.006583094596863, 67.097717672586441, 22.0 ],
-					"text" : "0.000102"
+					"text" : "0.012746"
 				}
 
 			}
@@ -112,7 +112,7 @@
 					"patching_rect" : [ 4430.260160088539124, 877.463414549827576, 73.577235758304596, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 141.016036123037338, 445.006583094596863, 70.227642416954041, 22.0 ],
-					"text" : "0.56487"
+					"text" : "0.888786"
 				}
 
 			}
@@ -127,7 +127,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 566.699898481369019, 445.933412492275238, 50.0, 36.0 ],
-					"text" : "0.031418"
+					"text" : "0.764827"
 				}
 
 			}
@@ -254,7 +254,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3618.0, 630.252032458782196, 35.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 368.544714391231537, 265.414858100414222, 43.666666090488434, 22.0 ],
+					"presentation_rect" : [ 318.566759198904037, 266.341687498092597, 43.666666090488434, 22.0 ],
 					"text" : "reset"
 				}
 
@@ -282,7 +282,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 4347.0, 706.191503221988569, 35.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 166.596233606338501, 266.341687498092597, 39.802072465419769, 22.0 ],
+					"presentation_rect" : [ 128.600085586309433, 270.341687617301886, 39.802072465419769, 22.0 ],
 					"text" : "reset"
 				}
 
@@ -625,8 +625,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 376.0, 4.0, 350.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ 428.633264303207397, 6.266664206981659, 202.0, 61.0 ],
+					"presentation_rect" : [ 19.399973809719086, 4.0, 282.804153770208359, 34.0 ],
 					"text" : "1 Accelerometer Boxy"
 				}
 
@@ -658,7 +657,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 4369.0, 303.76674747467041, 173.0, 22.0 ],
-					"restore" : [ 14 ],
+					"restore" : [ 13 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -696,7 +695,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 3517.0, 309.600080013275146, 190.0, 22.0 ],
-					"restore" : [ 4 ],
+					"restore" : [ 19 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -839,7 +838,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-61",
-					"items" : [ "Microsoft GS Wavetable Synth", ",", "2- HDSPe FX MADI1 MIDI", ",", "2- HDSPe FX MIDI", ",", "2- HDSPe FX MADI2 MIDI", ",", "2- HDSPe FX MADI3 MIDI", ",", "RME ARC", ",", "USB Axiom 49", ",", "loopMIDI Port", ",", "loopMIDI Port 1", ",", "loopMIDI Port 2", ",", "loopMIDI Port 3", ",", "loopMIDI Port 4" ],
+					"items" : [ "Microsoft GS Wavetable Synth", ",", "2- HDSPe FX MADI1 MIDI", ",", "2- HDSPe FX MIDI", ",", "2- HDSPe FX MADI2 MIDI", ",", "2- HDSPe FX MADI3 MIDI", ",", "loopMIDI Port", ",", "loopMIDI Port 1", ",", "loopMIDI Port 2", ",", "loopMIDI Port 3", ",", "loopMIDI Port 4", ",", "RME ARC" ],
 					"labelclick" : 1,
 					"maxclass" : "umenu",
 					"numinlets" : 1,
@@ -873,7 +872,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 334.383243083953857, 37.866694211959839, 183.0, 22.0 ],
-					"restore" : [ 100 ],
+					"restore" : [ 49 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -1281,7 +1280,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 5082.100030124187469, 577.417095484733636, 158.000001609325409, 22.0 ],
-					"text" : "iacceltheory b0.57(20-100)"
+					"text" : "iacceltheory b0.89(20-49)"
 				}
 
 			}
@@ -1317,7 +1316,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 5206.25006115436554, 533.417093458175714, 134.00000125169754, 22.0 ],
-					"text" : "b 0.567365 20 100"
+					"text" : "b 0.888662 20 49"
 				}
 
 			}
@@ -1392,7 +1391,7 @@
 					"patching_rect" : [ -30.0, 692.833322525024414, 253.0, 27.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 692.0, 53.633326888084412, 253.0, 27.0 ],
-					"text" : "192.168.0.200"
+					"text" : "10.102.135.53"
 				}
 
 			}
@@ -1416,7 +1415,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 6029.000016570091248, 604.000018000602722, 50.0, 22.0 ],
-					"text" : "65"
+					"text" : "45"
 				}
 
 			}
@@ -2730,7 +2729,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 6106.0, 332.0, 50.0, 22.0 ],
-					"text" : "65"
+					"text" : "45"
 				}
 
 			}
@@ -3927,7 +3926,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3811.0, 467.666667520999908, 38.0, 36.0 ],
-					"text" : "gyroXabs"
+					"text" : "bounce"
 				}
 
 			}
@@ -4095,7 +4094,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3764.5, 996.191057622432709, 59.0, 22.0 ],
-					"text" : "0.006541"
+					"text" : "1.631502"
 				}
 
 			}
@@ -4897,7 +4896,7 @@
 					"patching_rect" : [ 5832.666676878929138, 1265.95153147220617, 50.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 196.833375573158264, 109.433322846889496, 50.0, 22.0 ],
-					"text" : "65"
+					"text" : "48"
 				}
 
 			}
@@ -5028,7 +5027,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ -865.0, -98.633324980735779, 53.0, 22.0 ],
-					"text" : "65"
+					"text" : "45"
 				}
 
 			}

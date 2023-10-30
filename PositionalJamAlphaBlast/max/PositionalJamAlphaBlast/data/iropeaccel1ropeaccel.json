@@ -1,6 +1,6 @@
 {
 	"pattrstorage" : 	{
-		"name" : "iropeaccel2ropeaccel",
+		"name" : "icolorropeaccel",
 		"slots" : 		{
 			"1" : 			{
 				"id" : 1,
@@ -17,7 +17,8 @@
 					"pbounce" : [ 0 ],
 					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
 					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
-					"pnoteshape" : [ 0 ]
+					"pnoteshape" : [ 0 ],
+					"ptriggersensitivity" : [  ]
 				}
 
 			}
@@ -28,16 +29,17 @@
 					"pmidimin" : [ 20 ],
 					"pmidimax" : [ 100 ],
 					"pnoteoutm" : [ 1 ],
-					"pchannel" : [ 8 ],
+					"pchannel" : [ 4 ],
 					"pskiptheory" : [ 0 ],
 					"pnotesel" : [ 1 ],
-					"ploudness" : [ 9 ],
-					"pduration" : [ 2 ],
-					"pnote" : [ 3 ],
+					"ploudness" : [ 6 ],
+					"pduration" : [ 5 ],
+					"pnote" : [ 4 ],
 					"pbounce" : [ 0 ],
 					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
 					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
-					"pnoteshape" : [ 0 ]
+					"pnoteshape" : [ 0 ],
+					"ptriggersensitivity" : [ 5 ]
 				}
 
 			}
@@ -57,7 +59,8 @@
 					"pbounce" : [ 0 ],
 					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
 					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
-					"pnoteshape" : [ 0 ]
+					"pnoteshape" : [ 0 ],
+					"ptriggersensitivity" : [  ]
 				}
 
 			}

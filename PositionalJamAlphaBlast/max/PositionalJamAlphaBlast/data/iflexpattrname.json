@@ -1,0 +1,31 @@
+{
+	"pattrstorage" : 	{
+		"name" : "ithreadpattrname",
+		"slots" : 		{
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnotesel" : [ 0 ],
+					"pskiptheory" : [ 0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 5 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 0.049065911153035, 0.0, 0, 0.113831161197971, 0.73910911211491, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pvelselect" : [ 2 ],
+					"pbounceinshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"parg1text" : [ "\"conductive thread\"" ],
+					"parg2text" : [ "ithread" ],
+					"parg3text" : [ "/thread1/val" ],
+					"parg4int" : [ 7005 ],
+					"parg45nt" : [ 1 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,31 @@
+{
+	"pattrstorage" : 	{
+		"name" : "ihugpattrname",
+		"slots" : 		{
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"pmidimin" : [ 20 ],
+					"pmidimax" : [ 100 ],
+					"pnotesel" : [ 0 ],
+					"pskiptheory" : [ 0 ],
+					"pnoteoutm" : [ 1 ],
+					"pchannel" : [ 6 ],
+					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pnoteshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"pvelselect" : [ 1 ],
+					"pbounceinshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
+					"parg1text" : [ "\"mutual touch\"" ],
+					"parg2text" : [ "ihug" ],
+					"parg3text" : [ "/hug1/val" ],
+					"parg4int" : [ 7006 ],
+					"parg45nt" : [ 1 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}
