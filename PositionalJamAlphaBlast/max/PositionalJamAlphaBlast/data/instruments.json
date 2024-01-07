@@ -8,19 +8,19 @@
 					"pmute1" : [ 0 ],
 					"pmute3" : [ 0 ],
 					"pmute4" : [ 0 ],
-					"pmute10" : [  ],
-					"pmute12" : [  ],
-					"pmute11" : [  ],
-					"pmute11[1]" : [  ],
-					"pmute2[1]" : [  ],
+					"pmute10" : [ 0 ],
+					"pmute12" : [ 0 ],
+					"pmute11" : [ 0 ],
+					"pmute11[1]" : [ 0 ],
+					"pmute2[1]" : [ 0 ],
 					"FractalInstrumentScoreFollower[7]::iaccelaccel" : [ 1 ],
-					"FractalInstrumentScoreFollower[9]::iflexpattrname" : [  ],
+					"FractalInstrumentScoreFollower[9]::iflexpattrname" : [ 1 ],
 					"FractalInstrumentScoreFollower[1]::irangerange" : [ 1 ],
-					"FractalInstrumentScoreFollower[11]::l3g4200ropeaccel" : [  ],
-					"FractalInstrumentScoreFollower[13]::icolorropeaccel" : [  ],
-					"FractalInstrumentScoreFollower[12]::ihugpattrname" : [  ],
-					"FractalInstrumentScoreFollower[2]::ithreadpattrname" : [  ],
-					"FractalInstrumentScoreFollower[3]::impr121cap12" : [  ]
+					"FractalInstrumentScoreFollower[11]::l3g4200ropeaccel" : [ 1 ],
+					"FractalInstrumentScoreFollower[13]::icolorropeaccel" : [ 1 ],
+					"FractalInstrumentScoreFollower[12]::ihugpattrname" : [ 1 ],
+					"FractalInstrumentScoreFollower[2]::ithreadpattrname" : [ 1 ],
+					"FractalInstrumentScoreFollower[3]::impr121cap12" : [ 1 ]
 				}
 
 			}

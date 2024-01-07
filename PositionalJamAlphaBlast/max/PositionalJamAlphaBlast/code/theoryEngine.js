@@ -143,7 +143,7 @@ maxApi.addHandler("noteList", function(){
 
 
 maxApi.addHandler("set", function(labelid, command){
-	//maxApi.post("set " + " : " + labelid + " : " + command);
+	maxApi.post("set " + " : " + labelid + " : " + command);
 	runSetter(command.toString(), labelid);
 });
 
@@ -161,11 +161,12 @@ maxApi.addHandler("moveMinMax", function(rootval, minmax){
 
 // setter commands
 function runSetter(command, labelid){
+	maxApi.post(bestNoteSetMidi);
 	if(command.match(/^[a-gA-G][b#♭]?[0-9]?$/)){
-//		maxApi.post("command setNote " + command);
+		maxApi.post("command setNote " + command);
 		setNote(command, labelid);
 	}else if(teoria.Scale.KNOWN_SCALES.indexOf(command.toLowerCase()) >= 0){
-//		maxApi.post("command setScale " + command);
+		maxApi.post("command setScale " + command);
 		setScale(command.toLowerCase(), labelid);
 		bestSetIsScale();
 	}else if (command.match(/^[+-]/)){
@@ -379,6 +380,7 @@ function getChordNotes(){
 
 function createScaleSet(){
 	console.log("creating scale set ");
+	maxApi.post("creating scale set ");
 	scaleNoteSet = [];
 	scaleNoteSetMidi = [];
 	var notes = curScale.notes();

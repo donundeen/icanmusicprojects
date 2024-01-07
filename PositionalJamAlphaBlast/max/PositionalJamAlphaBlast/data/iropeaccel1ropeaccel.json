@@ -18,7 +18,7 @@
 					"ploudshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
 					"pdurationshape" : [ 1.0, 0.0, 1.0, 0.0, 0.0, 0, 1.0, 1.0, 0, "linear" ],
 					"pnoteshape" : [ 0 ],
-					"ptriggersensitivity" : [  ]
+					"ptriggersensitivity" : [ 5 ]
 				}
 
 			}
