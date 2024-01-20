@@ -1,4 +1,8 @@
 
+#include <AsyncTimer.h> //https://github.com/Aasim-A/AsyncTimer
+
+#include "uClock.h"
+
 // Solder closed jumper on bottom!
 
 // See http://www.vlsi.fi/fileadmin/datasheets/vs1053.pdf Pg 31
@@ -35,11 +39,88 @@ int midimin = 6;
 int midimax = 120;
 
 
+AsyncTimer t;
+
+int bpm = 120;
+
+umodular::clock::uClockClass::PPQNResolution PPQNr = uClock.PPQN_96;
+int PPQN = 96;
+
+// number of pulses for different common note values.
+int WN = PPQN * 4;
+int HN = PPQN * 2;
+int QN = PPQN;
+int N8 = PPQN / 2;
+int N16 = PPQN / 4;
+int QN3 = HN / 3;
+int HN3 = WN / 3;
+int N83 = QN / 3;
+
+
+void clocksetup(){
+    // avaliable resolutions
+  // [ uClock.PPQN_24, uClock.PPQN_48, uClock.PPQN_96, uClock.PPQN_384, uClock.PPQN_480, uClock.PPQN_960 ]
+  // not mandatory to call, the default is 96PPQN if not set
+  uClock.init();  
+  uClock.setPPQN(PPQNr);
+  uClock.setOnPPQN(onPPQNCallback);
+  uClock.setOnClockStart(onClockStartCallback);
+  uClock.setTempo(bpm);
+  uClock.start();
+  t.setInterval(triggerRandNote, pulseToMS(HN));
+  t.setInterval(triggerRandNote, pulseToMS(QN3));
+  t.setInterval(switchnotelist, pulseToMS(HN * 4));
+}
+
+void onPPQNCallback(uint32_t tick) {
+
+} 
+
+void onClockStartCallback(){
+  Serial.println("clock start");
+}
+
+void triggerRandNote(){
+  Serial.println("trigger");
+  //int note = random(32,120);
+  int note = noteFromFloat((double)random(1000) / (double)1000, 32, 100);
+  midiMakeNote(note, 127, pulseToMS(QN));
+}
+
+void midiMakeNote(int pitch, int vel, int durationms){
+  Serial.print("MKNOTE: ");
+  Serial.print(pitch);
+  Serial.print(" : ");
+  Serial.print(vel);
+  Serial.print(" : ");
+  Serial.println(durationms);
+  midiNoteOn(0, pitch, vel);
+   
+ // int innerpitch = pitch;
+  t.setTimeout([pitch, vel]() {
+    midiNoteOff(0, pitch, vel);
+  }, durationms);
+}
+
+ 
+int notelist1[] = { 0, 3, 7, 12, 15, 19, 24, 27, 31, 36, 39, 43, 48, 51, 55, 60, 63, 67, 72, 75, 79, 84, 87, 91, 96, 99, 103, 108, 111, 115, 120, 123, 127 };
+int notelist2[] = {  1, 5, 10, 13, 17, 22, 25, 29, 34, 37, 41, 46, 49, 53, 58, 61, 65, 70, 73, 77, 82, 85, 89, 94, 97, 101, 106, 109, 113, 118, 121, 125  };
 
 void testsetup(){
-  int notelist1[] = { 0, 3, 7, 12, 15, 19, 24, 27, 31, 36, 39, 43, 48, 51, 55, 60, 63, 67, 72, 75, 79, 84, 87, 91, 96, 99, 103, 108, 111, 115, 120, 123, 127 };
   int newlen = sizeof(notelist1)/sizeof(int);
   setNotelist(notelist1, notelist, newlen);
+}
+
+int notelisti = 0;
+void switchnotelist(){
+  notelisti++;
+  if(notelisti % 2 == 0){
+    int newlen = sizeof(notelist1)/sizeof(int);
+    setNotelist(notelist1, notelist, newlen);
+  }else{
+    int newlen = sizeof(notelist2)/sizeof(int);
+    setNotelist(notelist2, notelist, newlen);
+  }
 }
 
 void testloop(){
@@ -56,26 +137,25 @@ void setup() {
   VS1053_MIDI.begin(31250); // MIDI uses a 'strange baud rate'
   
   midiSetChannelBank(0, VS1053_BANK_MELODY);
-
   midiSetChannelVolume(0, 127);
-
   midiSetInstrument(0, VS1053_GM1_OCARINA);
 
+  clocksetup();
   testsetup();
 }
 
 void loop() {  
-  /*
-  for (uint8_t i=60; i<69; i++) {
-    midiNoteOn(0, i, 127);
-    delay(100);
-    midiNoteOff(0, i, 127);
-  }
-  */
-  testloop();
+  
 
-  delay(1000);
+  t.handle();
+
+
 }
+
+void midiMakeNote(){
+
+}
+
 
 void midiSetInstrument(uint8_t chan, uint8_t inst) {
   if (chan > 15) return;
@@ -128,6 +208,8 @@ void midiNoteOff(uint8_t chan, uint8_t n, uint8_t vel) {
 }
 
 
+
+// Music Theory Things
 void setNotelist(int* newlist, int* curlist, int size){
   notelistlength = size;
   memcpy(curlist, newlist, sizeof(newlist[0])*size);
@@ -138,10 +220,13 @@ void setRoot(int root){
 }
 
 
-int noteFromFloat(float value, int min, int max){
+int noteFromFloat(double value, int min, int max){
   makeworkinglist(min, max);
-	int index = floor(workinglistlength * value);
-	int note  = workinglist[index];// % workingList.length];
+	int index = floor((double)workinglistlength * value);
+  Serial.println(index);
+	int note  = workinglist[index];// % workingList.length]
+  Serial.println(note);
+  return note;
 }
 
 int fixedNoteFromFloat(float value, int min, int max){
@@ -209,6 +294,8 @@ int moveMinMax(int root, int minmax){
 
 }
 
+
+// Make a new array that's a subset of the notelist, with min and max values
 void makeworkinglist(int minval, int maxval){
   int wi = -1;
   for(int i = 0; i < notelistlength; i ++){
@@ -218,4 +305,19 @@ void makeworkinglist(int minval, int maxval){
     }
   }
   workinglistlength = wi + 1;
+}
+
+
+// get number of milliseconds for some number of pulses
+int pulseToMS(int pulses){
+  // pulses per beat = PPQN, or some other value
+  // bpm = beats per minute
+  // pulses per beat
+
+  // a beat is how many seconds?
+  // 120 bpm = .5 sec per beat | 60 / 120
+  double secperbeat = (double)60 / (double)bpm;
+  double secperpulse = secperbeat / (double)PPQN;
+  double pulsems = secperpulse * pulses * 1000;
+  return floor(pulsems); 
 }
