@@ -12,7 +12,8 @@
 #define VS1053_BANK_MELODY 0x79
 
 // See http://www.vlsi.fi/fileadmin/datasheets/vs1053.pdf Pg 32 for more!
-#define VS1053_GM1_OCARINA 81
+//#define VS1053_GM1_OCARINA 81
+#define VS1053_GM1_OCARINA 12
 
 #define MIDI_NOTE_ON  0x90
 #define MIDI_NOTE_OFF 0x80
