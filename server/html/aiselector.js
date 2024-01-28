@@ -1,4 +1,4 @@
-const WEBSOCKET_PORT = 8001;
+const WEBSOCKET_PORT = 8010;
 const WEBSERVER_PORT = 8002;
 
 Array.prototype.rotateRight = function( n ) {
@@ -43,14 +43,24 @@ let wsready = false;
   // Browser WebSockets have slightly different syntax than `ws`.
   // Instead of EventEmitter syntax `on('open')`, you assign a callback
   // to the `onopen` property.
-  ws.onopen = function() {
+ws.onopen = function() {
     wsready = true;
-  };
+};
 
-  ws.onmessage = function(msg) {
+ws.onerror = function(msg){
+    console.log("ws error");
+    console.log(msg);
+}
+
+ws.onclose = function(msg){
+    console.log("wsclose");
+    console.log(msg);
+}
+
+ws.onmessage = function(msg) {
     console.log("got message "+ msg);
     console.log(JSON.stringify(msg));
-  };  
+};  
 
 var svgDoc = false;
 let currentRoot = "C"
@@ -172,7 +182,9 @@ function setTransposedChord(){
 
 function sendChord(chord){
     chord = chord.replace("♭","b");
-    console.log("sending " + chord);
+    chord = chord.replace(/[0-9]/,"");
+    console.log("sending: " + chord);
+    console.log(ws.readyState);
     if(wsready){
         ws.send("chord " + chord);
     }else{

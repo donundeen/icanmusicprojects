@@ -13,6 +13,7 @@ let UDPSENDPORT = 7004;
 
 
 var osc = require("osc");
+const { SocketServer } = require("./socketserver.module.js");
 var udpPort = new osc.UDPPort({
     localAddress: "0.0.0.0",
     localPort: 57121, // this port for listening
@@ -21,9 +22,10 @@ var udpPort = new osc.UDPPort({
 });
 udpPort.open();
 
-Transport    = require("./transport.node.js").Transport;
-ScoreReader  = require("./scorereader.node.js").ScoreReader;
-TheoryEngine = require("./theoryengine.node.js").TheoryEngine;
+Transport    = require("./transport.module.js").Transport;
+ScoreReader  = require("./scorereader.module.js").ScoreReader;
+TheoryEngine = require("./theoryengine.module.js").TheoryEngine;
+socketServer = require("./socketserver.module.js").SocketServer;
 
 console.log(Transport);
 
@@ -59,6 +61,7 @@ console.log(trans);
 trans.updateBpm(bpm);
 score.scoreFilename = scorename;
 
+socketServer.startSocketServer();
+socketServer.startWebServer();
 
-
-score.openscore(function(){trans.start();});
+//score.openscore(function(){trans.start();});

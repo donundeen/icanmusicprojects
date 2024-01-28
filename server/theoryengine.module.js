@@ -132,7 +132,6 @@ let TheoryEngine = {
         this.bestNoteSetMidi = chordNoteSetMidi;
         this.curBestSetName = curChordName;
         this.getBestNoteMidiList();
-
     },
 
     bestSetIsScale(){
