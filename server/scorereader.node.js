@@ -37,7 +37,7 @@ let ScoreReader = {
 //        console.log(matches);
         for(match of matches){
             let msg = match[2];
-    //        console.log(match[2]);
+            console.log(match[2]);
             let splits = msg.split(" ");
             for (split of splits){
                 this.processMessage(split, transport);

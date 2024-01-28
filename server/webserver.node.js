@@ -1,6 +1,5 @@
 // comments here
 const path = require('path');
-const Max = require('max-api');
 const WebSocket = require('ws');
 var connect = require('connect');
 var serveStatic = require('serve-static');
@@ -11,30 +10,25 @@ const { networkInterfaces } = require('os');
 const WEBSOCKET_PORT = 8001;
 const WEBSERVER_PORT = 8002;
 
-
-
 const server = new WebSocket.Server({
   port: WEBSOCKET_PORT
 });
 
 let sockets = [];
 
-Max.post("trying to start websockets...");
+console.log("trying to start websockets...");
 
 server.on('connection', function(socket) {
   sockets.push(socket);
-  Max.post("STARTD websockets");
-
-
-
+  console.log("STARTD websockets");
 
   // When you receive a message, send that message to every socket.
   socket.on('message', function(msg) {
     sockets.forEach(s => s.send(msg)); // send back out - we don't need to do this
 //  	console.log(msg);
-//	  Max.post("Got message " + msg.toString());
-
-  	Max.outlet(msg.toString());	
+//	  console.log("Got message " + msg.toString());
+    //this is messages FROM the web page
+  	console.log(msg.toString());	
   });
 
   // When a socket closes, or disconnects, remove it from the array.
@@ -43,10 +37,12 @@ server.on('connection', function(socket) {
   });
 });
 
-Max.post(__dirname);
 
+
+// this is serving the web page
+console.log(__dirname);
 connect()
-     .use(serveStatic(__dirname+"/.."))
+     .use(serveStatic(__dirname+"/html"))
      .listen(WEBSERVER_PORT, () => 	{
 
       const nets = networkInterfaces();
@@ -60,21 +56,20 @@ connect()
                 if (!results[name]) {
                     results[name] = [];
                 }
-                Max.post(name);
+                console.log(name);
                 results[name].push(net.address);
             }
         }
       }
-      Max.post(results);
+      console.log(results);
       if(results["en0"]){
         my_ip_address = results["en0"]; 
       }else if(results["Ethernet"]){
         my_ip_address = results["Ethernet 2"]; 
       }
-     
 
-      Max.post('Server running on '+WEBSERVER_PORT+'... http://'+my_ip_address+':'+WEBSERVER_PORT+'/other/aiselector.html '+__dirname);
-      Max.post('http://'+my_ip_address+':'+WEBSERVER_PORT+'/other/aiselector.html');
-      Max.outlet('UIInterface http://'+my_ip_address+':'+WEBSERVER_PORT+'/other/aiselector.html');
-      Max.outlet('ipaddress '+my_ip_address);
+      console.log('Server running on '+WEBSERVER_PORT+'... http://'+my_ip_address+':'+WEBSERVER_PORT+'/aiselector.html '+__dirname);
+      console.log('http://'+my_ip_address+':'+WEBSERVER_PORT+'/aiselector.html');
+      console.log('UIInterface http://'+my_ip_address+':'+WEBSERVER_PORT+'/aiselector.html');
+      console.log('ipaddress '+my_ip_address);
      });

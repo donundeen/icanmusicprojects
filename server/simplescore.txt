@@ -1,4 +1,6 @@
-1:1 A Minor
-2:1 B Minor
-3:1 Bb Major
-4:4 tostart
+1:1 C Major
+3:1 G Major
+5:1 A Minor
+7:1 F Major
+8:1 E Major
+8:4 tostart

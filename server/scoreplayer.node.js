@@ -3,11 +3,20 @@ testing a system for playing a score in time.
 to become a reusable library later
 */
 
+let bpm = 120;
+// defining some note lengths
+let scorename = "simplescore.txt";
+let UDPSENDIP = "10.0.0.255";
+//let UDPSENDIP = "10.0.0.131";
+let UDPSENDPORT = 7004;
+
+
 
 var osc = require("osc");
 var udpPort = new osc.UDPPort({
     localAddress: "0.0.0.0",
     localPort: 57121, // this port for listening
+    broadcast: true,
     metadata: true
 });
 udpPort.open();
@@ -17,10 +26,6 @@ ScoreReader  = require("./scorereader.node.js").ScoreReader;
 TheoryEngine = require("./theoryengine.node.js").TheoryEngine;
 
 console.log(Transport);
-
-let bpm = 120;
-// defining some note lengths
-let scorename = "simplescore.txt";
 
 console.log("starting");
 
@@ -37,8 +42,7 @@ score.setMessageCallback(function(msg){
 });
 
 theory.setMidiListCallback(function(msg){
-    console.log("theory output " + msg);
-    console.log(msg.join(" "));
+//    console.log("theory output " + msg);
     let args = msg.map(function(x) {return {type: "i", value: parseInt(x)};});
     let bundle = {
         timeTag: osc.timeTag(1),
@@ -47,8 +51,7 @@ theory.setMidiListCallback(function(msg){
             args: args
         }]
     }
-    console.log(args);
-    udpPort.send(bundle, "10.0.0.131", 7004);     
+    udpPort.send(bundle, UDPSENDIP, UDPSENDPORT);     
 });
 
 console.log(trans);
