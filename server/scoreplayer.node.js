@@ -2,9 +2,14 @@
 testing a system for playing a score in time.
 to become a reusable library later
 */
+import { Client } from 'node-osc';
 
-Transport = require("./transport.node.js").Transport;
-ScoreReader = require("./scorereader.node.js").ScoreReader;
+const client = new Client('10.0.0.255', 7003);
+
+
+
+Transport    = require("./transport.node.js").Transport;
+ScoreReader  = require("./scorereader.node.js").ScoreReader;
 TheoryEngine = require("./theoryengine.node.js").TheoryEngine;
 
 console.log(Transport);
@@ -29,6 +34,10 @@ score.setMessageCallback(function(msg){
 
 theory.setMidiListCallback(function(msg){
     console.log("theory output" + msg);
+    client.send('/notelist', msg, () => {
+        console.log("data sent");
+//        client.close();
+    });    
 });
 
 console.log(trans);
