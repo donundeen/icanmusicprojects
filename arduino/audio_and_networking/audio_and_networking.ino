@@ -46,7 +46,7 @@ const char *WIFI_PASSWORD = "WeL0veLettuce";
 char *UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
 char *presetip = "10.0.0.174"; // in case we just want to force it for testing
 int UDPPort = 7002; // the UDP port that Max is listening on
-int UDPINPort = 7003; // the UDP port that Max is listening on
+int UDPINPort = 7004; // the UDP port that Max is listening on
 // END NETWORK CONFIGS
 ////////////////////////
 
@@ -308,7 +308,7 @@ void testsetup(){
 }
 
 void triggerRandNote(){
-  Serial.println("triggerRandNote");
+//  Serial.println("triggerRandNote");
   //int note = random(32,120);
   int note = noteFromFloat((double)random(1000) / (double)1000, 32, 100);
   midiMakeNote(note, 127, pulseToMS(QN));
@@ -327,7 +327,7 @@ void switchnotelist(){
 }
 
 void sendRandVal(){
-  sendOSCUDP(random(4,1000));
+ // sendOSCUDP(random(4,1000));
 }
 
 // NETWORK+SENSOR CODE
@@ -369,12 +369,14 @@ void UDPListen(){
   if( (size = udp.parsePacket())>0)
   {
   // unsigned int outPort = Udp.remotePort();
-    Serial.println("reading");
-    while(size--)
-      bundleIN.fill(udp.read());
-
+    while(size--){
+      byte b = udp.read();
+//      bundleIN.fill(udp.read());
+//      Serial.println(b);
+      bundleIN.fill(b);
+    }
     if(!bundleIN.hasError()){
-      Serial.println("routing");
+//      Serial.println("routing");
       bundleIN.route("/notelist", routeNotelist);
     }else{
       Serial.println("some error");
@@ -384,13 +386,15 @@ void UDPListen(){
 }
 
 void routeNotelist(OSCMessage &msg, int addrOffset ){
-  //Serial.println("notelist");
+  Serial.println("notelist");
 
   int newnotelist[127];
 
   int i = 0;
+  //Serial.println(msg.getType(i));
+  //Serial.println(msg.getFloat(i));
   while (msg.getType(i) == 'i'){
-    //Serial.print(msg.getInt(i));
+    //Serial.println(msg.getInt(i));
     //Serial.print(" ");
     newnotelist[i] = msg.getInt(i);
     i++;

@@ -508,7 +508,7 @@ let TheoryEngine = {
         if(this.bestNoteSetMidi){
             var output = labelid+" " + this.bestNoteSetMidi.join(" ");
     //		this.debugmsg(output);
-            this.sendBestMidiList(output)
+            this.sendBestMidiList(this.bestNoteSetMidi)
         }else{
             this.debugmsg("no best set");
         }	

@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "node-osc": "^9.1.0",
+    "osc": "^2.4.4",
     "teoria": "^2.5.0",
     "teoria-chord-progression": "^1.0.0"
   }
