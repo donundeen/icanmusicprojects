@@ -1,5 +1,6 @@
 1:1 A Minor
 2:1 B Minor
-1:1 C Something
+2:4 tostart
+1:1 C
 4:1 B Major
 6:1 tostart

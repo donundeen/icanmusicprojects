@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "teoria": "^2.5.0",
+    "teoria-chord-progression": "^1.0.0"
+  }
+}
