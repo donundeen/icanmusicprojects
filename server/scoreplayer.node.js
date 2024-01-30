@@ -34,6 +34,7 @@ console.log("starting");
 trans = Object.create(Transport);
 score = Object.create(ScoreReader);
 theory = Object.create(TheoryEngine);
+socket = Object.create(socketServer);
 
 trans.setBeatCallback(function(beatcount, bar, beat, transport){
     score.onbeat(beatcount, bar, beat, transport)
@@ -42,6 +43,23 @@ trans.setBeatCallback(function(beatcount, bar, beat, transport){
 score.setMessageCallback(function(msg){
     theory.runSetter(msg, "fromscore");
 });
+
+socket.setMessageReceivedCallback(function(msg){
+    let result = route(msg, "chord", function(msg){
+        theory.runSetter(msg, "fromsocket");
+    });
+});
+
+function route(msg, route, callback){
+    let split = msg.split(/ /);
+    channel = split.shift();
+    newmsg = split.join(" ");
+    if(channel.toLowerCase() == route.toLowerCase()){
+        callback(newmsg);
+        return true;
+    }
+    return false;
+}
 
 theory.setMidiListCallback(function(msg){
 //    console.log("theory output " + msg);
@@ -61,7 +79,7 @@ console.log(trans);
 trans.updateBpm(bpm);
 score.scoreFilename = scorename;
 
-//socketServer.startSocketServer();
-//socketServer.startWebServer();
+socket.startSocketServer();
+socket.startWebServer();
 
-score.openscore(function(){trans.start();});
+//score.openscore(function(){trans.start();});

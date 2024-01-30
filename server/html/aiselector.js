@@ -1,10 +1,12 @@
-const WEBSOCKET_PORT = 8010;
+const WEBSOCKET_PORT = 8001;
 const WEBSERVER_PORT = 8002;
 
 Array.prototype.rotateRight = function( n ) {
     this.unshift.apply( this, this.splice( n, this.length ) );
     return this;
-  }
+  } 
+
+// this lib: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/
 
 // chnage this depending on location of webserver. Figure out a way to make this more dynamic...
 let host =  window.location.host;
@@ -45,6 +47,8 @@ let wsready = false;
   // to the `onopen` property.
 ws.onopen = function() {
     wsready = true;
+    console.log("opened " + ws.readyState);
+    ws.send("READY NOW");    
 };
 
 ws.onerror = function(msg){
@@ -66,7 +70,7 @@ var svgDoc = false;
 let currentRoot = "C"
 const numFifths = ['1','5','2','6','3','7','b5','b2','b6','b3','b7','4'];
 const circleOfFourths = ['C', 'F', 'B♭', 'E♭', 'A♭', 'D♭', 'G♭', 'B', 'E', 'A', 'D', 'G'];
-const circleOfFifths =  ['C', 'G', 'D', 'A', 'E', 'B', 'G♭', 'D♭', 'A♭', 'E♭', 'B♭', 'F'];
+const circleOfFifths  = ['C', 'G', 'D', 'A', 'E', 'B', 'G♭', 'D♭', 'A♭', 'E♭', 'B♭', 'F'];
 let currentMajWheel = [...circleOfFifths];
 let currentMinWheel = [...currentMajWheel].rotateRight(3);
 let currentDimWheel = [...currentMajWheel].rotateRight(5);

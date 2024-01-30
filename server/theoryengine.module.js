@@ -128,9 +128,9 @@ let TheoryEngine = {
     },
 
     bestSetIsChord(){
-        this.bestNoteSet = chordNoteSet;
-        this.bestNoteSetMidi = chordNoteSetMidi;
-        this.curBestSetName = curChordName;
+        this.bestNoteSet = this.chordNoteSet;
+        this.bestNoteSetMidi = this.chordNoteSetMidi;
+        this.curBestSetName = this.curChordName;
         this.getBestNoteMidiList();
     },
 
@@ -149,7 +149,16 @@ let TheoryEngine = {
 
     // setter commands
     runSetter(command, labelid){
-        this.debugmsg("command " + command);
+        // if there's spaces, split and run each one
+        command = command.trim();
+        if(command.match(/ /)){
+            let split = command.split(" ");
+            for (com of split){
+                this.runSetter(com.trim());
+            }
+            return;
+        }
+        console.log(teoria.Scale.KNOWN_SCALES);
         if(command.match(/^[a-gA-G][b#♭]?[0-9]?$/)){
             this.setNote(command, labelid);
         }else if(teoria.Scale.KNOWN_SCALES.indexOf(command.toLowerCase()) >= 0){
@@ -169,7 +178,7 @@ let TheoryEngine = {
         }else{
             let result = this.tryChord(command);
             if(!result){
-                this.debugmsg("no command match for "+command);
+                console.log("no command match for "+command);
             }
         }
     }, 
@@ -407,7 +416,7 @@ let TheoryEngine = {
     //	this.debugmsg("creating chord set ");
         this.chordNoteSet = [];
         this.chordNoteSetMidi = []
-        var notes = curChord.notes();
+        var notes = this.curChord.notes();
         this.curRootMidi = this.curChord.root.midi() % 12;
         for(var i = 0; i < notes.length; i++){
             var note = notes[i];
@@ -433,9 +442,9 @@ let TheoryEngine = {
 
         this.debugmsg(this.chordNoteSetMidi);
 
-        this.chordNoteSet.map(function(item){
+        this.chordNoteSet.map((function(item){
             this.debugmsg(item.toString());
-        });
+        }).bind(this));
 
         this.getChordNoteMidiList();
         

@@ -1,48 +1,70 @@
 // comments here
 const path = require('path');
-const WebSocket = require('ws');
 var connect = require('connect');
 var serveStatic = require('serve-static');
 let my_ip_address= "localhost";
 // figuring out IP address:
 const { networkInterfaces } = require('os');
+const WebSocket = require('ws'); //https://www.npmjs.com/package/ws#sending-and-receiving-text-data
+
+
+let globalvar = "goo";
 
 let SocketServer = {
 
-  WEBSOCKET_PORT : 8010,
+  WEBSOCKET_PORT : 8001,
   WEBSERVER_PORT : 8002,
 
   socketserver : false,
   sockets : [],
 
+  messageReceivedCallback : false,
+
   startSocketServer(){
 
     console.log("trying to start websockets...");
+
     this.socketserver = new WebSocket.Server({
+
       port: this.WEBSOCKET_PORT
     });
+    
     let self = this;
+
     this.socketserver.on('connection', (function(socket) {
       this.sockets.push(socket);
-      console.log("STARTD websockets");
-      console.log(this.socketserver);
-      // When you receive a message, send that message to every socket.
+      console.log("STARTD websockets " +globalvar);
+//      console.log(this.socketserver);
 
-      this.socketserver.on('message', (function(msg) {
-        console.log("got message");
-        this.sockets.forEach(s => s.send(msg)); // send back out - we don't need to do this
-    //  	console.log(msg);
-    //	  console.log("Got message " + msg.toString());
-        //this is messages FROM the web page
-        console.log(msg.toString());
+      // When you receive a message, send that message to every socket.
+      socket.on('message', (function(msg) {
+        //this.socketserver.onmessage = function(msg) {
+            console.log("got message");
+          //this.sockets.forEach(s => s.send(msg)); // send back out - we don't need to do this
+      //  	console.log(msg);
+      //	  console.log("Got message " + msg.toString());
+          //this is messages FROM the web page
+          console.log(msg.toString());
+        this.messageReceived(msg);
       }).bind(this));
-  
-       
+
       // When a socket closes, or disconnects, remove it from the array.
-      this.socketserver.on('close', (function() {
+      socket.on('close', (function() {
         this.sockets = this.sockets.filter(s => s !== socket);
       }).bind(this));
+
     }).bind(this));
+
+  },
+
+  messageReceived(msg){
+    if(this.messageReceivedCallback){
+      this.messageReceivedCallback(msg.toString());
+    }
+  },
+
+  setMessageReceivedCallback(callback){
+    this.messageReceivedCallback = callback;
   },
 
   startWebServer(){
