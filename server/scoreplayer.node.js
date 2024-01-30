@@ -50,6 +50,11 @@ socket.setMessageReceivedCallback(function(msg){
     });
 });
 
+
+// some messages come in with a word preceding them, 
+// which helps determine what they mean and where they should go.
+// pass to Route to send to a specific callback.
+// return true if the route was a match, false otherwise.
 function route(msg, route, callback){
     let split = msg.split(/ /);
     channel = split.shift();
