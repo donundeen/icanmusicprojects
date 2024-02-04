@@ -123,15 +123,12 @@ void device_setup(){
 
 void device_loop() {
  
- 
     delay(10);
  
     int sensorValue = analogRead(analogInPin);
     Serial.println(sensorValue);
 
-
-    sendOSCUDP(sensorValue);
- 
+    sendOSCUDP(sensorValue); 
 }
 
 
