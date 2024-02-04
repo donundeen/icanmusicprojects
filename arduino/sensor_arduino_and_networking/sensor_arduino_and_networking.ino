@@ -104,8 +104,8 @@ int workinglistlength = 0;
 
 // These might get changed at start, or during play
 int rootMidi = 0;
-int midimin = 6;  
-int midimax = 120;
+int midimin = 32;  
+int midimax = 100;
 ////// END MUSIC PERFORMANCE VARIABLES  
 ///////////////////////////////////////
 
@@ -130,6 +130,10 @@ int N16 = PPQN / 4;
 int QN3 = HN / 3;
 int HN3 = WN / 3;
 int N83 = QN / 3;
+
+// array of all notelengths, for picking
+int notelengths[] = {WN, HN, HN3, QN, QN3, N8, N83, N16};
+
 // END TIMING VARIABLES
 ////////////////////////
 
@@ -191,20 +195,109 @@ bool shouldSaveConfig = true;
 
 
 ////////////////////////////////////
-// SCALING FUNCTIONS
-int dyn_rescale(int inval, int tomin, int tomax){
-  if(inval < minVal){
-    minVal = inval;
-  }
-  if(inval > maxVal){
-    maxVal = inval;
-  }
-  return map(inval, minVal, maxVal, tomin, tomax);
+// SENSOR PROCESSING FUNCTIONS
+int ADCRaw = -1;
+int changerate = -1;
+int prevChangeVal = -1;
+int changeMin = 10000;
+int changeMax = -1;
+
+void sensor_setup(){
+  pinMode(sensorPin, INPUT); // Sensor pin as input
+  t.setInterval(sensor_loop, 10);
+  note_loop();
 }
 
-int scale(int inval, int frommin, int frommax, int tomin, int tomax){
+
+void note_loop(){
+  char pbuf[100];
+  int value = dyn_rescale(ADCRaw, &minVal, &maxVal, 0, 10000);
+  sprintf(pbuf, "loop: in:%d scaled:%d", ADCRaw, value);
+  Serial.println(pbuf);
+  int midipitch = derive_pitch(value);
+  int midivelocity = derive_velocity(ADCRaw);
+  int mididuration = derive_duration(value);
+  sprintf(pbuf, "      in:%d scaled:%d p:%d v:%d d:%d", ADCRaw, value, midipitch, midivelocity, mididuration);
+  Serial.println(pbuf);
+  // this will also make it monophonic:
+  midiMakeNote(midipitch, midivelocity, mididuration);
+  t.setTimeout(note_loop, mididuration); // but changing the mididuration in this function could make notes overlap, so creeat space between notes. Or we make this a sensor-controlled variable as well
 
 }
+
+void sensor_loop(){
+  ADCRaw = analogRead(sensorPin);
+  changerate = get_changerate(ADCRaw);
+  /*
+  if(!no_network){
+    sendOSCUDP(ADCRaw);
+  }
+  */
+
+  // should be 10
+  //delay(10); // removing when using timeouts
+}
+
+
+
+int get_changerate(int val){
+  char pbuf[100];
+  if(prevChangeVal == -1){
+    prevChangeVal = val;
+    return 0;
+  }
+  int ochange = val - prevChangeVal;
+  ochange = abs(ochange);
+  int change = dyn_rescale(ochange, &changeMin, &changeMax, 0, 10000);
+  sprintf(pbuf, "changerate v: %d pv: %d oc:%d c:%d minc:%d maxc:%d", val, prevChangeVal, ochange, change, changeMin, changeMax);
+ // Serial.println(pbuf);
+  prevChangeVal = val;
+  return change;
+
+}
+
+int derive_pitch(int val){
+  float fval = (float)val / 10000;
+  int pitch = noteFromFloat(fval, midimin, midimax);
+  return pitch;
+}
+
+int derive_velocity(int val){
+  int velocity = floor(127.0 * ((float)changerate / 10000.0));
+  return velocity;
+}
+
+int derive_duration(int val){
+  return pulseToMS(N16);
+}
+
+int dyn_rescale(int inval, int *minVal, int *maxVal, int tomin, int tomax){
+  char pbuf[100];
+  if(inval < *minVal){
+    *minVal = inval;
+  }
+  if(inval > *maxVal){
+    *maxVal = inval;
+  }
+
+  int mapped = constrain(map(inval, *minVal, *maxVal, tomin, tomax), tomin, tomax);
+  sprintf(pbuf, "dyn: in:%d min:%d max:%d tomin:%d tomax:%d out:%d", inval, *minVal, *maxVal, tomin, tomax, mapped);
+//  Serial.println(pbuf);
+  if(mapped == -1){
+
+  }
+  return mapped;
+}
+
+int logscale(int val){
+  // using bezier curve function
+  // assume input is 0-10000
+  // convert to floats (0-1) for operation, then back to int from 0-10000
+  float in = (float)val / 10000;
+  float outf = 
+
+}
+
 
 //////////////////////////
 // TIMING FUNCTIONS
@@ -325,16 +418,16 @@ void test_setup(){
   int newlen = sizeof(notelist1)/sizeof(int);
   setNotelist(notelist1, notelist, newlen);
   /// This part just for testing
-  t.setInterval(triggerRandNote, pulseToMS(HN));
-  t.setInterval(triggerRandNote, pulseToMS(QN3));
+//  t.setInterval(triggerRandNote, pulseToMS(HN));
+//  t.setInterval(triggerRandNote, pulseToMS(QN3));
 //  t.setInterval(switchnotelist, pulseToMS(HN * 4));
-  t.setInterval(sendRandVal, pulseToMS(QN));
+ // t.setInterval(sendRandVal, pulseToMS(QN));
 }
 
 void triggerRandNote(){
 //  Serial.println("triggerRandNote");
   //int note = random(32,120);
-  int note = noteFromFloat((double)random(1000) / (double)1000, 32, 100);
+  int note = noteFromFloat((double)random(1000) / (double)1000, midimin, midimax);
   midiMakeNote(note, 127, pulseToMS(QN));
 }
 
@@ -355,22 +448,6 @@ void sendRandVal(){
 }
 
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-// SENSOR code
-void sensor_setup(){
-  pinMode(sensorPin, INPUT); // Sensor pin as input
-
-}
-
-void sensor_loop(){
-  int ADCRaw = analogRead(sensorPin);
-  if(!no_network){
-    sendOSCUDP(ADCRaw);
-  }
-  // should be 10
-  delay(10);
-}
 
 
 
@@ -403,7 +480,7 @@ void sendOSCUDP(int flexVal){
  }
 }
 
-void test_loop(){
+void udp_loop(){
   UDPListen();
 }
 
@@ -477,9 +554,9 @@ void loop() {
   if(!no_network){
     network_loop();
   }  
-  test_loop();
+  udp_loop();
   t.handle();
-  sensor_loop();
+//  sensor_loop(); // moving this into sensor_setup, with a setTimeout function to make the looping happen
 }
 // END SETUP AND LOOP FUNCTIONS
 /////////////////////////////////
