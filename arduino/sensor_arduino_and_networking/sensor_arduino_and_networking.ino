@@ -289,14 +289,9 @@ int dyn_rescale(int inval, int *minVal, int *maxVal, int tomin, int tomax){
   return mapped;
 }
 
-int logscale(int val){
-  // using bezier curve function
-  // assume input is 0-10000
-  // convert to floats (0-1) for operation, then back to int from 0-10000
-  float in = (float)val / 10000;
-  float outf = 
 
-}
+
+
 
 
 //////////////////////////
