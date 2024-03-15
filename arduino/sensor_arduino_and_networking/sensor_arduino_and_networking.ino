@@ -109,6 +109,12 @@ int midimax = 100;
 ////// END MUSIC PERFORMANCE VARIABLES  
 ///////////////////////////////////////
 
+//////////////////////////////
+// CURVE VARIABLES
+
+// initial velocity curve is a straight line, extra -1.0 variables are for when we want to make it longer
+float velocitycurve[] = {0., 0.0, 0., 1.0, 1.0, 0.0, -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 };
+float velocitycurvelength = 6; 
 
 
 /////////////////////////////
@@ -139,8 +145,8 @@ int notelengths[] = {WN, HN, HN3, QN, QN3, N8, N83, N16};
 
 /////////////////////////////
 // Sensor scaling variables
-int minVal = 100000; 
-int maxVal = -1;
+float minVal = 100000.0; 
+float maxVal = -1.0;
 
 
 
@@ -197,10 +203,10 @@ bool shouldSaveConfig = true;
 ////////////////////////////////////
 // SENSOR PROCESSING FUNCTIONS
 int ADCRaw = -1;
-int changerate = -1;
-int prevChangeVal = -1;
-int changeMin = 10000;
-int changeMax = -1;
+float changerate = -1.0;
+float prevChangeVal = -1.0;
+float changeMin = 10000.0;
+float changeMax = -1.0;
 
 void sensor_setup(){
   pinMode(sensorPin, INPUT); // Sensor pin as input
@@ -211,14 +217,14 @@ void sensor_setup(){
 
 void note_loop(){
   char pbuf[100];
-  int value = dyn_rescale(ADCRaw, &minVal, &maxVal, 0, 10000);
+  float value = dyn_rescale(ADCRaw, &minVal, &maxVal, 0.0, 1.0);
   sprintf(pbuf, "loop: in:%d scaled:%d", ADCRaw, value);
-  Serial.println(pbuf);
+//  Serial.println(pbuf);
   int midipitch = derive_pitch(value);
   int midivelocity = derive_velocity(ADCRaw);
   int mididuration = derive_duration(value);
   sprintf(pbuf, "      in:%d scaled:%d p:%d v:%d d:%d", ADCRaw, value, midipitch, midivelocity, mididuration);
-  Serial.println(pbuf);
+//  Serial.println(pbuf);
   // this will also make it monophonic:
   midiMakeNote(midipitch, midivelocity, mididuration);
   t.setTimeout(note_loop, mididuration); // but changing the mididuration in this function could make notes overlap, so creeat space between notes. Or we make this a sensor-controlled variable as well
@@ -240,15 +246,15 @@ void sensor_loop(){
 
 
 
-int get_changerate(int val){
+float get_changerate(int val){
   char pbuf[100];
   if(prevChangeVal == -1){
     prevChangeVal = val;
     return 0;
   }
-  int ochange = val - prevChangeVal;
+  float ochange = val - prevChangeVal;
   ochange = abs(ochange);
-  int change = dyn_rescale(ochange, &changeMin, &changeMax, 0, 10000);
+  float change = dyn_rescale(ochange, &changeMin, &changeMax, 0, 1.0);
   sprintf(pbuf, "changerate v: %d pv: %d oc:%d c:%d minc:%d maxc:%d", val, prevChangeVal, ochange, change, changeMin, changeMax);
  // Serial.println(pbuf);
   prevChangeVal = val;
@@ -256,22 +262,21 @@ int get_changerate(int val){
 
 }
 
-int derive_pitch(int val){
-  float fval = (float)val / 10000;
-  int pitch = noteFromFloat(fval, midimin, midimax);
+int derive_pitch(float val){
+  int pitch = noteFromFloat(val, midimin, midimax);
   return pitch;
 }
 
 int derive_velocity(int val){
-  int velocity = floor(127.0 * ((float)changerate / 10000.0));
+  int velocity = floor(127.0 * functioncurve(changerate, velocitycurve, velocitycurvelength));
   return velocity;
 }
 
-int derive_duration(int val){
+int derive_duration(float val){
   return pulseToMS(N16);
 }
 
-int dyn_rescale(int inval, int *minVal, int *maxVal, int tomin, int tomax){
+float dyn_rescale(float inval, float *minVal, float *maxVal, float tomin, float tomax){
   char pbuf[100];
   if(inval < *minVal){
     *minVal = inval;
@@ -280,7 +285,7 @@ int dyn_rescale(int inval, int *minVal, int *maxVal, int tomin, int tomax){
     *maxVal = inval;
   }
 
-  int mapped = constrain(map(inval, *minVal, *maxVal, tomin, tomax), tomin, tomax);
+  int mapped = constrain(floatmap(inval, *minVal, *maxVal, tomin, tomax), tomin, tomax);
   sprintf(pbuf, "dyn: in:%d min:%d max:%d tomin:%d tomax:%d out:%d", inval, *minVal, *maxVal, tomin, tomax, mapped);
 //  Serial.println(pbuf);
   if(mapped == -1){
@@ -485,6 +490,7 @@ void UDPListen(){
  
   if( (size = udp.parsePacket())>0)
   {
+    Serial.println("got UDP");
   // unsigned int outPort = Udp.remotePort();
     while(size--){
       byte b = udp.read();
@@ -493,14 +499,25 @@ void UDPListen(){
       bundleIN.fill(b);
     }
     if(!bundleIN.hasError()){
-//      Serial.println("routing");
+      Serial.println("routing");
       bundleIN.route("/notelist", routeNotelist);
+      char devroute[100];
+      sprintf(devroute,"/%s",this_device_name);
+      bundleIN.route(devroute, routeDeviceMsg);
     }else{
       Serial.println("some error");
       Serial.println(bundleIN.getError());
     }
   }
 }
+
+void routeDeviceMsg(OSCMessage &msg, int addrOffset ){
+  Serial.println("devicemsg");
+  char devroute[100];
+  sprintf(devroute,"/%s/config",this_device_name);  
+  msg.route(devroute, routeConfigVal);
+}
+
 
 void routeNotelist(OSCMessage &msg, int addrOffset ){
   Serial.println("notelist");
@@ -542,6 +559,10 @@ void setup() {
   clock_setup();
   test_setup();
   sensor_setup();
+
+  Serial.println("getting testvar");
+  int val = getStoredConfigVal("testvar");
+  Serial.println(val);
 }
 
 void loop() {  
@@ -652,347 +673,6 @@ void makeworkinglist(int minval, int maxval){
 }
 // END MUSIC PERFORMANCE FUNCTIONS
 /////////////////////////////////
-
-
-
-////////////////////
-// HELPER FUNCTIONS
-int indexOf(int value, int searcharray[], int length){
-  for (int i = 0; i < length; i++) {
-    if (searcharray[i] == value) {
-      return i;
-    }
-  }
-  return -1;
-}
-
-// get number of milliseconds for some number of pulses
-int pulseToMS(int pulses){
-  // pulses per beat = PPQN, or some other value
-  // bpm = beats per minute
-  // pulses per beat
-
-  // a beat is how many seconds?
-  // 120 bpm = .5 sec per beat | 60 / 120
-  double secperbeat = (double)60 / (double)bpm;
-  double secperpulse = secperbeat / (double)PPQN;
-  double pulsems = secperpulse * pulses * 1000;
-  return floor(pulsems); 
-}
-
-
-void digiflash(int pin, int numflash, int delaytime, int endval){
-  for(int i = 0; i< numflash; i++){
-    digitalWrite(pin, HIGH);
-    delay(delaytime);
-    digitalWrite(pin, LOW);
-    delay(delaytime);
-  }
-  digitalWrite(pin, endval);
-}
-
-
-
-// END HELPER FUNCTIONS
-/////////////////////////
-
-
-
-////////////////////////////////
-// NETWORKING FUNCTIONS
-void network_setup() {
-
-  strcat(DEVICE_ID, DEVICE_NAME);
-  strcat(DEVICE_ID, DEVICE_ID_SUFFIX);
-  Serial.print("DEVICE_ID ");
-  Serial.println(DEVICE_ID);
-  delay(1000);
-  Serial.println("setup");
-
-  // for incoming UDP
-//  SLIPSerial.begin(115200);
-  pinMode(21, INPUT_PULLUP);
-
-  pinMode(BUILTIN_LED, OUTPUT);
-
-  Serial.print("ESP Board MAC Address:  ");
-  Serial.println(WiFi.macAddress());
-
-  thisarduinomac = WiFi.macAddress();
-
-  if(WIFI_MODE_ON){
- 
-      // wifi config business
-
-    if(HARDCODE_SSID){
-      Serial.println("connecting to hardcoded SSID");
-      Serial.println(WIFI_SSID);
-      Serial.println(WIFI_PASSWORD);
-      
-      WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-      while (WiFi.status() != WL_CONNECTED) {
-        // wifi status codes: https://realglitch.com/2018/07/arduino-wifi-status-codes/
-        delay(1000);
-        Serial.print(".");
-        Serial.print(WiFi.status());
-        Serial.print(WL_CONNECTED);
-      }
-    }else{
-      config_webpage_setup();
-    }
-  
-  }
-}
-
-
-void network_loop(){
-
-  if(!HARDCODE_SSID){
-   // Portal.handleClient();
-  }
-  configUdp();
-}
-
-void deleteAllCredentials(void) {
-  Serial.println("deleting all stored SSID credentials");
-  if (!SPIFFS.begin(true)) {
-    Serial.println("An Error has occurred while mounting SPIFFS");
-    return;
-  }  
-  SPIFFS.remove("/config.json");
-}
-
-/*
- * connecting to UDP port on laptop runnin Max (or otherwise sending/recieving UDP data)
- */
-void configUdp(){
-  if(WIFI_MODE_ON){
-    if(!wifi_connected && WiFi.status() == WL_CONNECTED){
-      Serial.println("HTTP server:" + WiFi.localIP().toString());
-      thisarduinoip = WiFi.localIP().toString();
-      Serial.println("SSID:" + WiFi.SSID());
-      wifi_connected = true;
-      udp.begin(UDPINPort);
-    }
-    if(WiFi.status() != WL_CONNECTED){
-      Serial.println("wifi not connected");
-      wifi_connected = false;
-    }
-  }
-}
-// END NETWORKING FUNCTIONS
-////////////////////////////////
-
-
-
-////////////////// SETING UP CONFIG WEBPAGE - FOR WIFI AND OTHER VALUES
-//define your default values here, if there are different values in config.json, they are overwritten.
-// My values: (in addition to WIFI data)
-// icanmusic_server_ip
-// icanmusic_port
-// this_device_name
-
-//callback notifying us of the need to save config
-void saveConfigCallback () {
-  Serial.println("Should save config");
-  shouldSaveConfig = true;
-}
-
-void config_webpage_setup() {
-  // put your setup code here, to run once:
-
-  pinMode(resetButtonPin, INPUT_PULLUP);
-  bool configMode = false;
-  if(digitalRead(resetButtonPin) == LOW){
-    Serial.println("config Mode ON");
-    digitalWrite(BUILTIN_LED, HIGH);
-    configMode = true;
-  }else{
-    digitalWrite(BUILTIN_LED, LOW);
-  }
-
-  //clean FS, for testing
-  //SPIFFS.format();
-
-  //read configuration from FS json
-  Serial.println("mounting FS...");
-
-  if (SPIFFS.begin()) {
-    Serial.println("mounted file system");
-    if (SPIFFS.exists("/config.json")) {
-      //file exists, reading and loading
-      Serial.println("reading config file");
-      File configFile = SPIFFS.open("/config.json", "r");
-      if (configFile) {
-        Serial.println("opened config file");
-        size_t size = configFile.size();
-        // Allocate a buffer to store contents of the file.
-        std::unique_ptr<char[]> buf(new char[size]);
-
-        configFile.readBytes(buf.get(), size);
-
- #if defined(ARDUINOJSON_VERSION_MAJOR) && ARDUINOJSON_VERSION_MAJOR >= 6
-        DynamicJsonDocument json(1024);
-        auto deserializeError = deserializeJson(json, buf.get());
-        serializeJson(json, Serial);
-        if ( ! deserializeError ) {
-#else
-        DynamicJsonBuffer jsonBuffer;
-        JsonObject& json = jsonBuffer.parseObject(buf.get());
-        json.printTo(Serial);
-        if (json.success()) {
-#endif
-          Serial.println("\nparsed json");
-          strcpy(icanmusic_server_ip, json["icanmusic_server_ip"]);
-          strcpy(icanmusic_port, json["icanmusic_port"]);
-          strcpy(this_device_name, json["this_device_name"]);
-        } else {
-          Serial.println("failed to load json config");
-        }
-        configFile.close();
-      }
-    }
-  } else {
-    Serial.println("failed to mount FS");
-  }
-  //end read
-
-  // The extra parameters to be configured (can be either global or just in the setup)
-  // After connecting, parameter.getValue() will get you the configured value
-  // id/name placeholder/prompt default length
-  WiFiManagerParameter custom_icanmusic_server_ip("server", "iCanMusic server IP", icanmusic_server_ip, 40);
-  WiFiManagerParameter custom_icanmusic_port("port", "ICanMusic port", icanmusic_port, 6);
-  WiFiManagerParameter custom_this_device_name("devicename", "Device Name", this_device_name, 32);
-
-  //WiFiManager
-  //Local intialization. Once its business is done, there is no need to keep it around
-  WiFiManager wifiManager;
-
-  //set config save notify callback
-  wifiManager.setSaveConfigCallback(saveConfigCallback);
-
-  //set static ip
-  // don: I'd reather get a dynamic IP, don't need static for the devices
-  //wifiManager.setSTAStaticIPConfig(IPAddress(10, 0, 1, 99), IPAddress(10, 0, 1, 1), IPAddress(255, 255, 255, 0));
-
-  //add all your parameters here
-  wifiManager.addParameter(&custom_icanmusic_server_ip);
-  wifiManager.addParameter(&custom_icanmusic_port);
-  wifiManager.addParameter(&custom_this_device_name);
-
-  //reset settings - for testing
-  // don: does this make the ap mode pop up? I don't want it to delete my settings though, just let me enter new ones
-  //wifiManager.resetSettings();
-
-  //set minimu quality of signal so it ignores AP's under that quality
-  //defaults to 8%
-  //wifiManager.setMinimumSignalQuality();
-
-  //sets timeout until configuration portal gets turned off
-  //useful to make it all retry or go to sleep
-  //in seconds
-  //wifiManager.setTimeout(120);
-  char* apname = this_device_name;
-  //fetches ssid and pass and tries to connect
-  //if it does not connect it starts an access point with the specified name
-  //here  "AutoConnectAP"
-  //and goes into a blocking loop awaiting configuration
-  //  if (!wifiManager.autoConnect(apname, "password")) {
-  // instead we fire this up if the button is pressed at startup
-  wifiManager.setConfigPortalTimeout(120);
-
-  if(configMode){
-    if(!wifiManager.startConfigPortal(apname)){
-      Serial.println("failed to connect and hit timeout");
-      delay(3000);
-      //reset and try again, or maybe put it to deep sleep
-      ESP.restart();
-      delay(5000);
-    }
-  }else{
-    if(!wifiManager.autoConnect(apname)){
-      Serial.println("failed to connect and hit timeout");
-      delay(3000);
-      //reset and try again, or maybe put it to deep sleep
-      ESP.restart();
-      delay(5000);
-    }
-  }
-/* 
-  if (!wifiManager.autoConnect(apname)) {
-    Serial.println("failed to connect and hit timeout");
-    delay(3000);
-    //reset and try again, or maybe put it to deep sleep
-    ESP.restart();
-    delay(5000);
-  }
-*/
-  //if you get here you have connected to the WiFi
-  Serial.println("connected...yeey :)");
-  digiflash(BUILTIN_LED, 10, 100, LOW);
-
-
-  //read updated parameters
-  strcpy(icanmusic_server_ip, custom_icanmusic_server_ip.getValue());
-  strcpy(icanmusic_port, custom_icanmusic_port.getValue());
-  strcpy(this_device_name, custom_this_device_name.getValue());
-  Serial.println("The values in the file are: ");
-  Serial.println("\ticanmusic_server_ip : " + String(icanmusic_server_ip));
-  Serial.println("\ticanmusic_port : " + String(icanmusic_port));
-  Serial.println("\tthis_device_name : " + String(this_device_name));
-
-  UDPReceiverIP = icanmusic_server_ip; // ip where UDP messages are going //presetip
-  // just for testing:
-  UDPReceiverIP = presetip;
-
-  UDPPort = atoi(icanmusic_port); // convert to int //  7002; // the UDP port that Max is listening on
-  DEVICE_NAME = this_device_name;
-  strcpy(DEVICE_ID, "/");
-  strcat(DEVICE_ID, DEVICE_NAME);
-  strcat(DEVICE_ID, DEVICE_ID_SUFFIX);
-
-  Serial.print("\t UDPPort ");
-  Serial.println(UDPPort);
-  Serial.println("\tDEVICE_ID : " + String(DEVICE_ID));
-
-  //save the custom parameters to FS
-  if (shouldSaveConfig) {
-    Serial.println("saving config");
- #if defined(ARDUINOJSON_VERSION_MAJOR) && ARDUINOJSON_VERSION_MAJOR >= 6
-    DynamicJsonDocument json(1024);
-#else
-    DynamicJsonBuffer jsonBuffer;
-    JsonObject& json = jsonBuffer.createObject();
-#endif
-    json["icanmusic_server_ip"] = icanmusic_server_ip;
-    json["icanmusic_port"] = icanmusic_port;
-    json["this_device_name"] = this_device_name;
-
-    File configFile = SPIFFS.open("/config.json", "w");
-    if (!configFile) {
-      Serial.println("failed to open config file for writing");
-    }
-
-#if defined(ARDUINOJSON_VERSION_MAJOR) && ARDUINOJSON_VERSION_MAJOR >= 6
-    serializeJson(json, Serial);
-    serializeJson(json, configFile);
-#else
-    json.printTo(Serial);
-    json.printTo(configFile);
-#endif
-    configFile.close();
-    digiflash(BUILTIN_LED, 4, 250, LOW);
-    //end save
-  }
-
-  Serial.println("local ip");
-  Serial.println(WiFi.localIP());
-}
-
-// END SETUP CONFIG WEBPAGE FUNCTIONS
-/////////////////////////////////////////
-
-
 
 
 

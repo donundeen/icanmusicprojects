@@ -84,7 +84,7 @@ console.log(trans);
 trans.updateBpm(bpm);
 score.scoreFilename = scorename;
 
-socket.startSocketServer();
-socket.startWebServer();
+//socket.startSocketServer();
+//socket.startWebServer();
 
-//score.openscore(function(){trans.start();});
+score.openscore(function(){trans.start();});
