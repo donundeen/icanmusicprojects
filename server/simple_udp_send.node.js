@@ -33,8 +33,9 @@ function sendUDP(device, msg){
             args: args
         }]
     }
+    console.log(UDPSENDIP);
     console.log(bundle);
-    
+    console.log(udoPort);
     udpPort.send(bundle, UDPSENDIP, UDPSENDPORT);     
     console.log("sent");
 }
