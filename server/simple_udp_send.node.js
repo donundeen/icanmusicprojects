@@ -15,8 +15,9 @@ udpPort.open();
 
 
 
-
-sendUDP("RENAME_ME",7);
+setTimeout(function(){
+    sendUDP("RENAME_ME",7);
+}, 2000);
 
 
 function sendUDP(device, msg){
