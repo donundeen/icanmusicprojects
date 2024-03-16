@@ -1,10 +1,4 @@
 
-///////////////////////////////
-// MUSIC PERFORMANCE VARIABLES
-int notelist[127];
-int notelistlength = 0;
-int workinglist[127];
-int workinglistlength = 0;
 
 //////////////////////////////////
 // MUSIC PERFORMANCE FUNCTIONS
@@ -100,4 +94,8 @@ void makeworkinglist(int minval, int maxval){
 }
 // END MUSIC PERFORMANCE FUNCTIONS
 /////////////////////////////////
+
+
+
+
 

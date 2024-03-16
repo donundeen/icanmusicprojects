@@ -1,3 +1,8 @@
+
+
+
+//////////////////////////
+// DEFINE CONFIGS FILE
 ///*************************
 // Defining all the config values
 // functions that are specific to different config values
@@ -12,18 +17,7 @@ etc...]
 
 
 //Variable List
-int midi_voice = 12;
-
-void routeConfigVal(OSCMessage &msg, int addrOffset ){
-  Serial.println("configvar");
-  char devroute[100];
-
-  // one of these for each variable
-  sprintf(devroute,"/%s/config/somevar",this_device_name);  
-  msg.route(devroute, routeConfig_somevar);
-  sprintf(devroute,"/%s/config/midi_voice",this_device_name);  
-  msg.route(devroute, routeConfig_midi_voice);
-}
+//int midi_voice = 12;
 
 
 // one of these for each variable
@@ -37,12 +31,46 @@ void routeConfig_midi_voice(OSCMessage &msg, int addrOffset ){
 }
 
 
+void routeConfigVal(OSCMessage &msg, int addrOffset ){
+  Serial.println("configvar");
+  char devroute[100];
+
+  // one of these for each variable
+  sprintf(devroute,"/%s/config/somevar",this_device_name);  
+  msg.route(devroute, routeConfig_somevar);
+//  sprintf(devroute,"/%s/config/midi_voice",this_device_name);  
+ /// msg.route(devroute, routeConfig_midi_voice);
+}
+
+
+
+void routeNotelist(OSCMessage &msg, int addrOffset ){
+  Serial.println("notelist");
+
+  int newnotelist[127];
+
+  int i = 0;
+  //Serial.println(msg.getType(i));
+  //Serial.println(msg.getFloat(i));
+  while (msg.getType(i) == 'i'){
+    //Serial.println(msg.getInt(i));
+    //Serial.print(" ");
+    newnotelist[i] = msg.getInt(i);
+    i++;
+  }
+  //Serial.println(" Setting ");
+  //Serial.println(i);
+  setNotelist(newnotelist, notelist, i);
+
+}
+
+
 // don't change this part
 int route_int(OSCMessage &msg, int addrOffset, String varname){
   int i = 0;
   //Serial.println(msg.getType(i));
   //Serial.println(msg.getFloat(i));
-  int theval;
+  int theval= -1;
   while (msg.getType(i) == 'i'){
     //Serial.println(msg.getInt(i));
     //Serial.print(" ");
@@ -54,3 +82,15 @@ int route_int(OSCMessage &msg, int addrOffset, String varname){
   }
   return theval;
 }
+
+
+void routeDeviceMsg(OSCMessage &msg, int addrOffset ){
+  Serial.println("devicemsg");
+  char devroute[100];
+  sprintf(devroute, "/%s/config", this_device_name);  
+  msg.route(devroute, routeConfigVal);
+}
+
+
+// END DEFINE CONFIGS FILE
+//////////////////////////

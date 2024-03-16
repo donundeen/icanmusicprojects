@@ -1,9 +1,149 @@
 
+////////////////////////
+// NETWORK INCLUDES
+/*
+ * Required libraries to install in the arduino IDE (use the Library Manager to find and install):
+ * https://github.com/Hieromon/PageBuilder : PageBuilder
+ * https://github.com/bblanchon/ArduinoJson : ArduinoJson
+ * https://github.com/CNMAT/OSC : OSC
+ * AutoConnect: https://hieromon.github.io/AutoConnect/index.html : instructions on how to install are here: 
+ * follow the instructions under "Install the AutoConnect" if you can't just find it in the Library Manager
+ */
+// this is all the OSC libraries
+#include <SLIPEncodedSerial.h>
+#include <OSCData.h>
+#include <OSCBundle.h>
+#include <OSCBoards.h>
+#include <OSCTiming.h>
+#include <OSCMessage.h>
+#include <OSCMatch.h>
+// these the libraries for connecting to WiFi
+// based on docs here: https://hieromon.github.io/AutoConnect/gettingstarted.html 
+#include <WiFi.h>
+// END NETWORK INCLUDES
+////////////////////////
+
+
+// TIMING INCLUDES
+#include <AsyncTimer.h> //https://github.com/Aasim-A/AsyncTimer
+#include "uClock.h"
+// END TIMING INCLUDES
+
+////////////////////////
+// CONFIG WEBPAGE INCLUDES
+#include <FS.h>                   //this needs to be first, or it all crashes and burns...
+#include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
+#ifdef ESP32
+  #include <SPIFFS.h>
+#endif
+#include <ArduinoJson.h>          //https://github.com/bblanchon/ArduinoJson
+// END CONFIG WEBPAGE INCLUDES
+////////////////////////
+
 
 ///////////////////////////
 // DEVICE CONFIGS
 #define sensorPin  A2 // Flex Sensor is connected to this pin
 
+
+
+///////////////////////////////
+// MUSIC PERFORMANCE VARIABLES
+int notelist[127];
+int notelistlength = 0;
+int workinglist[127];
+int workinglistlength = 0;
+// END MUSIC PERFORMANCE VARIABLES
+///////////////////////////
+
+
+////////////////// SETING UP CONFIG WEBPAGE - FOR WIFI AND OTHER VALUES
+//define your default values here, if there are different values in config.json, they are overwritten.
+// My values: (in addition to WIFI data)
+// icanmusic_server_ip
+// icanmusic_port
+// this_device_name
+
+// wifi autoconnect code
+// CONFIG WEBPAGE PINS AND VARS
+int resetButtonPin = A0;
+
+char icanmusic_server_ip[40] = "10.0.0.174";
+char icanmusic_port[6] = "7002";
+char this_device_name[34] = "RENAME_ME";
+//flag for saving data
+bool shouldSaveConfig = true;
+/// END SETTING UP CONFIG WEBPAGE VARS
+///////////////////////////
+
+
+/////////////////////////////
+// TIMING VARIABLES 
+AsyncTimer t;
+
+
+
+////////////////////////////////////////////
+// NETWORK SPECIFIC VARS - SHOULDN'T CHANGE
+/* 
+ *  WIFI_MODE_ON set to true to send osc data over WIFI.
+ *  When this is true: 
+ *  -- if the arduino can't connect to wifi, it will create its own AP, named esp32_ap (pw 12345678)
+ *  -- you'll need to connect to that SSID via your phone, and use the interface that pops up on your phone 
+ *     to configure the SSID and PW of the router you want to connect to
+ *  When WIFI_MODE_ON = false, you need the arduino connected to the laptop, 
+ *  and it will send data over serial USB
+ */
+const boolean WIFI_MODE_ON = true;
+/* if we aren't using the auto-configuration process, 
+    and we want to hard-code the router's SSID and password here.
+    Also set HARDCODE_SSID = true
+*/
+const boolean HARDCODE_SSID = false;
+// remember you can't connect to 5G networks with the arduino. 
+bool wifi_connected =false;
+/*
+ * Sometimes we need to delete the SSIDs that are stored in the config of the arduino.
+ * Set this value to TRUE and rerun the arduino, to remove all the stored SSIDs 
+ * (aka clear the configuration storage). 
+ * Then set it badk to false to start saving new SSID/Passwords
+ * 
+ */
+const boolean DELETE_SSIDS = false;
+String thisarduinomac = "";
+String thishumanname = "";
+String thisarduinoip = "";
+//create UDP instance
+WiFiUDP udp;
+OSCErrorCode error;
+
+
+
+// END NETWORK-SPECIFIC VARS
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////
+// Define the number of pulses per beat
+umodular::clock::uClockClass::PPQNResolution PPQNr = uClock.PPQN_96;
+int PPQN = 96;
+
+// number of pulses for different common note values.
+int WN = PPQN * 4;
+int HN = PPQN * 2;
+int QN = PPQN;
+int N8 = PPQN / 2;
+int N16 = PPQN / 4;
+int QN3 = HN / 3;
+int HN3 = WN / 3;
+int N83 = QN / 3;
+
+// array of all notelengths, for picking
+int notelengths[] = {WN, HN, HN3, QN, QN3, N8, N83, N16};
+
+// END TIMING VARIABLES
+////////////////////////
 
 
 //////////////////////////////
@@ -31,7 +171,7 @@ const bool no_network = false;
 //#define VS1053_GM1_OCARINA 81
 #define VS1053_GM1_OCARINA 12 // change this for other sounds
 // See http://www.vlsi.fi/fileadmin/datasheets/vs1053.pdf Pg 32 for more!
-// int midi_voice = 12; // see define_configs
+int midi_voice = 12; // see define_configs
 
 
 ///  END MIDI DEFINITIONS
@@ -217,33 +357,6 @@ void UDPListen(){
   }
 }
 
-void routeDeviceMsg(OSCMessage &msg, int addrOffset ){
-  Serial.println("devicemsg");
-  char devroute[100];
-  sprintf(devroute,"/%s/config",this_device_name);  
-  msg.route(devroute, routeConfigVal);
-}
-
-
-void routeNotelist(OSCMessage &msg, int addrOffset ){
-  Serial.println("notelist");
-
-  int newnotelist[127];
-
-  int i = 0;
-  //Serial.println(msg.getType(i));
-  //Serial.println(msg.getFloat(i));
-  while (msg.getType(i) == 'i'){
-    //Serial.println(msg.getInt(i));
-    //Serial.print(" ");
-    newnotelist[i] = msg.getInt(i);
-    i++;
-  }
-  //Serial.println(" Setting ");
-  //Serial.println(i);
-  setNotelist(newnotelist, notelist, i);
-
-}
 // END UDP FUNCTIONS
 /////////////////////////
 
