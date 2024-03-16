@@ -211,24 +211,30 @@ float changeMax = -1.0;
 void sensor_setup(){
   pinMode(sensorPin, INPUT); // Sensor pin as input
   t.setInterval(sensor_loop, 10);
+  sensor_loop();
   note_loop();
 }
 
 
 void note_loop(){
+  if(ADCRaw == -1){
+    // sensor hasn't sensed yet, skip this
+    return;
+  }
   char pbuf[100];
+  sprintf(pbuf, "looppre: in:%d  min %f max %f", ADCRaw, minVal, maxVal);
+//  Serial.println(pbuf);
   float value = dyn_rescale(ADCRaw, &minVal, &maxVal, 0.0, 1.0);
-  sprintf(pbuf, "loop: in:%d scaled:%d", ADCRaw, value);
+  sprintf(pbuf, "loop: in:%d scaled:%f min %f max %f", ADCRaw, value, minVal, maxVal);
 //  Serial.println(pbuf);
   int midipitch = derive_pitch(value);
   int midivelocity = derive_velocity(ADCRaw);
   int mididuration = derive_duration(value);
-  sprintf(pbuf, "      in:%d scaled:%d p:%d v:%d d:%d", ADCRaw, value, midipitch, midivelocity, mididuration);
+  sprintf(pbuf, "      in:%d scaled:%f p:%d v:%d d:%d", ADCRaw, value, midipitch, midivelocity, mididuration);
 //  Serial.println(pbuf);
   // this will also make it monophonic:
   midiMakeNote(midipitch, midivelocity, mididuration);
   t.setTimeout(note_loop, mididuration); // but changing the mididuration in this function could make notes overlap, so creeat space between notes. Or we make this a sensor-controlled variable as well
-
 }
 
 void sensor_loop(){
@@ -276,23 +282,6 @@ int derive_duration(float val){
   return pulseToMS(N16);
 }
 
-float dyn_rescale(float inval, float *minVal, float *maxVal, float tomin, float tomax){
-  char pbuf[100];
-  if(inval < *minVal){
-    *minVal = inval;
-  }
-  if(inval > *maxVal){
-    *maxVal = inval;
-  }
-
-  int mapped = constrain(floatmap(inval, *minVal, *maxVal, tomin, tomax), tomin, tomax);
-  sprintf(pbuf, "dyn: in:%d min:%d max:%d tomin:%d tomax:%d out:%d", inval, *minVal, *maxVal, tomin, tomax, mapped);
-//  Serial.println(pbuf);
-  if(mapped == -1){
-
-  }
-  return mapped;
-}
 
 
 

@@ -42,16 +42,7 @@ float curvescale(float x , float inmin, float inmax, float outmin, float outmax,
   return outscaled;
 }
 
-float floatmap(float in, float inmin, float inmax, float outmin, float outmax){
-  // assume all values are 0-1
-  float inrange = inmax - inmin;
-  float outrange = outmax - outmin;
-  float ratio = outrange / inrange;
-  float inflat = in - inmin;
-  float outflat = inflat * ratio;
-  float out = outmin + outflat;
-  return out;
-}
+
 
 float e = 2.71828; 
 float logscale(float x, float curve){
