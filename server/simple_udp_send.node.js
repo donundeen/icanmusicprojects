@@ -16,18 +16,19 @@ udpPort.open();
 
 
 
-sendUDP("RENAME_ME",[7]);
+sendUDP("RENAME_ME",7);
 
 
 function sendUDP(device, msg){
     console.log("sending");
 
     //    console.log("theory output " + msg);
-    let args = msg.map(function(x) {return {type: "i", value: parseInt(x)};});
+    // let args = msg.map(function(x) {return {type: "i", value: parseInt(x)};});
+    let args = msg;
     let bundle = {
         timeTag: osc.timeTag(1),
         packets :[{
-            address: "/"+device+"/config/somevar",
+            address: "/"+device+"/config/midi_voice",
             args: args
         }]
     }

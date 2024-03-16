@@ -32,7 +32,7 @@ void midi_setup(){
   
   midiSetChannelBank(0, VS1053_BANK_MELODY);
   midiSetChannelVolume(0, 127);
-  midiSetInstrument(0, VS1053_GM1_OCARINA);
+  midiSetInstrument(0, midi_voice);
 }
 
 // Makenote: pith, velocity, duration
