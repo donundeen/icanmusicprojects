@@ -1,11 +1,33 @@
 
 
+////////////////////////
+// CONFIG WEBPAGE INCLUDES
+#include <FS.h>                   //this needs to be first, or it all crashes and burns...
+#include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
+#ifdef ESP32
+  #include <SPIFFS.h>
+#endif
+#include <ArduinoJson.h>          //https://github.com/bblanchon/ArduinoJson
+// END CONFIG WEBPAGE INCLUDES
+////////////////////////
+
 ////////////////// SETING UP CONFIG WEBPAGE - FOR WIFI AND OTHER VALUES
 //define your default values here, if there are different values in config.json, they are overwritten.
 // My values: (in addition to WIFI data)
 // icanmusic_server_ip
 // icanmusic_port
 // this_device_name
+
+// wifi autoconnect code
+// CONFIG WEBPAGE PINS AND VARS
+int resetButtonPin = A0;
+
+char icanmusic_server_ip[40] = "10.0.0.174";
+char icanmusic_port[6] = "7002";
+char this_device_name[34] = "RENAME_ME";
+//flag for saving data
+bool shouldSaveConfig = true;
+
 
 //callback notifying us of the need to save config
 void saveConfigCallback () {
