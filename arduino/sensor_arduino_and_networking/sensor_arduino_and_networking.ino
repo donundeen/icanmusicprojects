@@ -205,15 +205,23 @@ int bpm = 120;
 // Sensor scaling variables
 float minVal = 100000.0; 
 float maxVal = -1.0;
-
+float changeMin = 10000.0;
+float changeMax = -1.0;
 
 ////////////////////////////////////
-// SENSOR PROCESSING FUNCTIONS
+// SENSOR PROCESSING GLOBALS
 int ADCRaw = -1;
 float changerate = -1.0;
 float prevChangeVal = -1.0;
-float changeMin = 10000.0;
-float changeMax = -1.0;
+
+
+void reset_minmax(){
+  minVal = 100000.0; 
+  maxVal = -1.0;
+  changeMin = 10000.0;
+  changeMax = -1.0;
+}
+
 
 void sensor_setup(){
   pinMode(sensorPin, INPUT); // Sensor pin as input

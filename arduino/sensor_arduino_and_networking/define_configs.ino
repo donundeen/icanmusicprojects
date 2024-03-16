@@ -1,6 +1,3 @@
-
-
-
 //////////////////////////
 // DEFINE CONFIGS FILE
 ///*************************
@@ -14,20 +11,14 @@
 etc...]
 */
 
-
-
 //Variable List
 //int midi_voice = 12;
 
-
-// one of these for each variable
-void routeConfig_somevar(OSCMessage &msg, int addrOffset ){
-  route_int(msg, addrOffset, "somevar");
-}
-
-void routeConfig_midi_voice(OSCMessage &msg, int addrOffset ){
-  midi_voice = route_int(msg, addrOffset, "midi_voice");
-  midiSetInstrument(0, midi_voice);
+void routeDeviceMsg(OSCMessage &msg, int addrOffset ){
+  Serial.println("devicemsg");
+  char devroute[100];
+  sprintf(devroute, "/%s/config", this_device_name);  
+  msg.route(devroute, routeConfigVal);
 }
 
 
@@ -38,9 +29,40 @@ void routeConfigVal(OSCMessage &msg, int addrOffset ){
   // one of these for each variable
   sprintf(devroute,"/%s/config/somevar",this_device_name);  
   msg.route(devroute, routeConfig_somevar);
-//  sprintf(devroute,"/%s/config/midi_voice",this_device_name);  
- /// msg.route(devroute, routeConfig_midi_voice);
+
+  // midi_vocie
+  sprintf(devroute,"/%s/config/midi_voice",this_device_name);  
+  msg.route(devroute, routeConfig_midi_voice);
+
+  // reset system (max/mins, etc)
+  sprintf(devroute,"/%s/config/reset",this_device_name);  
+  msg.route(devroute, routeConfig_reset);
+
 }
+
+
+
+
+// one of these for each variable
+void routeConfig_somevar(OSCMessage &msg, int addrOffset ){
+  route_int(msg, addrOffset, "somevar");
+}
+
+void routeConfig_midi_voice(OSCMessage &msg, int addrOffset ){
+  midi_voice = route_int(msg, addrOffset, "midi_voice");
+  Serial.println("midi voice");
+  Serial.println(midi_voice);
+
+  midiSetInstrument(0, midi_voice);
+}
+
+
+void routeConfig_reset(OSCMessage &msg, int addrOffset ){
+  // getting the reset command is enough, no need to get the value
+  Serial.println("resetting minmax");
+  reset_minmax();
+}
+
 
 
 
@@ -81,14 +103,6 @@ int route_int(OSCMessage &msg, int addrOffset, String varname){
     i++;
   }
   return theval;
-}
-
-
-void routeDeviceMsg(OSCMessage &msg, int addrOffset ){
-  Serial.println("devicemsg");
-  char devroute[100];
-  sprintf(devroute, "/%s/config", this_device_name);  
-  msg.route(devroute, routeConfigVal);
 }
 
 

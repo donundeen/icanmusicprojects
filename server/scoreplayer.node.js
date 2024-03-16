@@ -67,7 +67,7 @@ function route(msg, route, callback){
 }
 
 theory.setMidiListCallback(function(msg){
-//    console.log("theory output " + msg);
+    console.log("theory output " + msg);
     let args = msg.map(function(x) {return {type: "i", value: parseInt(x)};});
     let bundle = {
         timeTag: osc.timeTag(1),
