@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "connect": "^3.7.0",
+    "install": "^0.13.0",
+    "jzz-synth-fluid": "^1.0.6",
     "node-osc": "^9.1.0",
+    "npm": "^10.5.0",
     "osc": "^2.4.4",
     "path": "^0.12.7",
     "serve-static": "^1.15.0",

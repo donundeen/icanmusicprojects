@@ -25,9 +25,6 @@ server.on('connection', function(socket) {
   sockets.push(socket);
   Max.post("STARTD websockets");
 
-
-
-
   // When you receive a message, send that message to every socket.
   socket.on('message', function(msg) {
     sockets.forEach(s => s.send(msg)); // send back out - we don't need to do this
