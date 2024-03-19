@@ -1,3 +1,10 @@
+const UDPInstrument = require("./udpinstrument.module");
+
+inst1 = new UDPInstrument(1,2);
+inst2 = new UDPInstrument(3,4);
+
+
+
 var JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
