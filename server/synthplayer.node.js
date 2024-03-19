@@ -10,12 +10,57 @@ let soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soun
 
 console.log("gonna play");
 
-JZZ.synth.Fluid({ path: '/opt/homebrew/bin/fluidsynth', 
+
+var osc = require("osc");
+var oscPort = new osc.UDPPort({
+    localAddress: "0.0.0.0",
+    localPort: 8006, // this port for listening
+    broadcast: true,
+    metadata: true
+});
+
+oscPort.on("message", function (oscMsg) {
+    console.log("An OSC message just arrived!", oscMsg);
+    if(oscMsg.address == "/makenote"){
+        makenote_parse(oscMsg.args[0].value);
+    }
+});
+
+oscPort.open();
+
+
+
+
+let synth = JZZ.synth.Fluid({ path: '/opt/homebrew/bin/fluidsynth', 
                 sf: soundfont,
-                args: args })
+                args: args });
+synth
     .program(0,program)
     .noteOn(0, 'C5', 127)
     .wait(500).noteOn(0, 'E5', 127)
     .wait(500).noteOn(0, 'G5', 127)
-    .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5')
-    .close();
+    .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
+    // .close();
+
+
+function makenote_parse(stringargs){
+    console.log("makenote");
+    console.log(stringargs);
+    let split = stringargs.split(",");
+    console.log(split);
+    let channel = split[0];
+    let instrument = split[1];
+    let pitch = split[2];
+    let velocity = split[3];
+    let duration = split[4];
+    makenote(channel, instrument, pitch, velocity, duration);
+}
+
+function makenote(channel, instrument, pitch, velocity, duration){
+    console.log("playing note");
+
+    synth.program(channel, instrument)
+    .noteOn(channel, pitch, velocity)
+    .wait(duration)
+    .noteOff(channel,pitch, 0)
+}
