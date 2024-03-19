@@ -1,3 +1,5 @@
+dynRescale = require("./dynRescale.module");
+
 const UDPInstrument = class{
     /*
     define vars here, like
@@ -22,6 +24,9 @@ const UDPInstrument = class{
     midimin = 32;
     midimax = 100;
 
+    // set fluidSynth object
+    synth = false;
+
     // velocity curve starts as a straight line
     velocitycurve = [0., 0.0, 0., 1.0, 1.0, 0.0]
     
@@ -30,8 +35,8 @@ const UDPInstrument = class{
 
 
     // dyn rescaling
-    volume_scale;
-    changerate_scale;
+    volume_scale = new dynRescale();
+    changerate_scale = new dynRescale();
 
     // input values
     input_val;
@@ -62,7 +67,6 @@ const UDPInstrument = class{
     set bpm(bpm){
         this.bpm = bpm;
         this.setNoteLengths();
-
     }
     setNoteLengths(){
         // set note constant lengths, depending on bpms
@@ -127,18 +131,28 @@ const UDPInstrument = class{
     }
 
     midiMakeNote(pitch, velocity, duration){
-
+        // note: each instrument needs its own channel, or the instrument will be the same tone.
+        this.synth
+        .noteOn(this.midi_channel, pitch, velocit)
+        .wait(duration)
+        .noteOff(this.midi_channel, pitch);
     }
 
     midiSetInstrument(instr){
-
+        this.midi_voice = instr;
+        this.synth
+        .program(this.midi_channel, this.midi_voice)        
     }
 
+    // we might care about this, for mono things
     midiNoteOn(channel, pitch, velocity){
-
+        this.synth
+        .noteOn(this.midi_channel, pitch, velocit)
     }
 
     midiNoteOff(channel, pitch){
+        this.synth
+        .noteOff(this.midi_channel, pitch);
 
     }
     // END MIDI FUNCTIONS
@@ -146,8 +160,8 @@ const UDPInstrument = class{
 
     ////////////////////////
     // MUSIC FUNCTIONS
-    setNotelist(notelist){
-
+    set notelist(notelist){
+        this.notelist = notelist;
     }
 
     setRoot(root){
@@ -173,6 +187,10 @@ const UDPInstrument = class{
     makeWorkingList(min, max){
 
     }
+
+
+
+
 }
 
 module.exports = UDPInstrument;

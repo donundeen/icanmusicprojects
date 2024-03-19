@@ -1,24 +1,42 @@
 const dynRescale = class{
-    min = 100000;
-    max = -10000;
+    min = false;
+    max = false;
 
 
     scale(inval, outmin, outmax){
         // do thje math
+        if(this.min === false || inval < this.min){
+            this.min = inval;
+        }
+        if(this.max === false || inval > this.max){
+            this.max = inval;
+        }
+        mapped
     }
 
     reset(){
+        this.min = false;
+        this.max = false;
 
     }
 
-    float floatmap(in, inmin, inmax, outmin, outmax){
+    constrain(inval, min, max){
+        if(inval < min){
+            inval = min;
+        }
+        if(inval > max){
+            inval = max;
+        }
+    }
+
+    floatmap(inval, inmin, inmax, outmin, outmax){
         // assume all values are 0-1
-        float inrange = inmax - inmin;
-        float outrange = outmax - outmin;
-        float ratio = outrange / inrange;
-        float inflat = in - inmin;
-        float outflat = inflat * ratio;
-        float out = outmin + outflat;
+        inrange = inmax - inmin;
+        outrange = outmax - outmin;
+        ratio = outrange / inrange;
+        inflat = inval - inmin;
+        outflat = inflat * ratio;
+        out = outmin + outflat;
         return out;
       }
 

@@ -1,8 +1,9 @@
+/*
 const UDPInstrument = require("./udpinstrument.module");
 
 inst1 = new UDPInstrument(1,2);
 inst2 = new UDPInstrument(3,4);
-
+*/
 
 
 var JZZ = require('jzz');
@@ -41,12 +42,22 @@ oscPort.open();
 let synth = JZZ.synth.Fluid({ path: '/opt/homebrew/bin/fluidsynth', 
                 sf: soundfont,
                 args: args });
+                
 synth
-    .program(0,program)
+    .program(1,program)
+    .noteOn(1, 'B5', 127)
+    .wait(1000).noteOn(1, 'D5', 127)
+    .wait(1000).noteOn(1, 'F5', 127)
+    .wait(1000).noteOff(1, 'B5').noteOff(1, 'D5').noteOff(1, 'F5');
+
+synth
+    .program(0,13)
     .noteOn(0, 'C5', 127)
-    .wait(500).noteOn(0, 'E5', 127)
-    .wait(500).noteOn(0, 'G5', 127)
-    .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
+    .wait(100).noteOn(0, 'E5', 127)
+    .wait(100).noteOn(0, 'G5', 127)
+    .wait(100).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
+
+
     // .close();
 
 
