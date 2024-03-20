@@ -31,7 +31,7 @@ let UDPSENDIP = "10.0.0.255";
 let UDPSENDPORT = 7004;
 
 var osc = require("osc");
-const { SocketServer } = require("./socketserver.module.js");
+const { SocketServer } = require("./modules/socketserver.module.js");
 var udpPort = new osc.UDPPort({
     localAddress: "0.0.0.0",
     localPort: 57121, // this port for listening

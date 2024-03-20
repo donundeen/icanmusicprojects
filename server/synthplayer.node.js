@@ -1,5 +1,5 @@
 /*
-const UDPInstrument = require("./udpinstrument.module");
+const UDPInstrument = require("./modules/udpinstrument.module");
 
 inst1 = new UDPInstrument(1,2);
 inst2 = new UDPInstrument(3,4);

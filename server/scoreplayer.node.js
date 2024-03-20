@@ -13,7 +13,7 @@ let UDPSENDPORT = 7004;
 
 
 var osc = require("osc");
-const { SocketServer } = require("./socketserver.module.js");
+const { SocketServer } = require("./modules/socketserver.module.js");
 var udpPort = new osc.UDPPort({
     localAddress: "0.0.0.0",
     localPort: 57121, // this port for listening
@@ -22,10 +22,10 @@ var udpPort = new osc.UDPPort({
 });
 udpPort.open();
 
-Transport    = require("./transport.module.js").Transport;
-ScoreReader  = require("./scorereader.module.js").ScoreReader;
-TheoryEngine = require("./theoryengine.module.js").TheoryEngine;
-socketServer = require("./socketserver.module.js").SocketServer;
+Transport    = require("./modules/transport.module.js").Transport;
+ScoreReader  = require("./modules/scorereader.module.js").ScoreReader;
+TheoryEngine = require("./modules/theoryengine.module.js").TheoryEngine;
+socketServer = require("./modules/socketserver.module.js").SocketServer;
 
 console.log(Transport);
 
