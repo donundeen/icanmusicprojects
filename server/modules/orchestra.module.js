@@ -7,6 +7,17 @@ class Orchestra{
     instruments = {};
     channelPool = [0,1,2,3,4,5,6,7,8,9,10];
     synth = false; // fluidsynth object
+    bpm = 120;
+
+    set bpm(bpm){
+        this.bpm = bpm;
+        this.all_instrument_set_val("bpm", this.bpm);
+    }
+
+    set synth(synth){
+        this.synth = synth;
+        this.all_instrument_set_val("bpm", this.synth);
+    }
 
     getChannel(){
         this.channelPool.shift();
@@ -40,6 +51,7 @@ class Orchestra{
         this.instruments[name].device_name = name;
         this.instruments[name].midi_channel = this.getChannel();
         this.instruments[name].synth = this.synth;
+        this.instruments[name].bpm = this.bpm;
         this.instruments[name].start();
         return this.instruments[name];
     }

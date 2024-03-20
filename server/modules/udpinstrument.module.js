@@ -7,6 +7,11 @@ const UDPInstrument = class{
     or 
     foo;
     */
+    // input values
+    sensor_value = false;;
+    changerate = false;
+    prefChangeVal = false;
+
 
     // note lists
     notelist = [];
@@ -39,11 +44,6 @@ const UDPInstrument = class{
     // timing for different common note values.
     bpm = 120;
 
-    // input values
-    input_val = false;;
-    changerate = false;
-    prefChangeVal = false;
-
     running = false;
 
     // vars that might be externally set.
@@ -58,6 +58,7 @@ const UDPInstrument = class{
     run(){
         // start the instrument running
         this.running = true;
+        this.note_loop();
     }
 
     stop(){
@@ -68,7 +69,7 @@ const UDPInstrument = class{
     reset(){
         this.velocity_scale.reset();
         this.changerate_scale.reset();
-        this.input_val = false;
+        this.sensor_value = false;
     }
 
     set velocitycurve(curve){
@@ -84,8 +85,8 @@ const UDPInstrument = class{
         this.setNoteLengths();
     }
 
-    set input_val(value){
-        this.input_val = value;
+    set sensor_value(value){
+        this.sensor_value = value;
         thie.derive_changerate();
     }
 
@@ -109,13 +110,19 @@ const UDPInstrument = class{
  
     note_loop(){
         // process the input and send a note
-        if(this.input_val === false){
-            return;
+        if(this.sensor_value === false){
+            setTimeout((function(){
+                this.note_loop();
+            }).bind(this), 500);            
+            return false;
         }
         if(this.running === false){
-            return;
+            setTimeout((function(){
+                this.note_loop();
+            }).bind(this), 500);              
+            return false;
         }
-        let value = this.input_scale(this.input_val);
+        let value = this.input_scale(this.sensor_value);
         let midipitch = this.derive_pitch(value);
         let midivelocity = this.derive_velocity();
         let mididuration = this.derive_duration();
@@ -126,7 +133,7 @@ const UDPInstrument = class{
     }
 
     sensor_loop(){
-        // process the recieved input_val
+        // process the recieved sensor_value
 
     }
 
@@ -237,8 +244,8 @@ const UDPInstrument = class{
 
     getRootedBestNoteFromFlat(value, min, max){
         // for a "rooted" scale/chord, expand the min and max so that both min and max are the root
-        let min = moveMinMax(this.rootMidi, min);
-        let max = moveMinMax(this.rootMidi, max);
+        min = moveMinMax(this.rootMidi, min);
+        max = moveMinMax(this.rootMidi, max);
 
         let note = noteFromFloat(value, min, max);
         if(!note){
