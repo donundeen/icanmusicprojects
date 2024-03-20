@@ -51,7 +51,6 @@ const UDPInstrument = class{
     // maybe array of objects?
     configVars = {};
 
-
     constructor(){
         this.setNoteLengths();
     }
@@ -69,6 +68,7 @@ const UDPInstrument = class{
     reset(){
         this.velocity_scale.reset();
         this.changerate_scale.reset();
+        this.input_val = false;
     }
 
     set velocitycurve(curve){
@@ -112,14 +112,17 @@ const UDPInstrument = class{
         if(this.input_val === false){
             return;
         }
+        if(this.running === false){
+            return;
+        }
         let value = this.input_scale(this.input_val);
         let midipitch = this.derive_pitch(value);
         let midivelocity = this.derive_velocity();
         let mididuration = this.derive_duration();
         this.midiMakeNote(midipith, midivelocity, mididuration);
-        setTimeout(function(){
+        setTimeout((function(){
             this.note_loop()
-        }, mididuration);
+        }).bind(this), mididuration);
     }
 
     sensor_loop(){
