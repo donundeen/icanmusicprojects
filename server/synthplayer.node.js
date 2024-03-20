@@ -5,16 +5,21 @@ inst1 = new UDPInstrument(1,2);
 inst2 = new UDPInstrument(3,4);
 */
 
-
 var JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
-let args = ["a", "coreaudio"];
 let program = 22;
 
+
+let args = ["a", "coreaudio"];
 ///Users/donundeen/Downloads/MuseScore_General.sf2
 let soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
+let synth = JZZ.synth.Fluid({ path: '/opt/homebrew/bin/fluidsynth', 
+                sf: soundfont,
+                args: args });
+      
+
 
 console.log("gonna play");
 
@@ -38,11 +43,7 @@ oscPort.open();
 
 
 
-
-let synth = JZZ.synth.Fluid({ path: '/opt/homebrew/bin/fluidsynth', 
-                sf: soundfont,
-                args: args });
-                
+          
 synth
     .program(1,program)
     .noteOn(1, 'B5', 127)

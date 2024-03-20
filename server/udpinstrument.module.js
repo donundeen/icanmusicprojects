@@ -24,23 +24,25 @@ const UDPInstrument = class{
     midimin = 32;
     midimax = 100;
 
+    currentnotes = []; // need to keep track of all playing notes to to a panic stop
+
     // set fluidSynth object
     synth = false;
 
     // velocity curve starts as a straight line
-    velocitycurve = [0., 0.0, 0., 1.0, 1.0, 0.0]
-    
+    velocitycurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
+    changeratecurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
+    // dyn rescaling
+    input_scale = new dynRescale();
+    changerate_scale = new dynRescale();
+
     // timing for different common note values.
     bpm = 120;
 
-
-    // dyn rescaling
-    volume_scale = new dynRescale();
-    changerate_scale = new dynRescale();
-
     // input values
-    input_val;
-    changerate;
+    input_val = false;;
+    changerate = false;
+    prefChangeVal = false;
 
     running = false;
 
@@ -64,10 +66,29 @@ const UDPInstrument = class{
         this.running = false;
     }
 
+    reset(){
+        this.velocity_scale.reset();
+        this.changerate_scale.reset();
+    }
+
+    set velocitycurve(curve){
+        this.velocitycurve.curvelist = curve;
+    }
+
+    set changeratecurve(curve){
+        this.changeratecurve.curvelist = curve;
+    }
+
     set bpm(bpm){
         this.bpm = bpm;
         this.setNoteLengths();
     }
+
+    set input_val(value){
+        this.input_val = value;
+        thie.derive_changerate();
+    }
+
     setNoteLengths(){
         // set note constant lengths, depending on bpms
         this.QN = this.bpmToMS();
@@ -88,39 +109,49 @@ const UDPInstrument = class{
  
     note_loop(){
         // process the input and send a note
+        if(this.input_val === false){
+            return;
+        }
+        let value = this.input_scale(this.input_val);
+        let midipitch = this.derive_pitch(value);
+        let midivelocity = this.derive_velocity();
+        let mididuration = this.derive_duration();
+        this.midiMakeNote(midipith, midivelocity, mididuration);
+        setTimeout(function(){
+            this.note_loop()
+        }, mididuration);
     }
 
     sensor_loop(){
         // process the recieved input_val
+
     }
 
-    get_changerate(){
+    derive_changerate(){
         // derive the changerate
+        if(this.prevChangeVal === false){
+            this.prevChangeVal = val;
+            return 0;
+        }
+        let ochange = val - this.prevChangeVal;
+        ochange = Math.abs(ochange);
+        this.changerate = this.changerate_scale.scale(ochange, 0, 1.0);
+        this.prevChangeVal = val;
+        return this.changerate;        
     }
 
-    derive_pitch(){
-
+    derive_pitch(val){
+        let pitch = this.noteFromFloat(val, this.midimin, this.midimax);
+        return pitch;
     }
 
     derive_velocity(){
-
+        let velocity = Math.floor(127.0 * this.velocitycurve(changerate));
+        return velocity;
     }
 
     derive_duration(){
-
-    }
-
-    setup_osc(OSCObj){
-        // setup the osc message receive stuff
-    }
-
-
-    routeDeviceMsg(address, msg){
-
-    }
-
-    routeConfigVal(address, msg){
-
+        return this.N16; 
     }
     // handle the setting of config vars with class getters and setters?
 
@@ -164,33 +195,96 @@ const UDPInstrument = class{
         this.notelist = notelist;
     }
 
-    setRoot(root){
+    set rootMidi(root){
+        this.rootMidi = root;
+    }
 
+    set midimax(max){
+        this.midimax = max;
+    }
+
+    set midimin(min){
+        this.midimin = min;
     }
 
     noteFromFloat(value, min, max){
-
+        this.makeworkinglist(min, max);
+        //Serial.print("note from value ");
+        //Serial.println(value);
+        //Serial.println(workinglistlength);
+        let index = floor(this.workinglist.length * value);
+        //Serial.println(index);
+        let note  = this.workinglist[index];// % workingList.length]
+        //Serial.println(note);
+        return note;
     }
 
     fixedNoteFromFloat(value){
-
+        // in a "fixed" setup, the same float value should result in the same midi note (octave may vary), regardless of scale
+        // - map the float across FULL range, from min to max
+        // - move resulting value DOWN to the closest note in the scale
+        this.makeworkinglist(min, max);
+        let range = max - min;
+        let initial = min + floor(range * value);
+        while(indexOf(initial, workinglist) < 0){
+            initial--;
+        }
+        return initial;
     }
 
-    getRootedBestNoteFromFlat(value){
+    getRootedBestNoteFromFlat(value, min, max){
+        // for a "rooted" scale/chord, expand the min and max so that both min and max are the root
+        let min = moveMinMax(this.rootMidi, min);
+        let max = moveMinMax(this.rootMidi, max);
+
+        let note = noteFromFloat(value, min, max);
+        if(!note){
+            return false;
+        }
+        return note;
     }
+
 
     moveMinMax(root, minmax){
+        // for a "rooted" scale/chord, expand the min and max so that both min and max are the root
+        //		maxApi.post("getChordNoteFromFloat "+labelid + ", " + value);
+        //		maxApi.post(chordNoteSetMidi);
+        let orig = minmax;
+        let mindiff = (minmax % 12) - (root % 12);
+        let minmove = abs(6 - mindiff);
 
+        if(mindiff == 0){
+            // do nothing
+        }
+        else if (mindiff < -6){
+            mindiff = -12 - mindiff;
+            minmax = minmax - mindiff;
+            //big distance, go opposite way around
+        }
+        else if (mindiff < 0){
+            // small different, go toward
+            minmax = minmax - mindiff;
+        }
+        else if(mindiff < 6){
+            minmax = minmax - mindiff;
+        }
+        else if (mindiff < 12){
+            mindiff = 12 - mindiff;
+            minmax = minmax + mindiff;
+        }
+        return minmax;
     }
 
     // Make a new array that's a subset of the notelist, with min and max values
     makeWorkingList(min, max){
-
+        let wi = -1;
+        for(i = 0; i < this.notelist.length; i ++){
+          if(this.notelist[i] >= min && this.notelist[i] <= max){
+            wi++;
+            workinglist[wi] = notelist[i];
+          }
+        }
     }
-
-
-
-
 }
 
 module.exports = UDPInstrument;
