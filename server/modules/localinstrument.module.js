@@ -1,6 +1,6 @@
 dynRescale = require("./dynRescale.module");
 
-const UDPInstrument = class{
+const LocalInstrument = class{
     /*
     define vars here, like
     foo = "var"; 
@@ -297,4 +297,4 @@ const UDPInstrument = class{
     }
 }
 
-module.exports = UDPInstrument;
+module.exports = LocalInstrument;

@@ -1,6 +1,6 @@
 //orchestra.module.js
 // managing the collection of (local?) instruments
-const UDPInstrument = require("./udpinstrument.module");
+const LocalInstrument = require("./localinstrument.module");
 
 
 class Orchestra{
@@ -27,7 +27,7 @@ class Orchestra{
         this.channelPool.unshift(channel);
     }
 
-    parse_osc(address, value){
+    parseOSC(address, value){
         /* format:
         /[INSTRNAME|"ALL"]/[propname]
         */
@@ -47,7 +47,7 @@ class Orchestra{
         if(this.instruments[name]){
             return this.instruments[name];
         }
-        this.instruments[name] = new UDPInstrument();
+        this.instruments[name] = new LocalInstrument();
         this.instruments[name].device_name = name;
         this.instruments[name].midi_channel = this.getChannel();
         this.instruments[name].synth = this.synth;
