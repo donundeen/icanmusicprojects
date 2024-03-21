@@ -1,0 +1,226 @@
+[
+    {
+        "id": "3fec2372ac8bd553",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3bab93a0de24146d",
+        "type": "udp in",
+        "z": "3fec2372ac8bd553",
+        "name": "",
+        "iface": "",
+        "port": "8013",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "buffer",
+        "x": 80,
+        "y": 60,
+        "wires": [
+            [
+                "7a0193442e07ded4"
+            ]
+        ]
+    },
+    {
+        "id": "5f712c2e24f24185",
+        "type": "debug",
+        "z": "3fec2372ac8bd553",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b8b134166b2884e1",
+        "type": "debug",
+        "z": "3fec2372ac8bd553",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7a0193442e07ded4",
+        "type": "osc",
+        "z": "3fec2372ac8bd553",
+        "name": "",
+        "path": "/ntlist",
+        "metadata": false,
+        "x": 210,
+        "y": 60,
+        "wires": [
+            [
+                "b8b134166b2884e1",
+                "857071161f90c54a"
+            ]
+        ]
+    },
+    {
+        "id": "7488fd72eb3e2c5c",
+        "type": "template",
+        "z": "3fec2372ac8bd553",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "This is /the {{{topic}}}: {{{payload}}} !",
+        "output": "str",
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "5f712c2e24f24185"
+            ]
+        ]
+    },
+    {
+        "id": "3caa5eca19e72045",
+        "type": "udp out",
+        "z": "3fec2372ac8bd553",
+        "name": "",
+        "addr": "localhost",
+        "iface": "",
+        "port": "7005",
+        "ipv": "udp4",
+        "outport": "",
+        "base64": false,
+        "multicast": "false",
+        "x": 590,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "1e647870ebc0ba71",
+        "type": "osc",
+        "z": "3fec2372ac8bd553",
+        "name": "",
+        "path": "/all/notelist",
+        "metadata": false,
+        "x": 390,
+        "y": 300,
+        "wires": [
+            [
+                "3caa5eca19e72045"
+            ]
+        ]
+    },
+    {
+        "id": "7d8c0a864d656c86",
+        "type": "inject",
+        "z": "3fec2372ac8bd553",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/all/notelist",
+        "payload": "[2,3,5,8,12,15]",
+        "payloadType": "json",
+        "x": 170,
+        "y": 300,
+        "wires": [
+            [
+                "1e647870ebc0ba71"
+            ]
+        ]
+    },
+    {
+        "id": "857071161f90c54a",
+        "type": "switch",
+        "z": "3fec2372ac8bd553",
+        "name": "Route by topic",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "\\/[a-z0-9]+\\/notelist",
+                "vt": "str",
+                "case": true
+            },
+            {
+                "t": "regex",
+                "v": "\\/[a-z0-9]+\\/reset",
+                "vt": "str",
+                "case": true
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "7488fd72eb3e2c5c"
+            ],
+            [
+                "b017646de2f96aae"
+            ]
+        ]
+    },
+    {
+        "id": "a57624ccf8439ce0",
+        "type": "debug",
+        "z": "3fec2372ac8bd553",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "b017646de2f96aae",
+        "type": "template",
+        "z": "3fec2372ac8bd553",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "This is /the {{{topic}}}: {{{payload}}} !",
+        "output": "str",
+        "x": 400,
+        "y": 160,
+        "wires": [
+            [
+                "a57624ccf8439ce0"
+            ]
+        ]
+    }
+]

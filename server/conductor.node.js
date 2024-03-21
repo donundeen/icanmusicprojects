@@ -23,7 +23,7 @@ var udpPort = new osc.UDPPort({
 udpPort.open();
 udpPort.on("message", function (oscMsg) {
     console.log("An OSC message just arrived!", oscMsg);
-    orchestra.parseOSC(mscMsg.address, oscMsg.args);
+    orchestra.parseOSC(oscMsg.address, oscMsg.args);
 });
 
 
