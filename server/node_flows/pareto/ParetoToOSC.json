@@ -1,0 +1,677 @@
+[
+    {
+        "id": "251597bed5181ba2",
+        "type": "tab",
+        "label": "ParetoToOSC",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5a5df501f651898c",
+        "type": "pareto-anywhere-socketio",
+        "z": "251597bed5181ba2",
+        "uri": "http://localhost:3001/devices/029152011c0a/2",
+        "x": 220,
+        "y": 100,
+        "wires": [
+            [],
+            [
+                "e0fa827b59a977c5"
+            ]
+        ]
+    },
+    {
+        "id": "15ccfb2236d4c517",
+        "type": "udp out",
+        "z": "251597bed5181ba2",
+        "name": "",
+        "addr": "10.0.0.255",
+        "iface": "",
+        "port": "8005",
+        "ipv": "udp4",
+        "outport": "",
+        "base64": false,
+        "multicast": "broad",
+        "x": 1040,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "856f9bf6cacd6d11",
+        "type": "pareto-anywhere-socketio",
+        "z": "251597bed5181ba2",
+        "uri": "http://pareto.local:3001/devices/c3000011f737/3",
+        "x": 220,
+        "y": 200,
+        "wires": [
+            [],
+            [
+                "31cfeaa67f010c5c"
+            ]
+        ]
+    },
+    {
+        "id": "eeb59a1540cbc37d",
+        "type": "comment",
+        "z": "251597bed5181ba2",
+        "name": "Nicla",
+        "info": "",
+        "x": 190,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "0a365125b713144b",
+        "type": "comment",
+        "z": "251597bed5181ba2",
+        "name": "Badge",
+        "info": "",
+        "x": 190,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "94e6c076b3ab1baf",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "",
+        "path": "/makenote",
+        "metadata": false,
+        "x": 470,
+        "y": 1080,
+        "wires": [
+            [
+                "18ae1d347745eda6"
+            ]
+        ]
+    },
+    {
+        "id": "18ae1d347745eda6",
+        "type": "udp out",
+        "z": "251597bed5181ba2",
+        "name": "",
+        "addr": "10.0.0.255",
+        "iface": "",
+        "port": "8006",
+        "ipv": "udp4",
+        "outport": "",
+        "base64": false,
+        "multicast": "broad",
+        "x": 680,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "129b23d893c0d07a",
+        "type": "inject",
+        "z": "251597bed5181ba2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/makenote",
+        "payload": "0,4,54,127,500",
+        "payloadType": "str",
+        "x": 270,
+        "y": 1080,
+        "wires": [
+            [
+                "94e6c076b3ab1baf"
+            ]
+        ]
+    },
+    {
+        "id": "a90717b4e6076232",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/badge/acceleration",
+        "path": "/badge/acceleration",
+        "metadata": false,
+        "x": 740,
+        "y": 200,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "31cfeaa67f010c5c",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "acceleration",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.acceleration",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "a90717b4e6076232"
+            ]
+        ]
+    },
+    {
+        "id": "e0fa827b59a977c5",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "levelPercentage",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.levelPercentage",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 100,
+        "wires": [
+            [
+                "93a1bd7a0d8ad3fd"
+            ]
+        ]
+    },
+    {
+        "id": "93a1bd7a0d8ad3fd",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/nicla/levelPercentage",
+        "path": "/nicla/levelPercentage",
+        "metadata": false,
+        "x": 740,
+        "y": 100,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "8f3822334146e8d9",
+        "type": "pareto-anywhere-socketio",
+        "z": "251597bed5181ba2",
+        "uri": "http://pareto.local:3001/devices/c30000131569/3",
+        "x": 220,
+        "y": 320,
+        "wires": [
+            [],
+            [
+                "4bc4e8f02e1bdcfc"
+            ]
+        ]
+    },
+    {
+        "id": "958269e428dc47fb",
+        "type": "comment",
+        "z": "251597bed5181ba2",
+        "name": "Radar",
+        "info": "",
+        "x": 190,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "fb34c7e521b1a913",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/radar/numberOfOccupants",
+        "path": "/radar/numberOfOccupants",
+        "metadata": false,
+        "x": 720,
+        "y": 320,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "4bc4e8f02e1bdcfc",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "numberOfOccupants",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.numberOfOccupants",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 320,
+        "wires": [
+            [
+                "fb34c7e521b1a913"
+            ]
+        ]
+    },
+    {
+        "id": "71ee7b96dbcd24d5",
+        "type": "pareto-anywhere-socketio",
+        "z": "251597bed5181ba2",
+        "uri": "http://pareto.local:3001/devices/ac233fae2e2d/2",
+        "x": 220,
+        "y": 440,
+        "wires": [
+            [],
+            [
+                "76a163c4f62e9244"
+            ]
+        ]
+    },
+    {
+        "id": "910a6f63ed59de78",
+        "type": "comment",
+        "z": "251597bed5181ba2",
+        "name": "Safety Button",
+        "info": "",
+        "x": 210,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "adf8b4cc05267b53",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/safetybutton/acceleration",
+        "path": "/safetybutton/acceleration",
+        "metadata": false,
+        "x": 720,
+        "y": 440,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "76a163c4f62e9244",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "acceleration",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.acceleration",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "adf8b4cc05267b53"
+            ]
+        ]
+    },
+    {
+        "id": "ed1b37fff9a87b31",
+        "type": "pareto-anywhere-socketio",
+        "z": "251597bed5181ba2",
+        "uri": "http://pareto.local:3001/devices/c300000ae8da/3",
+        "x": 220,
+        "y": 560,
+        "wires": [
+            [],
+            [
+                "c682046e43191c66",
+                "33543a1611a59b16"
+            ]
+        ]
+    },
+    {
+        "id": "c5e1ad8cccadbc77",
+        "type": "comment",
+        "z": "251597bed5181ba2",
+        "name": "Infrared MSP-01",
+        "info": "",
+        "x": 220,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "f844d1087a17f3a4",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/infraredmsp01/acceleration",
+        "path": "/infraredmsp01/acceleration",
+        "metadata": false,
+        "x": 720,
+        "y": 540,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "c682046e43191c66",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "acceleration",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.acceleration",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 540,
+        "wires": [
+            [
+                "f844d1087a17f3a4"
+            ]
+        ]
+    },
+    {
+        "id": "5a463b23c40f82e2",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/infraredmsp01/isMotionDetected",
+        "path": "/infraredmsp01/isMotionDetected",
+        "metadata": false,
+        "x": 700,
+        "y": 580,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "33543a1611a59b16",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "isMotionDetected",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.isMotionDetected",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 580,
+        "wires": [
+            [
+                "5a463b23c40f82e2"
+            ]
+        ]
+    },
+    {
+        "id": "504346904fa815cb",
+        "type": "pareto-anywhere-socketio",
+        "z": "251597bed5181ba2",
+        "uri": "http://pareto.local:3001/devices/ac233faf5b94/2",
+        "x": 220,
+        "y": 740,
+        "wires": [
+            [],
+            [
+                "cd3943992ceb4826",
+                "f192223e1a88a72f"
+            ]
+        ]
+    },
+    {
+        "id": "f89cd05d84c766f8",
+        "type": "comment",
+        "z": "251597bed5181ba2",
+        "name": "Dear Beacon",
+        "info": "",
+        "x": 210,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "23ccd991309c0e1d",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/dearbeacon/acceleration",
+        "path": "/dearbeacon/acceleration",
+        "metadata": false,
+        "x": 730,
+        "y": 720,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "cd3943992ceb4826",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "acceleration",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.acceleration",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 720,
+        "wires": [
+            [
+                "23ccd991309c0e1d"
+            ]
+        ]
+    },
+    {
+        "id": "dd261a78cfdcfe99",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/dearbeacon/temperature",
+        "path": "/dearbeacon/temperature",
+        "metadata": false,
+        "x": 730,
+        "y": 760,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "f192223e1a88a72f",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "temperature",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 760,
+        "wires": [
+            [
+                "dd261a78cfdcfe99"
+            ]
+        ]
+    },
+    {
+        "id": "fca0627d1a9bab0f",
+        "type": "pareto-anywhere-socketio",
+        "z": "251597bed5181ba2",
+        "uri": "http://pareto.local:3001/devices/ac233fa27c9c/2",
+        "x": 220,
+        "y": 900,
+        "wires": [
+            [],
+            [
+                "9c46f335145b93be",
+                "176646996336926a"
+            ]
+        ]
+    },
+    {
+        "id": "315923aab74c40ec",
+        "type": "comment",
+        "z": "251597bed5181ba2",
+        "name": "Temp/Humidity",
+        "info": "",
+        "x": 220,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "1dd20463c968fbbe",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/temphumidity/relativeHumidity",
+        "path": "/temphumidity/relativeHumidity",
+        "metadata": false,
+        "x": 710,
+        "y": 880,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "9c46f335145b93be",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "temperature",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 920,
+        "wires": [
+            [
+                "744e9664ce48d5dc"
+            ]
+        ]
+    },
+    {
+        "id": "744e9664ce48d5dc",
+        "type": "osc",
+        "z": "251597bed5181ba2",
+        "name": "/temphumidity/temperature",
+        "path": "/temphumidity/temperature",
+        "metadata": false,
+        "x": 720,
+        "y": 920,
+        "wires": [
+            [
+                "15ccfb2236d4c517"
+            ]
+        ]
+    },
+    {
+        "id": "176646996336926a",
+        "type": "change",
+        "z": "251597bed5181ba2",
+        "name": "relativeHumidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.relativeHumidity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 880,
+        "wires": [
+            [
+                "1dd20463c968fbbe"
+            ]
+        ]
+    }
+]

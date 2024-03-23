@@ -147,6 +147,10 @@ let TheoryEngine = {
         }
     },
 
+    getKnownScales(){
+        return teoria.Scale.KNOWN_SCALES;
+    },
+
     // setter commands
     runSetter(command, labelid){
         // if there's spaces, split and run each one
@@ -158,7 +162,6 @@ let TheoryEngine = {
             }
             return;
         }
-        console.log(teoria.Scale.KNOWN_SCALES);
         if(command.match(/^[a-gA-G][b#♭]?[0-9]?$/)){
             this.setNote(command, labelid);
         }else if(teoria.Scale.KNOWN_SCALES.indexOf(command.toLowerCase()) >= 0){

@@ -100,8 +100,8 @@ function route(msg, route, callback){
 // send it out over udp (to networked devices)
 // also send it to local instruments in the orchestra
 theory.setMidiListCallback(function(msg){
-    console.log("theory output ");
-    console.log(msg);
+    //console.log("theory output ");
+    //console.log(msg);
     let args = msg.map(function(x) {return {type: "i", value: parseInt(x)};});
     let bundle = {
         timeTag: osc.timeTag(1),
@@ -127,8 +127,8 @@ score.scoreFilename = scorename;
 
 
 // start the socket server and the web server
-//socket.startSocketServer();
-//socket.startWebServer();
+socket.startSocketServer();
+socket.startWebServer();
 
 // open the score file, 
 // and when it's open, run the score

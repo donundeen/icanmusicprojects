@@ -35,6 +35,17 @@ class Orchestra{
         */
         console.log("parsting " + address );
         console.log(value);
+
+        if(typeof value == "number"){
+            value = value;
+        }else if(Array.isArray(value) && value.length > 0 && Object.hasOwn(value[0], "value")){
+            value = value[0].value;
+        }else{
+            console.log("!!!!!!!!!!!!!! ");
+            console.log("don't know what value is " + Array.isArray(value) + " : " + value.length);
+        }
+
+
         let matches = address.match(/(\/[^\/]+)\/([^\/]+)/);
         console.log(matches);
         if(matches){

@@ -45,7 +45,7 @@ const dynRescale = class{
             return outmin;
         }
         let outrange = outmax - outmin;
-        let ratio = outrange / inrange;
+        let ratio = outrange / inrange; 
         let inflat = inval - inmin;
         let outflat = inflat * ratio;
         let out = outmin + outflat;

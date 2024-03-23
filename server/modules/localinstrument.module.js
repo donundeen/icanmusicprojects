@@ -30,6 +30,10 @@ const LocalInstrument = class{
     _midimin = 32;
     _midimax = 100;
 
+    // dictionary of note names and their lengths
+    notelengths = {};
+    notelength_values = [];
+
     currentnotes = []; // need to keep track of all playing notes to to a panic stop
 
     // set fluidSynth object
@@ -43,6 +47,8 @@ const LocalInstrument = class{
     changerate_scale = new dynRescale();
     velocity_scale = new dynRescale();
 
+    last_note_time = Date.now();
+
     // timing for different common note values.
     _bpm = 120;
 
@@ -51,17 +57,36 @@ const LocalInstrument = class{
     // vars that might be externally set.
     // we can send this info to a server so it can set up a UI to collect those values
     // maybe array of objects?
-    configVars = {};
+    configProps = [
+        {name:"sensor_value", type:"f"},
+        {name:"notelist", type:"ia"},
+        {name:"device_name", type:"s"},
+        {name:"icanmusic_server_ip", type:"s"},
+        {name:"icanmusic_port", type:"i"},
+        {name:"midi_voice", type:"i"},
+        {name:"midi_channel", type:"i"},
+        {name:"rootMidi", type:"i"},
+        {name:"midimin", type:"i"},
+        {name:"velocitycurve", type:"fa"},
+        {name:"changeratecurve", type:"fa"},
+        {name:"bpm", type:"i"},        
+    ];
 
     constructor(){
         console.log("CONSTRUCTING");
+        this.last_note_time = Date.now();
         this.setNoteLengths();
+        this.get_configurable_props();
+    }
+
+    get_configurable_props(){
+        return this.configVars;
     }
 
     start(){
         // start the instrument running
         this.running = true;
-        this.note_loop();
+        //this.note_loop();
     }
 
     stop(){
@@ -100,11 +125,22 @@ const LocalInstrument = class{
         return this._bpm;
     }
 
+    set midi_voice(voice){
+        console.log("setting voice to ") + voice;
+        this._midi_voice = voice;
+        this.midiSetInstrument();
+    }
+    get midi_voice(){
+        return this._midi_voice;
+    }
+
+    // what to do when a new sensor value is received. Need to trigger a note here
     set sensor_value(value){
         console.log('sensor value is ' + value);
         console.log("********************")
         console.log(typeof(value));
         console.log(value);
+        // might be a number or an OSC-formatted value message
         if(typeof value == "number"){
             value = value;
         }else if(Array.isArray(value) && value.length > 0 && Object.hasOwn(value[0], "value")){
@@ -115,8 +151,10 @@ const LocalInstrument = class{
         }
         console.log(value);
         console.log("********************");
+
         this.derive_changerate(this._sensor_value);
         this._sensor_value = value;
+        this.note_trigger();
     }
     get sensor_value(){
         return this._sensor_value;
@@ -132,15 +170,24 @@ const LocalInstrument = class{
 
     setNoteLengths(){
         // set note constant lengths, depending on bpms
-        this.QN = this.bpmToMS();
-        this.WN = this.QN * 4;
-        this.HN = this.QN * 2;
-        this.QN = this.QN;
-        this.N8 = this.QN / 2;
-        this.N16 = this.QN / 4;
-        this.QN3 = this.HN / 3;
-        this.HN3 = this.WN / 3;
-        this.N83 = this.QN / 3;
+        this.notelength_values = [];
+        this.notelengths.QN = this.bpmToMS();
+        this.notelengths.WN = this.notelengths.QN * 4;
+        this.notelengths.HN = this.notelengths.QN * 2;
+        this.notelengths.N8 = this.notelengths.QN / 2;
+        this.notelengths.N16 = this.notelengths.QN / 4;
+        this.notelengths.QN3 = this.notelengths.HN / 3;
+        this.notelengths.HN3 = this.notelengths.WN / 3;
+        this.notelengths.N83 = this.notelengths.QN / 3;
+        this.notelength_values.push(this.notelengths.QN);
+        this.notelength_values.push(this.notelengths.WN);
+        this.notelength_values.push(this.notelengths.HN);
+        this.notelength_values.push(this.notelengths.N8);
+        this.notelength_values.push(this.notelengths.N16);
+        this.notelength_values.push(this.notelengths.QN3);
+        this.notelength_values.push(this.notelengths.HN3);
+        this.notelength_values.push(this.notelengths.N83);
+        this.notelength_values.sort(function(a, b){return a - b});        
     }
 
     bpmToMS(){
@@ -148,6 +195,10 @@ const LocalInstrument = class{
         return 60000 / this.bpm;
     }
  
+
+    // not using this function, 
+    // which constantly produces notes even if there's no sensor value coming in.
+    // calling note_trigger when a new sensor value comes in instead.
     note_loop(){
         // process the input and send a note
         if(this.sensor_value === false){
@@ -162,6 +213,20 @@ const LocalInstrument = class{
             }).bind(this), 500);              
             return false;
         }
+        this.note_trigger();
+        
+        setTimeout((function(){
+            this.note_loop()
+        }).bind(this), mididuration);
+    }
+
+    note_trigger(){
+        if(this.sensor_value === false){         
+            return false;
+        }
+        if(this.running === false){            
+            return false;
+        }
         console.log("sensor value " + this.sensor_value);
         let value        = this.input_scale.scale(this.sensor_value,0,1);
         console.log("scaled value is " + value);
@@ -169,10 +234,10 @@ const LocalInstrument = class{
         let midivelocity = this.derive_velocity();
         let mididuration = this.derive_duration();
         this.midiMakeNote(midipitch, midivelocity, mididuration);
-        setTimeout((function(){
-            this.note_loop()
-        }).bind(this), mididuration);
+       
     }
+
+
 
     sensor_loop(){
         // process the recieved sensor_value
@@ -205,8 +270,44 @@ const LocalInstrument = class{
     }
 
     derive_duration(){
-        return this.N16; 
+        let duration = this.update_last_note_time();
+        let qduration = this.quantize_duration(duration);
+        return qduration;
     }
+
+    update_last_note_time(){
+        let now = Date.now();
+        let duration = now - this.last_note_time;
+        this.last_note_time = now;
+        return duration;
+    }
+
+    // convert milliseconds into nearest note length.
+    quantize_duration(duration){
+        // iterate through note lengths and find the closest one
+        let t1 = false;
+        let t2 = false;
+        for (let i in this.notelength_values) {
+            let t = this.notelength_values[i];
+            if(!t1){
+                t1 = t;
+                continue;
+            }else{
+                t1 = t2;
+                t2 = t;
+            }
+            let midpoint = (t1 +t2) / 2;
+            if(duration < midpoint  ){
+                return t1;
+            }
+            if(duration > midpoint && duration <= t2){
+                return t2;
+            }
+        }      
+        return t2;   
+    }
+
+
     // handle the setting of config vars with class getters and setters?
 
     ////////////////////////
@@ -220,11 +321,11 @@ const LocalInstrument = class{
         console.log(pitch + " : " + velocity + " : " + duration);
         if(!Number.isFinite(pitch) || !Number.isFinite(velocity) || !Number.isFinite(duration)){
             console.log("bad midi values, returning");
-//            return;
+            return;
         }
         if(velocity == 0){
             console.log("no volume, no note");
-            //return;
+            return;
         }
         this.synth
         .noteOn(this.midi_channel, pitch, velocity)
@@ -232,21 +333,20 @@ const LocalInstrument = class{
         .noteOff(this.midi_channel, pitch);
     }
 
-    midiSetInstrument(instr){
-        this.midi_voice = instr;
+    midiSetInstrument(){
         this.synth
-        .program(this.midi_channel, this.midi_voice)        
+        .program(this._midi_channel, this._midi_voice)        
     }
 
     // we might care about this, for mono things
     midiNoteOn(channel, pitch, velocity){
         this.synth
-        .noteOn(this.midi_channel, pitch, velocit)
+        .noteOn(this._midi_channel, pitch, velocit)
     }
 
     midiNoteOff(channel, pitch){
         this.synth
-        .noteOff(this.midi_channel, pitch);
+        .noteOff(this._midi_channel, pitch);
     }
     // END MIDI FUNCTIONS
     ////////////////////////
