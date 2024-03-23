@@ -1,4 +1,5 @@
 dynRescale = require("./dynRescale.module");
+functionCurve = require("./functionCurve.module");
 
 const LocalInstrument = class{
     /*
@@ -8,26 +9,26 @@ const LocalInstrument = class{
     foo;
     */
     // input values
-    sensor_value = false;;
+    _sensor_value = false;;
     changerate = false;
-    prefChangeVal = false;
+    prevChangeVal = false;
 
 
     // note lists
-    notelist = [];
+    _notelist = [];
     workinglist = [];
-    device_name = "RENAME_ME";
+    _device_name = "RENAME_ME";
 
     // networking info
-    icanmusic_server_ip = "10.0.0.174";
-    icanmusic_port = "7002";
+    _icanmusic_server_ip = "10.0.0.174";
+    _icanmusic_port = "7002";
 
     // midi vars
-    midi_voice = 1;
-    midi_channel = 0;
-    rootMidi = 0;
-    midimin = 32;
-    midimax = 100;
+    _midi_voice = 1;
+    _midi_channel = 1;
+    _rootMidi = 0;
+    _midimin = 32;
+    _midimax = 100;
 
     currentnotes = []; // need to keep track of all playing notes to to a panic stop
 
@@ -35,14 +36,15 @@ const LocalInstrument = class{
     synth = false;
 
     // velocity curve starts as a straight line
-    velocitycurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
-    changeratecurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
+    _velocitycurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
+    _changeratecurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
     // dyn rescaling
     input_scale = new dynRescale();
     changerate_scale = new dynRescale();
+    velocity_scale = new dynRescale();
 
     // timing for different common note values.
-    bpm = 120;
+    _bpm = 120;
 
     running = false;
 
@@ -52,10 +54,11 @@ const LocalInstrument = class{
     configVars = {};
 
     constructor(){
+        console.log("CONSTRUCTING");
         this.setNoteLengths();
     }
 
-    run(){
+    start(){
         // start the instrument running
         this.running = true;
         this.note_loop();
@@ -67,27 +70,64 @@ const LocalInstrument = class{
     }
 
     reset(){
+        this.input_scale.reset();
         this.velocity_scale.reset();
         this.changerate_scale.reset();
-        this.sensor_value = false;
+        this._sensor_value = false;
     }
 
     set velocitycurve(curve){
-        this.velocitycurve.curvelist = curve;
+        this._velocitycurve.curvelist = curve;
+    }
+
+    get velocitycurve(){
+        return this._velocitycurve;
     }
 
     set changeratecurve(curve){
-        this.changeratecurve.curvelist = curve;
+        this._changeratecurve.curvelist = curve;
+    }
+    get changeratecurve(){
+        return this._changeratecurve;
     }
 
     set bpm(bpm){
-        this.bpm = bpm;
+        this._bpm = bpm;
         this.setNoteLengths();
     }
 
+    get bpm(){
+        return this._bpm;
+    }
+
     set sensor_value(value){
-        this.sensor_value = value;
-        thie.derive_changerate();
+        console.log('sensor value is ' + value);
+        console.log("********************")
+        console.log(typeof(value));
+        console.log(value);
+        if(typeof value == "number"){
+            value = value;
+        }else if(Array.isArray(value) && value.length > 0 && Object.hasOwn(value[0], "value")){
+            value = value[0].value;
+        }else{
+            console.log("!!!!!!!!!!!!!! ");
+            console.log("don't know what value is " + Array.isArray(value) + " : " + value.length);
+        }
+        console.log(value);
+        console.log("********************");
+        this.derive_changerate(this._sensor_value);
+        this._sensor_value = value;
+    }
+    get sensor_value(){
+        return this._sensor_value;
+    }
+
+    set midi_channel(channel){
+        console.log("changing midi channel to " + channel);
+        this._midi_channel = channel;
+    }
+    get midi_channel(){
+        return this._midi_channel;
     }
 
     setNoteLengths(){
@@ -122,11 +162,13 @@ const LocalInstrument = class{
             }).bind(this), 500);              
             return false;
         }
-        let value = this.input_scale(this.sensor_value);
-        let midipitch = this.derive_pitch(value);
+        console.log("sensor value " + this.sensor_value);
+        let value        = this.input_scale.scale(this.sensor_value,0,1);
+        console.log("scaled value is " + value);
+        let midipitch    = this.derive_pitch(value);
         let midivelocity = this.derive_velocity();
         let mididuration = this.derive_duration();
-        this.midiMakeNote(midipith, midivelocity, mididuration);
+        this.midiMakeNote(midipitch, midivelocity, mididuration);
         setTimeout((function(){
             this.note_loop()
         }).bind(this), mididuration);
@@ -137,8 +179,9 @@ const LocalInstrument = class{
 
     }
 
-    derive_changerate(){
+    derive_changerate(val){
         // derive the changerate
+        console.log("getting changerate");
         if(this.prevChangeVal === false){
             this.prevChangeVal = val;
             return 0;
@@ -147,6 +190,7 @@ const LocalInstrument = class{
         ochange = Math.abs(ochange);
         this.changerate = this.changerate_scale.scale(ochange, 0, 1.0);
         this.prevChangeVal = val;
+        console.log("changerate " + this.changerate);
         return this.changerate;        
     }
 
@@ -156,7 +200,7 @@ const LocalInstrument = class{
     }
 
     derive_velocity(){
-        let velocity = Math.floor(127.0 * this.velocitycurve(changerate));
+        let velocity = Math.floor(127.0 * this.velocitycurve.mapvalue(this.changerate));
         return velocity;
     }
 
@@ -173,8 +217,17 @@ const LocalInstrument = class{
 
     midiMakeNote(pitch, velocity, duration){
         // note: each instrument needs its own channel, or the instrument will be the same tone.
+        console.log(pitch + " : " + velocity + " : " + duration);
+        if(!Number.isFinite(pitch) || !Number.isFinite(velocity) || !Number.isFinite(duration)){
+            console.log("bad midi values, returning");
+//            return;
+        }
+        if(velocity == 0){
+            console.log("no volume, no note");
+            //return;
+        }
         this.synth
-        .noteOn(this.midi_channel, pitch, velocit)
+        .noteOn(this.midi_channel, pitch, velocity)
         .wait(duration)
         .noteOff(this.midi_channel, pitch);
     }
@@ -194,7 +247,6 @@ const LocalInstrument = class{
     midiNoteOff(channel, pitch){
         this.synth
         .noteOff(this.midi_channel, pitch);
-
     }
     // END MIDI FUNCTIONS
     ////////////////////////
@@ -202,29 +254,50 @@ const LocalInstrument = class{
     ////////////////////////
     // MUSIC FUNCTIONS
     set notelist(notelist){
-        this.notelist = notelist;
+        this._notelist = notelist;
+    }
+    get notelist(){
+        return this._notelist;
     }
 
     set rootMidi(root){
-        this.rootMidi = root;
+        this._rootMidi = root;
+    }
+    get rootMidi(){
+        return this._rootMidi;
     }
 
     set midimax(max){
-        this.midimax = max;
+        this._midimax = max;
     }
 
+    get midimax(){
+        return this._midimax;
+    }
+
+
     set midimin(min){
-        this.midimin = min;
+        this._midimin = min;
+    }
+
+    get midimin(){
+        return this._midimin;
     }
 
     noteFromFloat(value, min, max){
-        this.makeworkinglist(min, max);
+        console.log("note from float " + value);
+        this.makeWorkingList(min, max);
         //Serial.print("note from value ");
         //Serial.println(value);
         //Serial.println(workinglistlength);
-        let index = floor(this.workinglist.length * value);
+        let index = Math.floor(this.workinglist.length * value);
+        if(index == this.workinglist.length){
+            index = this.workinglist.length -1;
+        }
+        console.log(index);
         //Serial.println(index);
         let note  = this.workinglist[index];// % workingList.length]
+        console.log("returning note " + note);
         //Serial.println(note);
         return note;
     }
@@ -235,7 +308,7 @@ const LocalInstrument = class{
         // - move resulting value DOWN to the closest note in the scale
         this.makeworkinglist(min, max);
         let range = max - min;
-        let initial = min + floor(range * value);
+        let initial = min + Math.floor(range * value);
         while(indexOf(initial, workinglist) < 0){
             initial--;
         }
@@ -288,10 +361,11 @@ const LocalInstrument = class{
     // Make a new array that's a subset of the notelist, with min and max values
     makeWorkingList(min, max){
         let wi = -1;
-        for(i = 0; i < this.notelist.length; i ++){
+        this.workinglist = [];
+        for(let i = 0; i < this.notelist.length; i ++){
           if(this.notelist[i] >= min && this.notelist[i] <= max){
             wi++;
-            workinglist[wi] = notelist[i];
+            this.workinglist[wi] = this.notelist[i];
           }
         }
     }

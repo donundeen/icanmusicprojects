@@ -9,6 +9,8 @@ class Orchestra{
     synth = false; // fluidsynth object
     bpm = 120;
 
+    notelist = [];
+
     set bpm(bpm){
         this.bpm = bpm;
         this.all_instrument_set_val("bpm", this.bpm);
@@ -20,7 +22,7 @@ class Orchestra{
     }
 
     getChannel(){
-        this.channelPool.shift();
+        return this.channelPool.shift();
     }
 
     releaseChannel(channel){
@@ -31,7 +33,10 @@ class Orchestra{
         /* format:
         /[INSTRNAME|"ALL"]/[propname]
         */
-        let matches = address.match(/(\/[^\/]+)\/(\/[^\/]+)/);
+        console.log("parsting " + address );
+        console.log(value);
+        let matches = address.match(/(\/[^\/]+)\/([^\/]+)/);
+        console.log(matches);
         if(matches){
             let instrname = matches[1];
             let propname = matches[2];
@@ -47,11 +52,13 @@ class Orchestra{
         if(this.instruments[name]){
             return this.instruments[name];
         }
+        console.log("CREATING INSTRUMENT");
         this.instruments[name] = new LocalInstrument();
         this.instruments[name].device_name = name;
         this.instruments[name].midi_channel = this.getChannel();
         this.instruments[name].synth = this.synth;
         this.instruments[name].bpm = this.bpm;
+        this.instruments[name].notelist = this.notelist;
         this.instruments[name].start();
         return this.instruments[name];
     }
@@ -63,8 +70,15 @@ class Orchestra{
     }
 
     all_instrument_set_val(prop, value){
+        console.log("setting value for " +prop);
+        console.log(value);
+        if(prop == "notelist"){
+            // store it locally for future instruments
+            console.log("setting notelist");
+            this.notelist = value;
+        }
         this.allInstruments((instr)=>{
-            instr[prop] = val;
+            instr[prop] = value;
         });
     }
 

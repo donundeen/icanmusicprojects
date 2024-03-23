@@ -106,7 +106,7 @@ theory.setMidiListCallback(function(msg){
     let bundle = {
         timeTag: osc.timeTag(1),
         packets :[{
-            address: "/notelist",
+            address: "/all/notelist",
             args: args
         }]
     }
