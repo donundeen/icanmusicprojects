@@ -1,0 +1,26 @@
+.transport {
+    display: flex;
+    width: 50%;
+    border: 1px solid blue;
+    justify-content: space-evenly;   
+}
+
+.transport .item{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: .5em;
+}
+
+.score {
+    font-family:sans;
+    width:400px;
+    caret-color: rgb(0, 0, 255);
+}
+  
+.line { 
+    display:block;
+}
+
+.highlight {
+    border: 1px solid #f00
+}

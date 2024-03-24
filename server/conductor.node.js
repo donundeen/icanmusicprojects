@@ -11,6 +11,9 @@ let UDPSENDIP = "10.0.0.255";
 let UDPSENDPORT = 7004;
 let UDPLISTENPORT = 7005;
 
+let WEBSOCKET_PORT = 8001;
+let WEBSERVER_PORT = 8002;
+
 var osc = require("osc");
 const { SocketServer } = require("./modules/socketserver.module.js");
 var udpPort = new osc.UDPPort({
@@ -40,6 +43,9 @@ const Orchestra    = require("./modules/orchestra.module.js");
 // jzz controls a local synthesizer and connected midi devices
 const JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
+
+socketServer.WEBSOCKET_PORT = WEBSOCKET_PORT;
+socketServer.WEBSERVER_PORT = WEBSERVER_PORT;
 
 
 console.log("starting");
@@ -132,4 +138,4 @@ socket.startWebServer();
 
 // open the score file, 
 // and when it's open, run the score
-score.openscore(function(){trans.start();});
+//score.openscore(function(){trans.start();});

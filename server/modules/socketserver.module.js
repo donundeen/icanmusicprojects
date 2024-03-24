@@ -69,10 +69,11 @@ let SocketServer = {
 
   startWebServer(){
     // this is serving the web page
+    console.log("startWebServer");
     console.log(__dirname);    
     self= this;
     connect()
-      .use(serveStatic(__dirname+"/html"))
+      .use(serveStatic(__dirname+"/../html"))
       .listen(this.WEBSERVER_PORT, () => 	{
 
       const nets = networkInterfaces();
