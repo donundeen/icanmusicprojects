@@ -89,7 +89,6 @@ socket.setMessageReceivedCallback(function(msg){
         theory.runSetter(msg, "fromsocket");
     });
     route(msg, "getscore", function(msg){
-        console.log("getting score");
         data = score.scoreText;
         socket.sendMessage("score", data);    
     });
