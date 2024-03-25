@@ -25,7 +25,7 @@ var udpPort = new osc.UDPPort({
 
 udpPort.open();
 udpPort.on("message", function (oscMsg) {
-    console.log("An OSC message just arrived!", oscMsg);
+//    console.log("An OSC message just arrived!", oscMsg);
     orchestra.parseOSC(oscMsg.address, oscMsg.args);
 });
 
@@ -83,8 +83,6 @@ score.setMessageCallback(function(msg){
 
 // when the websocket gets a message, send it to the theory engine
 socket.setMessageReceivedCallback(function(msg){
-    console.log("socket message in");
-    console.log(msg);
     let result = route(msg, "chord", function(msg){
         theory.runSetter(msg, "fromsocket");
     });
