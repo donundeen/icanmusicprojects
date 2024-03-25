@@ -69,8 +69,11 @@ let synth = JZZ.synth.Fluid({ path: '/opt/homebrew/bin/fluidsynth',
 orchestra.synth = synth;
 
 // tell the score to do smomething when a beat happens
+// send a data over websockets with the transport info
 trans.setBeatCallback(function(beatcount, bar, beat, transport){
-    score.onbeat(beatcount, bar, beat, transport)
+    score.onbeat(beatcount, bar, beat, transport);
+    let data = [beatcount, bar, beat]; 
+    socket.sendMessage("curbeat", data);    
 });
 
 // when score produces a messages, send it to the theory engine
@@ -80,10 +83,34 @@ score.setMessageCallback(function(msg){
 
 // when the websocket gets a message, send it to the theory engine
 socket.setMessageReceivedCallback(function(msg){
+    console.log("socket message in");
+    console.log(msg);
     let result = route(msg, "chord", function(msg){
         theory.runSetter(msg, "fromsocket");
     });
+    route(msg, "getscore", function(msg){
+        console.log("getting score");
+        data = score.scoreText;
+        socket.sendMessage("score", data);    
+    });
+    route(msg, "stop", function(msg){
+        trans.stop();
+    });
+    route(msg, "start", function(msg){
+        trans.start();
+    });
+    route(msg, "pause", function(msg){
+        trans.pause();
+    });
+    route(msg, "score", function(text){
+        console.log("new score")
+        console.log(text);
+        score.scoreText = text;
+    });
+
+
 });
+
 
 
 // some websocket messages come in with a word preceding them, 
@@ -91,9 +118,16 @@ socket.setMessageReceivedCallback(function(msg){
 // pass to Route to send to a specific callback.
 // return true if the route was a match, false otherwise.
 function route(msg, route, callback){
-    let split = msg.split(/ /);
-    channel = split.shift();
-    newmsg = split.join(" ");
+    let channel = false;
+    let newmsg = false;
+    if(msg.address){
+        channel = msg.address; 
+        newmsg = msg.data;       
+    }else{
+        let split = msg.split(/ /);
+        channel = split.shift();
+        newmsg = split.join(" ");
+    }
     if(channel.toLowerCase() == route.toLowerCase()){
         callback(newmsg);
         return true;
@@ -138,4 +172,4 @@ socket.startWebServer();
 
 // open the score file, 
 // and when it's open, run the score
-//score.openscore(function(){trans.start();});
+score.openscore(function(){trans.start();});

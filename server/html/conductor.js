@@ -26,7 +26,7 @@ $(function() {
     ws.onopen = function() {
         wsready = true;
         console.log("opened " + ws.readyState);
-        ws.send("READY NOW");    
+        message("ready", "READY NOW")
     };
 
     ws.onerror = function(msg){
@@ -39,37 +39,104 @@ $(function() {
         console.log(msg);
     }
 
-    ws.onmessage = function(msg) {
-        console.log("got message "+ msg);
-        console.log(JSON.stringify(msg));
-    };  
+    ws.onmessage = function(event) {
+//        console.log("got message "+ event);
+        msg = JSON.parse(event.data);
+  //      console.log(msg);
+        if(msg.address == "score"){
+            updateScore(msg.data);
+        }
+        if(msg.address == "curbeat"){
+            updateBeat(msg.data[0],msg.data[1],msg.data[2]);
+        }
+    }
 
-    function message(msg){
+    function message(address, data){
+        let msg = {address : address,
+            data: data};  
         if(wsready){
-            ws.send(msg);
+        //    var buf = new Buffer.from(JSON.stringify(msg));
+            ws.send(JSON.stringify(msg));
         }else{
             console.log("ws not ready");
         }
     }
 
-    $(".play").click(function(){
-        console.log("play");
-        $(".score .line").removeClass("highlight");
-   //     $('.score .line[data-position="2"]').addClass("highlight");
-        addLinesToScore();
+    function updateScore(scoreText){
+        let split = scoreText.split("\n");
+        $(".score").empty();
+
+        for (let i = 0; i < split.length; i++){
+            line = split[i];
+            let matches = line.match(/([0-9]+):([0-9]+)(.*)/);
+            if(matches){
+                let elem = $("<div>").appendTo(".score");
+                $(elem).text(line);
+                bar = parseInt(matches[1]);
+                beat = parseInt(matches[2]);
+                curpos = barBeatToPos(bar, beat);
+                $(elem).addClass("line"); 
+                $(elem).data("position", curpos);
+                $(elem).attr("data-position", curpos);
+            }
+        }
+    }
+
+
+    function updateBeat(position, bar, beat){
+        $(".position").text(bar+":"+beat);
+        let selector = ".line[data-position='"+position+"']";
+        if($(selector).length){
+            $(".line").removeClass("curbeat");
+            $(selector).addClass("curbeat");
+        }
+    }
+        
+    function sendScore(){
+  //      let text = $(".score").text();
+        let text = $.map(
+            $(".line"), 
+            function(element) {
+                return $(element).text()
+            })
+            .join("\n");
+        message("score", text);
+    }
+
+
+    $(".sendscore").click(function(){
+        sendScore();
     });
 
+    $(".play").click(function(){
+        console.log("play");
+        message("play", 1);
+    });
+
+    $(".stop").click(function(){
+        console.log("play");
+        message("stop", 1);
+    });
+    $(".pause").click(function(){
+        console.log("play");
+        message("pause",1);
+    });
+
+
+    $(".getscore").click(function(){
+        console.log("getscore");
+        message("getscore",1);
+    });
 
     $(".score").on('keyup',function(e) {
         console.log(e);
         if(e.which == 13) {
             addLinesToScore();
-            setFocus();
         }
-        selectedElement = window.getSelection().focusNode.parentNode;
-        console.log(selectedElement);
+        setFocus();
     });
     $(".score").on("mouseup", setFocus);
+
 
     function posToBeatBar(curpos){
         let bar = Math.ceil(curpos / 4);
@@ -130,6 +197,8 @@ $(function() {
             $(elem).text(content);
         });
 
+        // send updated score here:
+        sendScore();
     }
 
     var selectedElement = null;

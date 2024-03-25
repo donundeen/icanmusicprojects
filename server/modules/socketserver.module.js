@@ -45,7 +45,9 @@ let SocketServer = {
       //	  console.log("Got message " + msg.toString());
           //this is messages FROM the web page
           console.log(msg.toString());
-        this.messageReceived(msg);
+          let newmsg = JSON.parse(msg.toString());          
+          console.log(newmsg);
+        this.messageReceived(newmsg);
       }).bind(this));
 
       // When a socket closes, or disconnects, remove it from the array.
@@ -59,12 +61,21 @@ let SocketServer = {
 
   messageReceived(msg){
     if(this.messageReceivedCallback){
-      this.messageReceivedCallback(msg.toString());
+      this.messageReceivedCallback(msg);
     }
   },
 
   setMessageReceivedCallback(callback){
     this.messageReceivedCallback = callback;
+  },
+
+
+  sendMessage(address, data){
+    let msg = {
+      address: address,
+      data : data
+    }
+    this.sockets.forEach(s => s.send(JSON.stringify(msg)));
   },
 
   startWebServer(){

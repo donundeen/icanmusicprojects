@@ -49,7 +49,13 @@ let Transport = {
     stop(){
         clearInterval(this.interval);
         this.interval = false;
+        this.reset();
     },
+
+    pause(){
+        clearInterval(this.interval);
+        this.interval = false;
+    },    
 
     reset(){
         this.beatcount = 0;
