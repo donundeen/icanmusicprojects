@@ -109,34 +109,28 @@ $(function() {
     });
 
     $(".play").click(function(){
-        console.log("play");
         message("play", 1);
     });
 
     $(".stop").click(function(){
-        console.log("stop");
         message("stop", 1);
     });
+
     $(".pause").click(function(){
-        console.log("pause");
         message("pause",1);
     });
 
-
     $(".getscore").click(function(){
-        console.log("getscore");
         message("getscore",1);
     });
 
     $(".score").on('keyup',function(e) {
-        console.log(e);
         if(e.which == 13) {
             addLinesToScore();
         }
         setFocus();
     });
     $(".score").on("mouseup", setFocus);
-
 
     function posToBeatBar(curpos){
         let bar = Math.ceil(curpos / 4);
@@ -155,7 +149,6 @@ $(function() {
         let beat = ((curpos - 1) % 4) + 1;    
         var startPosition = $(".score").selectionStart;
         var endPosition = $(".score").selectionEnd;    
-        console.log("selection " +  startPosition + " , " +endPosition);
         $(".score div").each(function(key, elem){
             // go line by line, and make sure
             // each line has a "line" class
@@ -179,14 +172,11 @@ $(function() {
                 $(elem).attr("data-position", curpos);
                 $(elem).text(content);
             }
-            console.log(matches);
         });
 
         let lastpos = $(".score .line").last().data("position");
-        console.log(lastpos);
         $(".score div").not(".line").each(function(key,elem){
             curpos++
-            console.log("pos " + curpos);
             let content = $(elem).text();
             let bar = Math.floor(curpos / 4) + 1;
             let beat = ((curpos - 1) % 4) + 1;
@@ -205,14 +195,11 @@ $(function() {
     function setFocus(e) {
         $(".line").removeClass("highlight");
         selectedElement = window.getSelection().focusNode.parentNode;
-        console.log("focus node");
-        console.log(selectedElement);
             // walk up the DOM tree until the parent node is contentEditable
         while (selectedElement.parentNode && selectedElement.parentNode.contentEditable != 'true') {
             selectedElement = selectedElement.parentNode;
         }
         $(selectedElement).addClass("highlight");
-     //   $(selectedElement).focus();
     }
 
 });

@@ -2,6 +2,7 @@ const fs = require('node:fs');
 
 let ScoreReader = {
     scoreFilename : false,
+    scoreDir : false,
     parsedScore: false,
     scoreText : false,
     messageCallback: false,
@@ -10,6 +11,17 @@ let ScoreReader = {
 
     setMessageCallback(callback){
         this.messageCallback = callback;
+    },
+
+    setScoreDir(dir){
+        this.scoreDir = dir;
+    },
+
+    getScoreList(callback){
+        // get list of all files in dir
+        fs.readdir(this.scoreDir, (err, files) => {
+            callback(files);
+        });        
     },
 
     openscore(callback){
@@ -21,7 +33,7 @@ let ScoreReader = {
             }
             self.scoreText = data;
             if(callback){
-                callback();
+                callback(self.scoreText);
             }
         });
     },

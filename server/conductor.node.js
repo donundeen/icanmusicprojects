@@ -92,6 +92,34 @@ socket.setMessageReceivedCallback(function(msg){
         data = score.scoreText;
         socket.sendMessage("score", data);    
     });
+    route(msg, "getscorelist", function(msg){
+        score.getScoreList(function(list){
+            socket.sendMessage("scorelist", list);    
+        });
+    });
+
+    route(msg,"loadscore", function(msg){
+        score.scoreFilename = msg;
+        score.openscore(function(scoreText){    
+            socket.sendMessage("score", scoreText);             //  trans.start();
+        });        
+    });
+
+    route(msg,"savescore", function(msg){
+        let filename = msg.filename;
+        let scoreText = msg.scoreText;
+        let dir = score.scoreDir;
+        let fullpath = dir + "/"+filename;
+
+        fs.writeFile(fullpath, scoreText, err => {
+            if (err) {
+                console.error(err);
+            } else {
+                // file written successfully
+            }
+        });        
+    });
+
     route(msg, "stop", function(msg){
         trans.stop();
     });
@@ -101,14 +129,11 @@ socket.setMessageReceivedCallback(function(msg){
     route(msg, "pause", function(msg){
         trans.pause();
     });
-
     route(msg, "ready", function(msg){
         data = score.scoreText;
         socket.sendMessage("score", data);     
     });
     route(msg, "score", function(text){
-        console.log("new score")
-        console.log(text);
         score.scoreText = text;
     });
 
