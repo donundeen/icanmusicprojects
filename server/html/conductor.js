@@ -114,11 +114,11 @@ $(function() {
     });
 
     $(".stop").click(function(){
-        console.log("play");
+        console.log("stop");
         message("stop", 1);
     });
     $(".pause").click(function(){
-        console.log("play");
+        console.log("pause");
         message("pause",1);
     });
 

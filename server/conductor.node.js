@@ -95,11 +95,16 @@ socket.setMessageReceivedCallback(function(msg){
     route(msg, "stop", function(msg){
         trans.stop();
     });
-    route(msg, "start", function(msg){
+    route(msg, "play", function(msg){
         trans.start();
     });
     route(msg, "pause", function(msg){
         trans.pause();
+    });
+
+    route(msg, "ready", function(msg){
+        data = score.scoreText;
+        socket.sendMessage("score", data);     
     });
     route(msg, "score", function(text){
         console.log("new score")
@@ -171,4 +176,6 @@ socket.startWebServer();
 
 // open the score file, 
 // and when it's open, run the score
-score.openscore(function(){trans.start();});
+score.openscore(function(){    
+  //  trans.start();
+});//function(){trans.start();});
