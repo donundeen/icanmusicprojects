@@ -1,5 +1,5 @@
 div{
-    border:1px solid red;
+    /* border:1px solid red; */
 }
 
 .container{
@@ -8,14 +8,12 @@ div{
     height: 95%;
     margin: auto;
     justify-content: space-evenly;
-    border:3px solid green;
 }
 
 .transport {
     display: flex;
     width: 65%;
     max-height: 50px;
-    border: 1px solid blue;
     justify-content: space-evenly;   
 }
 

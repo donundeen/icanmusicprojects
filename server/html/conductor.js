@@ -218,7 +218,7 @@ $(function() {
             min: 0,
             max: 127,
             values: [32, 100 ],
-            slide: function( event, ui ) {
+            stop: function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".range_display",instr ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
                 let min = ui.values[ 0 ];
@@ -242,7 +242,7 @@ $(function() {
             min: 0,
             max: 15,
             values: 0,
-            slide: function( event, ui ) {
+            stop: function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".channel_display",instr ).val(  ui.value );
                 let address = "instrval";
@@ -259,7 +259,7 @@ $(function() {
             min: 0,
             max: 127,
             values: 0,
-            slide: function( event, ui ) {
+            stop: function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".voice_display",instr ).val(  ui.value );
                 let address = "instrval";

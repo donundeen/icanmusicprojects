@@ -135,11 +135,11 @@ socket.setMessageReceivedCallback(function(msg){
         score.scoreText = text;
     });
 
-    route(msg, "instrval"), function(data){
+    route(msg, "instrval", function(data){
         // send config messages to instruments
         // remind myself how the instruments like to get messages...
 
-    }
+    });
 
 
 });
