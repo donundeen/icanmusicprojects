@@ -1,21 +1,59 @@
 <html>
     <head>
         <script src="./jquery-3.7.1.min.js" defer></script>
+        <script src="./jquery-ui.js" defer></script>
         <script src="./conductor.js" defer></script>
         <link rel="stylesheet" href="./conductor.css">
+        <link rel="stylesheet" href="./jquery-ui.css">
+        <link rel="stylesheet" href="./jquery-ui.theme.css">
     </head>
     <body>
+    
+    <div class="container">
+        <div class="column column1">
 
-        <div class="transport container">
-            <div class="item stop">Stop</div>
-            <div class="item play">Play</div>            
-            <div class="item pause">Pause</div>
-            <div class="item getscore">Get Score</div>
-            <div class="item sendscore">Send Score</div>
-            <div class="item position"></div>
+            <div class="transport container">
+                <div class="item stop">Stop</div>
+                <div class="item play">Play</div>            
+                <div class="item pause">Pause</div>
+                <div class="item getscore">Get Score</div>
+                <div class="item sendscore">Send Score</div>
+                <div class="item position"></div>
+            </div>
+            <div class="scoreeditor">
+                <pre contentEditable="true" class="score"></pre>
+            </div>
         </div>
 
-        <pre contentEditable="true" class="score"></pre>
+        <div class="column column2">
+            <div class="instruments">
 
+                <div class="instrument copyme">
+                    <div class="instr_name"><label>Name</label><span>instr1</span></div>
+                    <div class="instr_ip"><label>IP</label><span>10.0.0.123</span></div>
+                    <div class="midi-channel-controller">
+                        <label >MIDI Channel:</label>
+                        <input type=text class="channel_display" readonly>
+                        <div class="midi-channel"></div>
+                    </div>
+                    <div class="midi-voice-controller">
+                        <label >MIDI Voice:</label>
+                        <input type=text class="voice_display" readonly>
+                        <div class="midi-voice"></div>
+                    </div>
+                    <div class="midi-range-controller">
+                        <label >MIDI Range:</label>
+                        <input type=text class="range_display" readonly>
+                        <div class="midi-range"></div>
+                    </div>
+                    <div class="resetbutton"><button>RESET</button></div>
+                </div>
+
+              
+
+
+            </div>
+        </div>  
+    </div>      
     </body>
 </html>

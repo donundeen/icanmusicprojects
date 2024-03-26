@@ -108,8 +108,12 @@ $(function() {
         sendScore();
     });
 
+    let instrcount = 0;
     $(".play").click(function(){
         message("play", 1);
+        instrcount++;
+        let id = "instr"+instrcount;
+        createInstrumentForm(id, {});        
     });
 
     $(".stop").click(function(){
@@ -201,5 +205,83 @@ $(function() {
         }
         $(selectedElement).addClass("highlight");
     }
+
+    $(".copyme").hide();
+
+
+    function createInstrumentForm(id, options){
+        console.log("coptying");
+        let instr = $(".copyme").clone(true,true).removeClass("copyme").show().attr("id",id).appendTo(".instruments");
+        //***** Setting up instrument nodes,  */
+        $( ".midi-range",instr ).slider({
+            range: true,
+            min: 0,
+            max: 127,
+            values: [32, 100 ],
+            slide: function( event, ui ) {
+                $(event.target).closest(".instrument").attr("id")                
+                $( ".range_display",instr ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+                let min = ui.values[ 0 ];
+                let max = ui.values[ 1 ];
+                let address = "instrval";
+                let data = {id:id, 
+                            var: "midimin",
+                            val: min};
+                message(address, data);
+                data.var = "midimax";
+                data.val = max;
+                message(address, data);
+
+            }
+        });
+        $( ".range_display" ,instr).val( $( ".midi-range" ,instr).slider( "values", 0 ) +
+            " - " + $( ".midi-range",instr ).slider( "values", 1 ) );
+
+        $( ".midi-channel",instr ).slider({
+            range: false,
+            min: 0,
+            max: 15,
+            values: 0,
+            slide: function( event, ui ) {
+                $(event.target).closest(".instrument").attr("id")                
+                $( ".channel_display",instr ).val(  ui.value );
+                let address = "instrval";
+                let data = {id:id, 
+                            var: "midi_channel",
+                            val: ui.value };
+                message(address, data);
+            }
+        });
+        $( ".channel_display",instr ).val( $( ".midi-channel",instr ).slider( "values", 0 ) );
+
+        $( ".midi-voice",instr ).slider({
+            range: false,
+            min: 0,
+            max: 127,
+            values: 0,
+            slide: function( event, ui ) {
+                $(event.target).closest(".instrument").attr("id")                
+                $( ".voice_display",instr ).val(  ui.value );
+                let address = "instrval";
+                let data = {id:id, 
+                            var: "midi_voice",
+                            val: ui.value };
+                message(address, data);                
+            }
+        });
+        $( ".voice_display",instr ).val( $( ".midi-voice",instr ).slider( "values", 0 ) );
+
+        $(".resetbutton button", instr).click(function(event){
+            console.log("reset clicked");
+            id = $(event.target).closest(".instrument").attr("id");
+            let address = "instrval";
+            let data = {id:id, 
+                        var: "reset",
+                        val: ui.value };
+            message(address, data);               
+        });
+    }
+
+
 
 });

@@ -37,12 +37,14 @@ let Transport = {
     },
 
     start(){
-        if(this.QN){
-            console.log("Starting " + this.QN);
-            this.interval = setInterval((function(){this.onbeat();}).bind(this), this.QN);
-        }else{
-            console.log("no BPM set");
-            console.log(this);
+        if(!this.interval){
+            if(this.QN){
+                console.log("Starting " + this.QN);
+                this.interval = setInterval((function(){this.onbeat();}).bind(this), this.QN);
+            }else{
+                console.log("no BPM set");
+                console.log(this);
+            }
         }
     },
 
