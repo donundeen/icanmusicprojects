@@ -111,9 +111,11 @@ $(function() {
     let instrcount = 0;
     $(".play").click(function(){
         message("play", 1);
+        /*
         instrcount++;
         let id = "instr"+instrcount;
         createInstrumentForm(id, {});        
+        */
     });
 
     $(".stop").click(function(){

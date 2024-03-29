@@ -1,6 +1,9 @@
 /*
-testing a system for playing a score in time.
-to become a reusable library later
+Conductor.node.js is the code that runs. 
+It connects the various modules, 
+holds the configuration variables
+and shows how messages are routed from one to the other.
+
 */
 
 let bpm = 120;
@@ -27,10 +30,6 @@ var udpPort = new osc.UDPPort({
 });
 
 udpPort.open();
-udpPort.on("message", function (oscMsg) {
-//    console.log("An OSC message just arrived!", oscMsg);
-    orchestra.parseOSC(oscMsg.address, oscMsg.args);
-});
 
 
 // transport generates beat messges
@@ -47,8 +46,8 @@ const Orchestra    = require("./modules/orchestra.module.js");
 const JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
-socketServer.WEBSOCKET_PORT = WEBSOCKET_PORT;
-socketServer.WEBSERVER_PORT = WEBSERVER_PORT;
+socketServer.WEBSOCKET_PORT  = WEBSOCKET_PORT;
+socketServer.WEBSERVER_PORT  = WEBSERVER_PORT;
 socketServer.default_webpage = default_webpage;
 
 console.log("starting");
@@ -59,7 +58,6 @@ trans  = Object.create(Transport);
 score  = Object.create(ScoreReader);
 theory = Object.create(TheoryEngine);
 socket = Object.create(socketServer);
-
 
 // intialize the midi synth
 let args = ["a", "coreaudio"];
@@ -84,29 +82,28 @@ score.setMessageCallback(function(msg){
     theory.runSetter(msg, "fromscore");
 });
 
-// when the websocket gets a message, send it to the theory engine
+// when the websocket gets a message, send it where it needs to go
 socket.setMessageReceivedCallback(function(msg){
-    let result = route(msg, "chord", function(msg){
+    let result = routeFromWebsocket(msg, "chord", function(msg){
         theory.runSetter(msg, "fromsocket");
     });
-    route(msg, "getscore", function(msg){
+    routeFromWebsocket(msg, "getscore", function(msg){
         data = score.scoreText;
         socket.sendMessage("score", data);    
     });
-    route(msg, "getscorelist", function(msg){
+    routeFromWebsocket(msg, "getscorelist", function(msg){
         score.getScoreList(function(list){
             socket.sendMessage("scorelist", list);    
         });
     });
-
-    route(msg,"loadscore", function(msg){
+    routeFromWebsocket(msg,"loadscore", function(msg){
         score.scoreFilename = msg;
         score.openscore(function(scoreText){    
             socket.sendMessage("score", scoreText);             //  trans.start();
         });        
     });
 
-    route(msg,"savescore", function(msg){
+    routeFromWebsocket(msg,"savescore", function(msg){
         let filename = msg.filename;
         let scoreText = msg.scoreText;
         let dir = score.scoreDir;
@@ -121,24 +118,31 @@ socket.setMessageReceivedCallback(function(msg){
         });        
     });
 
-    route(msg, "stop", function(msg){
+    routeFromWebsocket(msg, "stop", function(msg){
         trans.stop();
     });
-    route(msg, "play", function(msg){
+    routeFromWebsocket(msg, "play", function(msg){
         trans.start();
     });
-    route(msg, "pause", function(msg){
+    routeFromWebsocket(msg, "pause", function(msg){
         trans.pause();
     });
-    route(msg, "ready", function(msg){
+
+    routeFromWebsocket(msg, "setbpm", function(msg){
+        let bpm = msg.bpm;
+        trans.updateBpm(bpm);
+        orchestra.all_instrument_set_val("bpm", bpm);
+    });
+
+    routeFromWebsocket(msg, "ready", function(msg){
         data = score.scoreText;
         socket.sendMessage("score", data);     
     });
-    route(msg, "score", function(text){
+    routeFromWebsocket(msg, "score", function(text){
         score.scoreText = text;
     });
 
-    route(msg, "instrval", function(data){
+    routeFromWebsocket(msg, "instrval", function(data){
         // send config messages to instruments
         // remind myself how the instruments like to get messages...
 
@@ -147,13 +151,101 @@ socket.setMessageReceivedCallback(function(msg){
 
 });
 
+// handling message over OSC
+udpPort.on("message", function (oscMsg) {
+    // when an OSC messages comes in
+//    console.log("An OSC message just arrived!", oscMsg);
+    // pass the message to the orchestra, which controls all the instruments
+//    orchestra.parseOSC(oscMsg.address, oscMsg.args);
+
+    // announcind instruments to create them in the orchestra
+    routeFromOSC(oscMsg, "/announceLocalInstrument", function(oscMsg, address){
+        console.log("announce");
+        let value = oscMsg.simpleValue;
+        console.log(value);
+        let name = value;
+        if(value.name){
+            name = value.name;
+        }
+        orchestra.create_local_instrument(name, value).start();
+    });
+    // processing request to destroy and instruments
+    routeFromOSC(oscMsg, "/removeLocalInstrument", function(oscMsg, address){
+        let value = oscMsg.simpleValue;
+        let name = value;
+        if(value.name){
+            name = value.name;
+        }
+        orchestra.destroy_local_instrument(name);
+    });
+
+
+    // setting config values for instruments
+    let instrnames = orchestra.get_instrument_names()
+    let localInstrMatch = "("+ instrnames.join("|")+")";
+    if(localInstrMatch != "()"){
+        let configMatch =  "\/property\/"+localInstrMatch+"\/[^\/]+"
+        routeFromOSC(oscMsg, configMatch, function(oscMsg, address){
+            console.log(address);
+            let instrname = address[2];
+            let propname = address[3];
+            let value = oscMsg.simpleValue;
+            if(instrname.toLowerCase() == "all"){
+                orchestra.all_instrument_set_val(propname, value);
+            }else{
+                orchestra.instrument_set_val(instrname, propname, value);
+            }
+        });
+    }
+});
+
+// oasMsg : osc message, with .address and .args address provided
+// route : string or regex to match the address
+// args: the message content
+// callback function(oscMsg, routematches)
+// -- the orginalOSCMsg, with propery simpleValue added, 
+//    which is the best we could do to get the sent message value as a simple value or JSON array
+// -- the address split into an arrqy on /
+function routeFromOSC(oscMsg, route, callback){
+
+    // get teh OSC value. Need to figure out types here, 
+    let value = oscMsg.args;
+
+    console.log("got oscMsg " + value, value);
+    console.log(oscMsg);
+
+    if(typeof value == "number"){
+        value = value;
+    }else if(Array.isArray(value) && value.length == 1 && Object.hasOwn(value[0], "value")){
+        if(value[0].type == "s"){
+            try{
+                value = JSON.parse(value[0].value);
+            }catch(e){
+                value = value[0].value;
+            }
+        }else{
+            value = value[0].value;
+        }
+    }else{
+        console.log("!!!!!!!!!!!!!! ");
+        console.log("don't know what value is " + Array.isArray(value) + " : " + value.length + " type :" + typeof value);
+    }
+
+    oscMsg.simpleValue = value;
+
+    let matches = oscMsg.address.match(route);
+    if(matches){
+        let split = oscMsg.address.split("/");
+        callback(oscMsg, split);
+    }
+}
 
 
 // some websocket messages come in with a word preceding them, 
 // which helps determine what they mean and where they should go.
 // pass to Route to send to a specific callback.
 // return true if the route was a match, false otherwise.
-function route(msg, route, callback){
+function routeFromWebsocket(msg, route, callback){
     let channel = false;
     let newmsg = false;
     if(msg.address){
@@ -192,7 +284,6 @@ theory.setMidiListCallback(function(msg){
     orchestra.all_instrument_set_val("notelist", msg);   
 });
 
-console.log(trans);
 
 // set the bpm in the transport and the orchestra
 trans.updateBpm(bpm);
@@ -208,6 +299,7 @@ socket.startWebServer();
 
 // open the score file, 
 // and when it's open, run the score
+// or we're waiting for the web page to load up to start it?
 score.openscore(function(){    
   //  trans.start();
 });//function(){trans.start();});

@@ -4,7 +4,7 @@ const LocalInstrument = require("./localinstrument.module");
 
 
 class Orchestra{
-    instruments = {};
+    localInstruments = {};
     channelPool = [0,1,2,3,4,5,6,7,8,9,10];
     synth = false; // fluidsynth object
     bpm = 120;
@@ -29,55 +29,39 @@ class Orchestra{
         this.channelPool.unshift(channel);
     }
 
-    parseOSC(address, value){
-        /* format:
-        /[INSTRNAME|"ALL"]/[propname]
-        */
-        console.log("parsting " + address );
-        console.log(value);
 
-        if(typeof value == "number"){
-            value = value;
-        }else if(Array.isArray(value) && value.length > 0 && Object.hasOwn(value[0], "value")){
-            value = value[0].value;
-        }else{
-            console.log("!!!!!!!!!!!!!! ");
-            console.log("don't know what value is " + Array.isArray(value) + " : " + value.length);
-        }
-
-
-        let matches = address.match(/(\/[^\/]+)\/([^\/]+)/);
-        console.log(matches);
-        if(matches){
-            let instrname = matches[1];
-            let propname = matches[2];
-            if(instrname.toLowerCase() == "all"){
-                this.all_instrument_set_val(propname, value);
-            }else{
-                this.instrument_set_val(instrname, propname, value);
-            }
-        }
-    }
 
     instrument(name){
-        if(this.instruments[name]){
-            return this.instruments[name];
+        if(this.localInstruments[name]){
+            return this.localInstruments[name];
         }
-        console.log("CREATING INSTRUMENT");
-        this.instruments[name] = new LocalInstrument();
-        this.instruments[name].device_name = name;
-        this.instruments[name].midi_channel = this.getChannel();
-        this.instruments[name].synth = this.synth;
-        this.instruments[name].bpm = this.bpm;
-        this.instruments[name].notelist = this.notelist;
-        this.instruments[name].start();
-        return this.instruments[name];
+        return false;
+    }
+
+    get_instrument_names(){
+        let names = Object.keys(this.localInstruments);
+        return Object.keys(this.localInstruments);
+    }
+
+    create_local_instrument(name, options){
+        if(this.localInstruments[name]){
+            return this.localInstruments[name];
+        }
+        console.log("CREATING INSTRUMENT " + name);
+        this.localInstruments[name] = new LocalInstrument();
+        this.localInstruments[name].device_name = name;
+        this.localInstruments[name].midi_channel = this.getChannel();
+        this.localInstruments[name].synth = this.synth;
+        this.localInstruments[name].bpm = this.bpm;
+        this.localInstruments[name].notelist = this.notelist;
+        this.localInstruments[name].start();
+        return this.localInstruments[name];
     }
 
     destroy_instrument(name){
-        this.releaseChannel(this.instruments[name].midi_channel);
-        this.instruments[name].stop();
-        delete(this.instruments[name]);
+        this.releaseChannel(this.localInstruments[name].midi_channel);
+        this.localInstruments[name].stop();
+        delete(this.localInstruments[name]);
     }
 
     all_instrument_set_val(prop, value){
@@ -94,14 +78,17 @@ class Orchestra{
     }
 
     instrument_set_val(name, prop, value){
-        this.instrument(name)[prop] = value;
+        console.log("setting instr value" , name, prop, value);
+        if(this.localInstruments[name]){
+            this.localInstruments[name][prop] = value;
+        }
     }
 
 
     // call a callback function on all instruments.
     allInstruments(callback){
-        for (let key in this.instruments) {
-            callback(this.instruments[key]);
+        for (let key in this.localInstruments) {
+            callback(this.localInstruments[key]);
         }        
     }
 
