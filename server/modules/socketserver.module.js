@@ -14,6 +14,7 @@ let SocketServer = {
 
   WEBSOCKET_PORT : 8001,
   WEBSERVER_PORT : 8002,
+  default_webpage : "index.html",
 
   socketserver : false,
   sockets : [],
@@ -83,8 +84,10 @@ let SocketServer = {
     console.log("startWebServer");
     console.log(__dirname);    
     self= this;
+    let options = {index: this.default_webpage};
+    console.log(options);
     connect()
-      .use(serveStatic(__dirname+"/../html"))
+      .use(serveStatic(__dirname+"/../html",options))
       .listen(this.WEBSERVER_PORT, () => 	{
 
       const nets = networkInterfaces();

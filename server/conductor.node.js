@@ -14,6 +14,9 @@ let UDPLISTENPORT = 7005;
 let WEBSOCKET_PORT = 8001;
 let WEBSERVER_PORT = 8002;
 
+let default_webpage = "conductor.html";
+
+
 var osc = require("osc");
 const { SocketServer } = require("./modules/socketserver.module.js");
 var udpPort = new osc.UDPPort({
@@ -46,7 +49,7 @@ require('jzz-synth-fluid')(JZZ);
 
 socketServer.WEBSOCKET_PORT = WEBSOCKET_PORT;
 socketServer.WEBSERVER_PORT = WEBSERVER_PORT;
-
+socketServer.default_webpage = default_webpage;
 
 console.log("starting");
 

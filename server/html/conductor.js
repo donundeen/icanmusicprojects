@@ -218,7 +218,7 @@ $(function() {
             min: 0,
             max: 127,
             values: [32, 100 ],
-            stop: function( event, ui ) {
+            stop    : function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".range_display",instr ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
                 let min = ui.values[ 0 ];
