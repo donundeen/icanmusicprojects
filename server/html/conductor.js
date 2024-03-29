@@ -49,6 +49,8 @@ $(function() {
         if(msg.address == "curbeat"){
             updateBeat(msg.data[0],msg.data[1],msg.data[2]);
         }
+
+        // add message about adding a new instrument here
     }
 
     function message(address, data){

@@ -160,7 +160,6 @@ udpPort.on("message", function (oscMsg) {
 
     // announcind instruments to create them in the orchestra
     routeFromOSC(oscMsg, "/announceLocalInstrument", function(oscMsg, address){
-        console.log("announce");
         let value = oscMsg.simpleValue;
         console.log(value);
         let name = value;
@@ -186,7 +185,6 @@ udpPort.on("message", function (oscMsg) {
     if(localInstrMatch != "()"){
         let configMatch =  "\/property\/"+localInstrMatch+"\/[^\/]+"
         routeFromOSC(oscMsg, configMatch, function(oscMsg, address){
-            console.log(address);
             let instrname = address[2];
             let propname = address[3];
             let value = oscMsg.simpleValue;
