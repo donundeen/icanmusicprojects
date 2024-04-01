@@ -131,12 +131,19 @@ socket.setMessageReceivedCallback(function(msg){
     routeFromWebsocket(msg, "setbpm", function(msg){
         let bpm = msg.bpm;
         trans.updateBpm(bpm);
-        orchestra.all_instrument_set_val("bpm", bpm);
+        orchestra.all_instrument_set_value("bpm", bpm);
     });
 
+
+    // web page just loaded and is ready
     routeFromWebsocket(msg, "ready", function(msg){
         data = score.scoreText;
-        socket.sendMessage("score", data);     
+        socket.sendMessage("score", data);
+        //send all the instruments if there are currently any running:
+        orchestra.allInstruments(function(instrument){
+            let props = instrument.get_config_props();
+            socket.sendMessage("addinstrument", props);    
+        })
     });
     routeFromWebsocket(msg, "score", function(text){
         score.scoreText = text;
@@ -145,10 +152,13 @@ socket.setMessageReceivedCallback(function(msg){
     routeFromWebsocket(msg, "instrval", function(data){
         // send config messages to instruments
         // remind myself how the instruments like to get messages...
+        console.log("instrval update");
+        device_name = data.id;
+        prop = data.var;
+        value = data.val;
+        orchestra.instrument_set_value(device_name, prop, value);
 
     });
-
-
 });
 
 // handling message over OSC
@@ -166,7 +176,10 @@ udpPort.on("message", function (oscMsg) {
         if(value.name){
             name = value.name;
         }
-        orchestra.create_local_instrument(name, value).start();
+        let instrument = orchestra.create_local_instrument(name, value);
+        let props = instrument.get_config_props();
+        socket.sendMessage("addinstrument", props);
+        instrument.start();
     });
     // processing request to destroy and instruments
     routeFromOSC(oscMsg, "/removeLocalInstrument", function(oscMsg, address){
@@ -189,19 +202,25 @@ udpPort.on("message", function (oscMsg) {
             let propname = address[3];
             let value = oscMsg.simpleValue;
             if(instrname.toLowerCase() == "all"){
-                orchestra.all_instrument_set_val(propname, value);
+                orchestra.all_instrument_set_value(propname, value);
             }else{
-                orchestra.instrument_set_val(instrname, propname, value);
+                orchestra.instrument_set_value(instrname, propname, value);
             }
+            updateobj= {"device_name": instrname};
+            updateobj[propname] = value;
+            socket.sendMessage("updateinstrument",updateobj);
         });
     }
 });
+
+
+
 
 // oasMsg : osc message, with .address and .args address provided
 // route : string or regex to match the address
 // args: the message content
 // callback function(oscMsg, routematches)
-// -- the orginalOSCMsg, with propery simpleValue added, 
+// -- the orginal OSCMsg, with propery simpleValue added, 
 //    which is the best we could do to get the sent message value as a simple value or JSON array
 // -- the address split into an arrqy on /
 function routeFromOSC(oscMsg, route, callback){
@@ -236,6 +255,20 @@ function routeFromOSC(oscMsg, route, callback){
         let split = oscMsg.address.split("/");
         callback(oscMsg, split);
     }
+}
+
+
+// some things to do whenever an instrument makes a note
+orchestra.makenote_callback = function(instr, pitch, velocity, duration){
+    
+    let device_name = instr.device_name;
+    console.log("******************************** makenote_callback ", device_name, pitch, velocity, duration);
+    let dataObj = {device_name: device_name, 
+                    pitch: pitch, 
+                    velocity: velocity,
+                    duration: duration}
+    console.log("sending message")
+    socket.sendMessage("makenote", dataObj );
 }
 
 
@@ -279,13 +312,13 @@ theory.setMidiListCallback(function(msg){
     // send notelist to all UDP connected devices
     udpPort.send(bundle, UDPSENDIP, UDPSENDPORT);
     // and send to local ochestra
-    orchestra.all_instrument_set_val("notelist", msg);   
+    orchestra.all_instrument_set_value("notelist", msg);   
 });
 
 
 // set the bpm in the transport and the orchestra
 trans.updateBpm(bpm);
-orchestra.all_instrument_set_val("bpm", bpm);
+orchestra.all_instrument_set_value("bpm", bpm);
 
 // set the name of the score
 score.scoreFilename = scorename;
@@ -299,5 +332,5 @@ socket.startWebServer();
 // and when it's open, run the score
 // or we're waiting for the web page to load up to start it?
 score.openscore(function(){    
-  //  trans.start();
+    trans.start();
 });//function(){trans.start();});

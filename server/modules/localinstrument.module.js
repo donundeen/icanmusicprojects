@@ -54,6 +54,9 @@ const LocalInstrument = class{
 
     running = false;
 
+    // instr, pitch, velocity, duration
+    makenote_callback = false;
+
     // vars that might be externally set.
     // we can send this info to a server so it can set up a UI to collect those values
     // maybe array of objects?
@@ -67,6 +70,7 @@ const LocalInstrument = class{
         {name:"midi_channel", type:"i"},
         {name:"rootMidi", type:"i"},
         {name:"midimin", type:"i"},
+        {name:"midimax", type:"i"},
         {name:"velocitycurve", type:"fa"},
         {name:"changeratecurve", type:"fa"},
         {name:"bpm", type:"i"},        
@@ -76,11 +80,18 @@ const LocalInstrument = class{
         console.log("CONSTRUCTING");
         this.last_note_time = Date.now();
         this.setNoteLengths();
-        this.get_configurable_props();
+        this.get_config_props();
     }
 
-    get_configurable_props(){
-        return this.configVars;
+    get_config_props(){
+        this.populate_config_props();
+        return this.configProps;
+    }
+
+    populate_config_props(){
+        for(let i =0; i< this.configProps.length; i++){
+            this.configProps[i]["value"] = this[this.configProps[i]["name"]];
+        }
     }
 
     start(){
@@ -331,6 +342,10 @@ const LocalInstrument = class{
         .noteOn(this.midi_channel, pitch, velocity)
         .wait(duration)
         .noteOff(this.midi_channel, pitch);
+
+        if(this.makenote_callback){
+            this.makenote_callback(this, pitch, velocity, duration);
+        }
     }
 
     midiSetInstrument(){

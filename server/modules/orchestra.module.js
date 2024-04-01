@@ -11,6 +11,17 @@ class Orchestra{
 
     notelist = [];
 
+
+    // instr, pitch, velocity, duration
+    _makenote_callback = false;
+
+    set makenote_callback(callback){
+        this._makenote_callback = callback;
+        for (let key in this.localInstruments) {
+            this.localInstruments[key].makenote_callback = this._makenote_callback;
+        }
+    }
+
     set bpm(bpm){
         this.bpm = bpm;
         this.all_instrument_set_val("bpm", this.bpm);
@@ -28,8 +39,6 @@ class Orchestra{
     releaseChannel(channel){
         this.channelPool.unshift(channel);
     }
-
-
 
     instrument(name){
         if(this.localInstruments[name]){
@@ -55,6 +64,7 @@ class Orchestra{
         this.localInstruments[name].bpm = this.bpm;
         this.localInstruments[name].notelist = this.notelist;
         this.localInstruments[name].start();
+        this.localInstruments[name].makenote_callback = this._makenote_callback;       
         return this.localInstruments[name];
     }
 
@@ -64,7 +74,7 @@ class Orchestra{
         delete(this.localInstruments[name]);
     }
 
-    all_instrument_set_val(prop, value){
+    all_instrument_set_value(prop, value){
         console.log("setting value for " +prop);
         console.log(value);
         if(prop == "notelist"){
@@ -72,12 +82,12 @@ class Orchestra{
             console.log("setting notelist");
             this.notelist = value;
         }
-        this.allInstruments((instr)=>{
-            instr[prop] = value;
-        });
+        for (let key in this.localInstruments) {
+            this.instrument_set_value(key, prop, value);
+        }
     }
 
-    instrument_set_val(name, prop, value){
+    instrument_set_value(name, prop, value){
         console.log("setting instr value" , name, prop, value);
         if(this.localInstruments[name]){
             this.localInstruments[name][prop] = value;
@@ -93,7 +103,7 @@ class Orchestra{
     }
 
     setNotelist(notelist){
-        this.all_instrument_set_val("notelist", notelist);
+        this.all_instrument_set_value("notelist", notelist);
     }
 }
 

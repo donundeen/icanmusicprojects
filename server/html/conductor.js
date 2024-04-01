@@ -40,14 +40,24 @@ $(function() {
     }
 
     ws.onmessage = function(event) {
-//        console.log("got message "+ event);
+        console.log("got message "+ event);
         msg = JSON.parse(event.data);
-  //      console.log(msg);
+        console.log(msg.address);
         if(msg.address == "score"){
             updateScore(msg.data);
         }
         if(msg.address == "curbeat"){
             updateBeat(msg.data[0],msg.data[1],msg.data[2]);
+        }
+        if(msg.address =="addinstrument"){
+            console.log("adding instrument");
+            instrumentAnnounced(msg);
+        }
+        if(msg.address =="updateinstrument"){
+            updateInstrumentData(msg.data.device_name, msg.data);
+        }
+        if(msg.address =="makenote"){
+            updateInstrumentMakenote(msg.data.device_name, msg.data);
         }
 
         // add message about adding a new instrument here
@@ -212,16 +222,40 @@ $(function() {
 
     $(".copyme").hide();
 
+    function instrumentAnnounced(options){
+        /*
+        options is an array of objects w/ properties name, type, and value        
+        */
+        console.log("instrumentAnnounced");
+        console.log(options.data);
+        let id = options.data.filter((item)=>item.name=="device_name")[0].value;
+        let options_object = {};
+        for(let i =0; i< options.data.length; i++){
+            options_object[options.data[i]["name"]] = options.data[i]["value"];
+        }       
+        console.log("id is  " +id);
+        console.log(options_object);
+        console.log(options.data);
+        createInstrumentForm(id, options.data, options_object);
+    }
 
-    function createInstrumentForm(id, options){
+    function createInstrumentForm(id, options_array, options_object){
         console.log("coptying");
         let instr = $(".copyme").clone(true,true).removeClass("copyme").show().attr("id",id).appendTo(".instruments");
         //***** Setting up instrument nodes,  */
+        let midimin = options_object.midimin  ? options_object.midimin : 32;
+        let midimax = options_object.midimax  ? options_object.midimax : 100;
+        let midi_voice = options_object.midi_voice  ? options_object.midi_voice : 1;
+        let midi_channel = options_object.midi_channel  ? options_object.midi_channel : 0;
+        let device_name = options_object.device_name  ? options_object.device_name : "BAD_NAME";
+        $(instr).data("device_name", device_name);
+        $(instr).attr("id", device_name);
+        $( ".device_name span",instr ).text(device_name);
         $( ".midi-range",instr ).slider({
             range: true,
             min: 0,
             max: 127,
-            values: [32, 100 ],
+            values: [midimin, midimax ],
             stop    : function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".range_display",instr ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
@@ -245,7 +279,7 @@ $(function() {
             range: false,
             min: 0,
             max: 15,
-            values: 0,
+            values: midi_channel,
             stop: function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".channel_display",instr ).val(  ui.value );
@@ -262,7 +296,7 @@ $(function() {
             range: false,
             min: 0,
             max: 127,
-            values: 0,
+            values: midi_voice,
             stop: function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".voice_display",instr ).val(  ui.value );
@@ -286,6 +320,25 @@ $(function() {
         });
     }
 
+
+    function updateInstrumentData(id, data_obj){
+        console.log("updateInstrument");
+        console.log(data_obj);
+        let instr = $("#"+id);
+        console.log(data_obj.sensor_value);
+        if(data_obj.sensor_value){
+
+            $( ".sensor_val span",instr ).text(data_obj.sensor_value);
+        }
+    }
+    function updateInstrumentMakenote(id, data_obj){
+        console.log("updateMakenote");
+        console.log(data_obj);
+        let instr = $("#"+id);
+        let text = data_obj.pitch + ":"+data_obj.velocity+":"+data_obj.duration;
+        console.log(text);
+        $( ".makenote span",instr ).text(text);
+    }
 
 
 });
