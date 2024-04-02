@@ -81,6 +81,47 @@ void configUdp(){
     }
   }
 }
+
+
+///////////////////////////////
+// functions to handle communication with the server/conductor
+
+// send announce message over OSC when connected
+void announceCreation(){
+  if(WiFi.status() == WL_CONNECTED){   
+    Serial.println("ANNOUNCING udp:::");
+    Serial.println(UDPReceiverIP);
+    Serial.println(UDPPort);
+    Serial.println(DEVICE_ID);
+    //send hello world to server
+    char ipbuffer[20];
+    thisarduinoip.toCharArray(ipbuffer, 20);
+    Serial.println(ipbuffer);
+    OSCMessage oscmsg("/announceUDPInstrument");  
+    oscmsg.add(DEVICE_ID).add(ipbuffer);
+ //   udp.beginPacket(UDPReceiverIP, UDPPort);
+    udp.beginPacket(UDPReceiverIP, 7005);
+ 
+   // udp.beginMulticastPacket(UDPReceiverIP, UDPPort, WiFi.localIP());
+  //  udp.write(buffer, msg.length()+1);
+    oscmsg.send(udp);
+    udp.endPacket();
+    oscmsg.empty();
+  }else{
+    Serial.println("not sending udp, not connected");
+  }  
+}
+
+
+
+
+
+
+
 // END NETWORKING FUNCTIONS
 ////////////////////////////////
+
+
+
+
 

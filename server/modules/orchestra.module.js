@@ -1,10 +1,12 @@
 //orchestra.module.js
 // managing the collection of (local?) instruments
 const LocalInstrument = require("./localinstrument.module");
+const UDPInstrument = require("./udpinstrument.module");
 
 
 class Orchestra{
     localInstruments = {};
+    udpInstruments = {};
     channelPool = [0,1,2,3,4,5,6,7,8,9,10];
     synth = false; // fluidsynth object
     bpm = 120;
@@ -24,12 +26,12 @@ class Orchestra{
 
     set bpm(bpm){
         this.bpm = bpm;
-        this.all_instrument_set_val("bpm", this.bpm);
+        this.all_local_instrument_set_val("bpm", this.bpm);
     }
 
     set synth(synth){
         this.synth = synth;
-        this.all_instrument_set_val("bpm", this.synth);
+        this.all_local_instrument_set_val("bpm", this.synth);
     }
 
     getChannel(){
@@ -40,17 +42,29 @@ class Orchestra{
         this.channelPool.unshift(channel);
     }
 
-    instrument(name){
+    local_instrument(name){
         if(this.localInstruments[name]){
             return this.localInstruments[name];
         }
         return false;
     }
 
-    get_instrument_names(){
+    udp_instrument(name){
+        if(this.udpInstruments[name]){
+            return this.udpInstruments[name];
+        }
+        return false;
+    }    
+
+    get_local_instrument_names(){
         let names = Object.keys(this.localInstruments);
         return Object.keys(this.localInstruments);
     }
+
+    get_udp_instrument_names(){
+        let names = Object.keys(this.udpInstruments);
+        return Object.keys(this.udpInstruments);
+    }    
 
     create_local_instrument(name, options){
         if(this.localInstruments[name]){
@@ -68,13 +82,32 @@ class Orchestra{
         return this.localInstruments[name];
     }
 
-    destroy_instrument(name){
+    create_udp_instrument(name, options){
+        if(this.udpInstruments[name]){
+            return this.udpInstruments[name];
+        }
+        console.log("CREATING INSTRUMENT " + name);
+        this.udpInstruments[name] = new UDPInstrument();
+        this.udpInstruments[name].device_name = name;
+        this.udpInstruments[name].bpm = this.bpm;
+        this.udpInstruments[name].notelist = this.notelist;
+        this.udpInstruments[name].makenote_callback = this._makenote_callback;       
+        return this.udpInstruments[name];
+    }
+
+    destroy_local_instrument(name){
         this.releaseChannel(this.localInstruments[name].midi_channel);
         this.localInstruments[name].stop();
         delete(this.localInstruments[name]);
     }
 
-    all_instrument_set_value(prop, value){
+
+    destroy_udp_instrument(name){
+        this.udpInstruments[name].stop();
+        delete(this.udpInstruments[name]);
+    }    
+
+    all_local_instrument_set_value(prop, value){
         console.log("setting value for " +prop);
         console.log(value);
         if(prop == "notelist"){
@@ -83,27 +116,55 @@ class Orchestra{
             this.notelist = value;
         }
         for (let key in this.localInstruments) {
-            this.instrument_set_value(key, prop, value);
+            this.local_instrument_set_value(key, prop, value);
         }
     }
 
-    instrument_set_value(name, prop, value){
+    all_udp_instrument_set_value(prop, value){
+        console.log("setting value for " +prop);
+        console.log(value);
+        if(prop == "notelist"){
+            // store it locally for future instruments
+            console.log("setting notelist");
+            this.notelist = value;
+        }
+        for (let key in this.udpInstruments) {
+            this.udp_instrument_set_value(key, prop, value);
+        }
+    }    
+
+    local_instrument_set_value(name, prop, value){
         console.log("setting instr value" , name, prop, value);
         if(this.localInstruments[name]){
             this.localInstruments[name][prop] = value;
         }
     }
 
+    udp_instrument_set_value(name, prop, value){
+        console.log("setting instr value" , name, prop, value);
+        if(this.udpInstruments[name]){
+            this.udpInstruments[name][prop] = value;
+        }
+    }    
 
     // call a callback function on all instruments.
-    allInstruments(callback){
+    allLocalInstruments(callback){
         for (let key in this.localInstruments) {
             callback(this.localInstruments[key]);
         }        
     }
 
+    // call a callback function on all instruments.
+    allUDPInstruments(callback){
+        for (let key in this.udpInstruments) {
+            callback(this.udpInstruments[key]);
+        }        
+    }    
+
     setNotelist(notelist){
-        this.all_instrument_set_value("notelist", notelist);
+        this.all_local_instrument_set_value("notelist", notelist);
+        this.all_udp_instrument_set_value("notelist", notelist);
+
     }
 }
 

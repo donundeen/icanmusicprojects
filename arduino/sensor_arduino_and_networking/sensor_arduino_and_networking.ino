@@ -68,8 +68,8 @@ int workinglistlength = 0;
 // CONFIG WEBPAGE PINS AND VARS
 int resetButtonPin = A0;
 
-char icanmusic_server_ip[40] = "10.0.0.174";
-char icanmusic_port[6] = "7002";
+char icanmusic_server_ip[40] = "10.0.0.255";
+char icanmusic_port[6] = "7005";
 char this_device_name[34] = "RENAME_ME";
 //flag for saving data
 bool shouldSaveConfig = true;
@@ -150,9 +150,9 @@ int notelengths[] = {WN, HN, HN3, QN, QN3, N8, N83, N16};
 /// NETWORK CONFIGS  
 const char *WIFI_SSID = "JJandJsKewlPad";
 const char *WIFI_PASSWORD = "WeL0veLettuce";
-char *UDPReceiverIP = "10.0.0.174"; // ip where UDP messages are going
-char *presetip = "10.0.0.174"; // in case we just want to force it for testing
-int UDPPort = 7002; // the UDP port that Max is listening on
+char *UDPReceiverIP = "10.0.0.255"; // ip where UDP messages are going
+char *presetip = "10.0.0.255"; // in case we just want to force it for testing
+int UDPPort = 7005; // the UDP port that Max is listening on
 int UDPINPort = 7004; // the UDP port that Max is listening on
 // END NETWORK CONFIGS
 ////////////////////////
@@ -390,6 +390,9 @@ void setup() {
   Serial.println("getting testvar");
   int val = getStoredConfigVal("testvar");
   Serial.println(val);
+
+  announceCreation();
+
 }
 
 void loop() {  

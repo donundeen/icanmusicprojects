@@ -1,10 +1,11 @@
 dynRescale = require("./dynRescale.module");
 functionCurve = require("./functionCurve.module");
 
-const LocalInstrument = class{
+const UDPInstrument = class{
 
-    _type = "local";
-    type = "local";
+
+    _type = "udp";
+    type = "udp";
     /*
     define vars here, like
     foo = "var"; 
@@ -15,6 +16,7 @@ const LocalInstrument = class{
     _sensor_value = false;;
     changerate = false;
     prevChangeVal = false;
+
 
 
     // note lists
@@ -490,4 +492,4 @@ const LocalInstrument = class{
     }
 }
 
-module.exports = LocalInstrument;
+module.exports = UDPInstrument;

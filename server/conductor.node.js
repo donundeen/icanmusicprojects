@@ -164,7 +164,7 @@ socket.setMessageReceivedCallback(function(msg){
 // handling message over OSC
 udpPort.on("message", function (oscMsg) {
     // when an OSC messages comes in
-//    console.log("An OSC message just arrived!", oscMsg);
+    console.log("An OSC message just arrived!", oscMsg);
     // pass the message to the orchestra, which controls all the instruments
 //    orchestra.parseOSC(oscMsg.address, oscMsg.args);
 
@@ -192,8 +192,34 @@ udpPort.on("message", function (oscMsg) {
     });
 
 
+    // announcind instruments to create them in the orchestra
+    routeFromOSC(oscMsg, "/announceUDPInstrument", function(oscMsg, address){
+        console.log("!!!!!!!!!!!!!!!!!!!! UDP INSTRUMENT !!!!!!!!!!!!!!!!!!!!!!");
+        let value = oscMsg.simpleValue;
+        console.log(value);
+        let name = value;
+        if(value.name){
+            name = value.name;
+        }
+        let instrument = orchestra.create_udp_instrument(name, value);
+        let props = instrument.get_config_props();
+        socket.sendMessage("addinstrument", props);
+        instrument.start();
+    });
+
+    // processing request to destroy and instruments
+    routeFromOSC(oscMsg, "/removeUDPInstrument", function(oscMsg, address){
+        let value = oscMsg.simpleValue;
+        let name = value;
+        if(value.name){
+            name = value.name;
+        }
+        orchestra.destroy_udp_instrument(name);
+    });    
+
+
     // setting config values for instruments
-    let instrnames = orchestra.get_instrument_names()
+    let instrnames = orchestra.get_local_instrument_names()
     let localInstrMatch = "("+ instrnames.join("|")+")";
     if(localInstrMatch != "()"){
         let configMatch =  "\/property\/"+localInstrMatch+"\/[^\/]+"
@@ -202,9 +228,9 @@ udpPort.on("message", function (oscMsg) {
             let propname = address[3];
             let value = oscMsg.simpleValue;
             if(instrname.toLowerCase() == "all"){
-                orchestra.all_instrument_set_value(propname, value);
+                orchestra.all_local_instrument_set_value(propname, value);
             }else{
-                orchestra.instrument_set_value(instrname, propname, value);
+                orchestra.local_instrument_set_value(instrname, propname, value);
             }
             updateobj= {"device_name": instrname};
             updateobj[propname] = value;
@@ -312,13 +338,13 @@ theory.setMidiListCallback(function(msg){
     // send notelist to all UDP connected devices
     udpPort.send(bundle, UDPSENDIP, UDPSENDPORT);
     // and send to local ochestra
-    orchestra.all_instrument_set_value("notelist", msg);   
+    orchestra.all_local_instrument_set_value("notelist", msg);   
 });
 
 
 // set the bpm in the transport and the orchestra
 trans.updateBpm(bpm);
-orchestra.all_instrument_set_value("bpm", bpm);
+orchestra.all_local_instrument_set_value("bpm", bpm);
 
 // set the name of the score
 score.scoreFilename = scorename;
@@ -332,5 +358,5 @@ socket.startWebServer();
 // and when it's open, run the score
 // or we're waiting for the web page to load up to start it?
 score.openscore(function(){    
-    trans.start();
+  //  trans.start();
 });//function(){trans.start();});
