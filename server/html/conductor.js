@@ -248,7 +248,9 @@ $(function() {
         let midi_voice = options_object.midi_voice  ? options_object.midi_voice : 1;
         let midi_channel = options_object.midi_channel  ? options_object.midi_channel : 0;
         let device_name = options_object.device_name  ? options_object.device_name : "BAD_NAME";
+        let instrtype = options_object.instrtype;
         $(instr).data("device_name", device_name);
+        $(instr).data("instrtype", instrtype);
         $(instr).attr("id", device_name);
         $( ".device_name span",instr ).text(device_name);
         $( ".midi-range",instr ).slider({
@@ -262,7 +264,9 @@ $(function() {
                 let min = ui.values[ 0 ];
                 let max = ui.values[ 1 ];
                 let address = "instrval";
+                let instrtype = $(instr).data("instrtype"); // local or udp
                 let data = {id:id, 
+                            instrtype : instrtype,
                             var: "midimin",
                             val: min};
                 message(address, data);
@@ -284,7 +288,9 @@ $(function() {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".channel_display",instr ).val(  ui.value );
                 let address = "instrval";
+                let instrtype = $(instr).data("instrtype"); // local or udp
                 let data = {id:id, 
+                            instrtype: instrtype,
                             var: "midi_channel",
                             val: ui.value };
                 message(address, data);
@@ -301,7 +307,9 @@ $(function() {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".voice_display",instr ).val(  ui.value );
                 let address = "instrval";
+                let instrtype = $(instr).data("instrtype"); // local or udp
                 let data = {id:id, 
+                            instrtype: instrtype,
                             var: "midi_voice",
                             val: ui.value };
                 message(address, data);                
@@ -313,7 +321,9 @@ $(function() {
             console.log("reset clicked");
             id = $(event.target).closest(".instrument").attr("id");
             let address = "instrval";
+            let instrtype = $(instr).data("instrtype"); // local or udp
             let data = {id:id, 
+                        instrtype: instrtype,
                         var: "reset",
                         val: ui.value };
             message(address, data);               
@@ -327,7 +337,6 @@ $(function() {
         let instr = $("#"+id);
         console.log(data_obj.sensor_value);
         if(data_obj.sensor_value){
-
             $( ".sensor_val span",instr ).text(data_obj.sensor_value);
         }
     }

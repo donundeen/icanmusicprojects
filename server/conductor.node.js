@@ -140,8 +140,14 @@ socket.setMessageReceivedCallback(function(msg){
         data = score.scoreText;
         socket.sendMessage("score", data);
         //send all the instruments if there are currently any running:
-        orchestra.allInstruments(function(instrument){
+        orchestra.allLocalInstruments(function(instrument){
             let props = instrument.get_config_props();
+            props.push({name: "instrtype", value: "local"});
+            socket.sendMessage("addinstrument", props);    
+        })
+        orchestra.allUDPInstruments(function(instrument){
+            let props = instrument.get_config_props();
+            props.push({name: "instrtype", value: "udp"});
             socket.sendMessage("addinstrument", props);    
         })
     });
@@ -153,11 +159,32 @@ socket.setMessageReceivedCallback(function(msg){
         // send config messages to instruments
         // remind myself how the instruments like to get messages...
         console.log("instrval update");
-        device_name = data.id;
-        prop = data.var;
-        value = data.val;
-        orchestra.instrument_set_value(device_name, prop, value);
-
+        let device_name = data.id;
+        let prop = data.var;
+        let value = data.val;
+        let instrtype = data.instrtype;
+        if(instrtype == "local"){
+            orchestra.local_instrument_set_value(device_name, prop, value);
+        }else if(instrtype == "udp"){
+            console.log("set udp instr value");
+            console.log(msg);
+            let type = "s";
+            if(typeof value == "number" ){
+                value = parseInt(value);
+                type = "i";
+            };
+            let address = "/"+device_name+"/config/"+prop;
+            let args = [{type: type, value: value}];
+            let bundle = {
+                timeTag: osc.timeTag(1),
+                packets :[{
+                    address: address,
+                    args: args
+                }]
+            }
+            // send notelist to all UDP connected devices
+            udpPort.send(bundle, UDPSENDIP, UDPSENDPORT);
+        }
     });
 });
 
@@ -178,6 +205,7 @@ udpPort.on("message", function (oscMsg) {
         }
         let instrument = orchestra.create_local_instrument(name, value);
         let props = instrument.get_config_props();
+        props.push({name: "instrtype", value: "local"});
         socket.sendMessage("addinstrument", props);
         instrument.start();
     });
@@ -203,6 +231,7 @@ udpPort.on("message", function (oscMsg) {
         }
         let instrument = orchestra.create_udp_instrument(name, value);
         let props = instrument.get_config_props();
+        props.push({name: "instrtype", value: "udp"});
         socket.sendMessage("addinstrument", props);
         instrument.start();
     });
@@ -256,17 +285,24 @@ function routeFromOSC(oscMsg, route, callback){
 
     console.log("got oscMsg " + value, value);
     console.log(oscMsg);
+    console.log(typeof value);
 
     if(typeof value == "number"){
         value = value;
-    }else if(Array.isArray(value) && value.length == 1 && Object.hasOwn(value[0], "value")){
+    }else if(Array.isArray(value) && value.length >= 1 && Object.hasOwn(value[0], "value")){
+        console.log(1);
         if(value[0].type == "s"){
+            console.log(2);
             try{
+                console.log(3);
                 value = JSON.parse(value[0].value);
             }catch(e){
+                console.log(4);
+
                 value = value[0].value;
             }
         }else{
+            console.log(5);
             value = value[0].value;
         }
     }else{

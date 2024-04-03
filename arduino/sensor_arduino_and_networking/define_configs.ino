@@ -13,6 +13,8 @@ etc...]
 
 //Variable List
 //int midi_voice = 12;
+// int midimin
+// int midimax
 
 void routeDeviceMsg(OSCMessage &msg, int addrOffset ){
   Serial.println("devicemsg");
@@ -33,6 +35,14 @@ void routeConfigVal(OSCMessage &msg, int addrOffset ){
   // midi_vocie
   sprintf(devroute,"/%s/config/midi_voice",this_device_name);  
   msg.route(devroute, routeConfig_midi_voice);
+
+  sprintf(devroute,"/%s/config/midimin",this_device_name);  
+  msg.route(devroute, routeConfig_midimin);
+
+
+  sprintf(devroute,"/%s/config/midimax",this_device_name);  
+  msg.route(devroute, routeConfig_midimax);
+
 
   // reset system (max/mins, etc)
   sprintf(devroute,"/%s/config/reset",this_device_name);  
@@ -55,6 +65,19 @@ void routeConfig_midi_voice(OSCMessage &msg, int addrOffset ){
 
   midiSetInstrument(0, midi_voice);
 }
+
+void routeConfig_midimin(OSCMessage &msg, int addrOffset ){
+  midimin = route_int(msg, addrOffset, "midimin");
+  Serial.println("midimin");
+  Serial.println(midimin);
+}
+
+void routeConfig_midimax(OSCMessage &msg, int addrOffset ){
+  midimax = route_int(msg, addrOffset, "midimax");
+  Serial.println("midimax");
+  Serial.println(midimax);
+}
+
 
 
 void routeConfig_reset(OSCMessage &msg, int addrOffset ){

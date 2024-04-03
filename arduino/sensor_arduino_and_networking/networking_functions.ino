@@ -48,7 +48,6 @@ void network_setup() {
     }else{
       config_webpage_setup();
     }
-  
   }
 }
 
@@ -92,15 +91,15 @@ void announceCreation(){
     Serial.println("ANNOUNCING udp:::");
     Serial.println(UDPReceiverIP);
     Serial.println(UDPPort);
-    Serial.println(DEVICE_ID);
+    Serial.println(DEVICE_NAME);
     //send hello world to server
     char ipbuffer[20];
     thisarduinoip.toCharArray(ipbuffer, 20);
     Serial.println(ipbuffer);
     OSCMessage oscmsg("/announceUDPInstrument");  
-    oscmsg.add(DEVICE_ID).add(ipbuffer);
+    oscmsg.add(DEVICE_NAME);
  //   udp.beginPacket(UDPReceiverIP, UDPPort);
-    udp.beginPacket(UDPReceiverIP, 7005);
+    udp.beginPacket(UDPReceiverIP, 7005); // this needs to get set in a config somehwere...
  
    // udp.beginMulticastPacket(UDPReceiverIP, UDPPort, WiFi.localIP());
   //  udp.write(buffer, msg.length()+1);
