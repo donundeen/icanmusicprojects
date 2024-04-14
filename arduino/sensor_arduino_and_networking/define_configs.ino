@@ -16,6 +16,14 @@ etc...]
 // int midimin
 // int midimax
 
+void config_setup(){
+  midi_voice = getStoredConfigValInt("midi_voice");
+  Serial.println("setting midi voice");
+  Serial.println(midi_voice);
+  midiSetInstrument(0, midi_voice);
+}
+
+
 void routeDeviceMsg(OSCMessage &msg, int addrOffset ){
   Serial.println("devicemsg");
   char devroute[100];

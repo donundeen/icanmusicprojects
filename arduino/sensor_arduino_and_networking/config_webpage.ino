@@ -260,7 +260,7 @@ void setStoredConfigVal(String varname, int valuetostore){
   Serial.println(WiFi.localIP());
 }
 
-int getStoredConfigVal(String varname){
+int getStoredConfigValInt(String varname){
    Serial.println("mounting FS...");
   /////////////////////////////
   // load up existing config json file

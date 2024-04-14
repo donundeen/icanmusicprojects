@@ -229,6 +229,12 @@ $(function() {
         console.log("instrumentAnnounced");
         console.log(options.data);
         let id = options.data.filter((item)=>item.name=="device_name")[0].value;
+        
+        // if the instrument already has an interface, don't create a new one
+        if($( "#"+id ).length){
+            return;
+        }
+
         let options_object = {};
         for(let i =0; i< options.data.length; i++){
             options_object[options.data[i]["name"]] = options.data[i]["value"];

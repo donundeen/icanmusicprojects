@@ -386,10 +386,7 @@ void setup() {
   clock_setup();
   test_setup();
   sensor_setup();
-
-  Serial.println("getting testvar");
-  int val = getStoredConfigVal("testvar");
-  Serial.println(val);
+  config_setup();
 
   announceCreation();
 

@@ -291,7 +291,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
+        "x": 460,
         "y": 340,
         "wires": [
             [
@@ -395,7 +395,7 @@
         "topic": "/announceLocalInstrument",
         "payload": "{\"name\":\"badge\",\"midi_voice\":4}",
         "payloadType": "json",
-        "x": 260,
+        "x": 240,
         "y": 80,
         "wires": [
             [
@@ -468,7 +468,7 @@
         "topic": "/announceLocalInstrument",
         "payload": "{\"name\":\"radar\",\"midi_voice\":2}",
         "payloadType": "json",
-        "x": 220,
+        "x": 240,
         "y": 160,
         "wires": [
             [
@@ -510,7 +510,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
+        "x": 440,
         "y": 460,
         "wires": [
             [
@@ -552,7 +552,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
+        "x": 460,
         "y": 380,
         "wires": [
             [
@@ -579,7 +579,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
+        "x": 440,
         "y": 420,
         "wires": [
             [
@@ -606,7 +606,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
+        "x": 440,
         "y": 500,
         "wires": [
             [
