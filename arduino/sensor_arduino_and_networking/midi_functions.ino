@@ -37,14 +37,14 @@ void midi_setup(){
 
 // Makenote: pith, velocity, duration
 void midiMakeNote(int pitch, int vel, int durationms){
-  
+  /*
   Serial.print("MKNOTE: ");
   Serial.print(pitch);
   Serial.print(" : ");
   Serial.print(vel);
   Serial.print(" : ");
   Serial.println(durationms);
-  
+  */
   midiNoteOn(0, pitch, vel);
    
  // int innerpitch = pitch;
