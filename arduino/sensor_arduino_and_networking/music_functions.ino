@@ -4,6 +4,8 @@
 // MUSIC PERFORMANCE FUNCTIONS
 
 void setNotelist(int* newlist, int* curlist, int size){
+  Serial.println("new notelist");
+  Serial.println(sizeof(newlist[0])*size);
   notelistlength = size;
   memcpy(curlist, newlist, sizeof(newlist[0])*size);
 }

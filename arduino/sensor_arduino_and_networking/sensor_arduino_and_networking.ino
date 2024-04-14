@@ -353,8 +353,8 @@ void UDPListen(){
       bundleIN.fill(b);
     }
     if(!bundleIN.hasError()){
-      Serial.println("routing");
-      bundleIN.route("/notelist", routeNotelist);
+      Serial.println("routing?");
+      bundleIN.route("/all/notelist", routeNotelist);
       char devroute[100];
       sprintf(devroute,"/%s",this_device_name);
       bundleIN.route(devroute, routeDeviceMsg);
