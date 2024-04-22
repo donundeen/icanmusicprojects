@@ -13,7 +13,8 @@ let program = 22;
 
 let args = ["a", "coreaudio"];
 ///Users/donundeen/Downloads/MuseScore_General.sf2
-let soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
+//let soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
+let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
 let synth = JZZ.synth.Fluid({ path: '/opt/homebrew/bin/fluidsynth', 
                 sf: soundfont,
