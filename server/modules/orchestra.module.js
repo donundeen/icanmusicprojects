@@ -30,11 +30,13 @@ class Orchestra{
     set bpm(bpm){
         this.bpm = bpm;
         this.all_local_instrument_set_val("bpm", this.bpm);
+        this.all_udp_instrument_set_val("bpm", this.bpm);
     }
 
     set synth(synth){
         this.synth = synth;
-        this.all_local_instrument_set_val("bpm", this.synth);
+        this.all_local_instrument_set_val("synth", this.synth);
+        this.all_udp_instrument_set_val("synth", this.synth);
     }
 
     getChannel(){
@@ -92,6 +94,8 @@ class Orchestra{
         console.log("CREATING INSTRUMENT " + name);
         this.udpInstruments[name] = new UDPInstrument();
         this.udpInstruments[name].device_name = name;
+        this.localInstruments[name].midi_channel = this.getChannel();
+        this.localInstruments[name].synth = this.synth;
         this.udpInstruments[name].bpm = this.bpm;
         this.udpInstruments[name].notelist = this.notelist;
         this.udpInstruments[name].makenote_callback = this._makenote_callback;       
