@@ -178,6 +178,8 @@ socket.setMessageReceivedCallback(function(msg){
         if(instrtype == "local"){
             orchestra.local_instrument_set_value(device_name, prop, value);
         }else if(instrtype == "udp"){
+            // set locally in orchestra AND remotely on device.
+            orchestra.udp_instrument_set_value(device_name, prop, value);
             console.log("set udp instr value");
             console.log(msg);
             let type = "s";
