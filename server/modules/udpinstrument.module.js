@@ -333,6 +333,10 @@ const UDPInstrument = class{
 
     }
 
+
+    // this triggers a makenote on the LOCAL server, NOT the networked instrument itself.
+    // this happens when the udp device is calculating the note data itself, 
+    // but doesn't have a synth or speakers attached to it
     midiMakeNote(pitch, velocity, duration){
         // note: each instrument needs its own channel, or the instrument will be the same tone.
         console.log(pitch + " : " + velocity + " : " + duration);

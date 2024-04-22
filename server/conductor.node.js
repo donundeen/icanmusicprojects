@@ -328,7 +328,7 @@ function routeFromOSC(oscMsg, route, callback){
     }else if(Array.isArray(value) && value.length > 1 && Object.hasOwn(value[0], "value")){
         newvalue = [];
         for(let i = 0; i < value.length; i++){
-            if(subval[0].type == "s"){
+            if(value[0].type == "s"){
                 try{
                     newvalue[i] = JSON.parse(value[i].value);
                 }catch(e){

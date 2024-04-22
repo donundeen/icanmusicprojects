@@ -45,7 +45,7 @@
 // DEVICE CONFIGS
 #define sensorPin  A2 // Flex Sensor is connected to this pin
 
-
+int SERIALBAUDRATE = 115200;
 
 ///////////////////////////////
 // MUSIC PERFORMANCE VARIABLES
