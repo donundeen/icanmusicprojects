@@ -338,6 +338,7 @@ const UDPInstrument = class{
     // this happens when the udp device is calculating the note data itself, 
     // but doesn't have a synth or speakers attached to it
     midiMakeNote(pitch, velocity, duration){
+        console.log("MAKING NOTE UDP");
         // note: each instrument needs its own channel, or the instrument will be the same tone.
         console.log(pitch + " : " + velocity + " : " + duration);
         if(!Number.isFinite(pitch) || !Number.isFinite(velocity) || !Number.isFinite(duration)){
