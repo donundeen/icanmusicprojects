@@ -22,9 +22,9 @@ let synth = JZZ.synth.Fluid({ path: '/opt/homebrew/bin/fluidsynth',
       
 
 
-console.log("gonna play");
 
 
+/*
 var osc = require("osc");
 var oscPort = new osc.UDPPort({
     localAddress: "0.0.0.0",
@@ -41,9 +41,10 @@ oscPort.on("message", function (oscMsg) {
 });
 
 oscPort.open();
+*/
 
 
-
+console.log("gonna play");
           
 synth
     .program(1,program)
@@ -59,7 +60,7 @@ synth
     .wait(100).noteOn(0, 'G5', 127)
     .wait(100).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
 
-
+console.log("played");
     // .close();
 
 
