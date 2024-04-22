@@ -113,6 +113,10 @@ void announceCreation(){
 
 // send a makenote to the server (use this when device doesn't have its own speakers or synth)
 void sendMakeNote(int pitch, int velocity, int duration){
+  if(velocity == 0){
+    // don't send if value is 0
+    return;
+  }
   Serial.println("sending makenote");
     OSCMessage oscmsg("/makenote");  
     oscmsg.add(DEVICE_NAME).add(pitch).add(velocity).add(duration);
