@@ -258,6 +258,13 @@ udpPort.on("message", function (oscMsg) {
         let pitch = value[1];
         let velocity = value[2];
         let duration = value[3];
+        if(!orchestra.has_udp_instrument(name)){
+            let instrument = orchestra.create_udp_instrument(name, {});
+            let props = instrument.get_config_props();
+            props.push({name: "instrtype", value: "udp"});
+            socket.sendMessage("addinstrument", props);
+            instrument.start();
+        };
         if(pitch < 128 && velocity < 128 ){
             orchestra.udp_makenote(name, pitch, velocity, duration);
         }        

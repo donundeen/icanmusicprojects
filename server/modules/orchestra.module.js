@@ -124,6 +124,14 @@ class Orchestra{
             this.localInstruments[name].midiMakeNote(pitch, velocity, duration);
         }
     }
+
+    has_udp_instrument(name){
+        if(this.udpInstruments[name]){
+            return true;
+        }
+        return false;
+    }
+
     udp_makenote(name, pitch, velocity, duration){
         if(this.udpInstruments[name]){
             this.udpInstruments[name].midiMakeNote(pitch, velocity, duration);
