@@ -254,11 +254,11 @@ udpPort.on("message", function (oscMsg) {
         console.log("makenote");
         let value = oscMsg.simpleValue;
         console.log(value);
-        let name = value.name;
-        let note = value.note;
-        let velocity = value.velocity;
-        let duration = value.duration;
-        orchestra.mak
+        let name = value[0];
+        let pitch = value[1];
+        let velocity = value[2];
+        let duration = value[3];
+        orchestra.udp_makenote(name, pitch, velocity, duration);
         
     });
 
@@ -308,35 +308,42 @@ function routeFromOSC(oscMsg, route, callback){
 
     // get teh OSC value. Need to figure out types here, 
     let value = oscMsg.args;
-
+    let newvalue = false;
     console.log("got oscMsg " + value, value);
     console.log(oscMsg);
     console.log(typeof value);
 
     if(typeof value == "number"){
-        value = value;
-    }else if(Array.isArray(value) && value.length >= 1 && Object.hasOwn(value[0], "value")){
-        console.log(1);
+        newvalue = value;
+    }else if(Array.isArray(value) && value.length == 1 && Object.hasOwn(value[0], "value")){
         if(value[0].type == "s"){
-            console.log(2);
             try{
-                console.log(3);
-                value = JSON.parse(value[0].value);
+                newvalue = JSON.parse(value[0].value);
             }catch(e){
-                console.log(4);
-
-                value = value[0].value;
+                newvalue = value[0].value;
             }
         }else{
-            console.log(5);
-            value = value[0].value;
+            newvalue = value[0].value;
+        }
+    }else if(Array.isArray(value) && value.length > 1 && Object.hasOwn(value[0], "value")){
+        newvalue = [];
+        for(let i = 0; i < value.length; i++){
+            if(subval[0].type == "s"){
+                try{
+                    newvalue[i] = JSON.parse(value[i].value);
+                }catch(e){
+                    newvalue[i] = value[i].value;
+                }
+            }else{
+                newvalue[i] = value[i].value;
+            }
         }
     }else{
         console.log("!!!!!!!!!!!!!! ");
         console.log("don't know what value is " + Array.isArray(value) + " : " + value.length + " type :" + typeof value);
     }
 
-    oscMsg.simpleValue = value;
+    oscMsg.simpleValue = newvalue;
 
     let matches = oscMsg.address.match(route);
     if(matches){

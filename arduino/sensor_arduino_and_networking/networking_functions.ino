@@ -111,7 +111,20 @@ void announceCreation(){
   }  
 }
 
-
+// send a makenote to the server (use this when device doesn't have its own speakers or synth)
+void sendMakeNote(int pitch, int velocity, int duration){
+  Serial.println("sending makenote");
+    OSCMessage oscmsg("/makenote");  
+    oscmsg.add(DEVICE_NAME).add(pitch).add(velocity).add(duration);
+ //   udp.beginPacket(UDPReceiverIP, UDPPort);
+    udp.beginPacket(UDPReceiverIP, 7005); // this needs to get set in a config somehwere...
+ 
+   // udp.beginMulticastPacket(UDPReceiverIP, UDPPort, WiFi.localIP());
+  //  udp.write(buffer, msg.length()+1);
+    oscmsg.send(udp);
+    udp.endPacket();
+    oscmsg.empty();  
+}
 
 
 
