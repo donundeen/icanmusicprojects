@@ -18,14 +18,11 @@ let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 let fluidpath = '/usr/bin/fluidsynth';
 let arg_a = "pulseaudio";
 let args = ["a", arg_a];
-
-
-if(env == "mad"){
+if(env == "mac"){
     fluidpath = '/opt/homebrew/bin/fluidsynth';
     soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
     arg_a = "cordaudio";
     args = ["a", arg_a];
-
 }
 
 let program = 22;

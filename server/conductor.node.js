@@ -6,6 +6,9 @@ and shows how messages are routed from one to the other.
 
 */
 
+let env = "rpi"; // or "mac" -- how to determine this from code?
+
+
 let bpm = 120;
 // defining some note lengths
 let scorename = "./scores/simplescore.txt";
@@ -59,12 +62,22 @@ score  = Object.create(ScoreReader);
 theory = Object.create(TheoryEngine);
 socket = Object.create(socketServer);
 
+
+
 // intialize the midi synth
-let args = ["a", "coreaudio"];
-// paths to soundfonts will change depending on the system.
+
+///Users/donundeen/Downloads/MuseScore_General.sf2
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
-//let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
-let synth = JZZ.synth.Fluid({ path: '/opt/homebrew/bin/fluidsynth', 
+let fluidpath = '/usr/bin/fluidsynth';
+let arg_a = "pulseaudio";
+let args = ["a", arg_a];
+if(env == "mac"){
+    fluidpath = '/opt/homebrew/bin/fluidsynth';
+    soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
+    arg_a = "cordaudio";
+    args = ["a", arg_a];
+}
+let synth = JZZ.synth.Fluid({ path: fluidpath, 
                 sf: soundfont,
                 args: args });
 orchestra.synth = synth;
