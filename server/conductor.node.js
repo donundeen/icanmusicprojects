@@ -258,8 +258,9 @@ udpPort.on("message", function (oscMsg) {
         let pitch = value[1];
         let velocity = value[2];
         let duration = value[3];
-        orchestra.udp_makenote(name, pitch, velocity, duration);
-        
+        if(pitch < 128 && velocity < 128 ){
+            orchestra.udp_makenote(name, pitch, velocity, duration);
+        }        
     });
 
     // processing request to destroy and instruments
