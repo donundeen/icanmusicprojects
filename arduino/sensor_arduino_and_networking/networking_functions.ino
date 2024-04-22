@@ -117,17 +117,16 @@ void sendMakeNote(int pitch, int velocity, int duration){
     // don't send if value is 0
     return;
   }
-  Serial.println("sending makenote");
-    OSCMessage oscmsg("/makenote");  
-    oscmsg.add(DEVICE_NAME).add(pitch).add(velocity).add(duration);
- //   udp.beginPacket(UDPReceiverIP, UDPPort);
-    udp.beginPacket(UDPReceiverIP, 7005); // this needs to get set in a config somehwere...
- 
-   // udp.beginMulticastPacket(UDPReceiverIP, UDPPort, WiFi.localIP());
+  OSCMessage oscmsg("/makenote");  
+  oscmsg.add(DEVICE_NAME).add(pitch).add(velocity).add(duration);
+  //   udp.beginPacket(UDPReceiverIP, UDPPort);
+  udp.beginPacket(UDPReceiverIP, 7005); // this needs to get set in a config somehwere...
+
+  // udp.beginMulticastPacket(UDPReceiverIP, UDPPort, WiFi.localIP());
   //  udp.write(buffer, msg.length()+1);
-    oscmsg.send(udp);
-    udp.endPacket();
-    oscmsg.empty();  
+  oscmsg.send(udp);
+  udp.endPacket();
+  oscmsg.empty();  
 }
 
 

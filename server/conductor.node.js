@@ -253,9 +253,7 @@ udpPort.on("message", function (oscMsg) {
 
     // processign makenote messages from UDP connected devices (eg, if they aren't using their own speakers)
     routeFromOSC(oscMsg, "/makenote", function(oscMsg, address){
-        console.log("makenote");
         let value = oscMsg.simpleValue;
-        console.log(value);
         let name = value[0];
         let pitch = value[1];
         let velocity = value[2];

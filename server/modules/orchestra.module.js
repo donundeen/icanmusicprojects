@@ -125,7 +125,6 @@ class Orchestra{
         }
     }
     udp_makenote(name, pitch, velocity, duration){
-        console.log("udp_makenote orch");
         if(this.udpInstruments[name]){
             this.udpInstruments[name].midiMakeNote(pitch, velocity, duration);
         }

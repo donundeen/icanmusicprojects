@@ -333,7 +333,6 @@ const LocalInstrument = class{
 
     midiMakeNote(pitch, velocity, duration){
         // note: each instrument needs its own channel, or the instrument will be the same tone.
-        console.log(pitch + " : " + velocity + " : " + duration);
         if(!Number.isFinite(pitch) || !Number.isFinite(velocity) || !Number.isFinite(duration)){
             console.log("bad midi values, returning");
             return;
