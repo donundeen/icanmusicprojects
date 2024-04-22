@@ -22,6 +22,9 @@ class Orchestra{
         for (let key in this.localInstruments) {
             this.localInstruments[key].makenote_callback = this._makenote_callback;
         }
+        for (let key in this.udpInstruments) {
+            this.udpInstruments[key].makenote_callback = this._makenote_callback;
+        }
     }
 
     set bpm(bpm){
@@ -107,6 +110,13 @@ class Orchestra{
         delete(this.udpInstruments[name]);
     }    
 
+    // send a makenote message from some external source (ie webpage, or networked device) to an instrument
+    local_makenote(name, pitch, velocity, duration){
+        this.localInstruments[name].midiMakeNote(pitch, velocity, duration);
+    }
+    udp_makenote(name, pitch, velocity, duration){
+        this.udpInstruments[name].midiMakeNote(pitch, velocity, duration);
+    }
     all_local_instrument_set_value(prop, value){
         console.log("setting value for " +prop);
         console.log(value);

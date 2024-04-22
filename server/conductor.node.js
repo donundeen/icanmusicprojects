@@ -3,7 +3,6 @@ Conductor.node.js is the code that runs.
 It connects the various modules, 
 holds the configuration variables
 and shows how messages are routed from one to the other.
-
 */
 
 let env = "rpi"; // or "mac" -- how to determine this from code?
@@ -249,6 +248,20 @@ udpPort.on("message", function (oscMsg) {
         instrument.start();
     });
 
+
+    // processign makenote messages from UDP connected devices (eg, if they aren't using their own speakers)
+    routeFromOSC(oscMsg, "/makenote", function(oscMsg, address){
+        console.log("makenote");
+        let value = oscMsg.simpleValue;
+        console.log(value);
+        let name = value.name;
+        let note = value.note;
+        let velocity = value.velocity;
+        let duration = value.duration;
+        orchestra.mak
+        
+    });
+
     // processing request to destroy and instruments
     routeFromOSC(oscMsg, "/removeUDPInstrument", function(oscMsg, address){
         let value = oscMsg.simpleValue;
@@ -334,8 +347,8 @@ function routeFromOSC(oscMsg, route, callback){
 
 
 // some things to do whenever an instrument makes a note
+// send the data to the webpage to display
 orchestra.makenote_callback = function(instr, pitch, velocity, duration){
-    
     let device_name = instr.device_name;
     console.log("******************************** makenote_callback ", device_name, pitch, velocity, duration);
     let dataObj = {device_name: device_name, 
