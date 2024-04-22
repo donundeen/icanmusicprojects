@@ -112,10 +112,14 @@ class Orchestra{
 
     // send a makenote message from some external source (ie webpage, or networked device) to an instrument
     local_makenote(name, pitch, velocity, duration){
-        this.localInstruments[name].midiMakeNote(pitch, velocity, duration);
+        if(this.localInstruments[name]){
+            this.localInstruments[name].midiMakeNote(pitch, velocity, duration);
+        }
     }
     udp_makenote(name, pitch, velocity, duration){
-        this.udpInstruments[name].midiMakeNote(pitch, velocity, duration);
+        if(this.udpInstruments[name]){
+            this.udpInstruments[name].midiMakeNote(pitch, velocity, duration);
+        }
     }
     all_local_instrument_set_value(prop, value){
         console.log("setting value for " +prop);
