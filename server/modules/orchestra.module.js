@@ -7,6 +7,7 @@ const UDPInstrument = require("./udpinstrument.module");
 class Orchestra{
     localInstruments = {};
     udpInstruments = {};
+    allChannels =  [0,1,2,3,4,5,6,7,8,9,10];
     channelPool = [0,1,2,3,4,5,6,7,8,9,10];
     synth = false; // fluidsynth object
     bpm = 120;
@@ -40,6 +41,9 @@ class Orchestra{
     }
 
     getChannel(){
+        if(this.channelPool.length == 0){
+            this.channelPool = this.allChannels;
+        }
         return this.channelPool.shift();
     }
 
@@ -94,8 +98,8 @@ class Orchestra{
         console.log("CREATING INSTRUMENT " + name);
         this.udpInstruments[name] = new UDPInstrument();
         this.udpInstruments[name].device_name = name;
-        this.localInstruments[name].midi_channel = this.getChannel();
-        this.localInstruments[name].synth = this.synth;
+        this.udpInstruments[name].midi_channel = this.getChannel();
+        this.udpInstruments[name].synth = this.synth;
         this.udpInstruments[name].bpm = this.bpm;
         this.udpInstruments[name].notelist = this.notelist;
         this.udpInstruments[name].makenote_callback = this._makenote_callback;       
