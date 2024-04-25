@@ -43,7 +43,30 @@ void network_setup() {
         delay(1000);
         Serial.print(".");
         Serial.print(WiFi.status());
-        Serial.print(WL_CONNECTED);
+        if(WiFi.status() == WL_CONNECTED){
+          Serial.print("WL_CONNECTED");
+        }
+        if(WiFi.status() == WL_IDLE_STATUS){
+          Serial.print("WL_IDLE_STATUS");
+        }
+        if(WiFi.status() == WL_CONNECT_FAILED){
+          Serial.print("WL_CONNECT_FAILED");
+        }
+        if(WiFi.status() == WL_NO_SSID_AVAIL){
+          Serial.print("WL_NO_SSID_AVAIL");
+        }
+        if(WiFi.status() == WL_SCAN_COMPLETED){
+          Serial.print("WL_SCAN_COMPLETED");
+        }
+        if(WiFi.status() == WL_CONNECT_FAILED){
+          Serial.print("WL_CONNECT_FAILED");
+        }
+        if(WiFi.status() == WL_CONNECTION_LOST){
+          Serial.print("WL_CONNECTION_LOST");
+        }
+        if(WiFi.status() == WL_DISCONNECTED){
+          Serial.print("WL_DISCONNECTED");
+        }
       }
     }else{
       config_webpage_setup();

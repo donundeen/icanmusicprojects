@@ -14,7 +14,6 @@ void config_webpage_setup() {
 
   DynamicJsonDocument json(1024);
 
-
   pinMode(resetButtonPin, INPUT_PULLUP);
   bool configMode = false;
   if(digitalRead(resetButtonPin) == LOW){
@@ -30,7 +29,7 @@ void config_webpage_setup() {
 
   //read configuration from FS json
   Serial.println("mounting FS...");
-//  deleteAllCredentials();      
+  //deleteAllCredentials();      
 
   if (SPIFFS.begin()) {
     Serial.println("mounted file system");

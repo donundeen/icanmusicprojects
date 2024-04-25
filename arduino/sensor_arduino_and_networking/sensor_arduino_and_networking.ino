@@ -45,6 +45,12 @@
 // DEVICE CONFIGS
 #define sensorPin  A2 // Flex Sensor is connected to this pin
 
+// sensor config vars - pins
+// Just test touch pin - Touch0 is T0 which is on GPIO 4.
+// using 15 - This is GPIO #15 and also an analog input A8 on ADC #2
+int touchPin = 32; //15;
+
+
 int SERIALBAUDRATE = 115200;
 
 ///////////////////////////////
@@ -104,7 +110,6 @@ const boolean WIFI_MODE_ON = true;
     and we want to hard-code the router's SSID and password here.
     Also set HARDCODE_SSID = true
 */
-const boolean HARDCODE_SSID = false;
 // remember you can't connect to 5G networks with the arduino. 
 bool wifi_connected =false;
 /*
@@ -153,8 +158,10 @@ int notelengths[] = {WN, HN, HN3, QN, QN3, N8, N83, N16};
 
 //////////////////////////////
 /// NETWORK CONFIGS  
-const char *WIFI_SSID = "JJandJsKewlPad";
-const char *WIFI_PASSWORD = "WeL0veLettuce";
+const boolean HARDCODE_SSID = false; //true; //false;
+
+const char *WIFI_SSID = "icanmusic";// "icanmusic"; //"JJandJsKewlPad";
+const char *WIFI_PASSWORD = "";//"icanmusic";//"icanmusic"; //"WeL0veLettuce";
 char *UDPReceiverIP = "10.0.0.255"; // ip where UDP messages are going
 char *presetip = "10.0.0.255"; // in case we just want to force it for testing
 int UDPPort = 7005; // the UDP port that Max is listening on
@@ -262,8 +269,15 @@ void note_loop(){
 }
 
 void sensor_loop(){
-  ADCRaw = analogRead(sensorPin);
+
+  // use capacative touchPin
+  ADCRaw = touchRead(touchPin);
+  //ADCRaw = analogRead(sensorPin);
   changerate = get_changerate(ADCRaw);
+
+  Serial.println("read value");
+  Serial.println(ADCRaw);
+  
   /*
   if(!no_network){
     sendOSCUDP(ADCRaw);

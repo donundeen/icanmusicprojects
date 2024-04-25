@@ -6,6 +6,8 @@
  */
 
 
+// https://www.dfrobot.com/product-540.html color sensor Fermion: TCS3200 RGB Color Sensor
+
 // NETWORK_LIBS
 /*
  * Required libraries to install in the arduino IDE (use the Library Manager to find and install):
