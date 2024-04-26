@@ -63,6 +63,22 @@ socket = Object.create(socketServer);
 
 
 
+// defining some useful curves for tweaking instrument values. used by both the localinstrument and arduino instruments
+// they are numbered for easier communication with the arduino devices over osc
+curvecollection = {
+    str8up : [0., 0., 0., 1., 1., 0.], // 1
+    str8dn : [0., 1., 0., 1., 0., 0.], // 2
+    logup : [0., 0., 0., 1., 1., -0.65], // 3
+    logdn : [0., 1., 0., 1., 0., -0.65], // 4 not sure if this is right
+    str8upthresh : [0., 0., 0., 0.05, 0., 0., 1., 1., 0.], // 5 
+    str8dnthresh : [0., 1., 0., 0.95, 0., 0., 1., 0., 0., 1., 0., 0.], // 6
+    logupthresh : [0., 0., 0., 0.05, 0., 0., 1., 1., -0.65], // 7
+    logdnthresh : [0., 1., 0., 0.95, 0., -0.65, 1., 0., -0.65] //8
+}
+
+
+
+
 // intialize the midi synth
 
 ///Users/donundeen/Downloads/MuseScore_General.sf2
@@ -232,7 +248,6 @@ udpPort.on("message", function (oscMsg) {
         }
         orchestra.destroy_local_instrument(name);
     });
-
 
     // announcind instruments to create them in the orchestra
     routeFromOSC(oscMsg, "/announceUDPInstrument", function(oscMsg, address){

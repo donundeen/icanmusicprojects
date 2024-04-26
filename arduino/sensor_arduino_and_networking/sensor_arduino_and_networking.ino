@@ -205,8 +205,20 @@ int midimax = 100;
 // CURVE VARIABLES
 
 // initial velocity curve is a straight line, extra -1.0 variables are for when we want to make it longer
-float velocitycurve[] = {0., 0.0, 0., 1.0, 1.0, 0.0, -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 };
-float velocitycurvelength = 6; 
+//float velocitycurve[] = {0., 0.0, 0., 1.0, 1.0, 0.0, -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 };
+float velocitycurve[] = {0., 0., 0., 0.05, 0., 0., 1., 1., -0.65, -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 , -1.0, -1.0 ,-1.0 };
+float velocitycurvelength = 9; 
+String velocitycurvename = "curve_logupthresh";
+
+// a collection of useful curves:
+float curve_str8up[]       = {0., 0., 0., 1., 1., 0.};
+float curve_str8dn[]       = {0., 1., 0., 1., 0., 0.};
+float curve_logup[]        = {0., 0., 0., 1., 1., -0.65};
+float curve_logdn[]        = {0., 1., 0., 1., 0., -0.65}; // not sure if this is right
+float curve_str8upthresh[] = {0., 0., 0., 0.05, 0., 0., 1., 1., 0.};
+float curve_str8dnthresh[] = {0., 1., 0., 0.95, 0., 0., 1., 0., 0., 1., 0., 0.};
+float curve_logupthresh[]  = {0., 0., 0., 0.05, 0., 0., 1., 1., -0.65};
+float curve_logdnthresh[]  = {0., 1., 0., 0.95, 0., -0.65, 1., 0., -0.65};
 
 
 /////////////////////////////

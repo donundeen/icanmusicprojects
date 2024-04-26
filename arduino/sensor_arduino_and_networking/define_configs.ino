@@ -52,6 +52,10 @@ void routeConfigVal(OSCMessage &msg, int addrOffset ){
   msg.route(devroute, routeConfig_midimax);
 
 
+  sprintf(devroute,"/%s/config/velocitycurve",this_device_name);  
+  msg.route(devroute, routeConfig_velocitycurve);
+
+
   // reset system (max/mins, etc)
   sprintf(devroute,"/%s/config/reset",this_device_name);  
   msg.route(devroute, routeConfig_reset);
@@ -82,6 +86,12 @@ void routeConfig_midimin(OSCMessage &msg, int addrOffset ){
 
 void routeConfig_midimax(OSCMessage &msg, int addrOffset ){
   midimax = route_int(msg, addrOffset, "midimax");
+  Serial.println("midimax");
+  Serial.println(midimax);
+}
+
+void routeConfig_velocitycurve(OSCMessage &msg, int addrOffset ){
+  midimax = route_int(msg, addrOffset, "velocitycurve");
   Serial.println("midimax");
   Serial.println(midimax);
 }
@@ -125,6 +135,23 @@ int route_int(OSCMessage &msg, int addrOffset, String varname){
   //Serial.println(msg.getFloat(i));
   int theval= -1;
   while (msg.getType(i) == 'i'){
+    //Serial.println(msg.getInt(i));
+    //Serial.print(" ");
+    theval = msg.getInt(i);
+    Serial.println("got val");
+    Serial.println(theval);
+    setStoredConfigVal(varname,theval);
+    i++;
+  }
+  return theval;
+}
+
+int route_string(OSCMessage &msg, int addrOffset, String varname){
+  int i = 0;
+  //Serial.println(msg.getType(i));
+  //Serial.println(msg.getFloat(i));
+  int theval= -1;
+  while (msg.getType(i) == 's'){
     //Serial.println(msg.getInt(i));
     //Serial.print(" ");
     theval = msg.getInt(i);
