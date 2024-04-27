@@ -9,7 +9,7 @@ class Orchestra{
     udpInstruments = {};
     allChannels =  [0,1,2,3,4,5,6,7,8,9,10];
     channelPool = [0,1,2,3,4,5,6,7,8,9,10];
-    synth = false; // fluidsynth object
+    _synth = false; // fluidsynth object
     bpm = 120;
 
     notelist = [];
@@ -35,9 +35,9 @@ class Orchestra{
     }
 
     set synth(synth){
-        this.synth = synth;
-        this.all_local_instrument_set_val("synth", this.synth);
-        this.all_udp_instrument_set_val("synth", this.synth);
+        this._synth = synth;
+        this.all_local_instrument_set_val("synth", this._synth);
+        this.all_udp_instrument_set_val("synth", this._synth);
     }
 
     getChannel(){
@@ -83,7 +83,7 @@ class Orchestra{
         this.localInstruments[name] = new LocalInstrument();
         this.localInstruments[name].device_name = name;
         this.localInstruments[name].midi_channel = this.getChannel();
-        this.localInstruments[name].synth = this.synth;
+        this.localInstruments[name].synth = this._synth;
         this.localInstruments[name].bpm = this.bpm;
         this.localInstruments[name].notelist = this.notelist;
         this.localInstruments[name].start();
@@ -99,7 +99,7 @@ class Orchestra{
         this.udpInstruments[name] = new UDPInstrument();
         this.udpInstruments[name].device_name = name;
         this.udpInstruments[name].midi_channel = this.getChannel();
-        this.udpInstruments[name].synth = this.synth;
+        this.udpInstruments[name].synth = this._synth;
         this.udpInstruments[name].bpm = this.bpm;
         this.udpInstruments[name].notelist = this.notelist;
         this.udpInstruments[name].makenote_callback = this._makenote_callback;       
