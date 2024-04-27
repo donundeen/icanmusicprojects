@@ -30,14 +30,14 @@ class Orchestra{
 
     set bpm(bpm){
         this.bpm = bpm;
-        this.all_local_instrument_set_val("bpm", this.bpm);
-        this.all_udp_instrument_set_val("bpm", this.bpm);
+        this.all_local_instrument_set_value("bpm", this.bpm);
+        this.all_udp_instrument_set_value("bpm", this.bpm);
     }
 
     set synth(synth){
         this._synth = synth;
-        this.all_local_instrument_set_val("synth", this._synth);
-        this.all_udp_instrument_set_val("synth", this._synth);
+        this.all_local_instrument_set_value("synth", this._synth);
+        this.all_udp_instrument_set_value("synth", this._synth);
     }
 
     getChannel(){
