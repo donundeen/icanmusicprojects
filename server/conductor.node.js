@@ -188,11 +188,13 @@ socket.setMessageReceivedCallback(function(msg){
         // reset a bunch of stuff.
         // the synth:
         synth.stop();
+        synth.close();
+        synth = false;
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
             args: args });
         orchestra.synth = synth;        
-        synth.start();
+       // synth.start();
     });
 
     routeFromWebsocket(msg, "instrval", function(data){
