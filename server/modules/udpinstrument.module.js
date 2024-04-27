@@ -117,8 +117,8 @@ const UDPInstrument = class{
         this.velocity_scale.reset();
         this.changerate_scale.reset();
         this._sensor_value = false;
-        this.synth.allNotesOff(this.midi_channel);
-        this.synth.resetAllControllers(this.midi_channel);
+        this.synth.allNotesOff(this._midi_channel);
+        this.synth.resetAllControllers(this._midi_channel);
         this.synth.reset();
     }
 
@@ -364,6 +364,7 @@ const UDPInstrument = class{
     }
 
     midiSetInstrument(){
+        this.synth.allNotesOff(this._midi_channel);        
         this.synth
         .program(this._midi_channel, this._midi_voice)        
     }
