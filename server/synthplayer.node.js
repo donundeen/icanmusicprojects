@@ -37,6 +37,11 @@ let synth = JZZ.synth.Fluid({ path: fluidpath,
                 sf: soundfont,
                 args: args });
       
+synth.reset();
+synth.allNotesOff(ch1);
+synth.allNotesOff(ch2);
+synth.resetAllControllers(ch1);
+synth.resetAllControllers(ch2);
 
 
 
