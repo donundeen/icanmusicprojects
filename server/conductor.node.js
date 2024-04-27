@@ -183,6 +183,18 @@ socket.setMessageReceivedCallback(function(msg){
         score.scoreText = text;
     });
 
+    routeFromWebsocket(msg, "reset", function(text){
+        console.log("~~~~~~~~~~~~~~~~`RESETTING EVERYTHING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
+        // reset a bunch of stuff.
+        // the synth:
+        synth.stop();
+        synth = JZZ.synth.Fluid({ path: fluidpath, 
+            sf: soundfont,
+            args: args });
+        orchestra.synth = synth;        
+        synth.start();
+    });
+
     routeFromWebsocket(msg, "instrval", function(data){
         // send config messages to instruments
         // remind myself how the instruments like to get messages...

@@ -120,6 +120,8 @@ $(function() {
         sendScore();
     });
 
+
+
     let instrcount = 0;
     $(".play").click(function(){
         message("play", 1);
@@ -133,6 +135,12 @@ $(function() {
     $(".stop").click(function(){
         message("stop", 1);
     });
+
+    $(".reset").click(function(){
+        console.log("sending reset");
+        message("reset", 1);
+    });
+
 
     $(".pause").click(function(){
         message("pause",1);
