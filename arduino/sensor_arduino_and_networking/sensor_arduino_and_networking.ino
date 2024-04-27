@@ -234,6 +234,10 @@ float maxVal = -1.0;
 float changeMin = 10000.0;
 float changeMax = -1.0;
 
+float elasticMinMaxScale = .00; // if true, then the min and max values used for dynamic scaling slowly come closer together, 
+                                // so that a rate large value over time will get smoothed out
+                                // set to 0 to disable
+
 ////////////////////////////////////
 // SENSOR PROCESSING GLOBALS
 int ADCRaw = -1;
@@ -254,6 +258,8 @@ void sensor_setup(){
   pinMode(sensorPin, INPUT); // Sensor pin as input
   t.setInterval(sensor_loop, 10);
   sensor_loop();
+//  t.setInterval(changerate_loop, 100);
+  changerate_loop();
   note_loop();
 }
 
@@ -263,13 +269,14 @@ void note_loop(){
     // sensor hasn't sensed yet, skip this
     return;
   }
+  changerate_loop();
   char pbuf[100];
   sprintf(pbuf, "looppre: in:%d  min %f max %f", ADCRaw, minVal, maxVal);
 //  Serial.println(pbuf);
   float value = dyn_rescale(ADCRaw, &minVal, &maxVal, 0.0, 1.0);
   sprintf(pbuf, "loop: in:%d scaled:%f min %f max %f", ADCRaw, value, minVal, maxVal);
 //  Serial.println(pbuf);
-  int midipitch = derive_pitch(value);
+  int midipitch    = derive_pitch(value);
   int midivelocity = derive_velocity(ADCRaw);
   int mididuration = derive_duration(value);
   sprintf(pbuf, "      in:%d scaled:%f p:%d v:%d d:%d", ADCRaw, value, midipitch, midivelocity, mididuration);
@@ -288,21 +295,23 @@ void sensor_loop(){
   // use capacative touchPin
   ADCRaw = touchRead(touchPin);
   //ADCRaw = analogRead(sensorPin);
-  changerate = get_changerate(ADCRaw);
+
 
   Serial.println("read value");
   Serial.println(ADCRaw);
-  
   /*
   if(!no_network){
     sendOSCUDP(ADCRaw);
   }
   */
-
   // should be 10
   //delay(10); // removing when using timeouts
 }
 
+
+void changerate_loop(){
+  changerate = get_changerate(ADCRaw);
+}
 
 
 float get_changerate(int ival){
@@ -325,6 +334,11 @@ float get_changerate(int ival){
   // divide the change amoutn by the timeframe, so chnages in shorter timeframes count for me.
   ochange = ochange / (float)millisd; 
   float change = dyn_rescale(ochange, &changeMin, &changeMax, 0, 1.0);
+
+  // readjust changemin and max based on elasticMinMaxScale
+  changeMin = changeMin + (changeMin * elasticMinMaxScale);
+  changeMax = changeMax - (changeMax * elasticMinMaxScale);
+
  // Serial.println(pbuf);
   prevChangeVal = val;
   prevChangeTime = millisr;

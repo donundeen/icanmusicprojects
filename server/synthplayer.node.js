@@ -25,10 +25,12 @@ if(env == "mac"){
     args = ["a", arg_a];
 }
 
-let program = 22;
 
+ch1 = 0;
+ch2 = 1;
 
-
+v1 = 22;
+v2 = 12;
 
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
@@ -62,18 +64,18 @@ oscPort.open();
 console.log("gonna play");
           
 synth
-    .program(1,program)
-    .noteOn(1, 'B5', 127)
-    .wait(1000).noteOn(1, 'D5', 127)
-    .wait(1000).noteOn(1, 'F5', 127)
-    .wait(1000).noteOff(1, 'B5').noteOff(1, 'D5').noteOff(1, 'F5');
+    .program(ch1, v1)
+    .noteOn(ch1, 'B5', 127)
+    .wait(1000).noteOn(ch1, 'D5', 127)
+    .wait(1000).noteOn(ch1, 'F5', 127)
+    .wait(1000).noteOff(ch1, 'B5').noteOff(ch1, 'D5').noteOff(ch1, 'F5');
 
 synth
-    .program(0,13)
-    .noteOn(0, 'C5', 127)
-    .wait(100).noteOn(0, 'E5', 127)
-    .wait(100).noteOn(0, 'G5', 127)
-    .wait(100).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
+    .program(ch2,v2)
+    .noteOn(ch2, 'C5', 127)
+    .wait(100).noteOn(ch2, 'E5', 127)
+    .wait(100).noteOn(ch2, 'G5', 127)
+    .wait(100).noteOff(ch2, 'C5').noteOff(ch2, 'E5').noteOff(ch2, 'G5');
 
 console.log("played");
     // .close();
@@ -93,10 +95,10 @@ function makenote_parse(stringargs){
 }
 
 function makenote(channel, instrument, pitch, velocity, duration){
-    console.log("playing note");
+    console.log("playing note "+ channel + ", " + pitch + ", " + );
 
     synth.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
-    .noteOff(channel,pitch, 0)
+    .noteOff(channel,pitch)
 }

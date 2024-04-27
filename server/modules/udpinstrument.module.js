@@ -112,10 +112,14 @@ const UDPInstrument = class{
     }
 
     reset(){
+        console.log("RESETTING LOCAL---------------------------------------");
         this.input_scale.reset();
         this.velocity_scale.reset();
         this.changerate_scale.reset();
         this._sensor_value = false;
+        this.synth.allNotesOff(this.midi_channel);
+        this.synth.resetAllControllers(this.midi_channel);
+        this.synth.reset();
     }
 
     set velocitycurve(curve){
@@ -338,7 +342,7 @@ const UDPInstrument = class{
     // this happens when the udp device is calculating the note data itself, 
     // but doesn't have a synth or speakers attached to it
     midiMakeNote(pitch, velocity, duration){
-        console.log("MAKING NOTE UDP");
+        console.log("MAKING NOTE UDP " + this._midi_channel + " : " + pitch + " : " + velocity + " : " + duration);
         // note: each instrument needs its own channel, or the instrument will be the same tone.
         console.log(pitch + " : " + velocity + " : " + duration);
         if(!Number.isFinite(pitch) || !Number.isFinite(velocity) || !Number.isFinite(duration)){
@@ -367,7 +371,7 @@ const UDPInstrument = class{
     // we might care about this, for mono things
     midiNoteOn(channel, pitch, velocity){
         this.synth
-        .noteOn(this._midi_channel, pitch, velocit)
+        .noteOn(this._midi_channel, pitch, velocity)
     }
 
     midiNoteOff(channel, pitch){
