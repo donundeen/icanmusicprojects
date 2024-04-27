@@ -323,7 +323,7 @@ $(function() {
         });
         $( ".voice_display",instr ).val( $( ".midi-voice",instr ).slider( "values", 0 ) );
 
-        $(".resetbutton button", instr).click(function(event){
+        $(".resetbutton button", instr).click(function(event,ui){
             console.log("reset clicked");
             id = $(event.target).closest(".instrument").attr("id");
             let address = "instrval";
@@ -331,7 +331,7 @@ $(function() {
             let data = {id:id, 
                         instrtype: instrtype,
                         var: "reset",
-                        val: ui.value };
+                        val: 1 };
             message(address, data);               
         });
     }

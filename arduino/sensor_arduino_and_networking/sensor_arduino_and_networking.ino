@@ -215,6 +215,8 @@ float curve_str8up[]       = {0., 0., 0., 1., 1., 0.};
 float curve_str8dn[]       = {0., 1., 0., 1., 0., 0.};
 float curve_logup[]        = {0., 0., 0., 1., 1., -0.65};
 float curve_logdn[]        = {0., 1., 0., 1., 0., -0.65}; // not sure if this is right
+float curve_expup[]        = {0., 0., 0., 1., 1., 0.65};
+float curve_expdn[]        = {0., 1., 0., 1., 0., 0.65}; // not sure if this is right
 float curve_str8upthresh[] = {0., 0., 0., 0.05, 0., 0., 1., 1., 0.};
 float curve_str8dnthresh[] = {0., 1., 0., 0.95, 0., 0., 1., 0., 0., 1., 0., 0.};
 float curve_logupthresh[]  = {0., 0., 0., 0.05, 0., 0., 1., 1., -0.65};
@@ -237,6 +239,7 @@ float changeMax = -1.0;
 int ADCRaw = -1;
 float changerate = -1.0;
 float prevChangeVal = -1.0;
+int prevChangeTime = -1;
 
 
 void reset_minmax(){
@@ -302,18 +305,31 @@ void sensor_loop(){
 
 
 
-float get_changerate(int val){
+float get_changerate(int ival){
+  float val = (float)ival;
   char pbuf[100];
+  int millisr = millis();
+
   if(prevChangeVal == -1){
     prevChangeVal = val;
+    prevChangeTime = millisr;
     return 0;
   }
+
   float ochange = val - prevChangeVal;
+  if(ochange == 0){
+    return 0;
+  }
+  int millisd = millisr - prevChangeTime;
   ochange = abs(ochange);
+  // divide the change amoutn by the timeframe, so chnages in shorter timeframes count for me.
+  ochange = ochange / (float)millisd; 
   float change = dyn_rescale(ochange, &changeMin, &changeMax, 0, 1.0);
-  sprintf(pbuf, "changerate v: %d pv: %d oc:%d c:%d minc:%d maxc:%d", val, prevChangeVal, ochange, change, changeMin, changeMax);
  // Serial.println(pbuf);
   prevChangeVal = val;
+  prevChangeTime = millisr;
+  sprintf(pbuf, "changerate v: %.4f pv: %.4f oc:%.4f c:%.4f minc:%.4f maxc:%.4f", val, prevChangeVal, ochange, change, changeMin, changeMax);
+  Serial.println(pbuf);
   return change;
 
 }

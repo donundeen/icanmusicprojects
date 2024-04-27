@@ -100,7 +100,7 @@ void routeConfig_velocitycurve(OSCMessage &msg, int addrOffset ){
 
 void routeConfig_reset(OSCMessage &msg, int addrOffset ){
   // getting the reset command is enough, no need to get the value
-  Serial.println("resetting minmax");
+  Serial.println("********************resetting minmax");
   reset_minmax();
 }
 
