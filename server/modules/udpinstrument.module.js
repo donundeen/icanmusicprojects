@@ -35,6 +35,8 @@ const UDPInstrument = class{
     _midimin = 32;
     _midimax = 100;
 
+    _reset = false; // if the "reset" value is set, call the reset function 
+
     // dictionary of note names and their lengths
     notelengths = {};
     notelength_values = [];
@@ -111,7 +113,7 @@ const UDPInstrument = class{
         this.running = false;
     }
 
-    reset(){
+    reset_instrument(){
         console.log("RESETTING LOCAL---------------------------------------");
         this.input_scale.reset();
         this.velocity_scale.reset();
@@ -120,6 +122,11 @@ const UDPInstrument = class{
         this.synth.allNotesOff(this._midi_channel);
         this.synth.resetAllControllers(this._midi_channel);
         this.synth.reset();
+    }
+
+    set reset(resetval){
+        // don't need to set the reset value, just call the reset function
+        this.reset_instrument();
     }
 
     set velocitycurve(curve){
