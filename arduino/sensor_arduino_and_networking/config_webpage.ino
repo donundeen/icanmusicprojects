@@ -29,7 +29,7 @@ void config_webpage_setup() {
 
   //read configuration from FS json
   Serial.println("mounting FS...");
-  //deleteAllCredentials();      
+  deleteAllCredentials();      
 
   if (SPIFFS.begin()) {
     Serial.println("mounted file system");
@@ -171,7 +171,7 @@ void config_webpage_setup() {
     File configFile = SPIFFS.open("/config.json", "w");
     if (!configFile) {
       Serial.println("failed to open config file for writing");
-    //  deleteAllCredentials();
+      deleteAllCredentials();
     }
 
     serializeJson(json, Serial);
@@ -186,12 +186,15 @@ void config_webpage_setup() {
 }
 
 void deleteAllCredentials(void) {
+  /*
+  // uncomment this to actxually run the code
   Serial.println("deleting all stored SSID credentials");
   if (!SPIFFS.begin(true)) {
     Serial.println("An Error has occurred while mounting SPIFFS");
     return;
   }  
   SPIFFS.remove("/config.json");
+  */
 }
 
 
@@ -245,7 +248,7 @@ void setStoredConfigVal(String varname, int valuetostore){
     File configFile = SPIFFS.open("/config.json", "w");
     if (!configFile) {
       Serial.println("failed to open config file for writing");
-    //  deleteAllCredentials();
+      deleteAllCredentials();
     }
 
     serializeJson(json, Serial);

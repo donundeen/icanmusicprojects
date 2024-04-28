@@ -47,7 +47,7 @@
 
 // sensor config vars - pins
 // Just test touch pin - Touch0 is T0 which is on GPIO 4.
-// using 15 - This is GPIO #15 and also an analog input A8 on ADC #2
+// using 32 - This is GPIO #32 and also an analog input A7 on ADC #1
 int touchPin = 32; //15;
 
 
