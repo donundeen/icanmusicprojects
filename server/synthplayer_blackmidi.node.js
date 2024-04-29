@@ -91,9 +91,9 @@ console.log("played");
 let i = 0;
 while(i < numnotes){
     let note = Math.floor(Math.random() * 127);
-    let velocity = Math.floor(Math.random() * 127);
-    let voice = Math.floor(Math.random() * 127);
-    let duration = Math.floor(Math.random() * 2000);
+    let velocity = Math.floor(Math.random() * 70)+ 50;
+    let voice = Math.floor(Math.random() * 100);
+    let duration = Math.floor(Math.random() * 2000) + 250;
     let channel = Math.floor(Math.random() * 10);
     makenote(channel, voice, note, velocity, duration );
     i++;
@@ -115,7 +115,7 @@ function makenote_parse(stringargs){
 }
 
 function makenote(channel, instrument, pitch, velocity, duration){
-    console.log("playing note "+ channel + ", " + pitch);
+    console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
 
     synth.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
