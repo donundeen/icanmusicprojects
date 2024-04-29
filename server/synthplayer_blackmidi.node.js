@@ -37,6 +37,7 @@ let interval = 4000;
 
 /* chokes out after:
 80 : 6 or 6
+100 : 4
 */
 
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
@@ -97,11 +98,13 @@ synth
 //console.log("played");
     // .close();
 
-
+let global_count = 0;
 function play_notes(numnotes){
     console.log("playnotes");
     let i = 0;
     while(i < numnotes){
+        global_count++;
+        console.log(global_count+ "********************************************** " + global_count);
         let note = Math.floor(Math.random() * 127);
         let velocity = Math.floor(Math.random() * 70)+ 50;
         let voice = Math.floor(Math.random() * 100);
