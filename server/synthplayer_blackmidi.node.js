@@ -21,7 +21,7 @@ let args = ["a", arg_a];
 if(env == "mac"){
     fluidpath = '/opt/homebrew/bin/fluidsynth';
     soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
-    arg_a = "cordaudio";
+    arg_a = "coreaudio";
     args = ["a", arg_a];
 }
 
@@ -43,13 +43,8 @@ let interval = 1000;
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
                 sf: soundfont,
-                args: args });
+                args: args }).or(function(){console.log("some problem starting!")});
       
-synth.reset();
-synth.allNotesOff(ch1);
-synth.allNotesOff(ch2);
-synth.resetAllControllers(ch1);
-synth.resetAllControllers(ch2);
 
 
 
@@ -78,17 +73,17 @@ console.log("gonna play");
 
 setInterval(function(){
     play_notes(numnotes);
-    /*
+    
     if(global_count >= 300){
 //        synth.stop();
-        synth.close();
+        synth.reset();
 
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
             args: args });
         global_count = 0;
     } 
-    */   
+       
 }, interval);
 
 /*
@@ -146,7 +141,7 @@ function makenote(channel, instrument, pitch, velocity, duration){
     synth.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
-    .noteOff(channel,pitch).or(function(){
-        console.log("some problem!");
+    .noteOff(channel,pitch).or(function(msg){
+        console.log("some problem! " + msg);
     });
 }
