@@ -108,7 +108,7 @@ function play_notes(numnotes){
         let note = Math.floor(Math.random() * 127);
         let velocity = Math.floor(Math.random() * 70)+ 50;
         let voice = Math.floor(Math.random() * 100);
-        let duration = Math.floor(Math.random() * 2000) + 250;
+        let duration = Math.floor(Math.random() * 200) + 25;
         let channel = Math.floor(Math.random() * 10);
         makenote(channel, voice, note, velocity, duration );
         i++;
