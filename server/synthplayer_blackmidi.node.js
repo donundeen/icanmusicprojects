@@ -69,7 +69,8 @@ oscPort.open();
 
 
 console.log("gonna play");
-          
+        
+/*
 synth
     .program(ch1, v1)
     .noteOn(ch1, 'B5', 127)
@@ -83,7 +84,7 @@ synth
     .wait(100).noteOn(ch2, 'E5', 127)
     .wait(100).noteOn(ch2, 'G5', 127)
     .wait(100).noteOff(ch2, 'C5').noteOff(ch2, 'E5').noteOff(ch2, 'G5');
-
+*/
 console.log("played");
     // .close();
 
