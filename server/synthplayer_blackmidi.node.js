@@ -91,6 +91,7 @@ console.log("played");
 play_notes(numnotes);
 
 function play_notes(numnotes){
+    console.log("playnotes");
     let i = numnotes;
     while(i < numnotes){
         let note = Math.floor(Math.random() * 127);
