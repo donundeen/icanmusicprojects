@@ -79,6 +79,7 @@ console.log("gonna play");
 setInterval(function(){
     
     if(global_count >= 300){
+        console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^RESET^^^^^^^^^^^^^")
         synth.reset();
         /*
         synth.stop();
