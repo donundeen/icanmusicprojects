@@ -32,8 +32,8 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 10; 
-let interval = 10;
+let numnotes = 100; 
+let interval = 1000;
 
 /* chokes out after:
 80 : 6 or 6
@@ -45,6 +45,11 @@ let synth = JZZ.synth.Fluid({ path: fluidpath,
                 sf: soundfont,
                 args: args }).or(function(){console.log("some problem starting!")});
       
+synth.reset();
+synth.allNotesOff(ch1);
+synth.allNotesOff(ch2);
+synth.resetAllControllers(ch1);
+synth.resetAllControllers(ch2);
 
 
 
@@ -73,17 +78,17 @@ console.log("gonna play");
 
 setInterval(function(){
     play_notes(numnotes);
-    
+    /*
     if(global_count >= 300){
 //        synth.stop();
-        synth.reset();
+        synth.close();
 
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
             args: args });
         global_count = 0;
     } 
-       
+    */   
 }, interval);
 
 /*
