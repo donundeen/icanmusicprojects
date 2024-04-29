@@ -33,7 +33,7 @@ v1 = 22;
 v2 = 12;
 
 let numnotes = 30;
-let internal = 2000;
+let interval = 2000;
 
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
