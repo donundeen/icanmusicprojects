@@ -32,7 +32,7 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 1000;
+let numnotes = 3;
 
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
@@ -95,6 +95,7 @@ while(i < numnotes){
     let duration = Math.floor(Math.random() * 2000);
     let channel = Math.floor(Math.random() * 10);
     makenote(channel, voice, note, velocity, duration );
+    i++;
 }
 
 
