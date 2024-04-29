@@ -79,7 +79,7 @@ console.log("gonna play");
 setInterval(function(){
     play_notes(numnotes);
     if(global_count >= 300){
-        synth.stop();
+//        synth.stop();
         synth.close();
 
         synth = JZZ.synth.Fluid({ path: fluidpath, 
