@@ -69,7 +69,11 @@ oscPort.open();
 
 
 console.log("gonna play");
-        
+
+setInterval(function(){
+    play_notes(numnotes);
+}, 3000);
+
 /*
 synth
     .program(ch1, v1)
@@ -85,10 +89,9 @@ synth
     .wait(100).noteOn(ch2, 'G5', 127)
     .wait(100).noteOff(ch2, 'C5').noteOff(ch2, 'E5').noteOff(ch2, 'G5');
 */
-console.log("played");
+//console.log("played");
     // .close();
 
-play_notes(numnotes);
 
 function play_notes(numnotes){
     console.log("playnotes");
