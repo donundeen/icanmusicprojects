@@ -17,7 +17,7 @@ let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 //let fluidpath = '/opt/homebrew/bin/fluidsynth';
 let fluidpath = '/usr/bin/fluidsynth';
 let arg_a = "pulseaudio";
-let args = ["a", arg_a];
+let args = ["a", arg_a, "C", "yes"];
 if(env == "mac"){
     fluidpath = '/opt/homebrew/bin/fluidsynth';
     soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
@@ -78,6 +78,7 @@ console.log("gonna play");
 
 setInterval(function(){
     play_notes(numnotes);
+    /*
     if(global_count >= 300){
 //        synth.stop();
         synth.close();
@@ -86,7 +87,8 @@ setInterval(function(){
             sf: soundfont,
             args: args });
         global_count = 0;
-    }    
+    } 
+    */   
 }, interval);
 
 /*
