@@ -32,8 +32,8 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 100; 
-let interval = 1000;
+let numnotes = 10; 
+let interval = 10;
 
 /* chokes out after:
 80 : 6 or 6
@@ -77,18 +77,22 @@ oscPort.open();
 console.log("gonna play");
 
 setInterval(function(){
-    play_notes(numnotes);
-    /*
+    
     if(global_count >= 300){
-//        synth.stop();
+        synth.reset();
+        /*
+        synth.stop();
         synth.close();
 
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
             args: args });
         global_count = 0;
+        */
     } 
-    */   
+    play_notes(numnotes);
+
+       
 }, interval);
 
 /*
