@@ -16,7 +16,7 @@ let env = "rpi"; // or "mac"
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 //let fluidpath = '/opt/homebrew/bin/fluidsynth';
 let fluidpath = '/usr/bin/fluidsynth';
-let arg_a = "pulseaudioxxxx";
+let arg_a = "pulseaudio";
 let args = ["a", arg_a];
 if(env == "mac"){
     fluidpath = '/opt/homebrew/bin/fluidsynth';
@@ -146,5 +146,7 @@ function makenote(channel, instrument, pitch, velocity, duration){
     synth.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
-    .noteOff(channel,pitch)
+    .noteOff(channel,pitch).or(function(){
+        console.log("some problem!");
+    });
 }
