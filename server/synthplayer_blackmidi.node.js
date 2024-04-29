@@ -37,7 +37,7 @@ let interval = 1000;
 
 /* chokes out after:
 80 : 6 or 6
-100 : 4
+100 : 4 (6 if I don't change channel/voice)
 */
 
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
@@ -78,6 +78,12 @@ console.log("gonna play");
 
 setInterval(function(){
     play_notes(numnotes);
+    if(global_count >= 300){
+        synth = JZZ.synth.Fluid({ path: fluidpath, 
+            sf: soundfont,
+            args: args });
+        global_count = 0;
+    }    
 }, interval);
 
 /*
@@ -132,7 +138,7 @@ function makenote_parse(stringargs){
 function makenote(channel, instrument, pitch, velocity, duration){
     console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
 
-    synth//.program(channel, instrument)
+    synth.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
     .noteOff(channel,pitch)
