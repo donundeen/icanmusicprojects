@@ -32,7 +32,7 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 40;
+let numnotes = 60;
 let interval = 500;
 
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
