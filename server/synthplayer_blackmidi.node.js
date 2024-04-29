@@ -32,7 +32,7 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 3;
+let numnotes = 30;
 
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
@@ -88,17 +88,20 @@ synth
 console.log("played");
     // .close();
 
-let i = 0;
-while(i < numnotes){
-    let note = Math.floor(Math.random() * 127);
-    let velocity = Math.floor(Math.random() * 70)+ 50;
-    let voice = Math.floor(Math.random() * 100);
-    let duration = Math.floor(Math.random() * 2000) + 250;
-    let channel = Math.floor(Math.random() * 10);
-    makenote(channel, voice, note, velocity, duration );
-    i++;
-}
+play_notes(numnotes);
 
+function play_notes(numnotes){
+    let i = numnotes;
+    while(i < numnotes){
+        let note = Math.floor(Math.random() * 127);
+        let velocity = Math.floor(Math.random() * 70)+ 50;
+        let voice = Math.floor(Math.random() * 100);
+        let duration = Math.floor(Math.random() * 2000) + 250;
+        let channel = Math.floor(Math.random() * 10);
+        makenote(channel, voice, note, velocity, duration );
+        i++;
+    }
+}
 
 
 function makenote_parse(stringargs){
