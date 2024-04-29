@@ -32,11 +32,11 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 80; 
-let interval = 2000;
+let numnotes = 100; 
+let interval = 4000;
 
 /* chokes out after:
-80 : 6
+80 : 6 or 6
 */
 
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
