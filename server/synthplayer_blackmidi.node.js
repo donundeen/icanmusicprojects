@@ -32,8 +32,12 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 30;
+let numnotes = 80; 
 let interval = 500;
+
+/* chokes out after:
+
+*/
 
 //let soundfont = "/Users/donundeen/Downloads/MuseScore_General.sf2";
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
