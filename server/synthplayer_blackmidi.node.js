@@ -34,7 +34,7 @@ v1 = 22;
 v2 = 12;
 
 let numnotes = 100; 
-let interval = 1000;
+let interval = 250;
 
 /* chokes out after:
 80 : 6 or 6
@@ -146,7 +146,7 @@ function makenote_parse(stringargs){
 
 function makenote(channel, instrument, pitch, velocity, duration){
     console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
-
+    channel= 1;
     synth//.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
