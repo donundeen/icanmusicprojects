@@ -33,7 +33,7 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 100; 
+let numnotes = 10; 
 let interval = 100;
 
 /* chokes out after:
