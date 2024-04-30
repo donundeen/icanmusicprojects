@@ -98,16 +98,7 @@ let synth = JZZ.synth.Fluid({ path: fluidpath,
 orchestra.synth = synth;
 
 let global_notecount = 0;
-orchestra.makenote_callback = function(){
-    console.log("makenote calbak~~~~~~~~~~");
-    global_notecount++;
-    if(global_notecount >= 300){
-        synth = JZZ.synth.Fluid({ path: fluidpath, 
-            sf: soundfont,
-            args: args });
-        global_notecount = 0;
-    }
-};
+
 
 // tell the score to do smomething when a beat happens
 // send a data over websockets with the transport info
@@ -406,8 +397,18 @@ function routeFromOSC(oscMsg, route, callback){
 // some things to do whenever an instrument makes a note
 // send the data to the webpage to display
 orchestra.makenote_callback = function(instr, pitch, velocity, duration){
-    let device_name = instr.device_name;
     console.log("******************************** makenote_callback ", device_name, pitch, velocity, duration);
+
+    global_notecount++;
+    if(global_notecount >= 300){
+        console.log("RRRrrrrrrrrrr Reseting Synth +++++++++++++++++++++++++++++++++++++++");
+        synth = JZZ.synth.Fluid({ path: fluidpath, 
+            sf: soundfont,
+            args: args });
+        global_notecount = 0;
+    }
+
+    let device_name = instr.device_name;
     let dataObj = {device_name: device_name, 
                     pitch: pitch, 
                     velocity: velocity,
