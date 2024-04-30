@@ -79,18 +79,18 @@ console.log("gonna play");
 
 setInterval(function(){
     
-/*
+
     if(global_count >= 300){
         
         console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^RESET^^^^^^^^^^^^^")
-    
+        synth.quit();
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
             args: args });
         global_count = 0;
         
     }
-    */
+    
    
     play_notes(numnotes);   
 }, interval);
