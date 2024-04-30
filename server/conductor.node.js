@@ -399,7 +399,7 @@ function routeFromOSC(oscMsg, route, callback){
 orchestra.makenote_callback = function(instr, pitch, velocity, duration){
     let device_name = instr.device_name;
 
-    console.log("******************************** makenote_callback ", device_name, pitch, velocity, duration);
+    console.log(global_notecount + "******************************** makenote_callback ", device_name, pitch, velocity, duration);
 
     global_notecount++;
     if(global_notecount >= 300){
