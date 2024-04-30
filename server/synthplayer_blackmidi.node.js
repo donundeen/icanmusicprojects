@@ -34,7 +34,7 @@ v1 = 22;
 v2 = 12;
 
 let numnotes = 100; 
-let interval = 1000;
+let interval = 5000;
 
 /* chokes out after:
 80 : 6 or 6
