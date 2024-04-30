@@ -408,6 +408,7 @@ orchestra.makenote_callback = function(instr, pitch, velocity, duration){
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
             args: args });
+        synth.start();
         global_notecount = 0;
     }
 
