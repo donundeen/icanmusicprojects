@@ -23,7 +23,10 @@ if(env == "mac"){
     fluidpath = '/opt/homebrew/bin/fluidsynth';
     soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
     arg_a = "coreaudio";
-    args = ["-a",arg_a];
+    args =   {"resourceLimits" : {
+        maxCpuUsage: 10, // in milliseconds
+        maxMemoryUsage: 4 // * 1024, // in bytes
+      }};
 }
 
 
@@ -33,7 +36,7 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 10; 
+let numnotes = 100; 
 let interval = 100;
 
 /* chokes out after:
