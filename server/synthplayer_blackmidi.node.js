@@ -8,7 +8,7 @@ inst2 = new UDPInstrument(3,4);
 var JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
-let env = "rpi"; // or "mac" or "rpi"
+let env = "mac"; // or "mac" or "rpi"
 
 
 ///Users/donundeen/Downloads/MuseScore_General.sf2
@@ -18,12 +18,12 @@ let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 let fluidpath = '/usr/bin/fluidsynth';
 let arg_a = "pulseaudio";
 //let args = ["a", arg_a];
-let args = ["-v"];
+let args = ["-i no"];
 if(env == "mac"){
     fluidpath = '/opt/homebrew/bin/fluidsynth';
     soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
     arg_a = "coreaudio";
-    args = ["-v"];
+    args = ["-a",arg_a];
 }
 
 
