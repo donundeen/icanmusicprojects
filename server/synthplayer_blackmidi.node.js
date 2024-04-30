@@ -159,5 +159,5 @@ function makenote(channel, instrument, pitch, velocity, duration){
             sf: soundfont,
             args: args });
 //        global_count = 0;        
-    });
+    }).close();
 }
