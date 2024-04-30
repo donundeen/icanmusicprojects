@@ -83,9 +83,11 @@ setInterval(function(){
     if(global_count >= 300){
         
         console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^RESET^^^^^^^^^^^^^")
+        synth.close();
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
             args: args });
+        synth.start();
         global_count = 0;
         
     }
