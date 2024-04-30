@@ -153,11 +153,11 @@ function makenote(channel, instrument, pitch, velocity, duration){
     synth.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
-    .noteOff(channel,pitch).or(function(msg){
+    .noteOff(channel,pitch).close().or(function(msg){
         console.log("some problem! " + msg);
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
             args: args });
 //        global_count = 0;        
-    }).close();
+    });
 }
