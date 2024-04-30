@@ -19,6 +19,7 @@ class Orchestra{
     _makenote_callback = false;
 
     set makenote_callback(callback){
+        console.log("set makenote callback")
         this._makenote_callback = callback;
         for (let key in this.localInstruments) {
             this.localInstruments[key].makenote_callback = this._makenote_callback;
@@ -135,6 +136,8 @@ class Orchestra{
     udp_makenote(name, pitch, velocity, duration){
         if(this.udpInstruments[name]){
             this.udpInstruments[name].midiMakeNote(pitch, velocity, duration);
+        }else{
+            console.log("no instrument " + name);
         }
     }
     all_local_instrument_set_value(prop, value){

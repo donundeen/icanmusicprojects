@@ -97,6 +97,18 @@ let synth = JZZ.synth.Fluid({ path: fluidpath,
                 args: args });
 orchestra.synth = synth;
 
+let global_notecount = 0;
+orchestra.makenote_callback = function(){
+    console.log("makenote calbak~~~~~~~~~~");
+    global_notecount++;
+    if(global_notecount >= 300){
+        synth = JZZ.synth.Fluid({ path: fluidpath, 
+            sf: soundfont,
+            args: args });
+        global_notecount = 0;
+    }
+};
+
 // tell the score to do smomething when a beat happens
 // send a data over websockets with the transport info
 trans.setBeatCallback(function(beatcount, bar, beat, transport){
@@ -282,6 +294,7 @@ udpPort.on("message", function (oscMsg) {
 
     // processign makenote messages from UDP connected devices (eg, if they aren't using their own speakers)
     routeFromOSC(oscMsg, "/makenote", function(oscMsg, address){
+        console.log("MAKING NOTE in routeFromOSC");
         let value = oscMsg.simpleValue;
         let name = value[0];
         let pitch = value[1];
