@@ -33,7 +33,7 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 200; 
+let numnotes = 100; 
 let interval = 500;
 
 /* chokes out after:
@@ -149,7 +149,7 @@ function makenote(channel, instrument, pitch, velocity, duration){
     synth.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
-    .noteOff(channel,pitch).reset().or(function(msg){
+    .noteOff(channel,pitch).or(function(msg){
         console.log("some problem! " + msg);
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
