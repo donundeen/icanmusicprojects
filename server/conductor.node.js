@@ -397,6 +397,8 @@ function routeFromOSC(oscMsg, route, callback){
 // some things to do whenever an instrument makes a note
 // send the data to the webpage to display
 orchestra.makenote_callback = function(instr, pitch, velocity, duration){
+    let device_name = instr.device_name;
+
     console.log("******************************** makenote_callback ", device_name, pitch, velocity, duration);
 
     global_notecount++;
@@ -408,7 +410,6 @@ orchestra.makenote_callback = function(instr, pitch, velocity, duration){
         global_notecount = 0;
     }
 
-    let device_name = instr.device_name;
     let dataObj = {device_name: device_name, 
                     pitch: pitch, 
                     velocity: velocity,
