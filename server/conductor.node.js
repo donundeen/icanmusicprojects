@@ -404,6 +404,7 @@ orchestra.makenote_callback = function(instr, pitch, velocity, duration){
     global_notecount++;
     if(global_notecount >= 300){
         console.log("RRRrrrrrrrrrr Reseting Synth +++++++++++++++++++++++++++++++++++++++");
+        synth.close();
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
             args: args });
