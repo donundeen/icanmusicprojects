@@ -8,7 +8,7 @@ inst2 = new UDPInstrument(3,4);
 var JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
-let env = "mac"; // or "mac"
+let env = "rpi"; // or "mac"
 
 
 ///Users/donundeen/Downloads/MuseScore_General.sf2
