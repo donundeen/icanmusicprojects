@@ -413,6 +413,7 @@ orchestra.makenote_callback = function(instr, pitch, velocity, duration){
         synth.start();
         global_notecount = 0;
         synth.foothing = "NEXT";
+        all_udp_instrument_set_value("synth", synth);
     }
 
     let dataObj = {device_name: device_name, 
