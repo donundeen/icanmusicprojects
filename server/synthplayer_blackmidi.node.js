@@ -8,7 +8,7 @@ inst2 = new UDPInstrument(3,4);
 var JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
-let env = "rpi"; // or "mac"
+let env = "mac"; // or "mac"
 
 
 ///Users/donundeen/Downloads/MuseScore_General.sf2
@@ -32,8 +32,8 @@ ch2 = 1;
 v1 = 22;
 v2 = 12;
 
-let numnotes = 50; 
-let interval = 1000;
+let numnotes = 100; 
+let interval = 100;
 
 /* chokes out after:
 80 : 6 or 6
