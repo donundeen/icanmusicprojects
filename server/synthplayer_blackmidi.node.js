@@ -153,5 +153,9 @@ function makenote(channel, instrument, pitch, velocity, duration){
     .wait(duration)
     .noteOff(channel,pitch).or(function(msg){
         console.log("some problem! " + msg);
+        synth = JZZ.synth.Fluid({ path: fluidpath, 
+            sf: soundfont,
+            args: args });
+        global_count = 0;        
     });
 }
