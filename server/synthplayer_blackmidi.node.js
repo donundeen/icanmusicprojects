@@ -17,8 +17,8 @@ let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 //let fluidpath = '/opt/homebrew/bin/fluidsynth';
 let fluidpath = '/usr/bin/fluidsynth';
 let arg_a = "pulseaudio";
-//let args = ["a", arg_a];
-let args = ["d"];
+let args = ["a", arg_a];
+//let args = ["d"];
 if(env == "mac"){
     fluidpath = '/opt/homebrew/bin/fluidsynth';
     soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
