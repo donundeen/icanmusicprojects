@@ -97,6 +97,8 @@ let synth = JZZ.synth.Fluid({ path: fluidpath,
                 args: args });
 orchestra.synth = synth;
 
+synth.foothing = "first";
+
 let global_notecount = 0;
 
 
@@ -399,7 +401,7 @@ function routeFromOSC(oscMsg, route, callback){
 orchestra.makenote_callback = function(instr, pitch, velocity, duration){
     let device_name = instr.device_name;
 
-    console.log(global_notecount + "******************************** makenote_callback ", device_name, pitch, velocity, duration);
+    console.log(global_notecount + synth.foothing +  "******************************** makenote_callback ", device_name, pitch, velocity, duration);
 
     global_notecount++;
     if(global_notecount >= 300){
@@ -410,6 +412,7 @@ orchestra.makenote_callback = function(instr, pitch, velocity, duration){
             args: args });
         synth.start();
         global_notecount = 0;
+        synth.foothing = "NEXT";
     }
 
     let dataObj = {device_name: device_name, 
