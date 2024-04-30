@@ -147,7 +147,7 @@ function makenote_parse(stringargs){
 function makenote(channel, instrument, pitch, velocity, duration){
     console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
 
-    synth.program(channel, instrument)
+    synth//.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
     .noteOff(channel,pitch).or(function(msg){
