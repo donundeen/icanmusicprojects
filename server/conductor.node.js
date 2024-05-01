@@ -93,14 +93,12 @@ curvecollection = {
 let synth = false;
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 let fluidpath = '/usr/bin/fluidsynth';
-let fluidargs = args = ["a", "pulseaudio","-R", 1, "-C", 1];
-args = ["a", arg_a];
+let fluidargs = ["a", "pulseaudio","-R", 1, "-C", 1];
 if(synthtype == "fluidsynth"){
     if(env == "mac"){
         fluidpath = '/opt/homebrew/bin/fluidsynth';
         soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
-        arg_a = "coreaudio";
-        fluidargs = ["a", arg_a];
+        fluidargs = ["a", "coreaudio"];
     }
     synth = JZZ.synth.Fluid({ path: fluidpath, 
                     sf: soundfont,
