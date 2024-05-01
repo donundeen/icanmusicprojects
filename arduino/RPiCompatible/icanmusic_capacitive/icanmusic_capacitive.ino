@@ -234,7 +234,7 @@ float maxVal = -1.0;
 float changeMin = 10000.0;
 float changeMax = -1.0;
 
-float elasticMinMaxScale = .00; // if true, then the min and max values used for dynamic scaling slowly come closer together, 
+float elasticMinMaxScale = .005; // if true, then the min and max values used for dynamic scaling slowly come closer together, 
                                 // so that a rate large value over time will get smoothed out
                                 // set to 0 to disable
 
