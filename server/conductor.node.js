@@ -7,6 +7,7 @@ and shows how messages are routed from one to the other.
 
 let env = "rpi"; // or "mac" -- how to determine this from code?
 
+let synthtype = "tiny"; // tiny or fluidsynth
 
 let bpm = 120;
 // defining some note lengths
@@ -46,12 +47,20 @@ const socketServer = require("./modules/socketserver.module.js").SocketServer;
 const Orchestra    = require("./modules/orchestra.module.js");
 // jzz controls a local synthesizer and connected midi devices
 const JZZ = require('jzz');
-require('jzz-synth-fluid')(JZZ);
+
 
 socketServer.WEBSOCKET_PORT  = WEBSOCKET_PORT;
 socketServer.WEBSERVER_PORT  = WEBSERVER_PORT;
 socketServer.default_webpage = default_webpage;
 
+if(synthtype == "fluidsynth"){
+    require('jzz-synth-fluid')(JZZ);
+}
+if(synthtype == "tiny"){
+    const WAAPI = require('node-web-audio-api');
+    require('jzz-synth-tiny')(JZZ);
+    global.window = { AudioContext: WAAPI.AudioContext };    
+}
 console.log("starting");
 
 // initialize the modules
@@ -79,23 +88,44 @@ curvecollection = {
 
 
 
-// intialize the midi synth
+// intialize the midi synth (fluid or tiny)
+let synth = false;
+if(synthtype == "fluidsynth"){
 
-///Users/donundeen/Downloads/MuseScore_General.sf2
-let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
-let fluidpath = '/usr/bin/fluidsynth';
-let arg_a = "pulseaudio";
-let args = ["a", arg_a,"-R", 1, "-C", 1];
-if(env == "mac"){
-    fluidpath = '/opt/homebrew/bin/fluidsynth';
-    soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
-    arg_a = "cordaudio";
-    args = ["a", arg_a];
+    ///Users/donundeen/Downloads/MuseScore_General.sf2
+    let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
+    let fluidpath = '/usr/bin/fluidsynth';
+    let arg_a = "pulseaudio";
+    let args = ["a", arg_a,"-R", 1, "-C", 1];
+    if(env == "mac"){
+        fluidpath = '/opt/homebrew/bin/fluidsynth';
+        soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
+        arg_a = "cordaudio";
+        args = ["a", arg_a];
+    }
+    synth = JZZ.synth.Fluid({ path: fluidpath, 
+                    sf: soundfont,
+                    args: args });
 }
-let synth = JZZ.synth.Fluid({ path: fluidpath, 
-                sf: soundfont,
-                args: args });
+
+if(synthtype == "tiny"){
+    synth = JZZ.synth.Tiny();
+
+    let bad_tiny_voices = [6,7,8,22,23,24,40,41,42,43,44,55,56,57,59,60,61,62,63,64,65,66,67,68,69,71,72, 84, 90, 105,110,118,119,120,121,122,123,124,125,126,127];
+    let tiny_voices = [];
+    for(let i = 0; i<=127;i++){
+        if(!bad_tiny_voices.includes(i)){
+            tiny_voices.push(i);
+        }
+    }
+    synth.good_voices = tiny_voices;
+}                
+
 orchestra.synth = synth;
+
+
+
+
 
 synth.foothing = "first";
 
@@ -404,6 +434,7 @@ orchestra.makenote_callback = function(instr, pitch, velocity, duration){
     console.log(global_notecount + synth.foothing +  "******************************** makenote_callback ", device_name, pitch, velocity, duration);
 
     global_notecount++;
+    /*
     if(global_notecount >= 300){
         console.log("RRRrrrrrrrrrr Reseting Synth +++++++++++++++++++++++++++++++++++++++");
         synth.close();
@@ -415,6 +446,7 @@ orchestra.makenote_callback = function(instr, pitch, velocity, duration){
         synth.foothing = "NEXT";
         orchestra.all_udp_instrument_set_value("synth", synth);
     }
+    */
 
     let dataObj = {device_name: device_name, 
                     pitch: pitch, 

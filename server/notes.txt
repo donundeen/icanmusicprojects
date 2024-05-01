@@ -1,0 +1,43 @@
+the devices tones reset when the synth resets 
+
+more responsiveness with the conductive tape?
+
+bring teh max/min closer together over time
+
+chorus and reverb on the notes
+
+bring bucket of scissors, 
+
+silicone wire
+
+
+pi not charging will, wtf, need more power to screen
+
+make a handout
+
+increase reverb levels?
+
+bring silicone wire
+
+make sure chord changes are registering.
+
+make sure everything is charging
+
+preset good synth tones
+
+web interfaces gets current voice values?
+allow setting by typing in the value, not just the slider
+
+thread1 device not remembering name
+
+this.midiSetInstrument();
+udpinstrument.module.js, around like 364:
+        .program(this.midi_channel, this.midi_voice)
+        .noteOn(this.midi_channel, pitch, velocity)
+        .wait(duration)
+        .noteOff(this.midi_channel, pitch);
+
+
+
+look up cumulus conferenec thing in mexico, monterey
+
