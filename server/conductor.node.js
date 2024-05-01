@@ -101,8 +101,6 @@ synthDeviceVoices = {
     "RENAME_ME" : 20
 }
 
-
-
 // intialize the midi synth (fluid or tiny)
 let synth = false;
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
@@ -228,17 +226,15 @@ socket.setMessageReceivedCallback(function(msg){
 
 
         // TESTING THINGS HERE
-        let instrument = orchestra.create_udp_instrument("TESTING", "TEST");
+        let instrument = orchestra.create_udp_instrument("thread1", "TEST");
         let props = instrument.get_config_props();
         props.push({name: "instrtype", value: "udp"});
-        props.push({name: "midi_voice", value: 9});
         socket.sendMessage("addinstrument", props);
         instrument.start();        
 
-        let instrument2 = orchestra.create_udp_instrument("2TESTING2", "2TEST2");
+        let instrument2 = orchestra.create_udp_instrument("thread2", "2TEST2");
         let props2 = instrument2.get_config_props();
         props2.push({name: "instrtype", value: "udp"});
-        props2.push({name: "midi_voice", value: 12});
         socket.sendMessage("addinstrument", props2);
         instrument2.start();  
 

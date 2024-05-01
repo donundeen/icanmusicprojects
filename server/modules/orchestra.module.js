@@ -106,7 +106,10 @@ class Orchestra{
         this.udpInstruments[name].makenote_callback = this._makenote_callback;
         // set the device voice number from a list of name=>voice mappings (sort of a hack here)
         if(this.synthDeviceVoices[name]){
-            this.udpInstruments[name].midi_voice = this.synthDeviceVoice;
+            this.udpInstruments[name].midi_voice = this.synthDeviceVoices[name];
+        }else{
+            this.udpInstruments[name].midi_voice = 1;
+
         }
         return this.udpInstruments[name];
     }
