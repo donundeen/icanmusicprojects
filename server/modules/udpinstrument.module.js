@@ -360,6 +360,7 @@ const UDPInstrument = class{
             console.log("no volume, no note");
             return;
         }
+        this.midiSetInstrument();
         this.synth
         .noteOn(this.midi_channel, pitch, velocity)
         .wait(duration)
