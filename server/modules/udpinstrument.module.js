@@ -372,9 +372,16 @@ const UDPInstrument = class{
     }
 
     midiSetInstrument(){
-        this.synth.allNotesOff(this._midi_channel);        
-        this.synth
-        .program(this._midi_channel, this._midi_voice)        
+        this.synth.allNotesOff(this._midi_channel);  
+        if(this.synth.good_voices){
+            let realvoice = this.synth.good_voices[this._midi_voice % this.synth.good_voices.length]
+            this.synth
+            .program(this._midi_channel, realvoice)        
+
+        }else{
+            this.synth
+            .program(this._midi_channel, this._midi_voice)        
+        }
     }
 
     // we might care about this, for mono things
