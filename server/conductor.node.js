@@ -91,22 +91,20 @@ curvecollection = {
 
 // intialize the midi synth (fluid or tiny)
 let synth = false;
+let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
+let fluidpath = '/usr/bin/fluidsynth';
+let fluidargs = args = ["a", "pulseaudio","-R", 1, "-C", 1];
+args = ["a", arg_a];
 if(synthtype == "fluidsynth"){
-
-    ///Users/donundeen/Downloads/MuseScore_General.sf2
-    let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
-    let fluidpath = '/usr/bin/fluidsynth';
-    let arg_a = "pulseaudio";
-    let args = ["a", arg_a,"-R", 1, "-C", 1];
     if(env == "mac"){
         fluidpath = '/opt/homebrew/bin/fluidsynth';
         soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
-        arg_a = "cordaudio";
-        args = ["a", arg_a];
+        arg_a = "coreaudio";
+        fluidargs = ["a", arg_a];
     }
     synth = JZZ.synth.Fluid({ path: fluidpath, 
                     sf: soundfont,
-                    args: args });
+                    args: fluidargs });
 }
 
 if(synthtype == "tiny"){
@@ -228,8 +226,10 @@ socket.setMessageReceivedCallback(function(msg){
         synth = false;
         synth = JZZ.synth.Fluid({ path: fluidpath, 
             sf: soundfont,
-            args: args });
-        orchestra.synth = synth;        
+            args: fluidargs });
+        orchestra.synth = synth;  
+        orchestra.all_udp_instrument_set_value("synth", synth);      
+        orchestra.all_local_instrument_set_value("synth", synth);      
        // synth.start();
     });
 
@@ -435,19 +435,21 @@ orchestra.makenote_callback = function(instr, pitch, velocity, duration){
     console.log(global_notecount + synth.foothing +  "******************************** makenote_callback ", device_name, pitch, velocity, duration);
 
     global_notecount++;
-    /*
-    if(global_notecount >= 300){
-        console.log("RRRrrrrrrrrrr Reseting Synth +++++++++++++++++++++++++++++++++++++++");
-        synth.close();
-        synth = JZZ.synth.Fluid({ path: fluidpath, 
-            sf: soundfont,
-            args: args });
-        synth.start();
-        global_notecount = 0;
-        synth.foothing = "NEXT";
-        orchestra.all_udp_instrument_set_value("synth", synth);
+    
+    if(synthtype == "fluidsynth"){
+        if(global_notecount >= 300){
+            console.log("RRRrrrrrrrrrr Reseting Synth +++++++++++++++++++++++++++++++++++++++");
+            synth.close();
+            synth = JZZ.synth.Fluid({ path: fluidpath, 
+                sf: soundfont,
+                args: args });
+            synth.start();
+            global_notecount = 0;
+            synth.foothing = "NEXT";
+            orchestra.all_udp_instrument_set_value("synth", synth);
+        }
     }
-    */
+    
 
     let dataObj = {device_name: device_name, 
                     pitch: pitch, 
