@@ -219,7 +219,7 @@ socket.setMessageReceivedCallback(function(msg){
         console.log("~~~~~~~~~~~~~~~~`RESETTING EVERYTHING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
         // reset a bunch of stuff.
         // the synth:
-        synth.stop();
+//        synth.stop();
         synth.close();
         synth = false;
         synth = JZZ.synth.Fluid({ path: fluidpath, 
@@ -440,7 +440,7 @@ orchestra.makenote_callback = function(instr, pitch, velocity, duration){
             synth.close();
             synth = JZZ.synth.Fluid({ path: fluidpath, 
                 sf: soundfont,
-                args: args });
+                args: fluidargs });
             synth.start();
             global_notecount = 0;
             synth.foothing = "NEXT";
