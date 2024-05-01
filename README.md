@@ -16,8 +16,6 @@ Complete installation instructions coming shortly.
 
 - "Paleta De Aguacate, an ICanMusic Performance", Morelia, Mexico:  https://www.youtube.com/watch?v=Ay2ICAsvL2w&t=2s&ab_channel=DonUndeen 
 
-
-
 # In This Repo:
 
 - **arduino**: Arduino files for running on Feather Huzzah ESP32 arduinos. 
@@ -40,11 +38,9 @@ Complete installation instructions coming shortly.
   
   - **Tests**: Files I made to test things, and may want to refer to later.
 
-- **server**: This is the 
+- **server**: Files for running the Raspberry Pi server. If you don't need the Local WAP system, then you can run this server code on a Mac, but this setup isn't documented as well. See the README.md file in the **server** folder
 
 - **PositionalJamAlphaBlast**: An implementation of this project that uses Max/MSP for most of the processing. In this setup, the devices simply send their raw values, and Max handles during those values into midi notes according to the chord changes, and sends MIDI values out. In this implmentation, the MIDI values are captured and played by Ableton; the ableton files are also in this folder. I've put aside this version in favor of the more open-source, wireless and headless version using the files in server and arduino folders instead. But there's lots of good stuff in here if you like working with Max.
-
-
 
 ## Hardware Used:
 
@@ -55,7 +51,5 @@ Complete installation instructions coming shortly.
 - Adafruit Music Maker MP3 player and MIDI Synth: [Adafruit Music Maker](https://www.adafruit.com/product/3357) 
 
 - Raspberry Pi 4 (but you can probably use other Pis)
-
-
 
 # 

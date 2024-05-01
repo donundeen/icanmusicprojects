@@ -1,5 +1,6 @@
 preset good synth tones - DONE, NEED TO TEST
 allow setting by typing in the value, not just the slider - DONE
+web interfaces gets current voice values? - DONE, for range, channel, and voice
 
 
 TO BRING: 
@@ -22,7 +23,6 @@ pi not charging will, wtf, need more power to screen
 make sure everything is charging
 
 
-web interfaces gets current voice values?
 
 thread1 device not remembering name
 
