@@ -87,6 +87,20 @@ curvecollection = {
 }
 
 
+synthDeviceVoices = {
+    "thread1" : 10,
+    "thread2" : 11,
+    "thread3" : 12,
+    "thread4" : 13,
+    "thread5" : 14,
+    "thread6" : 15,
+    "thread7" : 16,
+    "thread8" : 17,
+    "thread9" : 18,
+    "thread10" : 19,
+    "RENAME_ME" : 20
+}
+
 
 
 // intialize the midi synth (fluid or tiny)
@@ -119,6 +133,7 @@ if(synthtype == "tiny"){
 }                
 
 orchestra.synth = synth;
+orchestra.synthDeviceVoices = synthDeviceVoices;
 
 
 
@@ -204,12 +219,30 @@ socket.setMessageReceivedCallback(function(msg){
             let props = instrument.get_config_props();
             props.push({name: "instrtype", value: "local"});
             socket.sendMessage("addinstrument", props);    
-        })
+        });
         orchestra.allUDPInstruments(function(instrument){
             let props = instrument.get_config_props();
             props.push({name: "instrtype", value: "udp"});
             socket.sendMessage("addinstrument", props);    
-        })
+        });
+
+
+        // TESTING THINGS HERE
+        let instrument = orchestra.create_udp_instrument("TESTING", "TEST");
+        let props = instrument.get_config_props();
+        props.push({name: "instrtype", value: "udp"});
+        props.push({name: "midi_voice", value: 9});
+        socket.sendMessage("addinstrument", props);
+        instrument.start();        
+
+        let instrument2 = orchestra.create_udp_instrument("2TESTING2", "2TEST2");
+        let props2 = instrument2.get_config_props();
+        props2.push({name: "instrtype", value: "udp"});
+        props2.push({name: "midi_voice", value: 12});
+        socket.sendMessage("addinstrument", props2);
+        instrument2.start();  
+
+
     });
     routeFromWebsocket(msg, "score", function(text){
         score.scoreText = text;
@@ -266,7 +299,7 @@ socket.setMessageReceivedCallback(function(msg){
     });
 });
 
-// handling message over OSC
+// handling message over OSC/UDP
 udpPort.on("message", function (oscMsg) {
     // when an OSC messages comes in
     console.log("An OSC message just arrived!", oscMsg);

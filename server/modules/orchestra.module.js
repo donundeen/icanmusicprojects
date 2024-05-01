@@ -103,7 +103,11 @@ class Orchestra{
         this.udpInstruments[name].synth = this._synth;
         this.udpInstruments[name].bpm = this.bpm;
         this.udpInstruments[name].notelist = this.notelist;
-        this.udpInstruments[name].makenote_callback = this._makenote_callback;       
+        this.udpInstruments[name].makenote_callback = this._makenote_callback;
+        // set the device voice number from a list of name=>voice mappings (sort of a hack here)
+        if(this.synthDeviceVoices[name]){
+            this.udpInstruments[name].midi_voice = this.synthDeviceVoice;
+        }
         return this.udpInstruments[name];
     }
 

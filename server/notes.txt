@@ -1,15 +1,17 @@
+preset good synth tones - DONE, NEED TO TEST
+
+
 TO BRING: 
 bring bucket of scissors, 
 silicone wire
 
 make a handout
 
-preset good synth tones
 allow setting by typing in the value, not just the slider
 
 
 bring teh max/min closer together over time 
-- will need to re-upload code to all devices, 
+- will need to re-upload code to all devices, do I want to do this?
 
 chorus and reverb on the notes - not sure if this is working, hard to tell...
 

@@ -272,6 +272,10 @@ $(function() {
             min: 0,
             max: 127,
             values: [midimin, midimax ],
+            slide : function( event, ui ) {
+                $(event.target).closest(".instrument").attr("id")                
+                $( ".range_display",instr ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+            },
             stop    : function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".range_display",instr ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
@@ -290,14 +294,19 @@ $(function() {
 
             }
         });
-        $( ".range_display" ,instr).val( $( ".midi-range" ,instr).slider( "values", 0 ) +
-            " - " + $( ".midi-range",instr ).slider( "values", 1 ) );
+        $( ".range_display" ,instr).val( midimin +
+            " - " + midimax );
 
         $( ".midi-channel",instr ).slider({
             range: false,
             min: 0,
             max: 15,
-            values: midi_channel,
+            value: midi_channel,
+            slide: function( event, ui ) {
+                console.log("slide", ui.value);
+                $(event.target).closest(".instrument").attr("id")                
+                $( ".channel_display",instr ).val(  ui.value );
+            },            
             stop: function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".channel_display",instr ).val(  ui.value );
@@ -310,18 +319,53 @@ $(function() {
                 message(address, data);
             }
         });
-        $( ".channel_display",instr ).val( $( ".midi-channel",instr ).slider( "values", 0 ) );
+        $( ".channel_display",instr ).val(midi_channel );
+        $( ".channel_display",instr ).keyup(function(event){
+            console.log(event.which);
+            if(event.which == 13) {
+                let val = parseInt($(event.target).val());
+                parseChannelVal(val, instr);
+            }
+        });
+        $( ".channel_display",instr ).blur(function(event){
+            let voiceval = parseInt($(event.target).val());
+            parseVoiceVal(voiceval, instr);
+        });
+
+        function parseChannelVal(val, instr){
+            console.log("voice value", val);
+            if(!isNaN(val)){
+                $( ".midi-channel",instr ).slider("value", val);
+                $( ".channel_display",instr ).val(val);
+                sendChannelVal(val);                
+            }
+        }
+        function sendChannelVal(val){
+            let address = "instrval";            
+            let data = {id:id, 
+                instrtype: instrtype,
+                var: "midi_channel",
+                val: val };
+            message(address, data);             
+        }
+
 
         $( ".midi-voice",instr ).slider({
             range: false,
             min: 0,
             max: 127,
-            values: midi_voice,
+            value: midi_voice,
+            slide: function( event, ui ) {
+                $(event.target).closest(".instrument").attr("id")                
+                $( ".voice_display",instr ).val(  ui.value );
+            },
+            
             stop: function( event, ui ) {
                 $(event.target).closest(".instrument").attr("id")                
                 $( ".voice_display",instr ).val(  ui.value );
                 let address = "instrval";
                 let instrtype = $(instr).data("instrtype"); // local or udp
+                console.log("sending " + ui.value);
                 let data = {id:id, 
                             instrtype: instrtype,
                             var: "midi_voice",
@@ -329,7 +373,35 @@ $(function() {
                 message(address, data);                
             }
         });
-        $( ".voice_display",instr ).val( $( ".midi-voice",instr ).slider( "values", 0 ) );
+        $( ".voice_display",instr ).val( midi_voice );
+        $( ".voice_display",instr ).keyup(function(event){
+            console.log(event.which);
+            if(event.which == 13) {
+                let voiceval = parseInt($(event.target).val());
+                parseVoiceVal(voiceval, instr);
+            }
+        });
+        $( ".voice_display",instr ).blur(function(event){
+            let voiceval = parseInt($(event.target).val());
+            parseVoiceVal(voiceval, instr);
+        });
+
+        function parseVoiceVal(val, instr){
+            console.log("voice value", val);
+            if(!isNaN(val)){
+                $( ".midi-voice",instr ).slider("value", val);
+                $( ".voice_display",instr ).val(val);
+                sendVoiceVal(val);                
+            }
+        }
+        function sendVoiceVal(voiceval){
+            let address = "instrval";            
+            let data = {id:id, 
+                instrtype: instrtype,
+                var: "midi_voice",
+                val: voiceval };
+            message(address, data);             
+        }
 
         $(".resetbutton button", instr).click(function(event,ui){
             console.log("reset clicked");
