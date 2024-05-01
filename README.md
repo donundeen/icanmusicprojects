@@ -44,7 +44,7 @@ Complete installation instructions coming shortly.
 
 ## Hardware Used:
 
-- Arduino Feather Case, with Battery Case: [Arduino Feather Cases](https://www.tinkercad.com/things/8DuQjJnMVJv-arduino-feather-cases) : this is only slightly modified from a case I found online, but I regret to say I can't remember where I got it and can't seem to find it now. Apologies to the original creator, and I'll update the credits once I find it.
+- Arduino Feather Case, with Battery Case: [Arduino Feather Cases](https://www.tinkercad.com/things/8DuQjJnMVJv-arduino-feather-cases) : this is only slightly modified from the case system created by Adafruit, which you can find here: [Adafruit Feather Box Enclosure by adafruit - Thingiverse](https://www.thingiverse.com/thing:2209964/files). The full assembly instructions and more options for configuration can be found here: [Overview | 3D Printed Case for Adafruit Feather | Adafruit Learning System](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/) 
 
 - Adafruit HUZZAH32 ESP32 Feather Board: [Adafruit HUZZAH32 – ESP32 Feather ](https://www.adafruit.com/product/3405) 
 
