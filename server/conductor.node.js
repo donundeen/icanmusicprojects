@@ -5,9 +5,10 @@ holds the configuration variables
 and shows how messages are routed from one to the other.
 */
 
-let env = "rpi"; // or "mac" -- how to determine this from code?
+let env = "rpi"; // "rpi" or "mac" -- how to determine this from code?
 
-let synthtype = "tiny"; // tiny or fluidsynth
+let synthtype = "fluidsynth"; // tiny or fluidsynth
+// tiny can't handle too many notes at once
 
 let bpm = 120;
 // defining some note lengths
