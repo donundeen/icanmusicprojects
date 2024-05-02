@@ -18,13 +18,9 @@ The Raspberry Pi Server does these things:
 
 - Can send raw MIDI notes to hardware synths connected via USB->MIDI interfaces.
 
-
-
 ## RPI Setup
 
 - Get a Pi. I use a Pi4, but you can probably use a pi 3
-
-
 
 ## install some basics
 
@@ -36,10 +32,7 @@ chmod a+x nodeget.sh
 sudo ./nodeget.sh
 sudo apt-get install -y nodejs
 sudo apt install git 
-
 ```
-
-
 
 ## PiJuice Setup
 
@@ -67,21 +60,15 @@ following these instructions: **Following this: [Turn Your Raspberry Pi into an 
 sudo nmcli con add con-name hotspot ifname wlan0 type wifi ssid "icanmusic"
 sudo nmcli con modify hotspot wifi-sec.key-mgmt wpa-psk
 sudo nmcli con modify hotspot wifi-sec.psk "icanmusic"
-
-
 ```
 
 Then I ran `nmtui` , which brings up an interface that lets me create a named connection to my local wifi.
 
 **I ALSO changed the icanmusic AP to NOT use a password, since I couldn't get the arduinos to negotiate authentication. **
 
-
-
 Then I ran
 
 `nmcli con modify [YOUR LOCAL WIFI NAME] connection.interface-name wlan0`
-
-
 
 To bring up the local wifi (access the internet):
 
@@ -96,8 +83,6 @@ To run as access point (no access to internet)
 nmcli con down [YOUR LOCAL WIFI NAME]
 nmcli con up hotspot
 ```
-
-
 
 ## Setup Fluidsynth
 
@@ -119,19 +104,13 @@ If your system has no directory called /etc/security/limits.d then you will need
 
 restart after doing this stuff.
 
-
-
 try running `node synthplayer.node.js` - you should hear sounds
-
-
 
 ## Setup Webserver
 
 In server folder, run
 
 `npm install`
-
-
 
 ## Run conductor.node.js
 
@@ -148,10 +127,6 @@ Connect your screen devices (laptop, tablet, etc) to the icanmusic wifi.
 The web interface for controlling the score and the devices is at
 
 `http://10.0.0.1:8002`
-
-
-
-
 
 ## Connect to Bluetooth Speakers
 

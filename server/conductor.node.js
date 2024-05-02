@@ -224,7 +224,7 @@ socket.setMessageReceivedCallback(function(msg){
             socket.sendMessage("addinstrument", props);    
         });
 
-
+/*
         // TESTING THINGS HERE
         let instrument = orchestra.create_udp_instrument("thread1", "TEST");
         let props = instrument.get_config_props();
@@ -237,7 +237,7 @@ socket.setMessageReceivedCallback(function(msg){
         props2.push({name: "instrtype", value: "udp"});
         socket.sendMessage("addinstrument", props2);
         instrument2.start();  
-
+*/
 
     });
     routeFromWebsocket(msg, "score", function(text){
