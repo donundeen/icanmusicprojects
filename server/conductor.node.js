@@ -5,10 +5,15 @@ holds the configuration variables
 and shows how messages are routed from one to the other.
 */
 
+
+////////////////// CONFIG VARIABLES //////////////////////////
 let env = "rpi"; // "rpi" or "mac" -- how to determine this from code?
 
 let synthtype = "fluidsynth"; // tiny or fluidsynth
-// tiny can't handle too many notes at once
+// tiny can't handle too many notes at once, and some don't sound good:
+let bad_tiny_voices = [6,7,8,22,23,24,40,41,42,43,44,55,56,57,59,60,61,62,63,64,65,66,67,68,69,71,72, 84, 90, 105,110,118,119,120,121,122,123,124,125,126,127];
+
+
 
 let bpm = 120;
 // defining some note lengths
@@ -22,6 +27,39 @@ let WEBSOCKET_PORT = 8001;
 let WEBSERVER_PORT = 8002;
 
 let default_webpage = "conductor.html";
+
+
+
+// defining some useful curves for tweaking instrument values. used by both the localinstrument and arduino instruments
+// they are numbered for easier communication with the arduino devices over osc
+curvecollection = {
+    str8up : [0., 0., 0., 1., 1., 0.], // 1
+    str8dn : [0., 1., 0., 1., 0., 0.], // 2
+    logup : [0., 0., 0., 1., 1., -0.65], // 3
+    logdn : [0., 1., 0., 1., 0., -0.65], // 4 not sure if this is right
+    str8upthresh : [0., 0., 0., 0.05, 0., 0., 1., 1., 0.], // 5 
+    str8dnthresh : [0., 1., 0., 0.95, 0., 0., 1., 0., 0., 1., 0., 0.], // 6
+    logupthresh : [0., 0., 0., 0.05, 0., 0., 1., 1., -0.65], // 7
+    logdnthresh : [0., 1., 0., 0.95, 0., -0.65, 1., 0., -0.65] //8
+}
+
+
+synthDeviceVoices = {
+    "thread1" : 10,
+    "thread2" : 11,
+    "thread3" : 12,
+    "thread4" : 13,
+    "thread5" : 14,
+    "thread6" : 15,
+    "thread7" : 16,
+    "thread8" : 17,
+    "thread9" : 18,
+    "thread10" : 19,
+    "RENAME_ME" : 20
+}
+
+////////////////// END CONFIG VARIABLES //////////////////////////
+
 
 
 var osc = require("osc");
@@ -73,34 +111,6 @@ socket = Object.create(socketServer);
 
 
 
-// defining some useful curves for tweaking instrument values. used by both the localinstrument and arduino instruments
-// they are numbered for easier communication with the arduino devices over osc
-curvecollection = {
-    str8up : [0., 0., 0., 1., 1., 0.], // 1
-    str8dn : [0., 1., 0., 1., 0., 0.], // 2
-    logup : [0., 0., 0., 1., 1., -0.65], // 3
-    logdn : [0., 1., 0., 1., 0., -0.65], // 4 not sure if this is right
-    str8upthresh : [0., 0., 0., 0.05, 0., 0., 1., 1., 0.], // 5 
-    str8dnthresh : [0., 1., 0., 0.95, 0., 0., 1., 0., 0., 1., 0., 0.], // 6
-    logupthresh : [0., 0., 0., 0.05, 0., 0., 1., 1., -0.65], // 7
-    logdnthresh : [0., 1., 0., 0.95, 0., -0.65, 1., 0., -0.65] //8
-}
-
-
-synthDeviceVoices = {
-    "thread1" : 10,
-    "thread2" : 11,
-    "thread3" : 12,
-    "thread4" : 13,
-    "thread5" : 14,
-    "thread6" : 15,
-    "thread7" : 16,
-    "thread8" : 17,
-    "thread9" : 18,
-    "thread10" : 19,
-    "RENAME_ME" : 20
-}
-
 // intialize the midi synth (fluid or tiny)
 let synth = false;
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
@@ -119,8 +129,6 @@ if(synthtype == "fluidsynth"){
 
 if(synthtype == "tiny"){
     synth = JZZ.synth.Tiny({quality:0, useReverb:0, voices:32});
-
-    let bad_tiny_voices = [6,7,8,22,23,24,40,41,42,43,44,55,56,57,59,60,61,62,63,64,65,66,67,68,69,71,72, 84, 90, 105,110,118,119,120,121,122,123,124,125,126,127];
     let tiny_voices = [];
     for(let i = 0; i<=127;i++){
         if(!bad_tiny_voices.includes(i)){
@@ -136,7 +144,7 @@ orchestra.synthDeviceVoices = synthDeviceVoices;
 
 
 
-
+// just a var for testing.
 synth.foothing = "first";
 
 let global_notecount = 0;
