@@ -2,24 +2,9 @@ const midi = require('midi');
 
 let portname = "UM-ONE:UM-ONE MIDI 1 28:0";
 
-var output = new midi.Output();
-console.log('Output ports: ' + output.getPortCount());
-
-for (var i = 0; i < output.getPortCount(); ++i) {
-    console.log('Port ' + i + ' name: ' + output.getPortName(i));
-}
 
 
 
-
-// Open the first available output port.
-output.openPort(1);
-
-// Send a MIDI message.
-output.sendMessage([176,22,1]);
-
-// Close the port when done.
-output.closePort();
 
 
 const easymidi = require('easymidi');
