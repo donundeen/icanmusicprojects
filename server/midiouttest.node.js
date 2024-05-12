@@ -9,17 +9,6 @@ for (var i = 0; i < output.getPortCount(); ++i) {
 }
 
 
-
-
-// Set up a new output.
-const output = new midi.Output();
-
-// Count the available output ports.
-output.getPortCount();
-
-// Get the name of a specified output port.
-output.getPortName(0);
-
 // Open the first available output port.
 output.openPort(0);
 
