@@ -37,13 +37,13 @@ setTimeout(function(){
   makenote(3,69,127,500);
 }, 2000);
 setTimeout(function(){
-  makenote(4,70,127,1000);
+  makenote(4,70,127,500);
 }, 3000);
 setTimeout(function(){
-  makenote(5,72,127,1000);
+  makenote(5,72,127,500);
 }, 4000);
 setTimeout(function(){
-  makenote(6,73,127,1000);
+  makenote(6,73,127,500);
 }, 5000);
 
 function makenote(channel, note, velocity, duration){
