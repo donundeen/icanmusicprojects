@@ -27,10 +27,10 @@ JZZ({sysex:true}).and(function() {
   JZZ().wait(500).close();  
 */
   JZZ().or('Cannot start MIDI engine!')
-  .openMidiOut().or('Cannot open MIDI Out port!')
+  .openMidiOut('UM-ONE MIDI 1').or('Cannot open MIDI Out port!')
   .wait(500).send([0x90,60,127]) // note on
   .wait(500).send([0x80,60,0]);  // note off
-JZZ().openMidiIn().or('Cannot open MIDI In port!')
+JZZ().openMidiIn('UM-ONE MIDI 1').or('Cannot open MIDI In port!')
   .and(function() { console.log('MIDI-In: ', this.name()); })
   .connect(function(msg) { console.log(msg.toString()); })
   .wait(5000).close();
