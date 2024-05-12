@@ -1,8 +1,10 @@
 var JZZ = require('jzz');
 require('jzz-midi-gear')(JZZ);
 
+console.log("starting");
 // start the MIDI engine:
 JZZ({sysex:true}).and(function() {
+  console.log("sysex in");
     var inputs = this.info().inputs;
     var outputs = this.info().outputs;
     // enable message handlers on all MIDI-In ports:
