@@ -19,21 +19,13 @@ output.sendMessage([176,22,1]);
 output.closePort();
 
 
-import { MIDIVal } from "@midival/core";
-import { NodeMIDIAccess } from "@midival/node";
-import * as midi from "midi";
-
-MIDIVal.configureAccessObject(new NodeMIDIAccess(midi));
-
-import { MIDIVal } from "@midival/core";
-
-MIDIVal.connect()
-.then(access => {
-    const output = new MIDIValOutput(access.outputs[0]);
-    output.sendNoteOn(64, 127);
-    output.sendControlChange(5, 50); // increasing portamento time.
+const easymidi = require('easymidi');
+output = new easymidi.Output(1);
+output.send('noteon', {
+  note: 64,
+  velocity: 127,
+  channel: 3
 });
-
 
 
 var JZZ = require('jzz');
