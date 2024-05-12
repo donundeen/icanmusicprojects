@@ -30,10 +30,11 @@ output = new easymidi.Output(portname);
 output.send('noteon', {
   note: 64,
   velocity: 127,
-  channel: 3
+  channel: 1
 });
 
 
+/*
 var JZZ = require('jzz');
 //require("jazz-midi");
 //require('jzz-midi-gear')(JZZ);
@@ -75,4 +76,4 @@ JZZ().openMidiIn(1).or('Cannot open MIDI In port!')
   .connect(function(msg) { console.log(msg.toString()); })
   .wait(5000).close();
 
-
+*/
