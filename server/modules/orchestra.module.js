@@ -10,6 +10,7 @@ class Orchestra{
     allChannels =  [0,1,2,3,4,5,6,7,8,9,10];
     channelPool = [0,1,2,3,4,5,6,7,8,9,10];
     _synth = false; // fluidsynth object
+    _midi_hardware_engine = false; // easymidi object
     bpm = 120;
 
     notelist = [];
@@ -39,6 +40,12 @@ class Orchestra{
         this._synth = synth;
         this.all_local_instrument_set_value("synth", this._synth);
         this.all_udp_instrument_set_value("synth", this._synth);
+    }
+
+    set midi_hardware_engine(engine){
+        this._midi_hardware_engine = engine;
+        this.all_local_instrument_set_value("midi_hardware_engine", this._midi_hardware_engine);
+        this.all_udp_instrument_set_value("midi_hardware_engine", this._midi_hardware_engine);
     }
 
     getChannel(){
@@ -85,6 +92,7 @@ class Orchestra{
         this.localInstruments[name].device_name = name;
         this.localInstruments[name].midi_channel = this.getChannel();
         this.localInstruments[name].synth = this._synth;
+        this.localInstruments[name].midi_hardware_engine = this._midi_hardware_engine;
         this.localInstruments[name].bpm = this.bpm;
         this.localInstruments[name].notelist = this.notelist;
         this.localInstruments[name].start();
@@ -101,6 +109,7 @@ class Orchestra{
         this.udpInstruments[name].device_name = name;
         this.udpInstruments[name].midi_channel = this.getChannel();
         this.udpInstruments[name].synth = this._synth;
+        this.udpInstruments[name].midi_hardware_engine = this._midi_hardware_engine;
         this.udpInstruments[name].bpm = this.bpm;
         this.udpInstruments[name].notelist = this.notelist;
         this.udpInstruments[name].makenote_callback = this._makenote_callback;

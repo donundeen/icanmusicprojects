@@ -46,6 +46,9 @@ const UDPInstrument = class{
     // set fluidSynth object
     synth = false;
 
+    // set hardware synth out object (easymidi)
+    midi_hardware_engine = false;
+
     // velocity curve starts as a straight line
     _velocitycurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
     _changeratecurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
@@ -348,11 +351,11 @@ const UDPInstrument = class{
     // this triggers a makenote on the LOCAL server, NOT the networked instrument itself.
     // this happens when the udp device is calculating the note data itself, 
     // but doesn't have a synth or speakers attached to it
-    midiMakeNote(pitch, velocity, duration){
-        console.log(this.synth.foothing + " MAKING NOTE UDP " + this._midi_channel + " : " + pitch + " : " + velocity + " : " + duration);
+    midiMakeNote(note, velocity, duration){
+       // console.log(this.synth.foothing + " MAKING NOTE UDP " + this._midi_channel + " : " + note + " : " + velocity + " : " + duration);
         // note: each instrument needs its own channel, or the instrument will be the same tone.
-        console.log(pitch + " : " + velocity + " : " + duration);
-        if(!Number.isFinite(pitch) || !Number.isFinite(velocity) || !Number.isFinite(duration)){
+        console.log(note + " : " + velocity + " : " + duration);
+        if(!Number.isFinite(note) || !Number.isFinite(velocity) || !Number.isFinite(duration)){
             console.log("bad midi values, returning");
             return;
         }
@@ -362,9 +365,26 @@ const UDPInstrument = class{
         }
         this.midiSetInstrument();
         this.synth
-        .noteOn(this.midi_channel, pitch, velocity)
+        .noteOn(this.midi_channel, note, velocity)
         .wait(duration)
-        .noteOff(this.midi_channel, pitch);
+        .noteOff(this.midi_channel, note);
+
+        // if there's a hardware midi device attached to this instrument
+        if(this.midi_hardware_engine){
+            this.midi_hardware_engine.send('noteon', {
+                note: this.midi_channel,
+                velocity: velocity,
+                channel: channel
+            });
+            setTimeout(()=>{
+                this.midi_hardware_engine.send('noteoff', {
+                    note: note,
+                    velocity: 0,
+                    channel: this.midi_channel
+                });
+            }, duration);
+        }
+
 
         if(this.makenote_callback){
             this.makenote_callback(this, pitch, velocity, duration);

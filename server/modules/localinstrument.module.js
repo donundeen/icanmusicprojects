@@ -42,6 +42,9 @@ const LocalInstrument = class{
     // set fluidSynth object
     synth = false;
 
+    // set hardware synth out object (easymidi)
+    midi_hardware_engine = false;
+
     // velocity curve starts as a straight line
     _velocitycurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
     _changeratecurve = new functionCurve([0., 0.0, 0., 1.0, 1.0, 0.0]);
@@ -345,6 +348,23 @@ const LocalInstrument = class{
         .noteOn(this.midi_channel, pitch, velocity)
         .wait(duration)
         .noteOff(this.midi_channel, pitch);
+
+
+        // if there's a hardware midi device attached to this instrument
+        if(this.midi_hardware_engine){
+            this.midi_hardware_engine.send('noteon', {
+                note: this.midi_channel,
+                velocity: velocity,
+                channel: channel
+            });
+            setTimeout(()=>{
+                this.midi_hardware_engine.send('noteoff', {
+                    note: note,
+                    velocity: 0,
+                    channel: this.midi_channel
+                });
+            }, duration);
+        }
 
         if(this.makenote_callback){
             this.makenote_callback(this, pitch, velocity, duration);

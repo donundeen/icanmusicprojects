@@ -13,7 +13,8 @@ let synthtype = "fluidsynth"; // tiny or fluidsynth
 // tiny can't handle too many notes at once, and some don't sound good:
 let bad_tiny_voices = [6,7,8,22,23,24,40,41,42,43,44,55,56,57,59,60,61,62,63,64,65,66,67,68,69,71,72, 84, 90, 105,110,118,119,120,121,122,123,124,125,126,127];
 
-
+let use_midi_out = true; // whether or not to send midi values through a hardware output, via easymidi
+let midi_out_portname = "UM-ONE:UM-ONE MIDI 1 28:0";
 
 let bpm = 120;
 // defining some note lengths
