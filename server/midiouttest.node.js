@@ -10,7 +10,7 @@ for (var i = 0; i < output.getPortCount(); ++i) {
 
 
 // Open the first available output port.
-output.openPort(0);
+output.openPort(1);
 
 // Send a MIDI message.
 output.sendMessage([176,22,1]);
