@@ -1,5 +1,5 @@
 var JZZ = require('jzz');
-require("jazz-midi");
+//require("jazz-midi");
 require('jzz-midi-gear')(JZZ);
 /*
 console.log("starting");
