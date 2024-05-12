@@ -22,7 +22,7 @@ if(use_midi_out){
     const midi = require('midi');
     const easymidi = require('easymidi');
     console.log(easymidi.getOutputs());
-    midi_hardware_engine = new easymidi.Output(portname);
+    midi_hardware_engine = new easymidi.Output(midi_out_portname);
 }
 
 
