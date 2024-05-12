@@ -18,10 +18,10 @@ output.sendMessage([176,22,1]);
 // Close the port when done.
 output.closePort();
 
-/*
+
 var JZZ = require('jzz');
 //require("jazz-midi");
-require('jzz-midi-gear')(JZZ);
+//require('jzz-midi-gear')(JZZ);
 
 console.log("starting");
 // start the MIDI engine:
@@ -52,10 +52,10 @@ let engine = JZZ({engine: "node"}).or('Cannot start MIDI engine!');
 let info = engine.info();
 console.log(info);
   engine
-  .openMidiOut('UM-ONE MIDI 1').or('Cannot open MIDI Out port!')
+  .openMidiOut(1).or('Cannot open MIDI Out port!')
   .wait(500).send([0x90,60,127]) // note on
   .wait(500).send([0x80,60,0]);  // note off
-JZZ().openMidiIn('UM-ONE MIDI 1').or('Cannot open MIDI In port!')
+JZZ().openMidiIn(1).or('Cannot open MIDI In port!')
   .and(function() { console.log('MIDI-In: ', this.name()); })
   .connect(function(msg) { console.log(msg.toString()); })
   .wait(5000).close();
