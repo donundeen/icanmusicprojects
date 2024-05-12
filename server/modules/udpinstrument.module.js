@@ -371,6 +371,7 @@ const UDPInstrument = class{
 
         // if there's a hardware midi device attached to this instrument
         if(this.midi_hardware_engine){
+            console.log("HARDWARE NOTE");
             this.midi_hardware_engine.send('noteon', {
                 note: note,
                 velocity: velocity,
