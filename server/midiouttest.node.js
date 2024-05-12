@@ -27,7 +27,7 @@ JZZ({sysex:true}).and(function() {
   JZZ().wait(500).close();  
 */
 
-let engine = JZZ({engine: "node"}).or('Cannot start MIDI engine!');
+let engine = JZZ().or('Cannot start MIDI engine!');
 let info = engine.info();
 console.log(info);
   engine
