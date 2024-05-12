@@ -28,8 +28,23 @@ console.log(easymidi.getOutputs());
 
 output = new easymidi.Output(portname);
 
-makenote(0, 65, 127, 2000);
+makenote(1, 65, 127, 500);
 
+setTimeout(function(){
+  makenote(2,67,127,500);
+}, 1000);
+setTimeout(function(){
+  makenote(3,67,127,500);
+}, 2000);
+setTimeout(function(){
+  makenote(4,67,127,1000);
+}, 3000);
+setTimeout(function(){
+  makenote(5,67,127,1000);
+}, 4000);
+setTimeout(function(){
+  makenote(6,67,127,1000);
+}, 5000);
 
 function makenote(channel, note, velocity, duration){
   output.send('noteon', {
