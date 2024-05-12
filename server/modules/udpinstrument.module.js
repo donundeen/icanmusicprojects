@@ -384,6 +384,8 @@ const UDPInstrument = class{
                     channel: this.midi_channel
                 });
             }, duration);
+        }else{
+            console.log("NNNNNNNNNNNNNNNo hardware engine");
         }
 
 
