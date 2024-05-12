@@ -1,7 +1,39 @@
+const midi = require('midi');
+
+
+var output = new midi.Output();
+console.log('Output ports: ' + output.getPortCount());
+
+for (var i = 0; i < output.getPortCount(); ++i) {
+    console.log('Port ' + i + ' name: ' + output.getPortName(i));
+}
+
+
+
+
+// Set up a new output.
+const output = new midi.Output();
+
+// Count the available output ports.
+output.getPortCount();
+
+// Get the name of a specified output port.
+output.getPortName(0);
+
+// Open the first available output port.
+output.openPort(0);
+
+// Send a MIDI message.
+output.sendMessage([176,22,1]);
+
+// Close the port when done.
+output.closePort();
+
+/*
 var JZZ = require('jzz');
 //require("jazz-midi");
 require('jzz-midi-gear')(JZZ);
-/*
+
 console.log("starting");
 // start the MIDI engine:
 JZZ({sysex:true}).and(function() {
@@ -26,7 +58,6 @@ JZZ({sysex:true}).and(function() {
   // ...
   // in Node.js - don't forget to stop the engine when done:
   JZZ().wait(500).close();  
-*/
 
 let engine = JZZ({engine: "node"}).or('Cannot start MIDI engine!');
 let info = engine.info();
@@ -39,5 +70,5 @@ JZZ().openMidiIn('UM-ONE MIDI 1').or('Cannot open MIDI In port!')
   .and(function() { console.log('MIDI-In: ', this.name()); })
   .connect(function(msg) { console.log(msg.toString()); })
   .wait(5000).close();
-
+*/
 
