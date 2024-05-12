@@ -3,7 +3,6 @@ functionCurve = require("./functionCurve.module");
 
 const UDPInstrument = class{
 
-    
     _type = "udp";
     type = "udp";
     /*

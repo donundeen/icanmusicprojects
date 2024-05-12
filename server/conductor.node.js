@@ -17,12 +17,19 @@ let bad_tiny_voices = [6,7,8,22,23,24,40,41,42,43,44,55,56,57,59,60,61,62,63,64,
 // midi hardward setup:
 let midi_hardware_engine = false;
 let use_midi_out = true; // whether or not to send midi values through a hardware output, via easymidi
-let midi_out_portname = "UM-ONE:UM-ONE MIDI 1 28:0";
+let midi_out_portname = "UM-ONE";
 if(use_midi_out){
     const midi = require('midi');
     const easymidi = require('easymidi');
-    console.log(easymidi.getOutputs());
-    midi_hardware_engine = new easymidi.Output(midi_out_portname);
+    let midi_outputs = easymidi.getOutputs();
+    console.log(midi_outputs);
+    let real_portname = false;
+    for(let i = 0; i<midi_outputs.length; i++){
+        if(midi_outputs[i].includes(midi_out_portname)){
+            real_portname = midi_outputs[i];
+        }
+    }
+    midi_hardware_engine = new easymidi.Output(real_portname);
 }
 
 
