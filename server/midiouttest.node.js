@@ -26,7 +26,11 @@ JZZ({sysex:true}).and(function() {
   // in Node.js - don't forget to stop the engine when done:
   JZZ().wait(500).close();  
 */
-  JZZ().or('Cannot start MIDI engine!')
+
+let engine = JZZ().or('Cannot start MIDI engine!');
+let info = engine.info();
+console.log(info);
+  engine
   .openMidiOut('UM-ONE MIDI 1').or('Cannot open MIDI Out port!')
   .wait(500).send([0x90,60,127]) // note on
   .wait(500).send([0x80,60,0]);  // note off
