@@ -59,5 +59,5 @@ JZZ().openMidiIn(1).or('Cannot open MIDI In port!')
   .and(function() { console.log('MIDI-In: ', this.name()); })
   .connect(function(msg) { console.log(msg.toString()); })
   .wait(5000).close();
-*/
+
 
