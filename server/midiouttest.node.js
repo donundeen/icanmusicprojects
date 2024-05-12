@@ -34,16 +34,16 @@ setTimeout(function(){
   makenote(2,67,127,500);
 }, 1000);
 setTimeout(function(){
-  makenote(3,67,127,500);
+  makenote(3,69,127,500);
 }, 2000);
 setTimeout(function(){
-  makenote(4,67,127,1000);
+  makenote(4,70,127,1000);
 }, 3000);
 setTimeout(function(){
-  makenote(5,67,127,1000);
+  makenote(5,72,127,1000);
 }, 4000);
 setTimeout(function(){
-  makenote(6,67,127,1000);
+  makenote(6,73,127,1000);
 }, 5000);
 
 function makenote(channel, note, velocity, duration){
