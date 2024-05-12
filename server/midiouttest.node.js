@@ -30,7 +30,7 @@ output = new easymidi.Output(portname);
 output.send('noteon', {
   note: 64,
   velocity: 127,
-  channel: 1
+  channel: 0
 });
 
 
