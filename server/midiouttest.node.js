@@ -1,6 +1,6 @@
 var JZZ = require('jzz');
 require('jzz-midi-gear')(JZZ);
-
+/*
 console.log("starting");
 // start the MIDI engine:
 JZZ({sysex:true}).and(function() {
@@ -24,4 +24,15 @@ JZZ({sysex:true}).and(function() {
   });
   // ...
   // in Node.js - don't forget to stop the engine when done:
-  JZZ().wait(500).close();
+  JZZ().wait(500).close();  
+*/
+  JZZ().or('Cannot start MIDI engine!')
+  .openMidiOut().or('Cannot open MIDI Out port!')
+  .wait(500).send([0x90,60,127]) // note on
+  .wait(500).send([0x80,60,0]);  // note off
+JZZ().openMidiIn().or('Cannot open MIDI In port!')
+  .and(function() { console.log('MIDI-In: ', this.name()); })
+  .connect(function(msg) { console.log(msg.toString()); })
+  .wait(5000).close();
+
+
