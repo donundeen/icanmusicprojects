@@ -1,0 +1,14 @@
+[Unit]
+Description=service to run the icanmusic system, starting with conductor.node.js
+Documentation=see my github
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/keylogger.pid
+Restart=on-failure
+RestartSec=4
+ExecStart=/home/pi/icanmusicprojects/server/runicanmusic.sh
+
+[Install]
+WantedBy=multi-user.target

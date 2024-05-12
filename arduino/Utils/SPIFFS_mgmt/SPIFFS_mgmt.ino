@@ -29,7 +29,7 @@ void listAllFiles(){
  
 void setup() {
  
-  Serial.begin(9600);
+  Serial.begin(115200);
  
  
   if (!SPIFFS.begin(true)) {
