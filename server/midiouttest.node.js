@@ -34,6 +34,7 @@ setTimeout(function(){
 }, 6000);
 
 function makenote(channel, note, velocity, duration){
+  console.log("sending ", channel, note, velocity, duration);
   output.send('noteon', {
     note: note,
     velocity: velocity,
