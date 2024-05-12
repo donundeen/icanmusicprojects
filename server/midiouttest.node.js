@@ -49,7 +49,7 @@ setTimeout(function(){
 function makenote(channel, note, velocity, duration){
   output.send('noteon', {
     note: note,
-    velocity: note,
+    velocity: velocity,
     channel: channel
   });
   setTimeout(function(){
