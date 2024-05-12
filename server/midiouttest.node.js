@@ -1,4 +1,5 @@
 var JZZ = require('jzz');
+require("jazz-midi");
 require('jzz-midi-gear')(JZZ);
 /*
 console.log("starting");
@@ -27,7 +28,7 @@ JZZ({sysex:true}).and(function() {
   JZZ().wait(500).close();  
 */
 
-let engine = JZZ().or('Cannot start MIDI engine!');
+let engine = JZZ({engine: "node"}).or('Cannot start MIDI engine!');
 let info = engine.info();
 console.log(info);
   engine
