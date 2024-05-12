@@ -1,6 +1,6 @@
 const midi = require('midi');
 
-let portname = "UM-ONE";
+let portname = "UM-ONE:UM-ONE MIDI 1 28:0";
 
 var output = new midi.Output();
 console.log('Output ports: ' + output.getPortCount());
@@ -23,6 +23,9 @@ output.closePort();
 
 
 const easymidi = require('easymidi');
+
+console.log(easymidi.getOutputs());
+
 output = new easymidi.Output(portname);
 output.send('noteon', {
   note: 64,
