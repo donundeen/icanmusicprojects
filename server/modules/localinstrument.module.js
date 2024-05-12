@@ -334,9 +334,9 @@ const LocalInstrument = class{
 
     }
 
-    midiMakeNote(pitch, velocity, duration){
+    midiMakeNote(note, velocity, duration){
         // note: each instrument needs its own channel, or the instrument will be the same tone.
-        if(!Number.isFinite(pitch) || !Number.isFinite(velocity) || !Number.isFinite(duration)){
+        if(!Number.isFinite(note) || !Number.isFinite(velocity) || !Number.isFinite(duration)){
             console.log("bad midi values, returning");
             return;
         }
@@ -345,17 +345,17 @@ const LocalInstrument = class{
             return;
         }
         this.synth
-        .noteOn(this.midi_channel, pitch, velocity)
+        .noteOn(this.midi_channel, note, velocity)
         .wait(duration)
-        .noteOff(this.midi_channel, pitch);
+        .noteOff(this.midi_channel, note);
 
 
         // if there's a hardware midi device attached to this instrument
         if(this.midi_hardware_engine){
             this.midi_hardware_engine.send('noteon', {
-                note: this.midi_channel,
+                note: note,
                 velocity: velocity,
-                channel: channel
+                channel: this.midi_channel
             });
             setTimeout(()=>{
                 this.midi_hardware_engine.send('noteoff', {
@@ -367,7 +367,7 @@ const LocalInstrument = class{
         }
 
         if(this.makenote_callback){
-            this.makenote_callback(this, pitch, velocity, duration);
+            this.makenote_callback(this, note, velocity, duration);
         }
     }
 

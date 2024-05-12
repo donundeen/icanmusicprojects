@@ -372,9 +372,9 @@ const UDPInstrument = class{
         // if there's a hardware midi device attached to this instrument
         if(this.midi_hardware_engine){
             this.midi_hardware_engine.send('noteon', {
-                note: this.midi_channel,
+                note: note,
                 velocity: velocity,
-                channel: channel
+                channel: this.midi_channel
             });
             setTimeout(()=>{
                 this.midi_hardware_engine.send('noteoff', {
@@ -387,7 +387,7 @@ const UDPInstrument = class{
 
 
         if(this.makenote_callback){
-            this.makenote_callback(this, pitch, velocity, duration);
+            this.makenote_callback(this, note, velocity, duration);
         }
     }
 
