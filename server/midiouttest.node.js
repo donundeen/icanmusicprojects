@@ -27,7 +27,7 @@ const easymidi = require('easymidi');
 console.log(easymidi.getOutputs());
 
 output = new easymidi.Output(portname);
-output.send('noteon', {
+output.send('noteoff', {
   note: 64,
   velocity: 127,
   channel: 0
