@@ -665,11 +665,51 @@ int derive_velocity(int val){
   return velocity;
 }
 
+
 int derive_duration(float val){
+
   return pulseToMS(N16);
+/*
+  unsigned long raw_duration = updateLastNoteTime();
+  int duration = quantizeToNoteLength(raw_duration);
+  return duration;
+*/
 }
 
+unsigned long lastNoteTime = millis();
+unsigned long updateLastNoteTime(){
+  unsigned long now = millis();
+  unsigned long raw_duration = now - lastNoteTime;
+  lastNoteTime = now;
+  return raw_duration;
+}
 
+int quantizeToNoteLength(unsigned long val){
+//  int notelengths[] = {WN, HN, HN3, QN, QN3, N8, N83, N16};
+  if(val < ((unsigned long)pulseToMS(N16) +(unsigned long)pulseToMS(N83) ) /  2.0 ){
+    return pulseToMS(N16);
+  }
+  if(val < ((unsigned long)pulseToMS(N83) +(unsigned long)pulseToMS(N8) ) /  2.0 ){
+    return pulseToMS(N83);
+  }
+  if(val < ((unsigned long)pulseToMS(N8) +(unsigned long)pulseToMS(QN3) ) /  2.0 ){
+    return pulseToMS(N8);
+  }
+  if(val < ((unsigned long)pulseToMS(QN3) +(unsigned long)pulseToMS(QN) ) /  2.0 ){
+    return pulseToMS(QN3);
+  }
+  if(val < ((unsigned long)pulseToMS(QN) +(unsigned long)pulseToMS(HN3) ) /  2.0 ){
+    return pulseToMS(QN);
+  }
+  if(val < ((unsigned long)pulseToMS(HN3) +(unsigned long)pulseToMS(HN) ) /  2.0 ){
+    return pulseToMS(HN3);
+  }
+  if(val < ((unsigned long)pulseToMS(HN) +(unsigned long)pulseToMS(WN) ) /  2.0 ){
+    return pulseToMS(HN);
+  }
+  return pulseToMS(WN);
+
+}
 
 
 
@@ -765,7 +805,6 @@ void setup() {
 //  t.setInterval(changerate_loop, 100);
   changerate_loop();
   note_loop();
-
 
   config_setup();
 
