@@ -286,6 +286,7 @@ float elasticMinMaxScale = .005; // if true, then the min and max values used fo
 
 ////////////////////////////////////
 // SENSOR PROCESSING GLOBALS
+bool firstSense = false;
 int ADCRaw = -1;
 float changerate = -1.0;
 float prevChangeVal = -1.0;
@@ -307,8 +308,7 @@ void sensor_setup(){
   Serial.println("setup");
 
   // for incoming UDP
-//  SLIPSerial.begin(115200);
-  pinMode(21, INPUT_PULLUP);
+  //  SLIPSerial.begin(115200);
 
   pinMode(BUILTIN_LED, OUTPUT);
 
@@ -503,7 +503,7 @@ void sensor_setup(){
 
 
 void note_loop(){
-  if(ADCRaw == -1){
+  if(!firstSense){
     // sensor hasn't sensed yet, skip this
     return;
   }
@@ -603,6 +603,7 @@ void sensor_loop(){
 
   Serial.println("read value");
   Serial.println(ADCRaw);
+  firstSense = true;
 
 
   /*
@@ -679,7 +680,7 @@ int derive_duration(float val){
 
 // NETWORK+SENSOR CODE
 // sending data over OSC/UDP.
-void sendOSCUDP(int flexVal){
+void sendOSCUDP(int sendVal){
   /* egs
    *  '/perifit/1', valueInt1, valueInt2, device.name);
    *  28:ec:9a:14:2b:b3 l 180
@@ -694,7 +695,7 @@ void sendOSCUDP(int flexVal){
   char ipbuffer[20];
   thisarduinoip.toCharArray(ipbuffer, 20);
   OSCMessage oscmsg(DEVICE_ID);  
-  oscmsg.add(flexVal).add(ipbuffer);
+  oscmsg.add(sendVal).add(ipbuffer);
   udp.beginPacket(UDPReceiverIP, UDPPort);
 //  udp.write(buffer, msg.length()+1);
   oscmsg.send(udp);
