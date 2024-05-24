@@ -29,7 +29,9 @@ if(use_midi_out){
             real_portname = midi_outputs[i];
         }
     }
-    midi_hardware_engine = new easymidi.Output(real_portname);
+    if(real_portname){
+        midi_hardware_engine = new easymidi.Output(real_portname);   
+    }
 }
 
 
