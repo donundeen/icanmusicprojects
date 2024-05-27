@@ -1,6 +1,6 @@
 [Unit]
 Description=service to run the icanmusic system, starting with conductor.node.js
-Documentation=see my github
+Documentation=https://github.com/donundeen/icanmusicprojects
 After=network.target
 
 [Service]
