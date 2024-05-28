@@ -75,7 +75,8 @@ int workinglistlength = 0;
 // if the device has a synth/speakers attached, set this to true
 // if false, it will send a makenote message out over the netework,
 // for the server to play.
-boolean localSynth = false;
+// (actually, it should probalby always do both, for easier management)
+boolean localSynth = true;
 
 ////////////////// SETING UP CONFIG WEBPAGE - FOR WIFI AND OTHER VALUES
 //define your default values here, if there are different values in config.json, they are overwritten.
