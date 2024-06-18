@@ -5,7 +5,7 @@ let Bluetooth = {
 
 
 
-    constructor(){
+    init(){
         console.log("bluetooth init 1");
 
         if(!this.active) return;
@@ -17,6 +17,10 @@ let Bluetooth = {
 
 
     test(){
+        if(!this.active) return;
+
+        if(!this.blue){ this.init();}
+
         this.blue.on(this.blue.bluetoothEvents.Controller, function(controllers){
             console.log('Controllers:' + JSON.stringify(controllers,null,2))
         });
