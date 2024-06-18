@@ -3,14 +3,14 @@ let Debugging = {
     active : false,
 
     log(text){
-        if(!this.active) return;
+        if(!this.active){ return};
 
         console.log(...arguments);
         
     },
 
-    speakerTest(synth){
-        if(!this.active) return;
+    testSynth(synth){
+        if(!this.active){ return};
 
         this.log("speakerTest");
         channel = 1;
