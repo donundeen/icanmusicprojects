@@ -24,7 +24,14 @@ let Bluetooth = {
 
 
         var hasBluetooth=this.blue.checkBluetoothController();
-        console.log('system has bluetooth controller:' + hasBluetooth)
+        console.log('system has bluetooth controller:' + hasBluetooth);
+
+        this.blue.on(this.blue.bluetoothEvents.Device, function (devices) {
+            console.log('devices:' + JSON.stringify(devices,null,2))
+            device = devices.filter((d)=> {return d.mac = this.deviceID})[0];
+            console.log(device);
+        });
+
         
         if(hasBluetooth) {
             let self = this;
@@ -41,7 +48,7 @@ let Bluetooth = {
                 console.log("trying connecting....")
                 console.log("info", self.blue.info(self.deviceID));
                 console.log(self.blue.connect(self.deviceID));
-                self.blue.scan(false);                
+              //  self.blue.scan(false);                
             });
 /*
             console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
