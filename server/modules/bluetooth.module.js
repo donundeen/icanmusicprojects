@@ -21,7 +21,6 @@ let Bluetooth = {
 
         if(!this.blue){ this.init();}
 
-        self = this;
 
 
         this.blue.on(this.blue.bluetoothEvents.Controller, function(controllers){
@@ -46,8 +45,9 @@ let Bluetooth = {
         console.log('system has bluetooth controller:' + hasBluetooth)
         
         if(hasBluetooth) {
-            console.log('isBluetooth Ready:' + this.blue.isBluetoothReady)
-            self.blue.scan(true)
+            console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
+            this.blue.scan(true);
+            let self = this;
             setTimeout(function(){
                 console.log('stopping scan')
                 self.blue.scan(false)
