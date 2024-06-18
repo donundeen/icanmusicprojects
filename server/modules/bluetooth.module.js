@@ -7,8 +7,6 @@ let Bluetooth = {
     active: false,
     connected: false,
 
-
-
     init(){
         console.log("bluetooth init 1");
 
@@ -19,8 +17,49 @@ let Bluetooth = {
         this.blue.Bluetooth();
     },
 
+    keepUp(){
+        if(!this.active) return;
+        let self = this;
+
+        function deviceCheckAndConnect(options, callback) {
+            
+            // this is where we might wait until we see a set of headphones connected before we start
+            exec("pacmd list-sinks", (error, stdout, stderr) => {
+                if (error) {
+                  console.log(`exec error: ${error.message}`);
+                }
+                if (stderr) {
+                  console.log(`exec stderr: ${stderr}`);
+                }
+                //		if(stdout.includes("drive: <module-bluez5-device.c>")){
+                if (stdout.includes("module-bluez5-device")) {
+                    console.log("headphones found");
+                    callback();
+                } else {
+                    console.log("headphones not found, connecting");
+                    exec("bluetoothctl connect " + self.deviceID, (error, stdout, stderr) => {
+                        if (error) {
+                        console.log(`exec error: ${error.message}`);
+                        }
+                        if (stderr) {
+                        console.log(`exec stderr: ${stderr}`);
+                        }
+                //     console.log(`exec stdout ${stdout}`);
+                    });
+                }                  
+            });          
+        }
+
+        deviceCheckAndConnect();
+        setInterval(deviceCheckAndConnect, 10000);
+
+    },
 
     test(){
+        this.keepUp();
+    },
+
+    test2(){
         if(!this.active) return;
 
         if(!this.blue){ this.init();}
