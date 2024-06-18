@@ -32,7 +32,7 @@ let Bluetooth = {
                   console.log(`exec stderr: ${stderr}`);
                 }
                 if (stdout) {
-                    console.log(`exec stdout: ${stdout}`);
+            //        console.log(`exec stdout: ${stdout}`);
                 }
   
                 //		if(stdout.includes("drive: <module-bluez5-device.c>")){
