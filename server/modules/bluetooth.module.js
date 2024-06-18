@@ -56,7 +56,7 @@ let Bluetooth = {
             }
 
 
-            waitForReady(this, function(){
+            waitForReady(function(){
                 console.log("trying connecting....")
                 console.log(self.blue.info(self.deviceID));
                 self.blue.connect(self.deviceID);
