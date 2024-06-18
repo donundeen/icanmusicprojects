@@ -46,11 +46,20 @@ let Bluetooth = {
         
         if(hasBluetooth) {
             let self = this;
-            this.waitForReady(function(){
+
+            function waitForReady(callback){
+                console.log('isBluetooth Ready:' + self.blue.isBluetoothReady);
+                if(self.blue.isBluetoothReady){
+                    callback();
+                }
+                setTimeout(waitForReady, 1000);
+            }
+
+
+            waitForReady(this, function(){
                 console.log("trying connecting....")
                 console.log(self.blue.info(self.deviceID));
                 self.blue.connect(self.deviceID);
-
             });
 /*
             console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
@@ -67,13 +76,7 @@ let Bluetooth = {
         }
     },
 
-    waitForReady(callback){
-        console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
-        if(this.blue.isBluetoothReady){
-            callback();
-        }
-        setTimeout(this.waitForReady, 1000);
-    }
+
 
 }
 
