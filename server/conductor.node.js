@@ -14,8 +14,8 @@ db.log("starting");
 
 const bluetooth = require('./modules/bluetooth.module.js').Bluetooth;
 bluetooth.active = true;
-bluetooth.deviceID = "74:F0:F0:AB:D5:21",
-bluetooth.keepUp();
+bluetooth.deviceID = "74:F0:F0:AB:D5:21";
+//bluetooth.keepUp();
 
 ////////////////// CONFIG VARIABLES //////////////////////////
 let env = "rpi"; // "rpi" or "mac" -- how to determine this from code?
