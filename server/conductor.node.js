@@ -7,7 +7,8 @@ and shows how messages are routed from one to the other.
 
 ////////////////////////////////
 // LOAD DEBUGGING FRAMEWORK
-let db = require('./modules/debugging.module.js');
+const db = require('./modules/debugging.module.js').Debugging;
+// TURN DEBUGGING ON/OFF HERE
 db.active = true;
 db.log("starting");
 
@@ -163,6 +164,8 @@ if(synthtype == "tiny"){
     }
     synth.good_voices = tiny_voices;
 }                
+
+db.testSynth(synth);
 
 orchestra.synth = synth;
 orchestra.synthDeviceVoices = synthDeviceVoices;
