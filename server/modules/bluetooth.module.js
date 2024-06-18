@@ -1,5 +1,6 @@
 let Bluetooth = {
     deviceID : "74:F0:F0:AB:D5:21",
+    deviceName : "",
     blue : false,
     active: false,
     connected: false,
@@ -35,19 +36,48 @@ let Bluetooth = {
         
         if(hasBluetooth) {
             let self = this;
-            self.blue.scan(true);
-            function waitForReady(callback){
-                console.log('isBluetooth Ready:' + self.blue.isBluetoothReady);
-                if(self.blue.isBluetoothReady){
-                    callback();
-                }
-                setTimeout(function(){waitForReady(callback)}, 1000);
-            }
 
-            waitForReady(function(){
-                console.log("trying connecting....")
-                console.log("info", self.blue.info(self.deviceID));
-                console.log(self.blue.connect(self.deviceID));
+            function waitForHeadphones(options, callback) {
+                //    callback();
+                    
+                
+                  // if there's a headphones_id set, then we need to try to connect to it manually here
+                  if (self.deviceID) {
+                    console.log("connected to headphones " + self.deviceID);
+                    exec("bluetoothctl connect " + self.deviceIDD, (error, stdout, stderr) => {
+                      if (error) {
+                        console.log(`exec error: ${error.message}`);
+                      }
+                      if (stderr) {
+                        console.log(`exec stderr: ${stderr}`);
+                      }
+                 //     console.log(`exec stdout ${stdout}`);
+                    });
+                  }
+                
+                  // this is where we might wait until we see a set of headphones connected before we start
+                  exec("pacmd list-sinks", (error, stdout, stderr) => {
+                    if (error) {
+                      console.log(`exec error: ${error.message}`);
+                    }
+                    if (stderr) {
+                      console.log(`exec stderr: ${stderr}`);
+                    }
+                    //		if(stdout.includes("drive: <module-bluez5-device.c>")){
+                    if (stdout.includes("module-bluez5-device")) {
+                
+                      console.log("headphones found");
+                      callback();
+                    } else {
+                      console.log("headphones not found");
+                 //     console.log(`exec stdout ${stdout}`);
+                      setTimeout(function () { waitForHeadphones(options, callback) }, 1000);
+                    }
+                  });          
+                }
+
+            waitForHeadphones({}, function(){
+                console.log("^&^&^&^&^&^&^&^&^&^&&^&^&^&^ CONNECTED");
               //  self.blue.scan(false);                
             });
 /*
