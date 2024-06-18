@@ -52,7 +52,7 @@ let Bluetooth = {
                 if(self.blue.isBluetoothReady){
                     callback();
                 }
-                setTimeout(waitForReady, 1000);
+                setTimeout(function(){waitForReady(callback)}, 1000);
             }
 
 
