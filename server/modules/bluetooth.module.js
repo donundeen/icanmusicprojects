@@ -52,9 +52,10 @@ let Bluetooth = {
                 self.blue.connect(self.deviceID);
 
             });
-
+/*
             console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
             console.log(this.blue.info(this.deviceID));
+            */
 /*
             this.blue.scan(true);
             setTimeout(function(){
