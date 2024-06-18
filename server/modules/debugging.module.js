@@ -9,7 +9,7 @@ let Debugging = {
         
     },
 
-    testSynth(synth){
+    testSynth(synth, bluetooth){
         if(!this.active){ return};
 
         this.log("speakerTest");
@@ -28,6 +28,12 @@ let Debugging = {
             .wait(duration)
             .noteOff(channel, note);
         }, repeat);
+
+    },
+
+    bluetoothTest(bluetooth){
+        bluetooth.test();
+
 
     }
 

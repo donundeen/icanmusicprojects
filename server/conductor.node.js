@@ -12,6 +12,8 @@ const db = require('./modules/debugging.module.js').Debugging;
 db.active = true;
 db.log("starting");
 
+const bluetooth = require('./modules/bluetooth.module.js').Bluetooth;
+bluetooth.active = true;
 
 ////////////////// CONFIG VARIABLES //////////////////////////
 let env = "rpi"; // "rpi" or "mac" -- how to determine this from code?
@@ -165,7 +167,7 @@ if(synthtype == "tiny"){
     synth.good_voices = tiny_voices;
 }                
 
-db.testSynth(synth);
+db.testSynth(synth, bluetooth);
 
 orchestra.synth = synth;
 orchestra.synthDeviceVoices = synthDeviceVoices;
