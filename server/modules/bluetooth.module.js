@@ -45,21 +45,34 @@ let Bluetooth = {
         console.log('system has bluetooth controller:' + hasBluetooth)
         
         if(hasBluetooth) {
+            let self = this;
+            this.waitForReady(function(){
+                console.log("trying connecting....")
+                console.log(self.blue.info(self.deviceID));
+                self.blue.connect(self.deviceID);
+
+            });
+
             console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
             console.log(this.blue.info(this.deviceID));
 /*
             this.blue.scan(true);
-            let self = this;
             setTimeout(function(){
                 console.log('stopping scan')
                 self.blue.scan(false)
                 console.log(self.blue.info(self.deviceID));
             },5000);
             */
-            this.blue.connect(this.deviceID);
         }
-    }
+    },
 
+    waitForReady(callback){
+        console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
+        if(this.blue.isBluetoothReady){
+            callback();
+        }
+        setTimeout(this.waitForReady, 1000);
+    }
 
 }
 
