@@ -31,6 +31,10 @@ let Bluetooth = {
                 if (stderr) {
                   console.log(`exec stderr: ${stderr}`);
                 }
+                if (stdout) {
+                    console.log(`exec stdout: ${stdout}`);
+                }
+  
                 //		if(stdout.includes("drive: <module-bluez5-device.c>")){
                 if (stdout.includes("module-bluez5-device")) {
                     console.log("headphones found");
@@ -38,12 +42,12 @@ let Bluetooth = {
                     console.log("headphones not found, connecting");
                     exec("bluetoothctl connect " + self.deviceID, (error, stdout, stderr) => {
                         if (error) {
-                        console.log(`exec error: ${error.message}`);
+                            console.log(`exec error: ${error.message}`);
                         }
                         if (stderr) {
-                        console.log(`exec stderr: ${stderr}`);
+                            console.log(`exec stderr: ${stderr}`);
                         }
-                //     console.log(`exec stdout ${stdout}`);
+                        console.log(`exec stdout ${stdout}`);
                     });
                 }                  
             });          
