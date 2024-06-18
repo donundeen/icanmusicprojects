@@ -21,6 +21,9 @@ let Bluetooth = {
 
         if(!this.blue){ this.init();}
 
+        self = this;
+
+
         this.blue.on(this.blue.bluetoothEvents.Controller, function(controllers){
             console.log('Controllers:' + JSON.stringify(controllers,null,2))
         });
@@ -44,12 +47,13 @@ let Bluetooth = {
         
         if(hasBluetooth) {
             console.log('isBluetooth Ready:' + this.blue.isBluetoothReady)
-            this.blue.scan(true)
+            self.blue.scan(true)
             setTimeout(function(){
                 console.log('stopping scan')
-                this.blue.scan(false)
-                this.blue.info('00:0C:8A:8C:D3:71')
-            },20000)
+                self.blue.scan(false)
+                self.blue.info(self.deviceID);
+            },5000);
+            this.blue.connect(this.deviceID);
         }
     }
 
