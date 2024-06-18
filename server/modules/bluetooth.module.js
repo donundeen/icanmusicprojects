@@ -11,7 +11,7 @@ let Bluetooth = {
         if(!this.active) return;
 
         console.log("bluetooth init");
-        this.blue = require("bluetoothctl");
+        this.blue = require("bluetoothctlwe");
         this.blue.Bluetooth();
     },
 
