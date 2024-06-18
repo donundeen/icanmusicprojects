@@ -15,7 +15,7 @@ let Debugging = {
         this.log("speakerTest");
         let channel = 1;
         let note = 65;
-        let velocity = 128
+        let velocity = 127
         let duration = 500
         let repeat = 750;
 
