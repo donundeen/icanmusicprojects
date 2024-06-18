@@ -13,13 +13,13 @@ let Debugging = {
         if(!this.active){ return};
 
         this.log("speakerTest");
-        channel = 1;
-        note = 65;
-        velocity = 128
-        duration = 500
-        repeat = 750;
+        let channel = 1;
+        let note = 65;
+        let velocity = 128
+        let duration = 500
+        let repeat = 750;
 
-        self = this;
+        let self = this;
 
         setInterval(function(){
             self.log("test note");
