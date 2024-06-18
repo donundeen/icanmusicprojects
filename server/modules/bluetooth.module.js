@@ -34,7 +34,6 @@ let Bluetooth = {
                 //		if(stdout.includes("drive: <module-bluez5-device.c>")){
                 if (stdout.includes("module-bluez5-device")) {
                     console.log("headphones found");
-                    callback();
                 } else {
                     console.log("headphones not found, connecting");
                     exec("bluetoothctl connect " + self.deviceID, (error, stdout, stderr) => {
