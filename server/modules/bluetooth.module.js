@@ -1,3 +1,5 @@
+const { exec } = require('child_process');
+
 let Bluetooth = {
     deviceID : "74:F0:F0:AB:D5:21",
     deviceName : "",
@@ -44,7 +46,7 @@ let Bluetooth = {
                   // if there's a headphones_id set, then we need to try to connect to it manually here
                   if (self.deviceID) {
                     console.log("connected to headphones " + self.deviceID);
-                    exec("bluetoothctl connect " + self.deviceIDD, (error, stdout, stderr) => {
+                    exec("bluetoothctl connect " + self.deviceID, (error, stdout, stderr) => {
                       if (error) {
                         console.log(`exec error: ${error.message}`);
                       }
