@@ -8,6 +8,7 @@ let Bluetooth = {
     constructor(){
         if(!this.active) return;
 
+        console.log("bluetooth init");
         this.blue = require("bluetoothctl");
         this.blue.Bluetooth();
     },
