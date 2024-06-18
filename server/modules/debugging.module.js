@@ -27,7 +27,7 @@ let Debugging = {
             .noteOn(channel, note, velocity)
             .wait(duration)
             .noteOff(channel, note);
-        }, repeat).bind(this);
+        }, repeat);
 
     }
 
