@@ -19,8 +19,10 @@ let Debugging = {
         duration = 500
         repeat = 750;
 
+        self = this;
+
         setInterval(function(){
-            this.log("test note");
+            self.log("test note");
             synth
             .noteOn(channel, note, velocity)
             .wait(duration)
