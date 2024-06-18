@@ -12,7 +12,7 @@ let Debugging = {
     testSynth(synth, bluetooth){
         if(!this.active){ return};
 
-        this.bluetoothTest(bluetooth);
+      //  this.bluetoothTest(bluetooth);
 
         this.log("speakerTest");
         let channel = 1;
