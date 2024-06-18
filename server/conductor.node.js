@@ -5,6 +5,11 @@ holds the configuration variables
 and shows how messages are routed from one to the other.
 */
 
+////////////////////////////////
+// LOAD DEBUGGING FRAMEWORK
+let db = require('./modules/debugging.module.js');
+db.active = true;
+db.log("starting");
 
 
 ////////////////// CONFIG VARIABLES //////////////////////////
@@ -93,14 +98,6 @@ var udpPort = new osc.UDPPort({
 });
 
 udpPort.open();
-
-
-////////////////////////////////
-// LOAD DEBUGGING FRAMEWORK
-let db = require('debugging');
-db.active = true;
-db.log("starting");
-
 
 
 // transport generates beat messges
