@@ -28,7 +28,7 @@ let Bluetooth = {
         
         if(hasBluetooth) {
             let self = this;
-
+            self.blue.scan(true);
             function waitForReady(callback){
                 console.log('isBluetooth Ready:' + self.blue.isBluetoothReady);
                 if(self.blue.isBluetoothReady){
@@ -41,6 +41,7 @@ let Bluetooth = {
                 console.log("trying connecting....")
                 console.log("info", self.blue.info(self.deviceID));
                 console.log(self.blue.connect(self.deviceID));
+                self.blue.scan(false);                
             });
 /*
             console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
