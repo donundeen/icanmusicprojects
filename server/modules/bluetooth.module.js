@@ -40,7 +40,7 @@ let Bluetooth = {
                     console.log("headphones found");
                 } else {
                     console.log("headphones not found, connecting");
-                    exec("bluetoothctl connect " + self.deviceID, (error, stdout, stderr) => {
+                    exec("/usr/bin/bluetoothctl connect " + self.deviceID, (error, stdout, stderr) => {
                         if (error) {
                             console.log(`exec error: ${error.message}`);
                         }
