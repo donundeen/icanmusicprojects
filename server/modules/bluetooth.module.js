@@ -6,6 +6,8 @@ let Bluetooth = {
 
 
     constructor(){
+        console.log("bluetooth init 1");
+
         if(!this.active) return;
 
         console.log("bluetooth init");
