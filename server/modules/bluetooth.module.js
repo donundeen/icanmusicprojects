@@ -46,13 +46,16 @@ let Bluetooth = {
         
         if(hasBluetooth) {
             console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
+            console.log(self.blue.info(self.deviceID));
+/*
             this.blue.scan(true);
             let self = this;
             setTimeout(function(){
                 console.log('stopping scan')
                 self.blue.scan(false)
-                self.blue.info(self.deviceID);
+                console.log(self.blue.info(self.deviceID));
             },5000);
+            */
             this.blue.connect(this.deviceID);
         }
     }
