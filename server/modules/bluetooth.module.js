@@ -22,25 +22,6 @@ let Bluetooth = {
         if(!this.blue){ this.init();}
 
 
-
-        this.blue.on(this.blue.bluetoothEvents.Controller, function(controllers){
-            console.log('Controllers:' + JSON.stringify(controllers,null,2))
-        });
-            
-        this.blue.on(this.blue.bluetoothEvents.DeviceSignalLevel, function(devices,mac,signal){
-            console.log('signal level of:' + mac + ' - ' + signal)
-        
-        });
-        
-        this.blue.on(this.blue.bluetoothEvents.Device, function (devices) {
-            console.log('devices:' + JSON.stringify(devices,null,2))
-        })
-        
-        this.blue.on(this.blue.bluetoothEvents.PassKey, function (passkey) {
-            console.log('Confirm passkey:' + passkey)
-            blue.confirmPassKey(true);
-        })
-        
         var hasBluetooth=this.blue.checkBluetoothController();
         console.log('system has bluetooth controller:' + hasBluetooth)
         
@@ -54,7 +35,6 @@ let Bluetooth = {
                 }
                 setTimeout(function(){waitForReady(callback)}, 1000);
             }
-
 
             waitForReady(function(){
                 console.log("trying connecting....")
