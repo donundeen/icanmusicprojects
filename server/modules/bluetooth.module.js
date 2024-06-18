@@ -46,7 +46,7 @@ let Bluetooth = {
         
         if(hasBluetooth) {
             console.log('isBluetooth Ready:' + this.blue.isBluetoothReady);
-            console.log(self.blue.info(self.deviceID));
+            console.log(this.blue.info(this.deviceID));
 /*
             this.blue.scan(true);
             let self = this;
