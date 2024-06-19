@@ -156,7 +156,7 @@ const UDPInstrument = class{
     }
 
     set midi_voice(voice){
-        console.log("setting voice to ") + voice;
+        console.log("setting voice to :: " + voice);
         this._midi_voice = voice;
         this.midiSetInstrument();
     }

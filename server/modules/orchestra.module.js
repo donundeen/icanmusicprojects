@@ -191,6 +191,7 @@ class Orchestra{
 
     udp_instrument_set_value(name, prop, value){
         console.log("setting udp instr value" , name, prop, value);
+        console.log("value is " + value);
         if(this.udpInstruments[name]){
             this.udpInstruments[name][prop] = value;
         }
