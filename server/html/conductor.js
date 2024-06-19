@@ -377,7 +377,8 @@ $(function() {
                 let data = {id:id, 
                             instrtype: instrtype,
                             var: "midi_voice",
-                            val: ui.value };
+                            val: ui.value,
+                            foo: "bar1" };
                 message(address, data);                
             }
         });
@@ -399,15 +400,18 @@ $(function() {
             if(!isNaN(val)){
                 $( ".midi-voice",instr ).slider("value", val);
                 $( ".voice_display",instr ).val(val);
-                sendVoiceVal(val);                
+                let instrtype = $(instr).data("instrtype");
+                let id = $(instr).attr("id");               
+                sendVoiceVal(val, id, instrtype);                
             }
         }
-        function sendVoiceVal(voiceval){
+        function sendVoiceVal(voiceval, id, instrtype){
             let address = "instrval";            
             let data = {id:id, 
                 instrtype: instrtype,
                 var: "midi_voice",
-                val: voiceval };
+                val: voiceval,
+                foo: "bar2" };
             message(address, data);             
         }
 
