@@ -249,6 +249,8 @@ $(function() {
             $( ".midi-range",instr ).slider( "option", "values", [ midimin, midimax ] );
             $( ".range_display",instr ).val(  midimin + " - " + midimax );
             $( ".midi-voice",instr ).slider( "option", "value", midi_voice );
+            $( ".voice_display",instr ).val(  midi_voice );
+
             return;
         }
 
