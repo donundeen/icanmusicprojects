@@ -12,8 +12,10 @@ const db = require('./modules/debugging.module.js').Debugging;
 db.active = true;
 db.log("starting");
 
+
+
 const bluetooth = require('./modules/bluetooth.module.js').Bluetooth;
-bluetooth.active = true;
+bluetooth.active = false;
 bluetooth.deviceID = "40:EF:4C:6F:C8:45"; //relay: 40:EF:4C:6F:C8:45, oontz 74:F0:F0:AB:D5:21
 bluetooth.keepUp();
 
