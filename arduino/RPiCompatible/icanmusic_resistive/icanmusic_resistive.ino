@@ -43,7 +43,7 @@
 
 ///////////////////////////
 // DEVICE CONFIGS
-#define sensorPin  32 // Flex Sensor is connected to this pin
+#define sensorPin  A2 // Flex Sensor is connected to this pin
 
 // sensor config vars - pins
 // Just test touch pin - Touch0 is T0 which is on GPIO 4.
