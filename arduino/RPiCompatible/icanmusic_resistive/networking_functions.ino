@@ -120,7 +120,8 @@ void announceCreation(){
     thisarduinoip.toCharArray(ipbuffer, 20);
     Serial.println(ipbuffer);
     OSCMessage oscmsg("/announceUDPInstrument");  
-    oscmsg.add(DEVICE_NAME);
+    oscmsg.add(DEVICE_NAME).add(midi_voice).add(midimin).add(midimax);
+//    oscmsg.add(midi_voice).add(midimin).add(midimax);
  //   udp.beginPacket(UDPReceiverIP, UDPPort);
     udp.beginPacket(UDPReceiverIP, 7005); // this needs to get set in a config somehwere...
  

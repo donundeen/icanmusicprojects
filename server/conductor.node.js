@@ -74,7 +74,7 @@ curvecollection = {
     logdnthresh : [0., 1., 0., 0.95, 0., -0.65, 1., 0., -0.65] //8
 }
 
-
+// we should get these values from the instruments themselves when we can
 synthDeviceVoices = {
     "thread1" : 10,
     "thread2" : 11,
@@ -376,13 +376,18 @@ udpPort.on("message", function (oscMsg) {
         console.log("!!!!!!!!!!!!!!!!!!!! UDP INSTRUMENT !!!!!!!!!!!!!!!!!!!!!!");
         let value = oscMsg.simpleValue;
         console.log(value);
-        let name = value;
+        let name = value[0];
+        let midi_voice = value[1];
+        let midimin = value[2];
+        let midimax = value[3];
         if(value.name){
             name = value.name;
         }
         let instrument = orchestra.create_udp_instrument(name, value);
+        orchestra.udp_instrument_set_value(name, "midi_voice", midi_voice);
+        orchestra.udp_instrument_set_value(name, "midimin", midimin);
+        orchestra.udp_instrument_set_value(name, "midimax", midimax);
         let props = instrument.get_config_props();
-        props.push({name: "instrtype", value: "udp"});
         socket.sendMessage("addinstrument", props);
         instrument.start();
     });

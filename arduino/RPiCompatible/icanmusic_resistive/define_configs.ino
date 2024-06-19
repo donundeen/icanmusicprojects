@@ -91,7 +91,7 @@ void routeConfig_midimax(OSCMessage &msg, int addrOffset ){
 }
 
 void routeConfig_velocitycurve(OSCMessage &msg, int addrOffset ){
-  midimax = route_int(msg, addrOffset, "velocitycurve");
+  velocitycurve = route_int(msg, addrOffset, "velocitycurve");
   Serial.println("midimax");
   Serial.println(midimax);
 }
