@@ -390,6 +390,7 @@ udpPort.on("message", function (oscMsg) {
         orchestra.udp_instrument_set_value(name, "midimin", midimin);
         orchestra.udp_instrument_set_value(name, "midimax", midimax);
         let props = instrument.get_config_props();
+        console.log(props);
         socket.sendMessage("addinstrument", props);
         instrument.start();
     });

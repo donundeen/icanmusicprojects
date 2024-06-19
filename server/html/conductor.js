@@ -270,7 +270,7 @@ $(function() {
         let midi_voice = options_object.midi_voice  ? options_object.midi_voice : 1;
         let midi_channel = options_object.midi_channel  ? options_object.midi_channel : 0;
         let device_name = options_object.device_name  ? options_object.device_name : "BAD_NAME";
-        let instrtype = options_object.instrtype;
+        let instrtype = options_object.instrtype ? options_object.instrtype : "UNKNOWNTYPE";
         $(instr).data("device_name", device_name);
         $(instr).data("instrtype", instrtype);
         $(instr).attr("id", device_name);
@@ -373,7 +373,7 @@ $(function() {
                 $( ".voice_display",instr ).val(  ui.value );
                 let address = "instrval";
                 let instrtype = $(instr).data("instrtype"); // local or udp
-                console.log("sending " + ui.value);
+                console.log("sending " + ui.value + instrtype);
                 let data = {id:id, 
                             instrtype: instrtype,
                             var: "midi_voice",
