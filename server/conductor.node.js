@@ -169,7 +169,7 @@ if(synthtype == "tiny"){
     synth.good_voices = tiny_voices;
 }                
 
-db.testSynth(synth, bluetooth);
+//db.testSynth(synth, bluetooth);
 
 orchestra.synth = synth;
 orchestra.synthDeviceVoices = synthDeviceVoices;
