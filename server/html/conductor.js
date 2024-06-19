@@ -40,9 +40,9 @@ $(function() {
     }
 
     ws.onmessage = function(event) {
-        console.log("got message "+ event);
+//        console.log("got message "+ event);
         msg = JSON.parse(event.data);
-        console.log(msg.address);
+//        console.log(msg.address);
         if(msg.address == "score"){
             updateScore(msg.data);
         }
@@ -241,6 +241,7 @@ $(function() {
         // if the instrument already has an interface, don't create a new one,
         // but DO update the form with the options, since they might have changed in the meantime
         if($( "#"+id ).length){
+            console.log("updating form");
             let instr = $("#"+id);
             let midi_voice = options.data.filter((item)=>item.name=="midi_voice")[0].value;
             let midimin = options.data.filter((item)=>item.name=="midimin")[0].value;
