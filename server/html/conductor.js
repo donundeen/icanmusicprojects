@@ -248,7 +248,7 @@ $(function() {
             let midimax = options.data.filter((item)=>item.name=="midimax")[0].value;
             $( ".midi-range",instr ).slider( "option", "values", [ midimin, midimax ] );
             $( ".range_display",instr ).val(  midimin + " - " + midimax );
-            $( ".midi-voice",instr ).slider( "option", "values", midi_voice );
+            $( ".midi-voice",instr ).slider( "option", "value", midi_voice );
             return;
         }
 
