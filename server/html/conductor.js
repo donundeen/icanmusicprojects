@@ -238,8 +238,16 @@ $(function() {
         console.log(options.data);
         let id = options.data.filter((item)=>item.name=="device_name")[0].value;
         
-        // if the instrument already has an interface, don't create a new one
+        // if the instrument already has an interface, don't create a new one,
+        // but DO update the form with the options, since they might have changed in the meantime
         if($( "#"+id ).length){
+            let instr = $("#"+id);
+            let midi_voice = options.data.filter((item)=>item.name=="midi_voice")[0].value;
+            let midimin = options.data.filter((item)=>item.name=="midimin")[0].value;
+            let midimax = options.data.filter((item)=>item.name=="midimax")[0].value;
+            $( ".midi-range",instr ).slider( "option", "values", [ midimin, midimax ] );
+            $( ".range_display",instr ).val(  midimin + " - " + midimax );
+            $( ".midi-voice",instr ).slider( "option", "values", midi_voice );
             return;
         }
 
