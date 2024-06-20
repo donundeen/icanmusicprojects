@@ -113,15 +113,15 @@ function resetAttempt(){
 function makenote(channel, instrument, pitch, velocity, duration){
 
         // if there's a hardware midi device attached to this instrument
-        if(this.midi_hardware_engine){
+        if(midi_hardware_engine){
             console.log("HARDWARE NOTE");
-            this.midi_hardware_engine.send('noteon', {
+            midi_hardware_engine.send('noteon', {
                 note: note,
                 velocity: velocity,
                 channel: this.midi_channel
             });
             setTimeout(()=>{
-                this.midi_hardware_engine.send('noteoff', {
+                midi_hardware_engine.send('noteoff', {
                     note: note,
                     velocity: 0,
                     channel: this.midi_channel
