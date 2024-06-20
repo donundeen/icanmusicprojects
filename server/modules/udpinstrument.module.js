@@ -408,7 +408,7 @@ const UDPInstrument = class{
             }
         }
         if(this.midi_hardware_engine){
-            midi_hardware_engine.send('program',{
+            this.midi_hardware_engine.send('program',{
                 number: this._midi_voice, 
                 channel: this._midi_channel
             }); 
