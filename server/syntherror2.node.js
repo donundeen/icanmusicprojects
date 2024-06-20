@@ -23,6 +23,17 @@ if(env == "mac"){
 
 let synth = require('child_process').spawn(fluidpath, args);
 
+synth.on('data', (data) => {
+    console.log(`stdout: ${data}`);
+  });
+  synth.on("message", (data)=>{
+    console.log("message:", data);
+  });
+  synth.on('error', function(err) { console.log('Cannot spawn fluidsynth: ' + err.message); });
+  synth.on('exceeded', function(err) { console.log("too much memory"); synth.kill(); });
+
+
+
 setInterval(function(){
     play_notes(numnotes);   
 }, interval);
