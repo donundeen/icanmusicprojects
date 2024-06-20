@@ -3,6 +3,9 @@ var JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
 let resetAt = 100;
+let global_count = 0;
+let reset_count = 0;
+
 
 let env = "rpi"; // or "rpi" or "mac"
 
@@ -30,8 +33,7 @@ setInterval(function(){
 
 resetAttempt();
 
-let global_count = 0;
-let reset_count = 0;
+
 function play_notes(numnotes){
 //    console.log("playnotes");
     let i = 0;
