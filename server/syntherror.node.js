@@ -4,7 +4,7 @@ require('jzz-synth-fluid')(JZZ);
 
 let resetAt = 300;
 
-let env = "rpi"; // or "rpi"
+let env = "mac"; // or "rpi" or "mac"
 
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 let fluidpath = '/usr/bin/fluidsynth';
@@ -18,8 +18,8 @@ if(env == "mac"){
     args = ["-d"];
 }
 
-let numnotes = 10; // make this number larger for more notes at once (a cluster of notes)
-let interval = 200; // how often (in milliseconds) to play each "cluster"
+let numnotes = 50; // make this number larger for more notes at once (a cluster of notes)
+let interval = 100; // how often (in milliseconds) to play each "cluster"
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
                 sf: soundfont,
                 args: args }).or(function(){console.log("some problem starting!")});
@@ -29,21 +29,23 @@ setInterval(function(){
 }, interval);
 
 let global_count = 0;
+let reset_count = 0;
 function play_notes(numnotes){
-    console.log("playnotes");
+//    console.log("playnotes");
     let i = 0;
     while(i < numnotes){
         global_count++;
-        console.log(global_count+ "********************************************** " + global_count);
+        reset_count++;
+    //    console.log(global_count +":" +reset_count +" ********************************************** " + global_count);
         let note = Math.floor(Math.random() * 127);
         let velocity = Math.floor(Math.random() * 70)+ 50;
         let voice = Math.floor(Math.random() * 100);
-        let duration = Math.floor(Math.random() * 2) + 25;
+        let duration = Math.floor(Math.random() * 2) + 100;
         let channel = Math.floor(Math.random() * 2);
         makenote(channel, voice, note, velocity, duration );
 
-        if(global_count > resetAt){
-            global_count = 0;
+        if(reset_count > resetAt){
+            reset_count = 0;
             resetAttempt();
         }
 
@@ -53,13 +55,26 @@ function play_notes(numnotes){
 
 function resetAttempt(){
     console.log("resetAttempt");
-    synth.reset();
+
+    let formatMemoryUsage = (data) => `${Math.round(data / 1024 / 1024 * 100) / 100} MB`;
+
+    let memoryData = process.memoryUsage();
+    
+    let memoryUsage = {
+      rss: `${formatMemoryUsage(memoryData.rss)} -> Resident Set Size - total memory allocated for the process execution`,
+      heapTotal: `${formatMemoryUsage(memoryData.heapTotal)} -> total size of the allocated heap`,
+      heapUsed: `${formatMemoryUsage(memoryData.heapUsed)} -> actual memory used during the execution`,
+      external: `${formatMemoryUsage(memoryData.external)} -> V8 external memory`,
+    };
+    
+    console.log(memoryUsage);    
+  //  synth.reset();
 }
 
 
 function makenote(channel, instrument, pitch, velocity, duration){
-    console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
-    synth//.program(channel, instrument)
+ //   console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
+    synth.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
     .noteOff(channel,pitch).or(function(msg){
