@@ -118,13 +118,13 @@ function makenote(channel, instrument, pitch, velocity, duration){
             midi_hardware_engine.send('noteon', {
                 note: pitch,
                 velocity: velocity,
-                channel: this.midi_channel
+                channel: channel
             });
             setTimeout(()=>{
                 midi_hardware_engine.send('noteoff', {
                     note: pitch,
                     velocity: 0,
-                    channel: this.midi_channel
+                    channel: channel
                 });
             }, duration);
         }else{
