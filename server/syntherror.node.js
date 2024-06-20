@@ -28,6 +28,8 @@ setInterval(function(){
     play_notes(numnotes);   
 }, interval);
 
+resetAttempt();
+
 let global_count = 0;
 let reset_count = 0;
 function play_notes(numnotes){
