@@ -7,6 +7,29 @@ let numnotes = 30; // make this number larger for more notes at once (a cluster 
 let interval = 200; // how often (in milliseconds) to play each "cluster"
 
 
+
+// midi hardward setup:
+let midi_hardware_engine = false;
+let use_midi_out = true; // whether or not to send midi values through a hardware output, via easymidi
+//let midi_out_portname = "UM-ONE";
+let midi_out_portname = "FLUID";
+if(use_midi_out){
+    const midi = require('midi');
+    const easymidi = require('easymidi');
+    let midi_outputs = easymidi.getOutputs();
+    console.log(midi_outputs);
+    let real_portname = false;
+    for(let i = 0; i<midi_outputs.length; i++){
+        if(midi_outputs[i].includes(midi_out_portname)){
+            real_portname = midi_outputs[i];
+        }
+    }
+    if(real_portname){
+        midi_hardware_engine = new easymidi.Output(real_portname);   
+    }
+}
+
+
 let env = "rpi"; // or "rpi" or "mac"
 
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
@@ -53,7 +76,7 @@ function play_notes(numnotes){
         let voice = Math.floor(Math.random() * 100);
         let duration = Math.floor(Math.random() * 2) + 100;
         let channel = Math.floor(Math.random() * 2);
-        makenote2(channel, voice, note, velocity, duration );
+        makenote(channel, voice, note, velocity, duration );
 
         if(reset_count > resetAt){
             reset_count = 0;
@@ -87,6 +110,25 @@ function resetAttempt(){
 
 
 function makenote(channel, instrument, pitch, velocity, duration){
+
+        // if there's a hardware midi device attached to this instrument
+        if(this.midi_hardware_engine){
+            console.log("HARDWARE NOTE");
+            this.midi_hardware_engine.send('noteon', {
+                note: note,
+                velocity: velocity,
+                channel: this.midi_channel
+            });
+            setTimeout(()=>{
+                this.midi_hardware_engine.send('noteoff', {
+                    note: note,
+                    velocity: 0,
+                    channel: this.midi_channel
+                });
+            }, duration);
+        }else{
+            console.log("NNNNNNNNNNNNNNNo hardware engine");
+        }
 
 }
 
