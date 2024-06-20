@@ -8,18 +8,21 @@ let midi_out_portname = "FLUID";
 if(use_midi_out){
     const midi = require('midi');
     const easymidi = require('easymidi');
-    let midi_outputs = easymidi.getOutputs();
-    console.log(midi_outputs);
-    let real_portname = false;
-    for(let i = 0; i<midi_outputs.length; i++){
-        if(midi_outputs[i].includes(midi_out_portname)){
-            real_portname = midi_outputs[i];
+    // wait for the midi port to be avaiable...
+    while(!midi_hardware_engine){
+        let midi_outputs = easymidi.getOutputs();
+        console.log(midi_outputs);
+        let real_portname = false;
+        for(let i = 0; i<midi_outputs.length; i++){
+            if(midi_outputs[i].includes(midi_out_portname)){
+                real_portname = midi_outputs[i];
+            }
         }
-    }
-    console.log("using port " + real_portname);
-    if(real_portname){
-        midi_hardware_engine = new easymidi.Output(real_portname);  
-        midi_hardware_engine.send('reset'); 
+        console.log("using port " + real_portname);
+        if(real_portname){
+            midi_hardware_engine = new easymidi.Output(real_portname);  
+            midi_hardware_engine.send('reset'); 
+        }
     }
 }
 
