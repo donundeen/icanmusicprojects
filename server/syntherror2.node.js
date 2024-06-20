@@ -66,6 +66,7 @@ function play_notes(numnotes){
 
 function resetAttempt(){
     console.log("resetAttempt " + global_count);
+    synth.kill();
     synth = require('child_process').spawn(fluidpath, args);
 
 
