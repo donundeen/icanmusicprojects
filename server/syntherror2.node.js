@@ -116,13 +116,13 @@ function makenote(channel, instrument, pitch, velocity, duration){
         if(midi_hardware_engine){
             console.log("HARDWARE NOTE");
             midi_hardware_engine.send('noteon', {
-                note: note,
+                note: pitch,
                 velocity: velocity,
                 channel: this.midi_channel
             });
             setTimeout(()=>{
                 midi_hardware_engine.send('noteoff', {
-                    note: note,
+                    note: pitch,
                     velocity: 0,
                     channel: this.midi_channel
                 });
