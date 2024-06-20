@@ -115,6 +115,11 @@ function makenote(channel, instrument, pitch, velocity, duration){
         // if there's a hardware midi device attached to this instrument
         if(midi_hardware_engine){
             console.log("HARDWARE NOTE");
+            midi_hardware_engine.send('program', {
+                number: instrument, 
+                channel: channel
+            });
+
             midi_hardware_engine.send('noteon', {
                 note: pitch,
                 velocity: velocity,
