@@ -5,7 +5,7 @@ require('jzz-synth-fluid')(JZZ);
 let resetAt = 100;
 let global_count = 0;
 let reset_count = 0;
-let numnotes = 10; // make this number larger for more notes at once (a cluster of notes)
+let numnotes = 30; // make this number larger for more notes at once (a cluster of notes)
 let interval = 200; // how often (in milliseconds) to play each "cluster"
 
 
@@ -14,7 +14,7 @@ let env = "rpi"; // or "rpi" or "mac"
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 let fluidpath = '/usr/bin/fluidsynth';
 let arg_a = "pulseaudio";
-let args = ["a", arg_a];
+let args = ["-a", arg_a];
 if(env == "mac"){
     fluidpath = '/opt/homebrew/bin/fluidsynth';
     soundfont = '/Users/donundeen/Documents/htdocs/icanmusicprojects/server/soundfonts/GeneralUserGS/GeneralUserGS.sf2'
