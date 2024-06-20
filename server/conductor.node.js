@@ -34,18 +34,20 @@ let midi_out_portname = "FLUID"; // FLUID for on-baord synth, UM-ONE for the mid
 if(use_midi_out){
     const midi = require('midi');
     const easymidi = require('easymidi');
-    let midi_outputs = easymidi.getOutputs();
-    console.log(midi_outputs);
-    let real_portname = false;
-    for(let i = 0; i<midi_outputs.length; i++){
-        if(midi_outputs[i].includes(midi_out_portname)){
-            real_portname = midi_outputs[i];
+    while(!midi_hardware_engine){
+        let midi_outputs = easymidi.getOutputs();
+        console.log(midi_outputs);
+        let real_portname = false;
+        for(let i = 0; i<midi_outputs.length; i++){
+            if(midi_outputs[i].includes(midi_out_portname)){
+                real_portname = midi_outputs[i];
+            }
         }
-    }
-    if(real_portname){
-        midi_hardware_engine = new easymidi.Output(real_portname);   
-        midi_hardware_engine.send('reset'); 
+        if(real_portname){
+            midi_hardware_engine = new easymidi.Output(real_portname);   
+            midi_hardware_engine.send('reset'); 
 
+        }
     }
 }
 
