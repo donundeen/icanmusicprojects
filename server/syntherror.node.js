@@ -5,6 +5,8 @@ require('jzz-synth-fluid')(JZZ);
 let resetAt = 100;
 let global_count = 0;
 let reset_count = 0;
+let numnotes = 10; // make this number larger for more notes at once (a cluster of notes)
+let interval = 200; // how often (in milliseconds) to play each "cluster"
 
 
 let env = "rpi"; // or "rpi" or "mac"
@@ -21,8 +23,6 @@ if(env == "mac"){
     args = ["-d"];
 }
 
-let numnotes = 10; // make this number larger for more notes at once (a cluster of notes)
-let interval = 500; // how often (in milliseconds) to play each "cluster"
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
                 sf: soundfont,
                 args: args }).or(function(){console.log("some problem starting!")});
