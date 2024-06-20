@@ -47,7 +47,7 @@ function play_notes(numnotes){
     while(i < numnotes){
         global_count++;
         reset_count++;
-    //    console.log(global_count +":" +reset_count +" ********************************************** " + global_count);
+        console.log(global_count +":" +reset_count +" ********************************************** " + global_count);
         let note = Math.floor(Math.random() * 127);
         let velocity = Math.floor(Math.random() * 70)+ 50;
         let voice = Math.floor(Math.random() * 100);
@@ -91,7 +91,7 @@ function makenote(channel, instrument, pitch, velocity, duration){
 }
 
 function makenote2(channel, instrument, pitch, velocity, duration){
-    //   console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
+       console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
         let cmd = "noteon "+ channel + " " + " " + pitch + " " +  velocity;
         synth.stdin.write(cmd + '\n');
         setTimeout(function(){
