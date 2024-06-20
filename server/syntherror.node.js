@@ -44,7 +44,7 @@ function play_notes(numnotes){
         let voice = Math.floor(Math.random() * 100);
         let duration = Math.floor(Math.random() * 2) + 100;
         let channel = Math.floor(Math.random() * 2);
-        makenote(channel, voice, note, velocity, duration );
+        makenote2(channel, voice, note, velocity, duration );
 
         if(reset_count > resetAt){
             reset_count = 0;
@@ -83,3 +83,12 @@ function makenote(channel, instrument, pitch, velocity, duration){
         console.log("some problem! " + msg); // this never is printed
     });
 }
+
+function makenote2(channel, instrument, pitch, velocity, duration){
+    //   console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
+       synth.program(channel, instrument)
+       .noteOn(channel, pitch, velocity);
+       setTimeout(function(){
+            synth.noteOff(channel, pitch);
+       }, duration);
+   }
