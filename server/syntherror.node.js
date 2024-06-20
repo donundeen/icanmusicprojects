@@ -2,6 +2,8 @@
 var JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
+let resetAt = 300;
+
 let env = "rpi"; // or "rpi"
 
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
@@ -16,8 +18,8 @@ if(env == "mac"){
     args = ["-d"];
 }
 
-let numnotes = 100; // make this number larger for more notes at once (a cluster of notes)
-let interval = 1000; // how often (in milliseconds) to play each "cluster"
+let numnotes = 10; // make this number larger for more notes at once (a cluster of notes)
+let interval = 200; // how often (in milliseconds) to play each "cluster"
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
                 sf: soundfont,
                 args: args }).or(function(){console.log("some problem starting!")});
@@ -37,11 +39,26 @@ function play_notes(numnotes){
         let velocity = Math.floor(Math.random() * 70)+ 50;
         let voice = Math.floor(Math.random() * 100);
         let duration = Math.floor(Math.random() * 2) + 25;
-        let channel = Math.floor(Math.random() * 10);
+        let channel = Math.floor(Math.random() * 2);
         makenote(channel, voice, note, velocity, duration );
+
+        if(global_count > resetAt){
+            global_count = 0;
+            resetAttempt();
+        }
+
         i++;
     }
 }
+
+function resetAttempt(){
+    console.log("resetAttempt");
+    synth.allNotesOff(0);
+    synth.allNotesOff(1);
+    synth.allNotesOff(2);
+    synth.reset();
+}
+
 
 function makenote(channel, instrument, pitch, velocity, duration){
     console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
