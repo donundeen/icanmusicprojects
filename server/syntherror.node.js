@@ -18,8 +18,8 @@ if(env == "mac"){
     args = ["-d"];
 }
 
-let numnotes = 50; // make this number larger for more notes at once (a cluster of notes)
-let interval = 100; // how often (in milliseconds) to play each "cluster"
+let numnotes = 10; // make this number larger for more notes at once (a cluster of notes)
+let interval = 500; // how often (in milliseconds) to play each "cluster"
 let synth = JZZ.synth.Fluid({ path: fluidpath, 
                 sf: soundfont,
                 args: args }).or(function(){console.log("some problem starting!")});
