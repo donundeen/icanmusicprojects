@@ -53,9 +53,6 @@ function play_notes(numnotes){
 
 function resetAttempt(){
     console.log("resetAttempt");
-    synth.allNotesOff(0);
-    synth.allNotesOff(1);
-    synth.allNotesOff(2);
     synth.reset();
 }
 
