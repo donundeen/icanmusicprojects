@@ -56,7 +56,7 @@ function play_notes(numnotes){
 }
 
 function resetAttempt(){
-    console.log("resetAttempt");
+    console.log("resetAttempt " + global_count);
 
     let formatMemoryUsage = (data) => `${Math.round(data / 1024 / 1024 * 100) / 100} MB`;
 
