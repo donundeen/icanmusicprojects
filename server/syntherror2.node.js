@@ -21,7 +21,7 @@ if(env == "mac"){
     args = ["-d"];
 }
 
-let synth = require('child_process').spawn(fluidpath, args,{shell:true});
+let synth = require('child_process').spawn(fluidpath, args);
 
 synth.on('data', (data) => {
     console.log(`stdout: ${data}`);
