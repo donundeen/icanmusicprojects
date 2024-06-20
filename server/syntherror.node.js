@@ -2,7 +2,7 @@
 var JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
-let env = "mac"; // or "rpi"
+let env = "rpi"; // or "rpi"
 
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 let fluidpath = '/usr/bin/fluidsynth';
@@ -45,7 +45,7 @@ function play_notes(numnotes){
 
 function makenote(channel, instrument, pitch, velocity, duration){
     console.log("playing note "+ channel + ", " + pitch +","+velocity+","+duration);
-    synth.program(channel, instrument)
+    synth//.program(channel, instrument)
     .noteOn(channel, pitch, velocity)
     .wait(duration)
     .noteOff(channel,pitch).or(function(msg){
