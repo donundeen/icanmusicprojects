@@ -1,6 +1,6 @@
 require("child_process");
 
-let resetAt = 100;
+let resetAt = 300;
 let global_count = 0;
 let reset_count = 0;
 let numnotes = 30; // make this number larger for more notes at once (a cluster of notes)
