@@ -363,11 +363,12 @@ const UDPInstrument = class{
             return;
         }
         this.midiSetInstrument();
-        this.synth
-        .noteOn(this.midi_channel, note, velocity)
-        .wait(duration)
-        .noteOff(this.midi_channel, note);
-
+        if(this.synth){
+            this.synth
+            .noteOn(this.midi_channel, note, velocity)
+            .wait(duration)
+            .noteOff(this.midi_channel, note);
+        }
         // if there's a hardware midi device attached to this instrument
         if(this.midi_hardware_engine){
             console.log("HARDWARE NOTE");
@@ -394,15 +395,23 @@ const UDPInstrument = class{
     }
 
     midiSetInstrument(){
-        this.synth.allNotesOff(this._midi_channel);  
-        if(this.synth.good_voices){
-            let realvoice = this.synth.good_voices[this._midi_voice % this.synth.good_voices.length]
-            this.synth
-            .program(this._midi_channel, realvoice)        
+        if(this.synth){
+            this.synth.allNotesOff(this._midi_channel);  
+            if(this.synth.good_voices){
+                let realvoice = this.synth.good_voices[this._midi_voice % this.synth.good_voices.length]
+                this.synth
+                .program(this._midi_channel, realvoice)        
 
-        }else{
-            this.synth
-            .program(this._midi_channel, this._midi_voice)        
+            }else{
+                this.synth
+                .program(this._midi_channel, this._midi_voice)        
+            }
+        }
+        if(this.midi_hardware_engine){
+            midi_hardware_engine.send('program',{
+                number: this._midi_voice, 
+                channel: this._midi_channel
+            }); 
         }
     }
 

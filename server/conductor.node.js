@@ -22,7 +22,7 @@ bluetooth.keepUp();
 ////////////////// CONFIG VARIABLES //////////////////////////
 let env = "rpi"; // "rpi" or "mac" -- how to determine this from code?
 
-let synthtype = "fluidsynth"; // tiny or fluidsynth
+let synthtype = false; // tiny or fluidsynth or false
 // tiny can't handle too many notes at once, and some don't sound good:
 let bad_tiny_voices = [6,7,8,22,23,24,40,41,42,43,44,55,56,57,59,60,61,62,63,64,65,66,67,68,69,71,72, 84, 90, 105,110,118,119,120,121,122,123,124,125,126,127];
 
@@ -30,7 +30,7 @@ let bad_tiny_voices = [6,7,8,22,23,24,40,41,42,43,44,55,56,57,59,60,61,62,63,64,
 // midi hardward setup:
 let midi_hardware_engine = false;
 let use_midi_out = true; // whether or not to send midi values through a hardware output, via easymidi
-let midi_out_portname = "UM-ONE";
+let midi_out_portname = "FLUID"; // FLUID for on-baord synth, UM-ONE for the midi cable, or other things"; 
 if(use_midi_out){
     const midi = require('midi');
     const easymidi = require('easymidi');
@@ -44,6 +44,8 @@ if(use_midi_out){
     }
     if(real_portname){
         midi_hardware_engine = new easymidi.Output(real_portname);   
+        midi_hardware_engine.send('reset'); 
+
     }
 }
 
