@@ -2,7 +2,7 @@
 var JZZ = require('jzz');
 require('jzz-synth-fluid')(JZZ);
 
-let resetAt = 300;
+let resetAt = 100;
 
 let env = "rpi"; // or "rpi" or "mac"
 
