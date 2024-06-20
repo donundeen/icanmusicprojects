@@ -81,7 +81,7 @@ function makenote(channel, instrument, pitch, velocity, duration){
     .wait(duration)
     .noteOff(channel,pitch).or(function(msg){
         console.log("some problem! " + msg); // this never is printed
-    });
+    }).close();
 }
 
 function makenote2(channel, instrument, pitch, velocity, duration){
