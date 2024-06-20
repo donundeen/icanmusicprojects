@@ -4,7 +4,7 @@ require('jzz-synth-fluid')(JZZ);
 
 let resetAt = 300;
 
-let env = "mac"; // or "rpi" or "mac"
+let env = "rpi"; // or "rpi" or "mac"
 
 let soundfont = './soundfonts/GeneralUserGS/GeneralUserGS.sf2'
 let fluidpath = '/usr/bin/fluidsynth';
